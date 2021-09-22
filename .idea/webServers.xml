@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e4f2d039-f22d-47f9-9288-2e084702b1b9" name="VAT">
+        <fileTransfer rootFolder="/var/www/vat.alienbdit.com" accessType="SFTP" host="182.160.102.100" port="7015" sshConfigId="5a89d9b4-4cc4-4221-beec-ddaa1c8d37a8" sshConfig="root@182.160.102.100:7015 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

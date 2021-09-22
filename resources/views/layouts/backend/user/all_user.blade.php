@@ -1,4 +1,4 @@
-@extends('layouts.backend.partial..app')
+@extends('layouts.backend.partial.app')
 @section('title','All Users')
 @push('css')
     <link rel="stylesheet" href="{{asset('assets/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">

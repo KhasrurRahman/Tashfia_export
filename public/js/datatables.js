@@ -3,6 +3,7 @@ $(document).ready(function() {
     var table = $('#data_table').DataTable({
         responsive: true,
         select: true,
+        search: true,
         'aoColumnDefs': [{
             'bSortable': false,
             'aTargets': ['nosort']
@@ -11,7 +12,7 @@ $(document).ready(function() {
                 buttons: [
                     {
                         extend: 'copy',
-                        className: 'btn-sm btn-info', 
+                        className: 'btn-sm btn-info',
                         header: false,
                         footer: true,
                         exportOptions: {
@@ -57,7 +58,7 @@ $(document).ready(function() {
                         }
                     }
                 ]
-    
+
     });
     $('#data_table tbody').on( 'click', 'tr', function() {
         if ( $(this).hasClass('selected') ) {

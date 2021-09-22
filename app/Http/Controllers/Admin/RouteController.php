@@ -16,7 +16,7 @@ class RouteController extends Controller
             'add_menu' => 'yes',
             'modal' => 'yes',
         ];
-        return view('layouts.backend.dynamic_route.dynamic_route', compact('route', 'page_data'));
+        return view('layouts.dynamic_route.dynamic_route', compact('route', 'page_data'));
     }
 
     public function save_dynamic_route(Request $request)
@@ -48,7 +48,7 @@ class RouteController extends Controller
     public function edit_route($id)
     {
         $route = dynamic_route::find($id);
-        return view('layouts.backend.dynamic_route.edit_route',compact('route'));
+        return view('layouts.dynamic_route.edit_route',compact('route'));
     }
 
     public function update_route(Request $request,$id)

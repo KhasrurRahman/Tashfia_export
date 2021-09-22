@@ -2,28 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\complain;
 use App\Http\Controllers\Controller;
-use App\Order;
-use App\package;
-use App\payment;
-use App\scratch_card;
-use App\subscriber;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Response;
-use Yajra\DataTables\Facades\DataTables;
 
 class AdminDashboarController extends Controller
 {
     public function index()
     {
-        return view('layouts.backend.pages.dashboard');
+        return view('layouts.dashboard.dashboard');
     }
 
 

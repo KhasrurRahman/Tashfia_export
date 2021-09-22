@@ -19,13 +19,13 @@ class RoleController extends Controller
             'add_menu' => 'yes',
             'modal' => 'no',
         ];
-        return view('layouts.backend.role.all_role', compact('role', 'page_data'));
+        return view('layouts.role.all_role', compact('role', 'page_data'));
     }
 
     public function add_role()
     {
         $route = dynamic_route::where('route_status', 1)->get()->groupBy('model_name');
-        return view('layouts.backend.role.add_role', compact('route'));
+        return view('layouts.role.add_role', compact('route'));
     }
 
     public function save_role(Request $request)
@@ -60,7 +60,7 @@ class RoleController extends Controller
         $role = role::find($id);
         $route = dynamic_route::where('route_status', 1)->get()->groupBy('model_name');
         $permission_route = permission_role::where('role_id', $id)->get();
-        return view('layouts.backend.role.edit_role', compact('role', 'route', 'permission_route'));
+        return view('layouts.role.edit_role', compact('role', 'route', 'permission_route'));
     }
 
     public function update_role(Request $request, $id)

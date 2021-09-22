@@ -9,19 +9,20 @@
 <!-- font awesome library -->
 <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('backend/js/app.js') }}"></script>
 
 <!-- themekit admin template asstes -->
 <link rel="stylesheet" href="{{ asset('all.css') }}">
-<link rel="stylesheet" href="{{ asset('dist/css/theme.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/icon-kit/dist/css/iconkit.min.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/ionicons/dist/css/ionicons.min.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/dist/css/theme.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/dist/css/custom.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/plugins/icon-kit/dist/css/iconkit.min.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/plugins/ionicons/dist/css/ionicons.min.css') }}">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 
 <!-- Stack array for including inline css or head elements -->
-@stack('head')
+@stack('css')
 
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 

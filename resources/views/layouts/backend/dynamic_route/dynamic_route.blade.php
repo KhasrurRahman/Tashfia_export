@@ -1,8 +1,7 @@
 @extends('layouts.backend.partial..app')
 @section('title','Route List')
 @push('css')
-    <link rel="stylesheet"
-          href="{{asset('assets/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 @endpush
 @section('main_menu','HOME')
 @section('active_menu','Route List')
@@ -13,12 +12,11 @@
         <div class="card-header">
             <h3 class="card-title">Total Route: <span class="badge badge-secondary">{{$route->count()}}</span></h3>
             @if($page_data['add_menu'] == "yes")
-                <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success float-right">Add
-                    Route</a>
+                <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add Route</a>
             @endif
         </div>
         <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="datatable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -111,8 +109,12 @@
 @endsection
 @push('js')
     <!-- DataTables -->
-    <script src="{{asset('assets/backend/plugins/datatables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('assets/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable();
+        });
+    </script>
     <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
     <script>
         $(function () {
