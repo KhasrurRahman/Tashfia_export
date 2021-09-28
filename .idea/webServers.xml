@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="8e74c425-cea3-4ab5-bed9-a0c80e57ac23" name="Tasfia_export" url="http://63.250.45.84">
+        <fileTransfer rootFolder="/tashfiaexport.bindusoft.com" host="63.250.45.84" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

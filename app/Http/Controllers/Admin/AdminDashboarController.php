@@ -13,7 +13,7 @@ class AdminDashboarController extends Controller
 {
     public function index()
     {
-        return view('layouts.dashboard.dashboard');
+        return view('layouts.backend.dashboard');
     }
 
 

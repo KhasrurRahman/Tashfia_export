@@ -3,26 +3,17 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="icon" href="{{ asset('favicon.png')}}" />
-
-<!-- font awesome library -->
+<link rel="icon" href="{{ asset('favicon.png')}}"/>
 <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
-
 <script src="{{ asset('backend/js/app.js') }}"></script>
-
-<!-- themekit admin template asstes -->
-<link rel="stylesheet" href="{{ asset('all.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/css/all.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/dist/css/theme.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/dist/css/custom.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/plugins/icon-kit/dist/css/iconkit.min.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/plugins/ionicons/dist/css/ionicons.min.css') }}">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-
-<!-- Stack array for including inline css or head elements -->
+<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @stack('css')
 
 

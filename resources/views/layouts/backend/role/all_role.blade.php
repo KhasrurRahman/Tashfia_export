@@ -1,9 +1,7 @@
-@extends('layouts.backend.partial..app')
+@extends('layouts.backend.partial.app')
 @section('title','Add role')
 @push('css')
-    <!-- DataTables -->
-    <link rel="stylesheet"
-          href="{{asset('assets/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
+
 @endpush
 @section('main_menu','HOME')
 @section('active_menu','Add role')
@@ -14,7 +12,7 @@
         <div class="card-header">
             <h3 class="card-title">Total Role: <span class="badge badge-secondary">{{$role->count()}}</span></h3>
             @if($page_data['add_menu'] == "yes")
-                <a href="{{route('admin.role/add_role')}}" type="button" class="btn-sm btn-success float-right">Add role</a>
+                <a href="{{route('admin.role/add_role')}}" type="button" class="btn-sm btn-success float-right" style="margin-left: 85%">Add role</a>
             @endif
         </div>
         <!-- /.card-header -->
@@ -116,9 +114,6 @@
 
 @endsection
 @push('js')
-    <!-- DataTables -->
-    <script src="{{asset('assets/backend/plugins/datatables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('assets/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
     <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
     <script>
         $(function () {

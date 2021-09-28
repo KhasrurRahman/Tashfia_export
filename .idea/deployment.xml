@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" serverName="VAT" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
+      <paths name="Tasfia_export">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="VAT">
         <serverdata>
           <mappings>

@@ -36,7 +36,7 @@ class ProductController extends Controller
             'fabric_type' => 'required',
         ]);
 
-        $request->request->add(['card_no' => uniqid()]);
+        $request->request->add(['card_no' => mt_rand()]);
         ModelProduct::create($request->all());
         Toastr::success('product Created Successfully', 'Created');
         return redirect()->back();
@@ -76,7 +76,7 @@ class ProductController extends Controller
                 })->addColumn('card_no', function ($data) {
                     return $data->card_no;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onclick="view_modal(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >View</a> <a href="' . url('admin/company/edit_company/' . $data->id) . '"  class="edit btn btn-outline-success btn-sm" >Edit</a>';
+                    $actionBtn = '<a href="javascript:void(0)" onclick="view_modal(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >View</a> <a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a><a href="' . url('paf_generate/' . $data->id) . '"  class="edit btn btn-outline-warning btn-sm" >Print</a>';
                     return $actionBtn;
                 })->rawColumns(['chalan_no', 'party_name', 'color_name', 'sl_no', 'ggsm','fb_rv_date', 'lot_no', 'batch_no','order_no', 'card_no', 'action'])
                 ->make(true);
@@ -87,5 +87,12 @@ class ProductController extends Controller
     public function view($id)
     {
         return ModelProduct::find($id);
+    }
+    
+    public function delete($id)
+    {
+        $product = ModelProduct::find($id)->delete();
+        
+        return response()->json(['success' => 'Done']);
     }
 }

@@ -27,7 +27,7 @@ class MenuController extends Controller
     {
         $master_menu = ModelMenu::select('menu_name', 'id')->get();
         $route = dynamic_route::select('title', 'id')->get();
-        return view('layouts.menu.menu_create_form', compact('master_menu', 'route'));
+        return view('layouts.backend.menu.menu_create_form', compact('master_menu', 'route'));
     }
 
     public function menu_save(Request $request)
@@ -55,7 +55,7 @@ class MenuController extends Controller
     public function all_menu()
     {
         $data = ['title' => 'Menu Tree'];
-        return view('layouts.menu.all_menu', compact('data'));
+        return view('layouts.backend.menu.all_menu', compact('data'));
     }
 
     public function menu_search(Request $request)
@@ -98,7 +98,7 @@ class MenuController extends Controller
         $menu = ModelMenu::find($id);
         $master_menu = ModelMenu::select('menu_name', 'id')->get();
         $route = dynamic_route::select('title', 'id')->get();
-        return view('layouts.menu.menu_edit', compact('menu', 'master_menu', 'route'));
+        return view('layouts.backend.menu.menu_edit', compact('menu', 'master_menu', 'route'));
     }
 
     public function update_menu(Request $request, $id)

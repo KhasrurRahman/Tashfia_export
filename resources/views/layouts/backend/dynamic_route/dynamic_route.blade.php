@@ -1,4 +1,4 @@
-@extends('layouts.backend.partial..app')
+@extends('layouts.backend.partial.app')
 @section('title','Route List')
 @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">

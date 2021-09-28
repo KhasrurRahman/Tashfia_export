@@ -19,7 +19,7 @@ class UserController extends Controller
             'add_menu' => 'yes',
             'modal' => 'yes',
         ];
-        return view('layouts.user.all_user', compact('users', 'page_data', 'role'));
+        return view('layouts.backend.user.all_user', compact('users', 'page_data', 'role'));
     }
 
     public function save_user(Request $request)

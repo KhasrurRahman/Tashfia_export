@@ -7,7 +7,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -157,6 +157,8 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/milon/barcode" />
     </include_path>
   </component>
   <component name="ProjectId" id="1teQkw5QwKp3TkvvWwSe05ivXIs" />
@@ -174,16 +176,18 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AFD" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts/backend/sales_department" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp_7_4\htdocs\vat_tax\resources\views\layouts\backend\sales_department" />
       <recent name="E:\xampp_7_4\htdocs\vat_tax\resources\views\layouts\backend\product" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\xampp_7_4\htdocs\vat_tax\resources\views\layouts\backend\sales_department" />
       <recent name="E:\xampp_7_4\htdocs\vat_update\resources\views\layouts\backend" />
     </key>
   </component>
@@ -210,6 +214,10 @@
       <workItem from="1623553867248" duration="31000" />
       <workItem from="1632285182222" duration="5478000" />
       <workItem from="1632293760289" duration="4731000" />
+      <workItem from="1632368058193" duration="12990000" />
+      <workItem from="1632637341394" duration="122000" />
+      <workItem from="1632728318779" duration="729000" />
+      <workItem from="1632797610638" duration="10769000" />
     </task>
     <servers />
   </component>

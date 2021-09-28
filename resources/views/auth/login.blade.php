@@ -8,18 +8,18 @@
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="{{ asset('favicon.png') }}"/>
+    <link rel="icon" href="{{ asset('backend/favicon.png') }}"/>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/ionicons/dist/css/ionicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/icon-kit/dist/css/iconkit.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/theme-image.css') }}">
-    <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('backend/plugins/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/ionicons/dist/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/icon-kit/dist/css/iconkit.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/dist/css/theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/dist/css/theme-image.css') }}">
+    <script src="{{ asset('backend/src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
             <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
                 <div class="authentication-form mx-auto">
 {{--                    <div class="logo-centered">--}}
-{{--                        <a href=""><img src="{{ asset('img/logo.png') }}" alt=""></a>--}}
+{{--                        <a href=""><img src="{{ asset('backend/img/logo.png') }}" alt=""></a>--}}
 {{--                    </div>--}}
                     <h3 style="font-size: 34px; color: #250846; font-weight: bold;">{{ __('Login Here') }}</h3>
                     <p>{{ __('Welcome Back! Login to your account to continue') }}</p>
@@ -86,11 +86,11 @@
     </div>
 </div>
 
-<script src="{{ asset('src/js/vendor/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}"></script>
-<script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
-<script src="{{ asset('plugins/screenfull/dist/screenfull.js') }}"></script>
+<script src="{{ asset('backend/src/js/vendor/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/popper.js/dist/umd/popper.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/screenfull/dist/screenfull.js') }}"></script>
 
 </body>
 </html>

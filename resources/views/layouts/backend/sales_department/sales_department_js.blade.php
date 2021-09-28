@@ -19,7 +19,7 @@
                 $('#total_data').html(api.ajax.json().recordsTotal);
             },
             ajax: {
-                url: "{{ url('admin/product/alldata') }}",
+                url: "{{ url('admin/Department/get_sales_department_data') }}",
                 type: 'POSt',
                 data: function (d) {
                     d._token = '{{csrf_token()}}'
@@ -27,16 +27,13 @@
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
-                {data: 'chalan_no', name: 'chalan_no'},
-                {data: 'party_name', name: 'party_name'},
-                {data: 'color_name', name: 'color_name'},
-                {data: 'sl_no', name: 'sl_no'},
-                {data: 'ggsm', name: 'ggsm'},
-                {data: 'fb_rv_date', name: 'fb_rv_date'},
-                {data: 'lot_no', name: 'lot_no'},
-                {data: 'batch_no', name: 'batch_no'},
-                {data: 'order_no', name: 'order_no'},
-                {data: 'card_no', name: 'card_no'},
+                {data: 'date', name: 'date'},
+                {data: 'quantity', name: 'quantity'},
+                {data: 'roll', name: 'roll'},
+                {data: 'lot', name: 'lot'},
+                {data: 'buyer', name: 'buyer'},
+                {data: 'sell', name: 'sell'},
+                {data: 'balance', name: 'balance'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });
@@ -66,14 +63,14 @@
                 event.preventDefault();
                 $.ajax({
                     type: 'get',
-                    url: '{{url('admin/product/delete')}}/' + id,
+                    url: '{{url('admin/Department/delete_sales_department_data')}}/' + id,
                     success: function (response) {
                         if (response) {
                             if (response.permission == false) {
                                 toastr.error('you dont have that Permission', 'Permission Denied');
                             } else {
                                 toastr.success('Deleted Successful', 'Deleted');
-                                $('.yajra-datatable').DataTable().ajax.reload();
+                                $('.yajra-datatable').DataTable().ajax.reload(null, false);
                             }
                         }
                     }
@@ -92,10 +89,10 @@
 
 
     // save country information
-    $('#save_country_info').on('submit', function (event) {
+    $('#save_info').on('submit', function (event) {
         event.preventDefault();
         $.ajax({
-            url: "{{url('admin/country/save_country_info')}}",
+            url: "{{url('admin/Department/store_sales_department_data')}}",
             type: "POST",
             data: $("form").serializeArray(),
             success: function (response) {
@@ -104,40 +101,42 @@
                         toastr.error('you dont have that Permission', 'Permission Denied');
                     } else {
                         $('#add_button').modal('hide');
-                        $("#save_country_info")[0].reset();
-                        toastr.success('Country Information Saved', 'Saved');
-                        $('.yajra-datatable').DataTable().ajax.reload();
+                        $("#save_info")[0].reset();
+                        toastr.success('Information Saved', 'Saved');
+                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
                     }
                 }
             },
             error: function (response) {
-                $('#Errorcountry_code').text(response.responseJSON.errors.country_code);
-                $('#Errorcountry_code_bn').text(response.responseJSON.errors.country_code_bn);
-                $('#Errorcountry_name').text(response.responseJSON.errors.country_name);
-                $('#Errorcountry_name_bn').text(response.responseJSON.errors.country_name_bn);
-                $('#Errorcountry_is_active').text(response.responseJSON.errors.country_is_active);
+                $('#Error_status_date').text(response.responseJSON.errors.date);
+                $('#Error_status_buyer').text(response.responseJSON.errors.buyer);
+                $('#Error_status_quantity').text(response.responseJSON.errors.quantity);
+                $('#Error_status_roll').text(response.responseJSON.errors.roll);
+                $('#Error_status_lot').text(response.responseJSON.errors.lot);
+                $('#Error_status_sell').text(response.responseJSON.errors.sell);
             }
         });
     })
 
+    
     // edit country information
     function edit_info(id) {
         $.ajax({
             type: 'get',
-            url: '{{url('admin/country/edit_country')}}/' + id,
+            url: '{{url('admin/Department/edit_sales_department_data')}}/' + id,
             success: function (data) {
                 $('#modal_data').html('');
                 $('#modal_data').append(data);
-                $('#edit_country_info').modal('show');
+                $('#edit_modal_info').modal('show');
             }
         });
     }
 
     // update country information
-    $('#update_country_form').on('submit', function (event) {
+    $('#update_form').on('submit', function (event) {
         event.preventDefault();
         $.ajax({
-            url: "{{url('admin/country/update_country')}}",
+            url: "{{url('admin/Department/update_sales_department_data')}}",
             type: "POST",
             data: $("form").serializeArray(),
             success: function (response) {
@@ -145,19 +144,20 @@
                     if (response.permission == false) {
                         toastr.error('you dont have that Permission', 'Permission Denied');
                     } else {
-                        $('#edit_country_info').modal('hide');
-                        $("#update_country_form")[0].reset();
-                        toastr.success('Country Information Updated', 'Updated');
-                        $('.yajra-datatable').DataTable().ajax.reload();
+                        $('#edit_modal_info').modal('hide');
+                        $("#update_form")[0].reset();
+                        toastr.success('Information Updated', 'Updated');
+                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
                     }
                 }
             },
             error: function (response) {
-                $('#Error_edit_country_code').text(response.responseJSON.errors.country_code);
-                $('#Error_edit_country_code_bn').text(response.responseJSON.errors.country_code_bn);
-                $('#Error_edit_country_name').text(response.responseJSON.errors.country_name);
-                $('#Error_edit_country_name_bn').text(response.responseJSON.errors.country_name_bn);
-                $('#Error_edit_country_is_active').text(response.responseJSON.errors.country_is_active);
+                $('#edit_Error_status_date').text(response.responseJSON.errors.date);
+                $('#edit_Error_status_buyer').text(response.responseJSON.errors.buyer);
+                $('#edit_Error_status_quantity').text(response.responseJSON.errors.quantity);
+                $('#edit_Error_status_roll').text(response.responseJSON.errors.roll);
+                $('#edit_Error_status_lot').text(response.responseJSON.errors.lot);
+                $('#edit_Error_status_sell').text(response.responseJSON.errors.sell);
             }
         });
     })

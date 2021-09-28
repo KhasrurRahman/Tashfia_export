@@ -1,8 +1,12 @@
 @extends('layouts.backend.partial.app')
 @section('title','Create Menu')
 @push('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
+    <style>.select2-container--default .select2-selection--single {
+            height: 40px !important;
+        }</style>
+
     <style>
         .treeview .btn-default {
             border-color: #e3e5ef;
@@ -209,7 +213,7 @@
                                             <div class="treeview__level-btns">
                                                 <div class="btn btn-default btn-sm level-add"><span class="fa fa-plus"></span></div>
                                                 <div class="btn btn-default btn-sm level-remove"><span
-                                                        class="fa fa-trash text-danger"></span></div>
+                                                            class="fa fa-trash text-danger"></span></div>
                                                 <div class="btn btn-default btn-sm level-sub"><span>Add Sub Level</span></div>
                                             </div>
                                         </div>
@@ -230,7 +234,7 @@
                                             <div class="treeview__level-btns">
                                                 <div class="btn btn-default btn-sm level-add"><span class="fa fa-plus"></span></div>
                                                 <div class="btn btn-default btn-sm level-remove"><span
-                                                        class="fa fa-trash text-danger"></span></div>
+                                                            class="fa fa-trash text-danger"></span></div>
                                                 <div class="btn btn-default btn-sm level-sub"><span>Add Sub Level</span></div>
                                             </div>
                                         </div>
@@ -317,15 +321,14 @@
 
 @endsection
 @push('js')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/js/datatables.js') }}"></script>
+    <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('.select2').select2();
-        })
-    </script>
-
-    <script>
+        });
         // load data table
         $(function () {
             var table = $('.yajra-datatable').DataTable({
