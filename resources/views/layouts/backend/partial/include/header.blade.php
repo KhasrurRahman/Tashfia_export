@@ -20,28 +20,15 @@
                                 </span>
                             </a>
                             <a href="#" class="media">
-                                <span class="d-flex">
-                                    <img src="{{ asset('backend/img/users/1.jpg')}}" class="rounded-circle" alt="">
-                                </span>
                                 <span class="media-body">
                                     <span class="heading-font-family media-heading">{{ __('Steve Smith')}}</span>
                                     <span class="media-content">{{ __('I slowly updated projects')}}</span>
-                                </span>
-                            </a>
-                            <a href="#" class="media">
-                                <span class="d-flex">
-                                    <i class="ik ik-calendar"></i>
-                                </span>
-                                <span class="media-body">
-                                    <span class="heading-font-family media-heading">{{ __('To Do')}}</span>
-                                    <span class="media-content">{{ __('Meeting with Nathan on Friday 8 AM ...')}}</span>
                                 </span>
                             </a>
                         </div>
                         <div class="footer"><a href="javascript:void(0);">{{ __('See all activity')}}</a></div>
                     </div>
                 </div>
-                <button type="button" class="nav-link ml-10 right-sidebar-toggle"><i class="ik ik-message-square"></i><span class="badge bg-success">3</span></button>
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-plus"></i></a>
                     <div class="dropdown-menu dropdown-menu-right menu-grid" aria-labelledby="menuDropdown">
@@ -59,7 +46,6 @@
                         <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="More"><i class="ik ik-more-horizontal"></i></a>
                     </div>
                 </div>
-                <button type="button" class="nav-link ml-10" id="apps_modal_btn" data-toggle="modal" data-target="#appsModal"><i class="ik ik-grid"></i></button>
                 <div class="dropdown">
                     <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="{{ asset('backend/img/user.jpg')}}" alt=""></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">

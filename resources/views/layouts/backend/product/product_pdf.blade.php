@@ -39,6 +39,9 @@
                             <div class="card-body">
                                 <div class="box">
                                     <div class="box-body no-padding">
+                                        <div class="logo-img">
+                                            <img src="{{ asset('backend/img/tas_logo.png')}}" style="width: 170px;margin-left: 38%">
+                                        </div>
                                         <table class="table table-condensed" width="100%" id="customers">
                                             <tbody>
                                             <tr>
@@ -66,7 +69,7 @@
                                                 <td>#.</td>
                                                 <td>Gsm:</td>
                                                 <td><span
-                                                        class="badge bg-red">{{$product->ggsm}}</span>
+                                                            class="badge bg-red">{{$product->ggsm}}</span>
                                                 </td>
 
                                                 <td>#.</td>
@@ -78,13 +81,13 @@
                                                 <td>#.</td>
                                                 <td>Y. Count:</td>
                                                 <td><span
-                                                        class="badge bg-red">{{$product->yarn_count}}</span>
+                                                            class="badge bg-red">{{$product->yarn_count}}</span>
                                                 </td>
 
                                                 <td>#.</td>
                                                 <td>Y. Lot:</td>
                                                 <td><span
-                                                        class="badge bg-red">{{$product->yarn_lot_no}}</span>
+                                                            class="badge bg-red">{{$product->yarn_lot_no}}</span>
                                                 </td>
                                             </tr>
 
@@ -103,7 +106,7 @@
                                     </div>
                                 </div>
                                 <br>
-                               <div style="text-align: center; margin-left: 30%">{!! DNS1D::getBarcodeHTML('4445645656', 'CODABAR') !!}</div>
+                                <div style="text-align: center; margin-left: 30%">{!! DNS1D::getBarcodeHTML($product->card_no, 'CODABAR') !!}</div>
                             </div>
                         </div>
                     </div>

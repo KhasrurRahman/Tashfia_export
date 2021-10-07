@@ -4,27 +4,6 @@
     <title>@yield('title','') | Tashfia Export</title>
     @include('layouts.backend.partial.include.head')
 
-    <style>
-        .background {
-            background-image: url({{asset('backend/img/dashboard_background.png')}});
-            background-position: left top;
-            background-repeat: no-repeat;
-            background-position-x: 16%;
-            background-size: 30% 72%;
-            background-attachment: fixed;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .sidebar_background {
-            background-image: url({{asset('backend/img/sidebar_background.png')}});
-            background-position: right bottom;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-color: #390871;
-        }
-    </style>
-
 </head>
 <body id="app">
 <div class="wrapper">

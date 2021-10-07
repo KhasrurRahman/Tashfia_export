@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\LotDepartmentModel;
 use App\Models\ModelProduct;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -76,13 +77,15 @@ class ProductController extends Controller
                 })->addColumn('card_no', function ($data) {
                     return $data->card_no;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onclick="view_modal(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >View</a> <a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a><a href="' . url('paf_generate/' . $data->id) . '"  class="edit btn btn-outline-warning btn-sm" >Print</a>';
+                    $actionBtn = '<a href="javascript:void(0)" onclick="view_modal(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >View</a> <a href="' . url('paf_generate/' . $data->id) . '"  class="edit btn btn-outline-warning btn-sm" >Print</a>';
                     return $actionBtn;
                 })->rawColumns(['chalan_no', 'party_name', 'color_name', 'sl_no', 'ggsm','fb_rv_date', 'lot_no', 'batch_no','order_no', 'card_no', 'action'])
                 ->make(true);
         }
     }   
     
+    
+//    <a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a>
     
     public function view($id)
     {
@@ -91,8 +94,9 @@ class ProductController extends Controller
     
     public function delete($id)
     {
-        $product = ModelProduct::find($id)->delete();
+        $product = ModelProduct::find($id);
         
         return response()->json(['success' => 'Done']);
     }
+    
 }

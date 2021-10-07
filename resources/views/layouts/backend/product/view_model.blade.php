@@ -12,6 +12,9 @@
                 <form action="" method="post" id="update__form">
                     <div id="modal_data">
                         <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                    <img src="{{ asset('backend/img/tas_logo.png')}}" style="width: 170px;margin-left: 38%">
+                            </div>
                             <div class="col-md-6">
                                 <div class="card">
                                     <ul class="list-group list-group-flush">
@@ -44,7 +47,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-{{--                        <button type="button" class="btn btn-success" data-dismiss="modal">Print</button>--}}
+                        {{--                        <button type="button" class="btn btn-success" data-dismiss="modal">Print</button>--}}
                     </div>
                 </form>
             </div>

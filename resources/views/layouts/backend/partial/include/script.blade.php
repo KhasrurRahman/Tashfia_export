@@ -1,6 +1,5 @@
 <script src="{{ asset('backend/js/all.js') }}"></script>
 <script src="{{ asset('backend/dist/js/theme.js') }}"></script>
-<script src="{{ asset('backend/js/chat.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
     toastr.options = {
