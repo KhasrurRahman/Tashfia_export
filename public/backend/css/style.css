@@ -273,3 +273,7 @@
     opacity: 1;
   }
 }
+
+.wrapper .page-wrap .app-sidebar .sidebar-content .nav-container .navigation-main .nav-item.active{
+    background: #2dce89;
+}

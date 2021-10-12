@@ -14,7 +14,7 @@
         @include('layouts.backend.partial.include.sidebar')
 
         <div class="main-content background">
-
+@include('layouts.backend.partial.include.page_tree')
             @yield('content')
         </div>
 

@@ -98,5 +98,4 @@ class ProductController extends Controller
         
         return response()->json(['success' => 'Done']);
     }
-    
 }

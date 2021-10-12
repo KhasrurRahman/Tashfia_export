@@ -8,7 +8,7 @@ class salesDepartmentModel extends Model
 {
     protected $table = 'sales_department';
 
-    protected $fillable = ["quantity_of_sell","stock_id", "unit_price", "balance","order_no"];
+    protected $fillable = ["quantity_of_sell","stock_id", "unit_price", "balance"];
     
     
     public function stock()
