@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2021 at 08:36 AM
+-- Generation Time: Oct 12, 2021 at 10:35 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `tashfia_export`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `address` longtext DEFAULT NULL,
+  `balance` varchar(255) DEFAULT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -94,7 +113,21 @@ INSERT INTO `dynamic_routes` (`id`, `title`, `url`, `model_name`, `content`, `co
 (268, 'Store lot department data', 'Department/store_lot_department_data', 'lot_department', NULL, 'DepartmentController@store_lot_department_data', 'Post', 1, NULL, 1, 0, '1', '2021-09-28 15:57:43', '2021-10-04 03:48:54'),
 (269, 'delete Lot department data', 'Department/delete_lot_department_data', 'lot_department', NULL, 'DepartmentController@delete_lot_department_data', 'get', 1, '{id}', 1, 0, '1', '2021-09-28 15:58:23', '2021-10-04 03:48:58'),
 (270, 'Edit lot department data', 'Department/edit_lot_department_data', 'lot_department', NULL, 'DepartmentController@edit_lot_department_data', 'get', 1, '{id}', 1, 0, '1', '2021-09-28 15:59:05', '2021-10-04 03:49:02'),
-(271, 'update lot department data', 'Department/update_lot_department_data', 'lot_department', NULL, 'DepartmentController@update_lot_department_data', 'Post', 1, NULL, 1, 0, '1', '2021-09-28 15:59:46', '2021-10-04 03:49:04');
+(271, 'update lot department data', 'Department/update_lot_department_data', 'lot_department', NULL, 'DepartmentController@update_lot_department_data', 'Post', 1, NULL, 1, 0, '1', '2021-09-28 15:59:46', '2021-10-04 03:49:04'),
+(272, 'view single stock data', 'Department/show_single_lot_department_data', 'lot_department', NULL, 'DepartmentController@show_single_lot_department_data', 'get', 1, '{id}', 1, 0, '1', '2021-10-04 18:35:32', '2021-10-04 18:35:32'),
+(273, 'sales Department invoice', 'sales/sales_department_invoice', 'sales_department', NULL, 'DepartmentController@sales_department_invoice', 'get', 1, '{id}', 1, 0, '1', '2021-10-05 04:18:12', '2021-10-05 04:18:12'),
+(274, 'All Customer', 'customer/all_customer', 'customer', NULL, 'CustomerController@index', 'get', 1, NULL, 1, 1, '0', '2021-10-12 07:14:16', '2021-10-12 07:21:00'),
+(275, 'Customer search', 'customer/search', 'customer', NULL, 'CustomerController@search', 'Post', 1, NULL, 1, 0, '1', '2021-10-12 07:14:58', '2021-10-12 07:21:14'),
+(276, 'Customer store', 'customer/store', 'customer', NULL, 'CustomerController@store', 'Post', 1, NULL, 1, 0, '1', '2021-10-12 07:15:40', '2021-10-12 07:21:17'),
+(277, 'customer edit', 'customer/edit', 'customer', NULL, 'CustomerController@edit', 'get', 1, '{id}', 1, 0, '1', '2021-10-12 07:16:15', '2021-10-12 07:21:19'),
+(278, 'customer update', 'customer/update', 'customer', NULL, 'CustomerController@update', 'Post', 1, NULL, 1, 0, '1', '2021-10-12 07:19:42', '2021-10-12 07:21:22'),
+(279, 'Customer Delete', 'customer/delete', 'customer', NULL, 'CustomerController@delete', 'get', 1, '{id}', 1, 0, '1', '2021-10-12 07:20:21', '2021-10-12 07:21:25'),
+(280, 'supllier index', 'supplier/index', 'supplier', NULL, 'supplierController@index', 'get', 1, NULL, 1, 1, '0', '2021-10-12 07:25:14', '2021-10-12 07:26:03'),
+(281, 'supplier search', 'supplier/search', 'supplier', NULL, 'supplierController@search', 'Post', 1, NULL, 1, 0, '1', '2021-10-12 07:25:50', '2021-10-12 07:25:50'),
+(282, 'supplier store', 'supplier/store', 'supplier', NULL, 'supplierController@store', 'Post', 1, NULL, 1, 0, '1', '2021-10-12 07:30:59', '2021-10-12 07:30:59'),
+(283, 'supplier edit', 'supplier/edit', 'supplier', NULL, 'supplierController@edit', 'get', 1, '{id}', 1, 0, '1', '2021-10-12 07:31:39', '2021-10-12 07:31:39'),
+(284, 'supplier update', 'supplier/update', 'supplier', NULL, 'supplierController@update', 'Post', 1, NULL, 1, 0, '1', '2021-10-12 07:32:10', '2021-10-12 07:32:10'),
+(285, 'supplier  delete', 'supplier/delete', 'supplier', NULL, 'supplierController@delete', 'get', 1, '{id}', 1, 0, '1', '2021-10-12 07:33:13', '2021-10-12 07:33:13');
 
 -- --------------------------------------------------------
 
@@ -111,38 +144,6 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lot_department`
---
-
-CREATE TABLE `lot_department` (
-  `id` int(11) NOT NULL,
-  `date` datetime NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `quantity` varchar(255) DEFAULT NULL,
-  `roll` varchar(255) DEFAULT NULL,
-  `lot` varchar(255) DEFAULT NULL,
-  `buyer` varchar(255) DEFAULT NULL,
-  `sell` varchar(255) DEFAULT NULL,
-  `balance` varchar(255) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `lot_department`
---
-
-INSERT INTO `lot_department` (`id`, `date`, `product_id`, `quantity`, `roll`, `lot`, `buyer`, `sell`, `balance`, `created_at`, `updated_at`) VALUES
-(1, '1999-03-11 00:00:00', 19, '364', 'Animi soluta mollit', 'Quaerat earum volupt', 'Optio ex obcaecati', '36', '32', '2021-09-28 11:11:33', '2021-09-29 23:15:40'),
-(2, '2001-04-06 00:00:00', 19, '739', 'Officia officiis est', 'Illum saepe delectu', 'Ea amet debitis lab', '77', '234', '2021-09-28 11:12:03', '2021-09-29 23:20:55'),
-(7, '2001-04-06 00:00:00', 19, '739', 'Officia officiis est', 'Illum saepe delectu', 'Ea amet debitis lab', '77', '234', '2021-09-29 23:21:00', '2021-09-29 23:21:00'),
-(8, '2021-01-16 00:00:00', 19, '766', 'Ex fugit dolore lab', 'Sint nulla autem duc', 'Porro voluptatibus a', '64', '59', '2021-09-30 00:04:13', '2021-09-30 00:04:13'),
-(10, '1972-09-14 00:00:00', 16, '770', 'Consequuntur volupta', 'Eu odio laboris ut q', 'Totam facilis unde c', '12', '96', '2021-09-30 00:06:09', '2021-09-30 00:17:31'),
-(11, '2021-10-13 00:00:00', 19, '876', 'jh', '777', 'hhhh', '87686', '888', '2021-10-02 11:05:43', '2021-10-02 11:05:43');
 
 -- --------------------------------------------------------
 
@@ -170,11 +171,13 @@ CREATE TABLE `master_menu` (
 
 INSERT INTO `master_menu` (`id`, `menu_name`, `menu_name_bn`, `menu_parent_id`, `menu_is_active`, `menu_icon_class`, `menu_dynamic_route_id`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 (1, 'Dashboard', 'ড্যাশবোর্ড', NULL, 1, 'ik-home', 1, '2021-07-06 14:13:34', NULL, 1, NULL),
+(2, 'Products', 'Products', NULL, 1, 'ik-layers', NULL, '2021-10-04 06:46:39', '2021-10-04 06:35:22', 92, NULL),
 (42, 'Stock Department', 'Stock Department', NULL, 1, 'ik-chevrons-right', 266, '2021-10-04 03:56:10', '2021-10-04 03:56:10', 92, 92),
 (43, 'Sales department', 'Sales department', NULL, 1, 'ik-chevrons-left', 260, '2021-10-04 03:55:34', '2021-10-04 03:55:34', 92, NULL),
-(44, 'Products', 'Products', NULL, 1, 'ik-layers', NULL, '2021-10-04 06:35:22', '2021-10-04 06:35:22', 92, NULL),
-(45, 'Create product', 'Create product', 44, 1, NULL, 254, '2021-10-04 06:35:43', '2021-10-04 06:35:43', 92, NULL),
-(46, 'All product', 'All product', 44, 1, NULL, 257, '2021-10-04 06:36:00', '2021-10-04 06:36:00', 92, NULL);
+(47, 'Create product', 'Create product', 2, 1, NULL, 254, '2021-10-04 15:26:49', '2021-10-04 15:26:49', 92, NULL),
+(48, 'All product', 'All product', 2, 1, NULL, 257, '2021-10-04 15:27:19', '2021-10-04 15:27:19', 92, NULL),
+(49, 'Customers', 'Customers', NULL, 1, 'ik-user', 274, '2021-10-12 07:39:29', '2021-10-12 07:39:29', 92, 92),
+(50, 'suppliers', 'suppliers', NULL, 1, 'ik-users', 280, '2021-10-12 07:40:04', '2021-10-12 07:40:04', 92, NULL);
 
 -- --------------------------------------------------------
 
@@ -248,52 +251,66 @@ INSERT INTO `permission_roles` (`id`, `role_id`, `dynamic_route_id`, `url`, `cre
 (10473, 16, 95, 'suspend_user', '2021-06-24 06:43:48', '2021-06-24 06:43:48'),
 (10474, 16, 96, 'unsuspend_user', '2021-06-24 06:43:48', '2021-06-24 06:43:48'),
 (10475, 16, 130, 'test', '2021-06-24 06:43:48', '2021-06-24 06:43:48'),
-(13420, 11, 1, 'adminDashboard', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13421, 11, 91, 'admin/change_password', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13422, 11, 92, 'admin/save_change_password', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13423, 11, 3, 'dynamic_route', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13424, 11, 4, 'dynamic_route', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13425, 11, 14, 'delete_route', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13426, 11, 16, 'edit_route', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13427, 11, 19, 'update_route', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13428, 11, 5, 'role/all_role', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13429, 11, 6, 'role/add_role', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13430, 11, 8, 'save_role', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13431, 11, 11, 'edit_role', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13432, 11, 12, 'update_role', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13433, 11, 13, 'delete_role', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13434, 11, 9, 'all_user', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13435, 11, 10, 'save_user', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13436, 11, 93, 'edit_user', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13437, 11, 94, 'upadte_user', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13438, 11, 95, 'suspend_user', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13439, 11, 96, 'unsuspend_user', '2021-10-04 03:50:47', '2021-10-04 03:50:47'),
-(13440, 11, 127, 'delete_user', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13441, 11, 130, 'test', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13442, 11, 131, 'menu/menu_create', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13443, 11, 133, 'menu/menu_save', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13444, 11, 134, 'menu/all_menu', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13445, 11, 135, 'menu/menu_search', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13446, 11, 138, 'menu/edit_menu', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13447, 11, 139, 'menu/update_menu', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13448, 11, 254, 'product/craete', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13449, 11, 255, 'product/store', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13450, 11, 256, 'product/alldata', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13451, 11, 257, 'product/index', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13452, 11, 258, 'product/view', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13453, 11, 259, 'product/delete', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13454, 11, 260, 'department/show_sales_department', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13455, 11, 261, 'Department/get_sales_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13456, 11, 262, 'Department/store_sales_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13457, 11, 263, 'Department/edit_sales_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13458, 11, 264, 'Department/update_sales_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13459, 11, 265, 'Department/delete_sales_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13460, 11, 266, 'Department/show_lot_department', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13461, 11, 267, 'Department/get_lot_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13462, 11, 268, 'Department/store_lot_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13463, 11, 269, 'Department/delete_lot_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13464, 11, 270, 'Department/edit_lot_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48'),
-(13465, 11, 271, 'Department/update_lot_department_data', '2021-10-04 03:50:48', '2021-10-04 03:50:48');
+(13615, 11, 1, 'adminDashboard', '2021-10-12 07:33:36', '2021-10-12 07:33:36'),
+(13616, 11, 91, 'admin/change_password', '2021-10-12 07:33:36', '2021-10-12 07:33:36'),
+(13617, 11, 92, 'admin/save_change_password', '2021-10-12 07:33:36', '2021-10-12 07:33:36'),
+(13618, 11, 3, 'dynamic_route', '2021-10-12 07:33:36', '2021-10-12 07:33:36'),
+(13619, 11, 4, 'dynamic_route', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13620, 11, 14, 'delete_route', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13621, 11, 16, 'edit_route', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13622, 11, 19, 'update_route', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13623, 11, 5, 'role/all_role', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13624, 11, 6, 'role/add_role', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13625, 11, 8, 'save_role', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13626, 11, 11, 'edit_role', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13627, 11, 12, 'update_role', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13628, 11, 13, 'delete_role', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13629, 11, 9, 'all_user', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13630, 11, 10, 'save_user', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13631, 11, 93, 'edit_user', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13632, 11, 94, 'upadte_user', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13633, 11, 95, 'suspend_user', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13634, 11, 96, 'unsuspend_user', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13635, 11, 127, 'delete_user', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13636, 11, 130, 'test', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13637, 11, 131, 'menu/menu_create', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13638, 11, 133, 'menu/menu_save', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13639, 11, 134, 'menu/all_menu', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13640, 11, 135, 'menu/menu_search', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13641, 11, 138, 'menu/edit_menu', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13642, 11, 139, 'menu/update_menu', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13643, 11, 254, 'product/craete', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13644, 11, 255, 'product/store', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13645, 11, 256, 'product/alldata', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13646, 11, 257, 'product/index', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13647, 11, 258, 'product/view', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13648, 11, 259, 'product/delete', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13649, 11, 260, 'department/show_sales_department', '2021-10-12 07:33:37', '2021-10-12 07:33:37'),
+(13650, 11, 261, 'Department/get_sales_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13651, 11, 262, 'Department/store_sales_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13652, 11, 263, 'Department/edit_sales_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13653, 11, 264, 'Department/update_sales_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13654, 11, 265, 'Department/delete_sales_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13655, 11, 273, 'sales/sales_department_invoice', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13656, 11, 266, 'Department/show_lot_department', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13657, 11, 267, 'Department/get_lot_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13658, 11, 268, 'Department/store_lot_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13659, 11, 269, 'Department/delete_lot_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13660, 11, 270, 'Department/edit_lot_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13661, 11, 271, 'Department/update_lot_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13662, 11, 272, 'Department/show_single_lot_department_data', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13663, 11, 274, 'customer/all_customer', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13664, 11, 275, 'customer/search', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13665, 11, 276, 'customer/store', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13666, 11, 277, 'customer/edit', '2021-10-12 07:33:38', '2021-10-12 07:33:38'),
+(13667, 11, 278, 'customer/update', '2021-10-12 07:33:39', '2021-10-12 07:33:39'),
+(13668, 11, 279, 'customer/delete', '2021-10-12 07:33:39', '2021-10-12 07:33:39'),
+(13669, 11, 280, 'supplier/index', '2021-10-12 07:33:39', '2021-10-12 07:33:39'),
+(13670, 11, 281, 'supplier/search', '2021-10-12 07:33:39', '2021-10-12 07:33:39'),
+(13671, 11, 282, 'supplier/store', '2021-10-12 07:33:39', '2021-10-12 07:33:39'),
+(13672, 11, 283, 'supplier/edit', '2021-10-12 07:33:39', '2021-10-12 07:33:39'),
+(13673, 11, 284, 'supplier/update', '2021-10-12 07:33:39', '2021-10-12 07:33:39'),
+(13674, 11, 285, 'supplier/delete', '2021-10-12 07:33:39', '2021-10-12 07:33:39');
 
 -- --------------------------------------------------------
 
@@ -303,8 +320,11 @@ INSERT INTO `permission_roles` (`id`, `role_id`, `dynamic_route_id`, `url`, `cre
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
+  `product_category_id` int(11) DEFAULT NULL,
   `chalan_no` varchar(255) DEFAULT NULL,
   `party_name` varchar(255) DEFAULT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
+  `unit_price` varchar(255) DEFAULT NULL,
   `color_name` varchar(255) DEFAULT NULL,
   `open_tube` varchar(255) DEFAULT NULL,
   `sl_no` varchar(255) DEFAULT NULL,
@@ -320,6 +340,7 @@ CREATE TABLE `products` (
   `finish_gsm` varchar(255) DEFAULT NULL,
   `fabric_type` varchar(255) DEFAULT NULL,
   `card_no` varchar(255) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -328,12 +349,77 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `chalan_no`, `party_name`, `color_name`, `open_tube`, `sl_no`, `ggsm`, `yarn_count`, `yarn_lot_no`, `fb_rv_date`, `batch_process_date`, `lot_no`, `batch_no`, `order_no`, `style_no`, `finish_gsm`, `fabric_type`, `card_no`, `created_at`, `updated_at`) VALUES
-(15, 'Sed enim eveniet fu', 'Lillian Jefferson', 'Winifred Mcmahon', 'Do voluptatem sunt a', 'Amet quaerat nesciu', 'Praesentium enim iru', 'Veritatis totam ulla', 'Obcaecati non eiusmo', '2005-05-27 00:00:00', '2017-06-29 00:00:00', 'Sed harum enim in do', 'Aut magna Nam perfer', 'Quis laborum ipsum a', 'Obcaecati ad mollit', 'Nisi repudiandae qua', 'In maxime et aut qui', '234234234234', '2021-09-23 07:30:34', '2021-09-23 07:30:34'),
-(16, 'Corporis iste est of', 'Wyatt Bartlett', 'Hyatt Dunlap', 'Dolore atque quia re', 'Fugiat fuga Volupta', 'Et tempora eos ut qu', 'Qui saepe sint unde', 'Voluptas esse occaec', '1986-03-05 00:00:00', '1996-06-26 00:00:00', 'Est laborum Volupta', 'Sint autem numquam f', 'Autem odit nihil con', 'Minim animi labore', 'Non maiores sit con', 'Ex quaerat sit sequ', '3423423423', '2021-09-23 07:30:37', '2021-09-23 07:30:37'),
-(17, 'Perspiciatis volupt', 'Octavia Martin', 'Miranda Wood', 'Rem vel nulla volupt', 'Nobis elit soluta b', 'Ut repellendus Itaq', 'Reiciendis culpa eu', 'Consequatur Est lab', '2021-07-28 00:00:00', '1974-01-07 00:00:00', 'Eos dolore reiciend', 'Officiis ea autem ha', 'Adipisci quis anim p', 'Vitae sint sunt eu', 'Veniam minima repel', 'Voluptatem recusand', '2342342342434', '2021-09-23 07:30:40', '2021-09-23 07:30:40'),
-(19, 'Enim in magna ea sim', 'Camille Logan', 'Chaim Mclaughlin', 'Beatae delectus et', 'Excepturi mollit rep', 'Aliqua Nulla duis s', 'Odio labore qui poss', 'Exercitationem non i', '2005-12-19 00:00:00', '2003-02-28 00:00:00', 'Recusandae Aut eius', 'Est sint illo non', 'Ut repudiandae offic', 'Eiusmod in vitae ut', 'Id vitae sint quibus', 'Eum atque eum eos do', '128570764', '2021-09-28 17:09:33', '2021-09-28 17:09:33'),
-(20, 'A1234', 'Jisan', 'Pink', 'Open', '123456', '123', '54', '213', '2021-09-29 00:00:00', '2021-09-26 00:00:00', '213', '123', '0998', '542', '3232', '213', '559759498', '2021-10-01 14:20:43', '2021-10-01 14:20:43');
+INSERT INTO `products` (`id`, `product_category_id`, `chalan_no`, `party_name`, `quantity`, `unit_price`, `color_name`, `open_tube`, `sl_no`, `ggsm`, `yarn_count`, `yarn_lot_no`, `fb_rv_date`, `batch_process_date`, `lot_no`, `batch_no`, `order_no`, `style_no`, `finish_gsm`, `fabric_type`, `card_no`, `created_by`, `created_at`, `updated_at`) VALUES
+(15, NULL, 'Sed enim eveniet fu', 'Lillian Jefferson', NULL, NULL, 'Winifred Mcmahon', 'Do voluptatem sunt a', 'Amet quaerat nesciu', 'Praesentium enim iru', 'Veritatis totam ulla', 'Obcaecati non eiusmo', '2005-05-27 00:00:00', '2017-06-29 00:00:00', 'Sed harum enim in do', 'Aut magna Nam perfer', 'Quis laborum ipsum a', 'Obcaecati ad mollit', 'Nisi repudiandae qua', 'In maxime et aut qui', '234234234234', NULL, '2021-09-23 07:30:34', '2021-09-23 07:30:34'),
+(16, NULL, 'Corporis iste est of', 'Wyatt Bartlett', NULL, NULL, 'Hyatt Dunlap', 'Dolore atque quia re', 'Fugiat fuga Volupta', 'Et tempora eos ut qu', 'Qui saepe sint unde', 'Voluptas esse occaec', '1986-03-05 00:00:00', '1996-06-26 00:00:00', 'Est laborum Volupta', 'Sint autem numquam f', 'Autem odit nihil con', 'Minim animi labore', 'Non maiores sit con', 'Ex quaerat sit sequ', '3423423423', NULL, '2021-09-23 07:30:37', '2021-09-23 07:30:37'),
+(17, NULL, 'Perspiciatis volupt', 'Octavia Martin', NULL, NULL, 'Miranda Wood', 'Rem vel nulla volupt', 'Nobis elit soluta b', 'Ut repellendus Itaq', 'Reiciendis culpa eu', 'Consequatur Est lab', '2021-07-28 00:00:00', '1974-01-07 00:00:00', 'Eos dolore reiciend', 'Officiis ea autem ha', 'Adipisci quis anim p', 'Vitae sint sunt eu', 'Veniam minima repel', 'Voluptatem recusand', '2342342342434', NULL, '2021-09-23 07:30:40', '2021-09-23 07:30:40'),
+(19, NULL, 'Enim in magna ea sim', 'Camille Logan', NULL, NULL, 'Chaim Mclaughlin', 'Beatae delectus et', 'Excepturi mollit rep', 'Aliqua Nulla duis s', 'Odio labore qui poss', 'Exercitationem non i', '2005-12-19 00:00:00', '2003-02-28 00:00:00', 'Recusandae Aut eius', 'Est sint illo non', 'Ut repudiandae offic', 'Eiusmod in vitae ut', 'Id vitae sint quibus', 'Eum atque eum eos do', '128570764', NULL, '2021-09-28 17:09:33', '2021-09-28 17:09:33'),
+(20, NULL, 'A1234', 'Jisan', NULL, NULL, 'Pink', 'Open', '123456', '123', '54', '213', '2021-09-29 00:00:00', '2021-09-26 00:00:00', '213', '123', '0998', '542', '3232', '213', '559759498', NULL, '2021-10-01 14:20:43', '2021-10-01 14:20:43'),
+(21, NULL, 'Anim enim in totam m', 'Victor Haley', NULL, NULL, 'Zeph Sharp', 'At eum excepteur ad', 'Qui reiciendis labor', 'Et fugiat earum pers', 'Consectetur laudant', 'Quis rerum ut quasi', '2018-12-26 00:00:00', '2001-10-02 00:00:00', 'Quis tempore repreh', 'Cillum doloremque au', 'Animi corrupti num', 'Irure magni est lab', 'Voluptate rerum nihi', 'Consectetur totam qu', '1121842535', NULL, '2021-10-05 05:12:12', '2021-10-05 05:12:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_categories`
+--
+
+CREATE TABLE `product_categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_ingredients`
+--
+
+CREATE TABLE `product_ingredients` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase`
+--
+
+CREATE TABLE `purchase` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `supplier_id` int(11) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `unit_price` decimal(10,2) DEFAULT NULL,
+  `total_purchas_price` decimal(10,2) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ready_product_details`
+--
+
+CREATE TABLE `ready_product_details` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `ingredient_id` int(11) DEFAULT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -363,34 +449,60 @@ INSERT INTO `roles` (`id`, `name`, `slag`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_department`
+-- Table structure for table `sales`
 --
 
-CREATE TABLE `sales_department` (
+CREATE TABLE `sales` (
   `id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `stock_id` int(11) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  `quantity` varchar(255) DEFAULT NULL,
-  `roll` varchar(255) DEFAULT NULL,
-  `lot` varchar(255) DEFAULT NULL,
-  `buyer` varchar(255) DEFAULT NULL,
-  `sell` varchar(255) DEFAULT NULL,
+  `unit_price` decimal(10,2) DEFAULT NULL,
+  `quantity_of_sell` varchar(255) DEFAULT NULL,
+  `order_no` varchar(255) DEFAULT NULL,
   `balance` varchar(255) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime DEFAULT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `sales_department`
+-- Table structure for table `stock`
 --
 
-INSERT INTO `sales_department` (`id`, `stock_id`, `date`, `quantity`, `roll`, `lot`, `buyer`, `sell`, `balance`, `created_at`, `updated_at`) VALUES
-(1, 7, '1999-03-11 00:00:00', '364', 'Animi soluta mollit', 'Quaerat earum volupt', 'Optio ex obcaecati', '36', '323', '2021-09-28 11:11:33', '2021-09-28 11:11:33'),
-(2, 7, '2001-04-06 00:00:00', '739', 'Officia officiis est', 'Illum saepe delectu', 'Ea amet debitis lab', '77', '23', '2021-09-28 11:12:03', '2021-09-28 11:12:03'),
-(6, 7, '2021-09-22 00:00:00', '2342', '234', '43', 'Odio officia officia', '34343', '34', '2021-09-28 23:12:51', '2021-09-29 23:18:09'),
-(7, 7, '2005-06-19 00:00:00', '27', 'Aliquid laudantium', 'Qui rerum ducimus e', 'Voluptatum est iusto', '12', '23', '2021-09-29 23:08:00', '2021-09-29 23:08:00'),
-(8, 7, '1999-05-19 00:00:00', '133', 'Alias corporis excep', 'Iste earum fuga Vol', 'Dolorem amet deseru', '76', '123', '2021-09-29 23:08:59', '2021-09-29 23:08:59'),
-(9, 7, '2000-11-14 00:00:00', '817', 'Ipsum ut rerum aut e', 'Velit blanditiis au', 'Laborum Sint dignis', '82', '12', '2021-09-29 23:09:32', '2021-09-30 00:21:19');
+CREATE TABLE `stock` (
+  `id` int(11) NOT NULL,
+  `purchase_id` int(11) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `total_sales_price` decimal(10,2) DEFAULT NULL,
+  `total_purchas_price` decimal(10,2) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suppliers`
+--
+
+CREATE TABLE `suppliers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `address` longtext DEFAULT NULL,
+  `balance` varchar(255) DEFAULT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -428,6 +540,12 @@ INSERT INTO `users` (`id`, `name`, `lastname`, `mobile`, `email`, `password`, `s
 --
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `dynamic_routes`
 --
 ALTER TABLE `dynamic_routes`
@@ -445,12 +563,6 @@ ALTER TABLE `dynamic_routes`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`) USING BTREE;
-
---
--- Indexes for table `lot_department`
---
-ALTER TABLE `lot_department`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `master_menu`
@@ -485,7 +597,36 @@ ALTER TABLE `permission_roles`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_category_id` (`product_category_id`);
+
+--
+-- Indexes for table `product_categories`
+--
+ALTER TABLE `product_categories`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_ingredients`
+--
+ALTER TABLE `product_ingredients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `purchase`
+--
+ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `purchase_product_id` (`product_id`),
+  ADD KEY `puchase_supplier_id` (`supplier_id`);
+
+--
+-- Indexes for table `ready_product_details`
+--
+ALTER TABLE `ready_product_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `ingredient_id` (`ingredient_id`);
 
 --
 -- Indexes for table `roles`
@@ -495,9 +636,24 @@ ALTER TABLE `roles`
   ADD UNIQUE KEY `roles_name_unique` (`name`) USING BTREE;
 
 --
--- Indexes for table `sales_department`
+-- Indexes for table `sales`
 --
-ALTER TABLE `sales_department`
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer_id` (`customer_id`),
+  ADD KEY `stock_id` (`stock_id`);
+
+--
+-- Indexes for table `stock`
+--
+ALTER TABLE `stock`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `purchase_product_id` (`purchase_id`);
+
+--
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -513,10 +669,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `dynamic_routes`
 --
 ALTER TABLE `dynamic_routes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=272;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=286;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -525,16 +687,10 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `lot_department`
---
-ALTER TABLE `lot_department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
 -- AUTO_INCREMENT for table `master_menu`
 --
 ALTER TABLE `master_menu`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -546,13 +702,37 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permission_roles`
 --
 ALTER TABLE `permission_roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13466;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13675;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `product_ingredients`
+--
+ALTER TABLE `product_ingredients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `purchase`
+--
+ALTER TABLE `purchase`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ready_product_details`
+--
+ALTER TABLE `ready_product_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -561,10 +741,22 @@ ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `sales_department`
+-- AUTO_INCREMENT for table `sales`
 --
-ALTER TABLE `sales_department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `sales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `stock`
+--
+ALTER TABLE `stock`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -588,6 +780,39 @@ ALTER TABLE `master_menu`
 ALTER TABLE `permission_roles`
   ADD CONSTRAINT `permission_roles_ibfk_1` FOREIGN KEY (`dynamic_route_id`) REFERENCES `dynamic_routes` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `permission_roles_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `product_category_id` FOREIGN KEY (`product_category_id`) REFERENCES `product_categories` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `purchase`
+--
+ALTER TABLE `purchase`
+  ADD CONSTRAINT `puchase_supplier_id` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `purchase_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `ready_product_details`
+--
+ALTER TABLE `ready_product_details`
+  ADD CONSTRAINT `ingredient_id` FOREIGN KEY (`ingredient_id`) REFERENCES `product_ingredients` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `sales`
+--
+ALTER TABLE `sales`
+  ADD CONSTRAINT `customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `stock_id` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `stock`
+--
+ALTER TABLE `stock`
+  ADD CONSTRAINT `purchase_id` FOREIGN KEY (`purchase_id`) REFERENCES `purchase` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
