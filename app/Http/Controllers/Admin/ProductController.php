@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\IngredientModel;
 use App\Models\LotDepartmentModel;
 use App\Models\ModelProduct;
+use App\Models\ProductCategoryModel;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -13,7 +15,9 @@ class ProductController extends Controller
 {
     public function create()
     {
-        return view('layouts.backend.product.create');
+        $category = ProductCategoryModel::all();
+        $ingredient = IngredientModel::all();
+        return view('layouts.backend.product.create',compact('category','ingredient'));
     }
     
     public function store(Request $request)

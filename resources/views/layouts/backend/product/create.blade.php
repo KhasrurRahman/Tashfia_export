@@ -1,14 +1,99 @@
 @extends('layouts.backend.partial.app')
 @section('title','Add product')
 @push('css')
+    <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
+    <style>
+        html, body {
+            padding-top: 20px;
+        }
+
+        [data-role="dynamic-fields"] > .form-inline + .form-inline {
+            margin-top: 0.5em;
+        }
+
+        [data-role="dynamic-fields"] > .form-inline [data-role="add"] {
+            display: none;
+        }
+
+        [data-role="dynamic-fields"] > .form-inline:last-child [data-role="add"] {
+            display: inline-block;
+        }
+
+        [data-role="dynamic-fields"] > .form-inline:last-child [data-role="remove"] {
+            display: none;
+        }
+
+    </style>
 @endpush
-@section('main_menu','HOME')
+@section('main_menu','Products')
 @section('active_menu','Add product')
 @section('link',route('admin.adminDashboard'))
 @section('content')
     <form class="forms-sample" method="post" action="{{route('admin.product/store')}}">
         @csrf
         <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Product Type</label>
+                    <select class="form-control select2" name="active_status">
+                        <option value="1">purchase product</option>
+                        <option value="0">Ready product</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header"><h3>Add Ingredient</h3></div>
+                    <div class="card-body">
+                        <div class="row" x-data="handler()">
+                            <div class="col">
+                                <table class="table table-bordered align-items-center table-sm">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Text Feild 1</th>
+                                        <th>Text Feild 2</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template x-for="(field, index) in fields" :key="index">
+                                        <tr>
+                                            <td x-text="index + 1"></td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <select class="form-control select2" name="ingredient_id[]">
+                                                        <option disabled selected>Please select</option>
+                                                        @foreach($ingredient as $data)
+                                                            <option value="{{$data->id}}">{{$data->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td><input x-model="field.txt2" type="text" name="txt2[]" class="form-control"></td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-small" @click="removeField(index)">&times;</button>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="4" class="text-right">
+                                            <button type="button" class="btn btn-info" @click="addNewField()">+ Add Row</button>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header"><h3>Create Product</h3></div>
@@ -97,6 +182,27 @@
 
 @endsection
 @push('js')
-    <script src="{{ asset('js/form-components.js') }}"></script>
+    {{--    <script src="{{ asset('js/form-components.js') }}"></script>--}}
+    <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        });
+        function handler() {
+    return {
+      fields: [],
+      addNewField() {
+          this.fields.push({
+              txt1: '',
+              txt2: ''
+           });
+        },
+        removeField(index) {
+           this.fields.splice(index, 1);
+         }
+      }
+ }
+
+    </script>
 @endpush
 

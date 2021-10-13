@@ -9,18 +9,14 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="Route_name">PO Status Name</label>
-                        <input type="text" class="form-control" name="po_status_name">
+                        <label for="Route_name">name</label>
+                        <input type="text" class="form-control" name="name">
                         <span id="Errorpo_status_name" class="text-red error_field"></span>
                     </div>
-
-                    <div class="form-group">
-                        <label for="Route_name">PO Status Name Bangla</label>
-                        <input type="text" class="form-control" name="po_status_name_bn">
-                        <span id="Errorpo_status_name_bn" class="text-red error_field"></span>
-                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

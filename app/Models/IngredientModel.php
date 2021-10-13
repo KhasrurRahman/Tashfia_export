@@ -4,16 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerModel extends Model
+class IngredientModel extends Model
 {
-    protected $table = 'customers';
+    protected $table = 'product_ingredients';
     protected $fillable = [
         'name',
-        'phone',
-        'address',
-        'email',
-        'balance',
-        'company_name',
+        'quantity',
+        'status',
         'created_by',
         'company_name',
     ];

@@ -173,13 +173,15 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../new" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts/backend/product" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp_7_4\htdocs\tashfia_export\resources\views\layouts\backend\product" />
+      <recent name="E:\xampp_7_4\htdocs\tashfia_export\resources\views\layouts\backend\product\ingredient" />
       <recent name="E:\xampp_7_4\htdocs\tashfia_export\resources\views\layouts\backend" />
       <recent name="E:\xampp_7_4\htdocs\vat_tax\resources\views\layouts\backend\sales_department" />
       <recent name="E:\xampp_7_4\htdocs\vat_tax\resources\views\layouts\backend\product" />
@@ -221,7 +223,8 @@
       <workItem from="1632882445313" duration="2788000" />
       <workItem from="1633317072167" duration="9167000" />
       <workItem from="1633402473622" duration="9038000" />
-      <workItem from="1634012780481" duration="9634000" />
+      <workItem from="1634012780481" duration="10120000" />
+      <workItem from="1634092608049" duration="14929000" />
     </task>
     <servers />
   </component>
