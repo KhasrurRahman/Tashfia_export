@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LotDepartmentModel extends Model
+class lotDepartmentModel extends Model
 {
-    protected $table = 'lot_department';
+    protected $table = 'stock';
 
-    protected $fillable = ["sales_rate", "product_id", "per_unit_price", "quantity", "balance", "created_by"];
+    protected $fillable = ["sales_rate", "purchase_id", "total_sales_price", "total_purchas_price", "created_by", "quantity"];
 
-    public function product()
+    public function purchase()
     {
-        return $this->belongsTo(ModelProduct::class, 'product_id');
+        return $this->belongsTo(purchaseModel::class, 'purchase_id');
     }
 }

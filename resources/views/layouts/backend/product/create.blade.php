@@ -35,16 +35,15 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="">Product Type</label>
-                    <select class="form-control select2" name="active_status">
+                    <select class="form-control select2" name="product_category_id" onchange="ingredient_show(this)" >
                         <option value="1">purchase product</option>
-                        <option value="0">Ready product</option>
+                        <option value="2">Ready product</option>
                     </select>
                 </div>
             </div>
 
 
-            <div class="col-md-12">
-
+            <div class="col-md-12" id="ingredient_section" style="display: none">
                 <div class="card">
                     <div class="card-header"><h3>Add Ingredient</h3></div>
                     <div class="card-body">
@@ -54,8 +53,8 @@
                                     <thead class="thead-light">
                                     <tr>
                                         <th>#</th>
-                                        <th>Text Feild 1</th>
-                                        <th>Text Feild 2</th>
+                                        <th>Select Ingredient</th>
+                                        <th>Quantity</th>
                                         <th>Remove</th>
                                     </tr>
                                     </thead>
@@ -73,7 +72,7 @@
                                                     </select>
                                                 </div>
                                             </td>
-                                            <td><input x-model="field.txt2" type="text" name="txt2[]" class="form-control"></td>
+                                            <td><input x-model="field.txt2" type="text" name="quantity[]" class="form-control"></td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-small" @click="removeField(index)">&times;</button>
                                             </td>
@@ -182,26 +181,36 @@
 
 @endsection
 @push('js')
-    {{--    <script src="{{ asset('js/form-components.js') }}"></script>--}}
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('.select2').select2();
         });
+
         function handler() {
-    return {
-      fields: [],
-      addNewField() {
-          this.fields.push({
-              txt1: '',
-              txt2: ''
-           });
-        },
-        removeField(index) {
-           this.fields.splice(index, 1);
-         }
-      }
- }
+            return {
+                fields: [],
+                addNewField() {
+                    this.fields.push({
+                        txt1: '',
+                        txt2: ''
+                    });
+                },
+                removeField(index) {
+                    this.fields.splice(index, 1);
+                }
+            }
+        }
+
+
+        function ingredient_show(select) {
+            if (select.value == 1) {
+                document.getElementById('ingredient_section').style.display = "none";
+            } else {
+                document.getElementById('ingredient_section').style.display = "block";
+            }
+        }
 
     </script>
 @endpush

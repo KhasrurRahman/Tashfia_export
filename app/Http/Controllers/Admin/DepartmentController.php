@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\LotDepartmentModel;
+use App\Models\CustomerModel;
+use App\Models\purchaseModel;
+use App\Models\lotDepartmentModel;
 use App\Models\ModelProduct;
 use App\Models\salesDepartmentModel;
 use Illuminate\Http\Request;
@@ -16,8 +18,9 @@ class DepartmentController extends Controller
 {
     public function show_sales_department()
     {
-        $stock = LotDepartmentModel::where('quantity','>',0)->get();
-        return view('layouts.backend.sales_department.sales_department',compact('stock'));
+        $customer = CustomerModel::all();
+        $stock = lotDepartmentModel::where('quantity','>',0)->get();
+        return view('layouts.backend.sales_department.sales_department',compact('stock','customer'));
     }
 
     public function get_sales_department_data(Request $request)
@@ -59,7 +62,7 @@ class DepartmentController extends Controller
             'balance' => 'required',
         ]);
         
-        $stock = LotDepartmentModel::find($request->stock_id);
+        $stock = lotDepartmentModel::find($request->stock_id);
         $stock->quantity -= $request->quantity_of_sell;
         $stock->update();
         
@@ -111,34 +114,34 @@ $product_loop = '';
     
     public function show_lot_department()
     {
-        $products = ModelProduct::query()->select('id','chalan_no')->get();
-        return view('layouts.backend.lot_department.lot_department',compact('products'));
+        $purchase_product= purchaseModel::all();
+        return view('layouts.backend.stock_department.stock_department',compact('purchase_product'));
     }
 
-    public function get_lot_department_data(Request $request)
+    public function search(Request $request)
     {
         if ($request->ajax()) {
-            $query = LotDepartmentModel::query();
+            $query = lotDepartmentModel::query();
             $query->orderBy('id', 'desc');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('product', function ($data) {
-                    return '<a href="javascript:void(0)" onclick="view_modal(' . $data->product_id . ')" class="edit btn btn-success btn-sm" >View Product</a>';
-                })->addColumn('purchase_date', function ($data) {
+                    return '<a href="javascript:void(0)" onclick="view_modal(' . $data->purchase->product_id . ')" class="edit btn btn-success btn-sm" >View Product</a>';
+                })->addColumn('date', function ($data) {
                     return date("d-M-y h:i A", strtotime($data->created_at));
                 })->addColumn('quantity', function ($data) {
                     return $data->quantity;
                 })->addColumn('sales_rate', function ($data) {
                     return $data->sales_rate;
-                })->addColumn('per_unit_price', function ($data) {
-                    return $data->per_unit_price;
-                })->addColumn('balance', function ($data) {
-                    return $data->balance;
+                })->addColumn('total_sales_price', function ($data) {
+                    return $data->total_sales_price;
+                })->addColumn('total_purchas_price', function ($data) {
+                    return $data->total_purchas_price;
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" onclick="edit_info(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >Edit</a> <a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a>';
                     return $actionBtn;
-                })->rawColumns(['product','purchase_date', 'quantity', 'sales_rate', 'per_unit_price', 'balance', 'action'])
+                })->rawColumns(['product','date', 'quantity', 'sales_rate', 'total_sales_price', 'total_purchas_price', 'action'])
                 ->make(true);
         }
     }
@@ -146,19 +149,25 @@ $product_loop = '';
     public function store_lot_department_data(Request $request)
     {
         $request->validate([
+            'purchase_id' => 'required',
             'sales_rate' => 'required',
-            'product_id' => 'required',
-            'per_unit_price' => 'required',
+            'total_sales_price' => 'required',
+            'total_purchas_price' => 'required',
             'quantity' => 'required',
         ]);
-        $request->request->add(['created_by' => Auth::user()->id,'balance'=>$request->quantity]);
-        LotDepartmentModel::create($request->all());
+        
+        $purchase = purchaseModel::find($request->purchase_id);
+        $purchase->quantity -= $request->quantity;
+        $purchase->update();
+        
+        $request->request->add(['created_by' => Auth::user()->id]);
+        lotDepartmentModel::create($request->all());
         return response()->json(['Done' => 'Done']);
     }
     
     public function delete_lot_department_data($id)
     {
-        $stock = LotDepartmentModel::find($id);
+        $stock = lotDepartmentModel::find($id);
         salesDepartmentModel::where('stock_id',$stock->id)->delete();
         $stock->delete();
         return response()->json(['Done' => 'Done']);
@@ -166,7 +175,7 @@ $product_loop = '';
     
     public function edit_lot_department_data($id)
     {
-        $data = LotDepartmentModel::find($id);
+        $data = lotDepartmentModel::find($id);
         $output = '';
         
         $product = ModelProduct::query()->select('id','chalan_no')->get();
@@ -189,13 +198,13 @@ $product_loop = '';
             'quantity' => 'required',
         ]);
         $request->request->add(['created_by' => Auth::user()->id]);
-        LotDepartmentModel::find($request->edit_id)->update($request->all());
+        lotDepartmentModel::find($request->edit_id)->update($request->all());
         return response()->json(['Done' => 'Done']);
     }
     
     public function show_single_lot_department_data($id)
     {
-        return LotDepartmentModel::find($id);
+        return lotDepartmentModel::find($id);
     }
     
     public function sales_department_invoice($id)

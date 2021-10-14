@@ -19,7 +19,7 @@
                 $('#total_data').html(api.ajax.json().recordsTotal);
             },
             ajax: {
-                url: "{{ url('admin/Department/get_lot_department_data') }}",
+                url: "{{ url('admin/purchase/search') }}",
                 type: 'POSt',
                 data: function (d) {
                     d._token = '{{csrf_token()}}'
@@ -27,12 +27,11 @@
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
-                {data: 'product', name: 'product', searchable: false},
-                {data: 'purchase_date', name: 'purchase_date', searchable: false},
-                {data: 'quantity', name: 'quantity'},
-                {data: 'sales_rate', name: 'sales_rate'},
-                {data: 'per_unit_price', name: 'per_unit_price'},
-                {data: 'balance', name: 'balance'},
+                {data: 'product', name: 'product'},
+                {data: 'supplier', name: 'supplier', searchable: false},
+                {data: 'Quantity', name: 'Quantity'},
+                {data: 'unit_price', name: 'unit_price'},
+                {data: 'total_purchas_price', name: 'total_purchas_price'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });
@@ -62,7 +61,7 @@
                 event.preventDefault();
                 $.ajax({
                     type: 'get',
-                    url: '{{url('admin/Department/delete_lot_department_data')}}/' + id,
+                    url: '{{url('admin/purchase/delete')}}/' + id,
                     success: function (response) {
                         if (response) {
                             if (response.permission == false) {
@@ -91,7 +90,7 @@
     $('#save_info').on('submit', function (event) {
         event.preventDefault();
         $.ajax({
-            url: "{{url('admin/Department/store_lot_department_data')}}",
+            url: "{{url('admin/purchase/store')}}",
             type: "POST",
             data: $("form").serializeArray(),
             success: function (response) {
@@ -107,11 +106,11 @@
                 }
             },
             error: function (response) {
-                $('#Error_purchase_date').text(response.responseJSON.errors.purchase_date);
-                $('#Error_sales_rate').text(response.responseJSON.errors.sales_rate);
-                $('#Error_per_unit_price').text(response.responseJSON.errors.per_unit_price);
-                $('#Error_quantity').text(response.responseJSON.errors.quantity);
                 $('#Error_status_product_id').text(response.responseJSON.errors.product_id);
+                $('#Error_status_supplier_id').text(response.responseJSON.errors.supplier_id);
+                $('#Error_status_quantity').text(response.responseJSON.errors.quantity);
+                $('#Error_status_unit_price').text(response.responseJSON.errors.unit_price);
+                $('#Error_status_total_purchas_price').text(response.responseJSON.errors.total_purchas_price);
             }
         });
     })
@@ -187,7 +186,7 @@
     });
     
     
-    function view_modal(id) {
+    function view_product(id) {
         $.ajax({
             url: "{{url('admin/product/view')}}/" + id,
             type: "GET",
@@ -203,6 +202,23 @@
                 $('#sl_no').html(data.sl_no);
                 $('#order_no').html(data.order_no);
                 $('#view_modal').modal('show');
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        });
+    }
+    
+    
+    
+    function supplier_details(id) {
+        $.ajax({
+            url: "{{url('admin/supplier/show')}}/" + id,
+            type: "GET",
+            success: function (data) {
+                $('#supplier_details_model_content').html('');
+                $('#supplier_details_model_content').append(data);
+                $('#supplier_details').modal('show');
             },
             error: function (data) {
                 console.log(data)

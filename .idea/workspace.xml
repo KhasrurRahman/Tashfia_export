@@ -175,7 +175,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts/backend/product" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -224,7 +224,8 @@
       <workItem from="1633317072167" duration="9167000" />
       <workItem from="1633402473622" duration="9038000" />
       <workItem from="1634012780481" duration="10120000" />
-      <workItem from="1634092608049" duration="14929000" />
+      <workItem from="1634092608049" duration="15141000" />
+      <workItem from="1634178320199" duration="1244000" />
     </task>
     <servers />
   </component>

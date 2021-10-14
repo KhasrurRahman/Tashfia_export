@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class salesDepartmentModel extends Model
 {
-    protected $table = 'sales_department';
+    protected $table = 'sales';
 
-    protected $fillable = ["quantity_of_sell","stock_id", "unit_price", "balance"];
+    protected $fillable = ["customer_id","stock_id", "unit_price", "quantity_of_sell","order_no","created_by","created_by"];
     
     
     public function stock()
     {
-        return $this->belongsTo(LotDepartmentModel::class,'stock_id');
+        return $this->belongsTo(lotDepartmentModel::class,'stock_id');
     }
 }

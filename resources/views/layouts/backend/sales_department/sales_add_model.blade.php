@@ -21,7 +21,7 @@
                             <select class="form-control select2" name="stock_id" id="stock_id">
                             <option value="">Select</option>
                             @foreach($stock as $data)
-                                <option value="{{$data->id}}">{{$data->product->chalan_no}}, QUN:{{$data->quantity}}</option>
+                                <option value="{{$data->id}}">{{$data->purchase->product->chalan_no}}, QUN:{{$data->quantity}}</option>
                             @endforeach
                         </select>
                             <span id="Error_status_stock_id" class="text-red error_field"></span>

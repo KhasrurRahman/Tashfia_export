@@ -19,7 +19,7 @@
                 $('#total_data').html(api.ajax.json().recordsTotal);
             },
             ajax: {
-                url: "{{ url('admin/product/alldata') }}",
+                url: "{{ url('admin/Department/search') }}",
                 type: 'POSt',
                 data: function (d) {
                     d._token = '{{csrf_token()}}'
@@ -27,17 +27,12 @@
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
-                {data: 'product_type', name: 'product_type'},
-                {data: 'chalan_no', name: 'chalan_no'},
-                {data: 'party_name', name: 'party_name'},
-                {data: 'color_name', name: 'color_name'},
-                {data: 'sl_no', name: 'sl_no'},
-                {data: 'ggsm', name: 'ggsm'},
-                {data: 'fb_rv_date', name: 'fb_rv_date'},
-                {data: 'lot_no', name: 'lot_no'},
-                {data: 'batch_no', name: 'batch_no'},
-                {data: 'order_no', name: 'order_no'},
-                {data: 'card_no', name: 'card_no'},
+                {data: 'product', name: 'product', searchable: false},
+                {data: 'quantity', name: 'quantity', searchable: false},
+                {data: 'sales_rate', name: 'sales_rate'},
+                {data: 'total_sales_price', name: 'total_sales_price'},
+                {data: 'total_purchas_price', name: 'total_purchas_price'},
+                {data: 'date', name: 'date'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });
@@ -67,14 +62,14 @@
                 event.preventDefault();
                 $.ajax({
                     type: 'get',
-                    url: '{{url('admin/product/delete')}}/' + id,
+                    url: '{{url('admin/Department/delete_lot_department_data')}}/' + id,
                     success: function (response) {
                         if (response) {
                             if (response.permission == false) {
                                 toastr.error('you dont have that Permission', 'Permission Denied');
                             } else {
                                 toastr.success('Deleted Successful', 'Deleted');
-                                $('.yajra-datatable').DataTable().ajax.reload();
+                                $('.yajra-datatable').DataTable().ajax.reload(null, false);
                             }
                         }
                     }
@@ -92,11 +87,11 @@
     }
 
 
-    // save country information
-    $('#save_country_info').on('submit', function (event) {
+    // save information
+    $('#save_info').on('submit', function (event) {
         event.preventDefault();
         $.ajax({
-            url: "{{url('admin/country/save_country_info')}}",
+            url: "{{url('admin/Department/store_lot_department_data')}}",
             type: "POST",
             data: $("form").serializeArray(),
             success: function (response) {
@@ -105,40 +100,41 @@
                         toastr.error('you dont have that Permission', 'Permission Denied');
                     } else {
                         $('#add_button').modal('hide');
-                        $("#save_country_info")[0].reset();
-                        toastr.success('Country Information Saved', 'Saved');
-                        $('.yajra-datatable').DataTable().ajax.reload();
+                        $("#save_info")[0].reset();
+                        toastr.success('Information Saved', 'Saved');
+                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
                     }
                 }
             },
             error: function (response) {
-                $('#Errorcountry_code').text(response.responseJSON.errors.country_code);
-                $('#Errorcountry_code_bn').text(response.responseJSON.errors.country_code_bn);
-                $('#Errorcountry_name').text(response.responseJSON.errors.country_name);
-                $('#Errorcountry_name_bn').text(response.responseJSON.errors.country_name_bn);
-                $('#Errorcountry_is_active').text(response.responseJSON.errors.country_is_active);
+                 $('#Error_status_purchase_id').text(response.responseJSON.errors.purchase_id);
+                $('#Error_sales_rate').text(response.responseJSON.errors.sales_rate);
+                $('#Error_total_sales_price').text(response.responseJSON.errors.total_sales_price);
+                $('#Error_total_purchas_price').text(response.responseJSON.errors.total_purchas_price);
+                $('#Error_quantity').text(response.responseJSON.errors.quantity);
             }
         });
     })
+
 
     // edit country information
     function edit_info(id) {
         $.ajax({
             type: 'get',
-            url: '{{url('admin/country/edit_country')}}/' + id,
+            url: '{{url('admin/Department/edit_lot_department_data')}}/' + id,
             success: function (data) {
                 $('#modal_data').html('');
                 $('#modal_data').append(data);
-                $('#edit_country_info').modal('show');
+                $('#edit_modal_info').modal('show');
             }
         });
     }
 
     // update country information
-    $('#update_country_form').on('submit', function (event) {
+    $('#update_form').on('submit', function (event) {
         event.preventDefault();
         $.ajax({
-            url: "{{url('admin/country/update_country')}}",
+            url: "{{url('admin/Department/update_lot_department_data')}}",
             type: "POST",
             data: $("form").serializeArray(),
             success: function (response) {
@@ -146,24 +142,47 @@
                     if (response.permission == false) {
                         toastr.error('you dont have that Permission', 'Permission Denied');
                     } else {
-                        $('#edit_country_info').modal('hide');
-                        $("#update_country_form")[0].reset();
-                        toastr.success('Country Information Updated', 'Updated');
-                        $('.yajra-datatable').DataTable().ajax.reload();
+                        $('#edit_modal_info').modal('hide');
+                        $("#update_form")[0].reset();
+                        toastr.success('Information Updated', 'Updated');
+                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
                     }
                 }
             },
             error: function (response) {
-                $('#Error_edit_country_code').text(response.responseJSON.errors.country_code);
-                $('#Error_edit_country_code_bn').text(response.responseJSON.errors.country_code_bn);
-                $('#Error_edit_country_name').text(response.responseJSON.errors.country_name);
-                $('#Error_edit_country_name_bn').text(response.responseJSON.errors.country_name_bn);
-                $('#Error_edit_country_is_active').text(response.responseJSON.errors.country_is_active);
+                $('#Error_status_purchase_id').text(response.responseJSON.errors.purchase_id);
+                $('#Error_sales_rate').text(response.responseJSON.errors.sales_rate);
+                $('#Error_total_sales_price').text(response.responseJSON.errors.total_sales_price);
+                $('#Error_total_purchas_price').text(response.responseJSON.errors.total_purchas_price);
+                $('#Error_quantity').text(response.responseJSON.errors.quantity);
             }
         });
     })
 
 
+    // get product data
+
+    $(function () {
+        $('#purchase_id').on('change', function () {
+            var purchase_id = $(this).val();
+            $.ajax({
+                url: "{{url('admin/purchase/show')}}/" + purchase_id,
+                type: "GET",
+                success: function (data) {
+                    console.log(data)
+                    $('#create_supplier').val(data.supplier);
+                    $('#create_prodyct').val(data.product);
+                    $('#create_quantity').val(data.purchase.quantity);
+                    $('#create_unit_price').val(data.purchase.unit_price);
+                    $('#create_total_purchas_price').val(data.purchase.total_purchas_price);
+                    
+                }
+            });
+        });
+
+    });
+    
+    
     function view_modal(id) {
         $.ajax({
             url: "{{url('admin/product/view')}}/" + id,
@@ -186,20 +205,6 @@
             }
         });
     }
-    
-    
-    function view_ingredient(id) {
-        $.ajax({
-            url: "{{url('admin/product/ingredients')}}/" + id,
-            type: "GET",
-            success: function (data) {
-                $('#ingredient_model_content').html('');
-                $('#ingredient_model_content').append(data);
-                $('#ingredient').modal('show');
-            },
-            error: function (data) {
-                console.log(data)
-            }
-        });
-    }
+
+
 </script>

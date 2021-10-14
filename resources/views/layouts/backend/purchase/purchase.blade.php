@@ -1,14 +1,11 @@
 @extends('layouts.backend.partial.app')
-@section('title','Stock Department')
+@section('title','Purchase')
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
-    <style>.select2-container--default .select2-selection--single {
-            height: 40px !important;
-        }</style>
 @endpush
 @section('main_menu','HOME')
-@section('active_menu','Stock Department')
+@section('active_menu','Purchase')
 @section('link',route('admin.adminDashboard'))
 @section('content')
 
@@ -22,12 +19,11 @@
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>product chalan no</th>
-                    <th>Purchase Date</th>
+                    <th>Product</th>
+                    <th>Supplier</th>
                     <th>Quantity</th>
-                    <th>Sales Unite Price</th>
-                    <th>Purchase Unit Rate</th>
-                    <th>balance</th>
+                    <th>Unit price</th>
+                    <th>Total Purchase Price</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -37,9 +33,10 @@
         </div>
     </div>
 
-    @include('layouts.backend.lot_department.add_model')
-    @include('layouts.backend.lot_department.edit_model')
+    @include('layouts.backend.purchase.purchase_add_model')
+    @include('layouts.backend.purchase.purchase_edit_model')
     @include('layouts.backend.product.view_model')
+    @include('layouts.backend.supplier.supplier_details_model')
 @endsection
 @push('js')
      <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
@@ -51,6 +48,6 @@
     <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/js/datatables.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
-    @include('layouts.backend.lot_department.lot_department_js')
+    @include('layouts.backend.purchase.purchase_js')
 
 @endpush

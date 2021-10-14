@@ -12,53 +12,45 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="product_id">Select Product</label>
+                        <label for="product_id">Select Purchase Product</label>
                         <br>
-                        <select class="form-control select2" name="product_id" id="product_id">
+                        <select class="form-control select2" name="purchase_id" id="purchase_id">
                             <option value="">Select</option>
-                            @foreach($products as $data)
-                                <option value="{{$data->id}}">{{$data->chalan_no}}</option>
+                            @foreach($purchase_product as $data)
+                                <option value="{{$data->id}}">{{$data->product->chalan_no}}</option>
                             @endforeach
                         </select>
-                        <span id="Error_status_product_id" class="text-red error_field"></span>
+                        <span id="Error_status_purchase_id" class="text-red error_field"></span>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="Route_name">Batch Number </label>
-                        <input type="text" class="form-control" name="chalan_no" id="create_chalan_no" readonly>
+                        <label for="Route_name">Supplier</label>
+                        <input type="text" class="form-control"  id="create_supplier" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="Route_name">Lot Number </label>
-                        <input type="text" class="form-control" name="lot_no" id="create_lot_no" readonly>
+                        <label for="Route_name">Product</label>
+                        <input type="text" class="form-control"  id="create_prodyct" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="Route_name">Party Name </label>
-                        <input type="text" class="form-control" name="party_name" id="create_party_name" readonly>
+                        <label for="Route_name">Quantity</label>
+                        <input type="text" class="form-control"  id="create_quantity" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="Route_name">Card No</label>
-                        <input type="text" class="form-control" name="card_no" id="create_card_no" readonly>
+                        <label for="Route_name">Unit Price</label>
+                        <input type="text" class="form-control"  id="create_unit_price" readonly>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="Route_name">Order No</label>
-                        <input type="text" class="form-control" name="order_no" id="create_order_no" readonly>
+                        <label for="Route_name">Total Purchase Price</label>
+                        <input type="text" class="form-control" id="create_total_purchas_price" readonly>
                     </div>
 
-                    <div class="form-group">
-                        <label for="Route_name">Color </label>
-                        <input type="text" class="form-control" name="color_name" id="create_color_name" readonly>
-                    </div>
                     
-                    <div class="form-group">
-                        <label for="Route_name">Gsm </label>
-                        <input type="text" class="form-control" name="ggsm" id="create_ggsm" readonly>
-                    </div>
 
                     <div class="form-group">
                         <label for="Route_name">Sales Unite Price</label>
@@ -68,8 +60,14 @@
 
                     <div class="form-group">
                         <label for="Route_name">Purchase Unit Rate</label>
-                        <input type="number" class="form-control" name="per_unit_price">
-                        <span id="Error_per_unit_price" class="text-red error_field"></span>
+                        <input type="number" class="form-control" name="total_sales_price">
+                        <span id="Error_total_sales_price" class="text-red error_field"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Route_name">Purchase Unit Rate</label>
+                        <input type="number" class="form-control" name="total_purchas_price">
+                        <span id="Error_total_purchas_price" class="text-red error_field"></span>
                     </div>
 
                     <div class="form-group">

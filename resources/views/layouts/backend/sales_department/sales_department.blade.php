@@ -1,5 +1,5 @@
 @extends('layouts.backend.partial.app')
-@section('title','sales Department')
+@section('title','sales')
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
@@ -136,7 +136,7 @@
     </style>
 @endpush
 @section('main_menu','HOME')
-@section('active_menu','sales Department')
+@section('active_menu','sales')
 @section('link',route('admin.adminDashboard'))
 @section('content')
 
@@ -151,10 +151,10 @@
                 <tr>
                     <th>Id</th>
                     <th>Product</th>
+                    <th>Customer</th>
                     <th>Date</th>
                     <th>Unit Price</th>
                     <th>Quantity of sale</th>
-                    <th>balance</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -164,8 +164,8 @@
         </div>
     </div>
     
-    @include('layouts.backend.sales_department.add_model')
-    @include('layouts.backend.sales_department.edit_model')
+    @include('layouts.backend.sales_department.sales_add_model')
+    @include('layouts.backend.sales_department.sales_edit_model')
     @include('layouts.backend.product.view_model')
 @endsection
 @push('js')

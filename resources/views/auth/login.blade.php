@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ __('Login | Tashfia Export') }}</title>
+    <title>{{ __('Login | Sukhtara ERP system') }}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +35,7 @@
 {{--                    <div class="logo-centered">--}}
 {{--                        <a href=""><img src="{{ asset('backend/img/logo.png') }}" alt=""></a>--}}
 {{--                    </div>--}}
-                    <h3 style="font-size: 34px; color: #250846; font-weight: bold;">{{ __('Login Here') }}</h3>
+                    <h3 style="font-size: 34px; color: #250846; font-weight: bold;">Sukhtara ERP system</h3>
                     <p>{{ __('Welcome Back! Login to your account to continue') }}</p>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
