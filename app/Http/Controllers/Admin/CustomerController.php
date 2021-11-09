@@ -37,7 +37,7 @@ class CustomerController extends Controller
                 })->addColumn('company_name', function ($data) {
                     return $data->company_name;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/customer/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" target="null">Edit</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> ';
                     return $actionBtn;
                 })->rawColumns(['name', 'phone', 'address', 'email', 'company_name', 'balance', 'action'])
                 ->make(true);

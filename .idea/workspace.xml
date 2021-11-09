@@ -173,7 +173,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts/backend/product" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -226,6 +226,8 @@
       <workItem from="1634012780481" duration="10120000" />
       <workItem from="1634092608049" duration="15141000" />
       <workItem from="1634178320199" duration="1244000" />
+      <workItem from="1636439210383" duration="3032000" />
+      <workItem from="1636443126325" duration="1222000" />
     </task>
     <servers />
   </component>

@@ -28,7 +28,7 @@ class ExpensesController extends Controller
                 ->addColumn('name', function ($data) {
                     return $data->name;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/customer/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" target="null">Edit</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
                     return $actionBtn;
                 })->rawColumns(['name', 'action'])
                 ->make(true);
@@ -87,7 +87,7 @@ class ExpensesController extends Controller
                 })->addColumn('date', function ($data) {
                     return date("d-M-y h:i A", strtotime($data->created_at));
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/customer/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" target="null">Edit</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
                     return $actionBtn;
                 })->rawColumns(['Category', 'name', 'balance', 'Amount', 'date', 'action'])
                 ->make(true);

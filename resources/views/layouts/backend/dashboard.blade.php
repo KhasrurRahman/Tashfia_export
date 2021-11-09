@@ -16,14 +16,14 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <h6>Revenue</h6>
-                                <h2>1,410</h2>
+                                <h6>Total Products</h6>
+                                <h2>{{$total_product}}</h2>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-award"></i>
                             </div>
                         </div>
-                        <small class="text-small mt-10 d-block">6% higher than last month</small>
+{{--                        <small class="text-small mt-10 d-block">6% higher than last month</small>--}}
                     </div>
                     <div class="progress progress-sm">
                         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"
@@ -36,14 +36,14 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <h6>Sale Return</h6>
-                                <h2>41,410</h2>
+                                <h6>Total Customer</h6>
+                                <h2>{{$total_customer}}</h2>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-thumbs-up"></i>
                             </div>
                         </div>
-                        <small class="text-small mt-10 d-block">61% higher than last month</small>
+{{--                        <small class="text-small mt-10 d-block">61% higher than last month</small>--}}
                     </div>
                     <div class="progress progress-sm">
                         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"
@@ -56,14 +56,14 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <h6>Purchase Return</h6>
-                                <h2>410</h2>
+                                <h6>Total Supplier</h6>
+                                <h2>{{$total_supplier}}</h2>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-calendar"></i>
                             </div>
                         </div>
-                        <small class="text-small mt-10 d-block">Total Events</small>
+{{--                        <small class="text-small mt-10 d-block">Total Events</small>--}}
                     </div>
                     <div class="progress progress-sm">
                         <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100"
@@ -83,8 +83,8 @@
                                 <i class="ik ik-message-square"></i>
                             </div>
                         </div>
-                        <small class="text-small mt-10 d-block">Total Comments</small>
-                    </div>
+{{--                        <small class="text-small mt-10 d-block">Total Comments</small>--}}
+                    </div>  
                     <div class="progress progress-sm">
                         <div class="progress-bar bg-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
                     </div>
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6 col-xl-4">
+            <div class="col-lg-6 col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h3>{{ __('3D Pie Chart')}}</h3>
@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-xl-4">
+            <div class="col-lg-6 col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h3>{{ __('Bar Chart')}}</h3>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-xl-4">
+            <div class="col-lg-6 col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h3>{{ __('Smoothed Line Chart')}}</h3>
@@ -122,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-xl-4">
+            <div class="col-lg-6 col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h3>{{ __('Angular Gauge')}}</h3>
@@ -132,7 +132,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12 col-xl-8">
+            <div class="col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-header">
                         <h3>{{ __('Line Chart')}}</h3>

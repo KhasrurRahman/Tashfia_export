@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CustomerModel;
+use App\Models\ModelProduct;
+use App\Models\supplierModel;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -13,7 +16,10 @@ class AdminDashboarController extends Controller
 {
     public function index()
     {
-        return view('layouts.backend.dashboard');
+        $total_product = ModelProduct::all()->count();
+        $total_customer = CustomerModel::all()->count();
+        $total_supplier = supplierModel::all()->count();
+        return view('layouts.backend.dashboard',compact('total_product','total_supplier','total_customer'));
     }
 
 
