@@ -1,4 +1,3 @@
-
 <script>
     $(document).ready(function () {
         $('.select2').select2();
@@ -20,20 +19,25 @@
                 $('#total_data').html(api.ajax.json().recordsTotal);
             },
             ajax: {
-                url: "{{ url('admin/Department/get_sales_department_data') }}",
+                url: "{{ url('admin/expenses/expenses_search') }}",
                 type: 'POSt',
                 data: function (d) {
+                    d.search_category_id = $('#search_category_id').val();
+                    d.from_date = $('#from_date').val();
+                    d.to_date = $('#to_date').val();
+                    d.search_name = $('#search_name').val();
+                    d.search_amount = $('#search_amount').val();
+                    d.user_id = $('#user_id').val();
                     d._token = '{{csrf_token()}}'
                 }
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
-                {data: 'stock', name: 'stock', searchable: false},
-                {data: 'customer', name: 'customer', searchable: false},
-                {data: 'product', name: 'product'},
+                {data: 'Category', name: 'Category'},
+                {data: 'name', name: 'name'},
+                {data: 'balance', name: 'balance'},
+                {data: 'Amount', name: 'Amount'},
                 {data: 'date', name: 'date'},
-                {data: 'unit_price', name: 'unit_price'},
-                {data: 'quantity_of_sell', name: 'quantity_of_sell'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });
@@ -63,14 +67,14 @@
                 event.preventDefault();
                 $.ajax({
                     type: 'get',
-                    url: '{{url('admin/Department/delete_sales_department_data')}}/' + id,
+                    url: '{{url('admin/expenses/expenses_delete')}}/' + id,
                     success: function (response) {
                         if (response) {
                             if (response.permission == false) {
                                 toastr.error('you dont have that Permission', 'Permission Denied');
                             } else {
                                 toastr.success('Deleted Successful', 'Deleted');
-                                $('.yajra-datatable').DataTable().ajax.reload(null, false);
+                                $('.yajra-datatable').DataTable().ajax.reload();
                             }
                         }
                     }
@@ -88,11 +92,11 @@
     }
 
 
-    // save information
-    $('#save_info').on('submit', function (event) {
+    // save country information
+    $('#add_button').on('submit', function (event) {
         event.preventDefault();
         $.ajax({
-            url: "{{url('admin/Department/store_sales_department_data')}}",
+            url: "{{url('admin/expenses/expenses_store')}}",
             type: "POST",
             data: $("form").serializeArray(),
             success: function (response) {
@@ -102,40 +106,38 @@
                     } else {
                         $('#add_button').modal('hide');
                         $("#save_info")[0].reset();
-                        toastr.success('Information Saved', 'Saved');
-                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
-                        window.location.href = "{{url('admin/sales/sales_department_invoice/1')}}/" + $id;
+                        toastr.success('Country Information Saved', 'Saved');
+                        $('.yajra-datatable').DataTable().ajax.reload();
                     }
                 }
             },
             error: function (response) {
-                $('#Error_status_stock_id').text(response.responseJSON.errors.stock_id);
-                $('#Error_status_customer_id').text(response.responseJSON.errors.customer_id);
-                $('#Error_quantity').text(response.responseJSON.errors.quantity_of_sell);
-                $('#Error_unit_price').text(response.responseJSON.errors.unit_price);
+                $('#Error_status_category_id').text(response.responseJSON.errors.expenses_category_id);
+                $('#Error_status_name').text(response.responseJSON.errors.name);
+                $('#Error_status_balance').text(response.responseJSON.errors.balance);
+                $('#Error_status_Amount').text(response.responseJSON.errors.Amount);
             }
         });
     })
 
-
-    // edit information
+    // edit country information
     function edit_info(id) {
         $.ajax({
             type: 'get',
-            url: '{{url('admin/Department/edit_sales_department_data')}}/' + id,
+            url: '{{url('admin/country/edit_country')}}/' + id,
             success: function (data) {
                 $('#modal_data').html('');
                 $('#modal_data').append(data);
-                $('#edit_modal_info').modal('show');
+                $('#edit_country_info').modal('show');
             }
         });
     }
 
     // update country information
-    $('#update_form').on('submit', function (event) {
+    $('#update_country_form').on('submit', function (event) {
         event.preventDefault();
         $.ajax({
-            url: "{{url('admin/Department/update_sales_department_data')}}",
+            url: "{{url('admin/country/update_country')}}",
             type: "POST",
             data: $("form").serializeArray(),
             success: function (response) {
@@ -143,22 +145,19 @@
                     if (response.permission == false) {
                         toastr.error('you dont have that Permission', 'Permission Denied');
                     } else {
-                        $('#edit_modal_info').modal('hide');
-                        $("#update_form")[0].reset();
-                        toastr.success('Information Updated', 'Updated');
-                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+                        $('#edit_country_info').modal('hide');
+                        $("#update_country_form")[0].reset();
+                        toastr.success('Country Information Updated', 'Updated');
+                        $('.yajra-datatable').DataTable().ajax.reload();
                     }
                 }
             },
             error: function (response) {
-                $('#edit_Error_status_date').text(response.responseJSON.errors.date);
-                $('#edit_Error_status_buyer').text(response.responseJSON.errors.buyer);
-                $('#edit_Error_status_quantity').text(response.responseJSON.errors.quantity);
-                $('#edit_Error_status_roll').text(response.responseJSON.errors.roll);
-                $('#edit_Error_status_lot').text(response.responseJSON.errors.lot);
-                $('#edit_Error_status_sell').text(response.responseJSON.errors.sell);
-                $('#edit_Error_status_balance').text(response.responseJSON.errors.balance);
-                $('#edit_Error_status_stock_id').text(response.responseJSON.errors.stock_id);
+                $('#Error_edit_country_code').text(response.responseJSON.errors.country_code);
+                $('#Error_edit_country_code_bn').text(response.responseJSON.errors.country_code_bn);
+                $('#Error_edit_country_name').text(response.responseJSON.errors.country_name);
+                $('#Error_edit_country_name_bn').text(response.responseJSON.errors.country_name_bn);
+                $('#Error_edit_country_is_active').text(response.responseJSON.errors.country_is_active);
             }
         });
     })
@@ -188,31 +187,14 @@
     }
     
     
-        $(function () {
-        $('#stock_id').on('change', function () {
-            var stock_id = $(this).val();
-            $.ajax({
-                url: "{{url('admin/Department/show_single_lot_department_data')}}/" + stock_id,
-                type: "GET",
-                success: function (data) {
-                    $('#stock_quantity').val(data.quantity);
-                    $('#stock_sales_rate').val(data.sales_rate);
-                    $('#stock_total_sales_rate').val(data.total_sales_price);
-                    
-                }
-            });
-        });
-
-    });
-    
-        function customer_details(id) {
+    function view_ingredient(id) {
         $.ajax({
-            url: "{{url('admin/customer/show')}}/" + id,
+            url: "{{url('admin/product/ingredients')}}/" + id,
             type: "GET",
             success: function (data) {
-                $('#customer_details_model_content').html('');
-                $('#customer_details_model_content').append(data);
-                $('#customer_details').modal('show');
+                $('#ingredient_model_content').html('');
+                $('#ingredient_model_content').append(data);
+                $('#ingredient').modal('show');
             },
             error: function (data) {
                 console.log(data)
@@ -220,9 +202,9 @@
         });
     }
     
-    function print_invoice($id)
-    {
-         window.location.href = "{{url('admin/sales/sales_department_invoice')}}/" + $id;
-    }
-
+    
+    function form_reset() {
+            document.getElementById("search_form").reset();
+             $('.yajra-datatable').DataTable().ajax.reload(null, false);
+        }
 </script>

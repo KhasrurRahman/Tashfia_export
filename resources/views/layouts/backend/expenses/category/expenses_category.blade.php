@@ -1,11 +1,11 @@
 @extends('layouts.backend.partial.app')
-@section('title','sales')
+@section('title','Expenses Category')
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
 @endpush
 @section('main_menu','HOME')
-@section('active_menu','sales')
+@section('active_menu','Expenses')
 @section('link',route('admin.adminDashboard'))
 @section('content')
 
@@ -15,16 +15,11 @@
             <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add @yield('title')</a>
         </div>
         <div class="card-body">
-            <table class="table yajra-datatable">
+            <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>stock</th>
-                    <th>Customer</th>
-                    <th>Product</th>
-                    <th>Date</th>
-                    <th>Unit Price</th>
-                    <th>Quantity of sale</th>
+                    <th>Name</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -33,17 +28,15 @@
             </table>
         </div>
     </div>
-    
-    @include('layouts.backend.sales_department.sales_add_model')
-    @include('layouts.backend.sales_department.sales_edit_model')
-    @include('layouts.backend.product.view_model')
-    @include('layouts.backend.sales_department.customer_details_modal')
+
+    @include('layouts.backend.expenses.category.add_expenses_category_model')
+    @include('layouts.backend.expenses.category.edit_expenses_category_model')
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/js/datatables.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
-    @include('layouts.backend.sales_department.sales_department_js')
+    @include('layouts.backend.expenses.category.expenses_category_js')
 
 @endpush

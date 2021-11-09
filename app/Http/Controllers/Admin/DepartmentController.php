@@ -32,23 +32,21 @@ class DepartmentController extends Controller
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('stock', function ($data) {
-                    return $data->stock->lot.','. 'QUN:'. $data->stock->quantity;
-                })
-                ->addColumn('product', function ($data) {
-                    return '<a href="javascript:void(0)" onclick="view_modal(' . $data->stock->product_id . ')" class="edit btn btn-success btn-sm" >View Product</a>';
-                })
-                ->addColumn('date', function ($data) {
+                    return $data->stock->purchase->product->chalan_no;
+                })->addColumn('customer', function ($data) {
+                    return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="customer_details(' . $data->customer_id . ')">'.$data->customer->name.'</a>';
+                })->addColumn('product', function ($data) {
+                    return '<a href="javascript:void(0)" onclick="view_modal(' . $data->stock->purchase->product_id . ')" class="edit btn btn-success btn-sm" >View Product</a>';
+                })->addColumn('date', function ($data) {
                     return date("d-M-y h:i A", strtotime($data->date));
                 })->addColumn('unit_price', function ($data) {
                     return $data->unit_price;
                 })->addColumn('quantity_of_sell', function ($data) {
                     return $data->quantity_of_sell;
-                })->addColumn('balance', function ($data) {
-                    return $data->balance;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onclick="edit_info(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >Edit</a> <a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" onclick="edit_info(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >Edit</a> <a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a><a href="javascript:void(0)" onclick="print_invoice(' . $data->id . ')" class="edit btn btn-outline-warning btn-sm" >Invoice</a>';
                     return $actionBtn;
-                })->rawColumns(['date','product','unit_price', 'quantity_of_sell', 'balance', 'action'])
+                })->rawColumns(['stock','customer','product', 'date', 'unit_price','quantity_of_sell', 'action'])
                 ->make(true);
         }
     }
@@ -57,9 +55,9 @@ class DepartmentController extends Controller
     {
         $request->validate([
             'stock_id' => 'required',
+            'customer_id' => 'required',
             'quantity_of_sell' => 'required',
             'unit_price' => 'required',
-            'balance' => 'required',
         ]);
         
         $stock = lotDepartmentModel::find($request->stock_id);

@@ -15,4 +15,9 @@ class salesDepartmentModel extends Model
     {
         return $this->belongsTo(lotDepartmentModel::class,'stock_id');
     }
+    
+    public function customer()
+    {
+        return $this->belongsTo(CustomerModel::class,'customer_id');
+    }
 }
