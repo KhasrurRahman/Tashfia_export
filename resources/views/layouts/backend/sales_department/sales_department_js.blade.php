@@ -225,4 +225,32 @@
         window.location.href = "{{url('admin/sales/sales_department_invoice')}}/" + $id;
     }
 
+
+    function pay_due_bill(id) {
+        $('#sales_due_payment').modal('show');
+        $('#pay_bill_sales_id').val(id);
+    }
+
+
+    $('#pay_bill_form').on('submit', function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: "{{url('admin/sales/sales_due_payment')}}",
+            type: "POST",
+            data: $("form").serializeArray(),
+            success: function (response) {
+                if (response) {
+                    if (response.error) {
+                        toastr.error(response.error, 'Error');
+                    } else {
+                        $('#sales_due_payment').modal('hide');
+                        $("#pay_bill_form")[0].reset();
+                        toastr.success('Payment Successful', 'Successful');
+                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+                    }
+                }
+            }
+        });
+    })
+
 </script>

@@ -22,7 +22,7 @@
                     <th>Customer Type</th>
                     <th>Sales Code</th>
                     <th>Total</th>
-                    <th>Paied Amount</th>
+                    <th>Paid Amount</th>
                     <th>Due</th>
                     <th>Payment Status</th>
                     <th>Date</th>
@@ -37,6 +37,7 @@
     
     @include('layouts.backend.product.view_model')
     @include('layouts.backend.sales_department.customer_details_modal')
+    @include('layouts.backend.sales_department.sales_payment_model')
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>

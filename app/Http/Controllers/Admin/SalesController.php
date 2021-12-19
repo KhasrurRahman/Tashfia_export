@@ -16,7 +16,7 @@ class SalesController extends Controller
 {
     public function create()
     {
-        $customers = CustomerModel::where('type','general')->get();
+        $customers = CustomerModel::where('type', 'general')->get();
         return view('layouts.backend.sales_department.new_sale.create_sale', compact('customers'));
     }
 
@@ -25,10 +25,11 @@ class SalesController extends Controller
     {
         if ($request->get('query')) {
             $query = $request->get('query');
-            $data = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('products.chalan_no', 'like', '%' . $query . '%')->orWhere('products.card_no', 'like', '%' . $query . '%')->select('products.chalan_no', 'stock.*')->get();
+            $data = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.chalan_no', 'like', '%' . $query . '%')->orWhere('products.card_no', 'like', '%' . $query . '%')->select('products.chalan_no',
+                'stock.*')->get();
             $output = '<ul class="list-group" style="display: block;position: relative;width: 100%;font-size: 17px;font-weight: bold;line-height: 25px;border: 1px solid;">';
             foreach ($data as $row) {
-                $output .= '<li class="list-group-item"><a href="#" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . ' (QTY - '.$row->quantity .')</a></li>';
+                $output .= '<li class="list-group-item"><a href="#" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . ' (QTY : ' . $row->quantity . ')</a></li>';
             }
             $output .= '</ul>';
             echo $output;
@@ -55,14 +56,23 @@ class SalesController extends Controller
             'per_payment_type' => 'required',
             'per_payment_amount' => 'required',
         ]);
-        
-        $total_paied_amount  = array_sum($request->per_payment_amount);
-        if ($total_paied_amount > $request->grand_total)
-        {
+
+
+        for ($i = 0; $i < count($request->per_unit_price); $i++) {
+            if ($request->per_unit_price[$i] == null) {
+                return response()->json(['error' => 'Please Input unit price of an item']);
+            }
+        }
+
+        $total_paied_amount = array_sum($request->per_payment_amount);
+        if ($total_paied_amount > $request->grand_total) {
             return response()->json(['error' => 'Your Payment amount must be less than or equal to Grand total']);
         }
 
         for ($i = 0; $i < count($request->stock_id); $i++) {
+            if ($request->stock_id[$i] == null) {
+
+            }
             $stock = lotDepartmentModel::find($request->stock_id[$i]);
             $stock->quantity -= $request->per_quantity[$i];
             $stock->update();
@@ -91,18 +101,13 @@ class SalesController extends Controller
             $sales_details->total_price = $request->per_total_unit_price[$i];
             $sales_details->save();
         }
-            
+
         for ($i = 0; $i < count($request->stock_id); $i++) {
-            $sales_details = new SalesDetailsModel();
-            $sales_details->customer_id = $request->customer_id;
-            $sales_details->stock_id = $request->stock_id[$i];
-            $sales_details->sales_id = $sales->id;
-            $sales_details->quantity = $request->per_quantity[$i];
-            $sales_details->unit_price = $request->per_unit_price[$i];
-            $sales_details->total_price = $request->per_total_unit_price[$i];
-            $sales_details->save();
+            $sales_details = lotDepartmentModel::find($request->stock_id[$i]);
+            $sales_details->quantity -= $request->per_quantity[$i];
+            $sales_details->update();
         }
-             
+
         for ($i = 0; $i < count($request->per_payment_amount); $i++) {
             $sales_payemnt = new SalesPaymentModel();
             $sales_payemnt->sales_id = $sales->id;
@@ -171,16 +176,41 @@ class SalesController extends Controller
     }
 
 
-    public function add_walk_in_cuatomer(Request $request){
-            $customer = new CustomerModel();
-            $customer->name = $request->customer_name;
-            $customer->present_address = $request->customer_address;
-            $customer->personal_phone = $request->customer_phone;
-            $customer->type = 'wal in customer';
-            $customer->save();
+    public function add_walk_in_cuatomer(Request $request)
+    {
+        $customer = new CustomerModel();
+        $customer->name = $request->customer_name;
+        $customer->present_address = $request->customer_address;
+        $customer->personal_phone = $request->customer_phone;
+        $customer->type = 'wal in customer';
+        $customer->save();
 
 
-            return response()->json(['customer_id' => $customer->id,'customer_name' => $customer->name]);
+        return response()->json(['customer_id' => $customer->id, 'customer_name' => $customer->name]);
+    }
+
+    public function sales_due_payment(Request $request)
+    {
+        $sale = salesDepartmentModel::find($request->sale_id);
+        if ($request->amount > $sale->due) {
+            return response()->json(['error' => 'Your Payment amount must be less than or equal to Due amount']);
+        }
+        $sale->payment_amount += $request->amount;
+        $sale->due -= $request->amount;
+        $sale->update();
+        if ($sale->due == 0) {
+            $sale->status = 1;
+            $sale->update();
+        }
+
+        $sales_payemnt = new SalesPaymentModel();
+        $sales_payemnt->sales_id = $request->sale_id;
+        $sales_payemnt->customer_id = $sale->customer_id;
+        $sales_payemnt->amount = $request->amount;
+        $sales_payemnt->payment_mode = $request->payment_type;
+        $sales_payemnt->save();
+
+        return response()->json(['done' => 'success']);
     }
 
 

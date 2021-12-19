@@ -60,8 +60,13 @@ class DepartmentController extends Controller
                 })->addColumn('date', function ($data) {
                     return date("d-M-y h:i A", strtotime($data->created_at));
                 })->addColumn('action', function ($data) {
+                    if ($data->due > 0){
+                        $pay_button = ' <a href="javascript:void(0)" onclick="pay_due_bill(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >Pay bill</a>';
+                    }else{
+                        $pay_button = '';
+                    }
                     $actionBtn = '<a href="' . url('admin/sales/sales_department_invoice/' .
-                    $data->id) . '" class="edit btn btn-outline-warning btn-sm" target="_blank">Invoice</a>';
+                    $data->id) . '" class="edit btn btn-outline-warning btn-sm" target="_blank">Invoice</a>'. $pay_button;
                     return $actionBtn;
                 })->rawColumns(['customer','customer_type','sales_code', 'total', 'paid_amount','due','payment_status', 'date', 'action'])
                 ->make(true);
