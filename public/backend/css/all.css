@@ -4715,7 +4715,7 @@ input[type="submit"].btn-block {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 0.75rem 1.25rem;
+  padding: 0.2rem 0.25rem;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -4733,6 +4733,7 @@ input[type="submit"].btn-block {
 .list-group-item:hover {
   z-index: 1;
   text-decoration: none;
+  background: #6b279b82;
 }
 .list-group-item.disabled,
 .list-group-item:disabled {

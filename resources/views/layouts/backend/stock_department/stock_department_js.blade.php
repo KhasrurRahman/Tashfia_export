@@ -29,9 +29,6 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
                 {data: 'product', name: 'product', searchable: false},
                 {data: 'quantity', name: 'quantity', searchable: false},
-                {data: 'sales_rate', name: 'sales_rate'},
-                {data: 'total_sales_price', name: 'total_sales_price'},
-                {data: 'total_purchas_price', name: 'total_purchas_price'},
                 {data: 'date', name: 'date'},
                 {data: 'action', name: 'action', searchable: false},
             ],
@@ -108,9 +105,6 @@
             },
             error: function (response) {
                  $('#Error_status_purchase_id').text(response.responseJSON.errors.purchase_id);
-                $('#Error_sales_rate').text(response.responseJSON.errors.sales_rate);
-                $('#Error_total_sales_price').text(response.responseJSON.errors.total_sales_price);
-                $('#Error_total_purchas_price').text(response.responseJSON.errors.total_purchas_price);
                 $('#Error_quantity').text(response.responseJSON.errors.quantity);
             }
         });

@@ -1,0 +1,187 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\CustomerModel;
+use App\Models\lotDepartmentModel;
+use App\Models\ModelProduct;
+use App\Models\salesDepartmentModel;
+use App\Models\SalesPaymentModel;
+use App\SalesDetailsModel;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+
+class SalesController extends Controller
+{
+    public function create()
+    {
+        $customers = CustomerModel::where('type','general')->get();
+        return view('layouts.backend.sales_department.new_sale.create_sale', compact('customers'));
+    }
+
+
+    function sales_item_auto_complete(Request $request)
+    {
+        if ($request->get('query')) {
+            $query = $request->get('query');
+            $data = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('products.chalan_no', 'like', '%' . $query . '%')->orWhere('products.card_no', 'like', '%' . $query . '%')->select('products.chalan_no', 'stock.*')->get();
+            $output = '<ul class="list-group" style="display: block;position: relative;width: 100%;font-size: 17px;font-weight: bold;line-height: 25px;border: 1px solid;">';
+            foreach ($data as $row) {
+                $output .= '<li class="list-group-item"><a href="#" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . ' (QTY - '.$row->quantity .')</a></li>';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+
+    public function get_product_single_data($id)
+    {
+        $product = lotDepartmentModel::query()->join('purchase', 'purchase.id', '=', 'stock.purchase_id')->join('products', 'products.id', '=', 'purchase.product_id')->select('products.chalan_no', 'stock.*', 'purchase.unit_price', 'purchase.id as purchase_id')->where('stock.id', $id)->first();
+
+        return response()->json(['product' => $product]);
+    }
+
+
+    public function store_sales_department_data(Request $request)
+    {
+        $request->validate([
+            'customer_id' => 'required',
+            'grand_total' => 'required',
+            'stock_id' => 'required',
+            'per_quantity' => 'required',
+            'per_unit_price' => 'required',
+            'per_total_unit_price' => 'required',
+            'per_payment_type' => 'required',
+            'per_payment_amount' => 'required',
+        ]);
+        
+        $total_paied_amount  = array_sum($request->per_payment_amount);
+        if ($total_paied_amount > $request->grand_total)
+        {
+            return response()->json(['error' => 'Your Payment amount must be less than or equal to Grand total']);
+        }
+
+        for ($i = 0; $i < count($request->stock_id); $i++) {
+            $stock = lotDepartmentModel::find($request->stock_id[$i]);
+            $stock->quantity -= $request->per_quantity[$i];
+            $stock->update();
+        }
+
+        $sales = new salesDepartmentModel();
+        $sales->customer_id = $request->customer_id;
+        $sales->total_price = $request->grand_total;
+        $sales->payment_amount = $total_paied_amount;
+        $sales->due = $request->grand_total - $total_paied_amount;
+        $sales->sales_date = $request->sales_date;
+        $sales->reference = $request->reference_number;
+        $sales->sales_code = mt_rand();
+        if ($request->grand_total == $total_paied_amount) {
+            $sales->status = 1;
+        }
+        $sales->save();
+
+        for ($i = 0; $i < count($request->stock_id); $i++) {
+            $sales_details = new SalesDetailsModel();
+            $sales_details->customer_id = $request->customer_id;
+            $sales_details->stock_id = $request->stock_id[$i];
+            $sales_details->sales_id = $sales->id;
+            $sales_details->quantity = $request->per_quantity[$i];
+            $sales_details->unit_price = $request->per_unit_price[$i];
+            $sales_details->total_price = $request->per_total_unit_price[$i];
+            $sales_details->save();
+        }
+            
+        for ($i = 0; $i < count($request->stock_id); $i++) {
+            $sales_details = new SalesDetailsModel();
+            $sales_details->customer_id = $request->customer_id;
+            $sales_details->stock_id = $request->stock_id[$i];
+            $sales_details->sales_id = $sales->id;
+            $sales_details->quantity = $request->per_quantity[$i];
+            $sales_details->unit_price = $request->per_unit_price[$i];
+            $sales_details->total_price = $request->per_total_unit_price[$i];
+            $sales_details->save();
+        }
+             
+        for ($i = 0; $i < count($request->per_payment_amount); $i++) {
+            $sales_payemnt = new SalesPaymentModel();
+            $sales_payemnt->sales_id = $sales->id;
+            $sales_payemnt->customer_id = $request->customer_id;
+            $sales_payemnt->amount = $request->per_payment_amount[$i];
+            $sales_payemnt->payment_mode = $request->per_payment_type[$i];
+            $sales_payemnt->remark = $request->per_remarks[$i];
+            $sales_payemnt->save();
+        }
+
+
+        return response()->json(['done' => 'success']);
+    }
+
+    public function customer_payment_history_search(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = salesDepartmentModel::where('customer_id', $request->customer_id);
+            $query->orderBy('id', 'desc');
+            return Datatables::of($query)
+                ->setTotalRecords($query->count())
+                ->addIndexColumn()
+                ->addColumn('customer', function ($data) {
+                    return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="customer_details(' . $data->customer_id . ')">' . $data->customer->name . '</a>';
+                })->addColumn('date', function ($data) {
+                    return date("d-M-y h:i A", strtotime($data->created_at));
+                })->addColumn('total_unit_price', function ($data) {
+                    return $data->total_unit_price;
+                })->addColumn('quantity_of_sell', function ($data) {
+                    return $data->quantity_of_sell;
+                })->addColumn('due', function ($data) {
+                    return $data->due;
+                })->addColumn('payment_type', function ($data) {
+                    return $data->payment_type;
+                })->addColumn('action', function ($data) {
+                    $actionBtn = '<a href="javascript:void(0)" onclick="sales_details(' . $data->id . ')" class="edit btn btn-outline-info btn-sm" >Invoice Details</a>';
+                    return $actionBtn;
+                })->rawColumns(['customer', 'date', 'total_unit_price', 'quantity_of_sell', 'due', 'payment_type', 'action'])
+                ->make(true);
+        }
+    }
+
+
+    public function sales_details_invoice($id)
+    {
+        $sale = salesDepartmentModel::find($id)->sales_details;
+
+        $output = '<table>
+                   <tr>
+                    <th>Product Name</th>
+                    <th>Product Unit Price (Tk)</th>
+                    <th>Given Unit Price (Tk)</th>
+                    <th>quantity of sell (Kg)</th>
+                    <th>Total Price</th>
+                   </tr>';
+        foreach ($sale as $data) {
+            $output .= '<tr>
+         <td>' . $data->stock->purchase->product->chalan_no . '</td>
+         <td>' . $data->stock->purchase->unit_price . '</td>
+         <td>' . $data->unit_price . '</td>
+         <td>' . $data->quantity . '</td>
+         <td>' . $data->total_price . '</td>
+    </tr>';
+        }
+        return $output;
+    }
+
+
+    public function add_walk_in_cuatomer(Request $request){
+            $customer = new CustomerModel();
+            $customer->name = $request->customer_name;
+            $customer->present_address = $request->customer_address;
+            $customer->personal_phone = $request->customer_phone;
+            $customer->type = 'wal in customer';
+            $customer->save();
+
+
+            return response()->json(['customer_id' => $customer->id,'customer_name' => $customer->name]);
+    }
+
+
+}

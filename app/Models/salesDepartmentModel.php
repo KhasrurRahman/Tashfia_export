@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\SalesDetailsModel;
 use Illuminate\Database\Eloquent\Model;
 
 class salesDepartmentModel extends Model
@@ -19,5 +20,10 @@ class salesDepartmentModel extends Model
     public function customer()
     {
         return $this->belongsTo(CustomerModel::class,'customer_id');
+    }
+    
+    public function sales_details()
+    {
+        return $this->hasMany(SalesDetailsModel::class,'sales_id');
     }
 }

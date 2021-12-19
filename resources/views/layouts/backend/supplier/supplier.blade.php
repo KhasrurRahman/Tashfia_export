@@ -19,11 +19,14 @@
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Phone</th>
+                    <th>Per Name</th>
+                    <th>per Phone</th>
                     <th>Address</th>
                     <th>Email</th>
+                    <th>Photo</th>
                     <th>Company name</th>
+                    <th>Company Add</th>
+                    <th>Company contact no</th>
                     <th>Balance</th>
                     <th>Action</th>
                 </tr>

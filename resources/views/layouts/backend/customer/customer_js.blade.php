@@ -28,10 +28,11 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
                 {data: 'name', name: 'name'},
-                {data: 'phone', name: 'phone'},
-                {data: 'address', name: 'address'},
+                {data: 'company', name: 'company'},
+                {data: 'personal_phone', name: 'personal_phone'},
+                {data: 'present_address', name: 'present_address'},
                 {data: 'email', name: 'email'},
-                {data: 'company_name', name: 'company_name'},
+                {data: 'photo', name: 'photo'},
                 {data: 'balance', name: 'balance'},
                 {data: 'action', name: 'action', searchable: false},
             ],
@@ -49,7 +50,10 @@
         $.ajax({
             url: "{{url('admin/customer/store')}}",
             type: "POST",
-            data: $("form").serializeArray(),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: $(this).serializeArray(),
             success: function (response) {
                 if (response) {
                     console.log(response)

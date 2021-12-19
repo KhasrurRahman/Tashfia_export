@@ -31,42 +31,41 @@ class DepartmentController extends Controller
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
-                ->addColumn('stock', function ($data) {
-                    return $data->stock->purchase->product->chalan_no;
-                })->addColumn('customer', function ($data) {
+                ->addColumn('customer', function ($data) {
                     return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="customer_details(' . $data->customer_id . ')">'.$data->customer->name.'</a>';
-                })->addColumn('product', function ($data) {
-                    return '<a href="javascript:void(0)" onclick="view_modal(' . $data->stock->purchase->product_id . ')" class="edit btn btn-success btn-sm" >View Product</a>';
+                })->addColumn('sales_code', function ($data) {
+                    return $data->sales_code;
+                })->addColumn('total', function ($data) {
+                    return $data->total_price;
+                })->addColumn('paid_amount', function ($data) {
+                    return $data->payment_amount;
+                })->addColumn('due', function ($data) {
+                    return $data->due;
+                })->addColumn('payment_status', function ($data) {
+                    $status = '';
+                    if ($data->status == 1) {
+                        $status = '<span class="right badge badge-info">Paid</span>';
+                    } elseif ($data->status == 0) {
+                        $status = '<span class="right badge badge-warning">Unpaid</span>';
+                    }
+                    return $status;
+                })->addColumn('customer_type', function ($data) {
+                    $status = '';
+                    if ($data->customer->type == 'general') {
+                        $status = '<span class="right badge badge-success">Regular</span>';
+                    } else {
+                        $status = '<span class="right badge badge-info">Walk in</span>';
+                    }
+                    return $status;
                 })->addColumn('date', function ($data) {
-                    return date("d-M-y h:i A", strtotime($data->date));
-                })->addColumn('unit_price', function ($data) {
-                    return $data->unit_price;
-                })->addColumn('quantity_of_sell', function ($data) {
-                    return $data->quantity_of_sell;
+                    return date("d-M-y h:i A", strtotime($data->created_at));
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onclick="edit_info(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >Edit</a> <a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a><a href="javascript:void(0)" onclick="print_invoice(' . $data->id . ')" class="edit btn btn-outline-warning btn-sm" >Invoice</a>';
+                    $actionBtn = '<a href="' . url('admin/sales/sales_department_invoice/' .
+                    $data->id) . '" class="edit btn btn-outline-warning btn-sm" target="_blank">Invoice</a>';
                     return $actionBtn;
-                })->rawColumns(['stock','customer','product', 'date', 'unit_price','quantity_of_sell', 'action'])
+                })->rawColumns(['customer','customer_type','sales_code', 'total', 'paid_amount','due','payment_status', 'date', 'action'])
                 ->make(true);
         }
-    }
-    
-    public function store_sales_department_data(Request $request)
-    {
-        $request->validate([
-            'stock_id' => 'required',
-            'customer_id' => 'required',
-            'quantity_of_sell' => 'required',
-            'unit_price' => 'required',
-        ]);
-        
-        $stock = lotDepartmentModel::find($request->stock_id);
-        $stock->quantity -= $request->quantity_of_sell;
-        $stock->update();
-        
-        $request->request->add(['created_by' => Auth::user()->id,'order_no' => mt_rand()]);
-        salesDepartmentModel::create($request->all());
-        return response()->json(['Done' => 'Done']);
     }
     
     public function delete_sales_department_data($id)
@@ -91,24 +90,6 @@ $product_loop = '';
         return $output;
     }
     
-    public function update_sales_department_data(Request $request)
-    {
-        $request->validate([
-            'date' => 'required',
-            'buyer' => 'required',
-            'quantity' => 'required',
-            'roll' => 'required',
-            'lot' => 'required',
-            'sell' => 'required',
-            'balance' => 'required',
-            'product_id' => 'required',
-        ]); 
-        $request->request->add(['created_by' => Auth::user()->id]);
-        salesDepartmentModel::find($request->edit_id)->update($request->all());
-        return response()->json(['Done' => 'Done']);
-    }
-    
-    
     
     public function show_lot_department()
     {
@@ -125,21 +106,15 @@ $product_loop = '';
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('product', function ($data) {
-                    return '<a href="javascript:void(0)" onclick="view_modal(' . $data->purchase->product_id . ')" class="edit btn btn-success btn-sm" >View Product</a>';
+                    return '<a href="javascript:void(0)" onclick="view_modal(' . $data->purchase->product_id . ')" class="edit btn btn-success btn-sm" >'.$data->purchase->product->chalan_no.'</a>';
                 })->addColumn('date', function ($data) {
                     return date("d-M-y h:i A", strtotime($data->created_at));
                 })->addColumn('quantity', function ($data) {
                     return $data->quantity;
-                })->addColumn('sales_rate', function ($data) {
-                    return $data->sales_rate;
-                })->addColumn('total_sales_price', function ($data) {
-                    return $data->total_sales_price;
-                })->addColumn('total_purchas_price', function ($data) {
-                    return $data->total_purchas_price;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onclick="edit_info(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >Edit</a> <a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a>';
                     return $actionBtn;
-                })->rawColumns(['product','date', 'quantity', 'sales_rate', 'total_sales_price', 'total_purchas_price', 'action'])
+                })->rawColumns(['product','date', 'quantity', 'action'])
                 ->make(true);
         }
     }
@@ -148,9 +123,6 @@ $product_loop = '';
     {
         $request->validate([
             'purchase_id' => 'required',
-            'sales_rate' => 'required',
-            'total_sales_price' => 'required',
-            'total_purchas_price' => 'required',
             'quantity' => 'required',
         ]);
         
@@ -207,8 +179,7 @@ $product_loop = '';
     
     public function sales_department_invoice($id)
     {
-        $product = salesDepartmentModel::find($id);
-        $pdf = PDF::loadView('layouts.backend.sales_department.invoice', compact('product'));
-        return $pdf->download('invoice.pdf');
+        $sales = salesDepartmentModel::find($id);
+        return view('layouts.backend.sales_department.invoice',compact('sales'));
     }
 }

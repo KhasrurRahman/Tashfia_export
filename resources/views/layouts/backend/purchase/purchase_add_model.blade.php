@@ -38,19 +38,19 @@
 
                     <div class="form-group">
                         <label for="Route_name">Quantity</label>
-                        <input type="text" class="form-control" name="quantity">
+                        <input type="number" class="form-control" name="quantity" onkeyup="total_price()" id="quantity">
                         <span id="Error_status_quantity" class="text-red error_field"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Unit Price</label>
-                        <input type="text" class="form-control" name="unit_price">
+                        <input type="number" class="form-control" name="unit_price" id="unit_price" onkeyup="total_price()">
                         <span id="Error_status_unit_price" class="text-red error_field"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Total Purchase Price</label>
-                        <input type="text" class="form-control" name="total_purchas_price">
+                        <input type="number" class="form-control " name="total_purchas_price" id="total_purchas_price" readonly>
                         <span id="Error_status_total_purchas_price" class="text-red error_field"></span>
                     </div>
                     

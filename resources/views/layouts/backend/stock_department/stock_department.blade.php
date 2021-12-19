@@ -24,9 +24,6 @@
                     <th>Id</th>
                     <th>Product</th>
                     <th>Quantity</th>
-                    <th>Sales Rate</th>
-                    <th>Total Sales Price</th>
-                    <th>Total Unit Price</th>
                     <th>Date</th>
                     <th>Action</th>
                 </tr>

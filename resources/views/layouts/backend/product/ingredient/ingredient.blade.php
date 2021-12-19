@@ -21,7 +21,6 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Quantity</th>
-                    <th>status</th>
                     <th>Action</th>
                 </tr>
                 </thead>

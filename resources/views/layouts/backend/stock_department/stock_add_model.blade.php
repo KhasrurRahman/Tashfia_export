@@ -50,25 +50,7 @@
                         <input type="text" class="form-control" id="create_total_purchas_price" readonly>
                     </div>
 
-                    
-
-                    <div class="form-group">
-                        <label for="Route_name">Sales Unite Price</label>
-                        <input type="number" class="form-control" name="sales_rate">
-                        <span id="Error_sales_rate" class="text-red error_field"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="Route_name">Purchase Unit Rate</label>
-                        <input type="number" class="form-control" name="total_sales_price">
-                        <span id="Error_total_sales_price" class="text-red error_field"></span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="Route_name">Purchase Unit Rate</label>
-                        <input type="number" class="form-control" name="total_purchas_price">
-                        <span id="Error_total_purchas_price" class="text-red error_field"></span>
-                    </div>
+                
 
                     <div class="form-group">
                         <label for="Route_name">quantity</label>

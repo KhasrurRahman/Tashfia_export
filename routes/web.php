@@ -16,7 +16,13 @@ Route::get('/clear_cache', function () {
 
 Route::get('php_v', function () {print_r(PDO::getAvailableDrivers());});
 Route::get('paf_generate/{id}', 'HomeController2@paf_generate')->name('paf_generate');
+Route::get('invoice/{id}', 'HomeController2@invoice')->name('invoice');
 Route::get('bar_code', 'HomeController2@bar_code')->name('bar_code');
+
+//ajax route
+Route::post('sales_item_auto_complete', 'Admin\SalesController@sales_item_auto_complete')->name('sales_item_auto_complete');
+Route::get('get_product_single_data/{id}', 'Admin\SalesController@get_product_single_data')->name('get_product_single_data');
+
 
 Auth::routes();
 

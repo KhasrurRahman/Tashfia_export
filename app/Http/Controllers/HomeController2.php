@@ -23,4 +23,9 @@ class HomeController2 extends Controller
         return $pdf->download('product.pdf');
     }
     
+    public function invoice()
+    {
+        return view('layouts.backend.stock_department.invoice');
+    }
+    
 }

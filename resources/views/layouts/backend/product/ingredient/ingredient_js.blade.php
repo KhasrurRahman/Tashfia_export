@@ -29,7 +29,6 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
                 {data: 'name', name: 'name'},
                 {data: 'quantity', name: 'quantity'},
-                {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });

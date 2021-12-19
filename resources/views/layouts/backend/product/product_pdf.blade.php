@@ -25,6 +25,12 @@
         background-color: #4CAF50;
         color: white;
     }
+    .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
 </style>
 <div class="row">
     <div class="col-md-12">
@@ -34,79 +40,17 @@
                     <div class="active tab-pane">
                         <div class="card" id="printMe">
                             <div class="card-header">
-                                <h3 class="card-title" style="text-align: center">Product Full Details</h3>
+                                <h3 class="card-title" style="text-align: center">Product Bar code</h3>
                             </div>
                             <div class="card-body">
-                                <div class="box">
-                                    <div class="box-body no-padding">
-                                        <div class="logo-img">
-                                            <img src="{{ asset('backend/img/tas_logo.png')}}" style="width: 170px;margin-left: 38%">
-                                        </div>
-                                        <table class="table table-condensed" width="100%" id="customers">
-                                            <tbody>
-                                            <tr>
-                                                <td>#.</td>
-                                                <td>Batch Number :</td>
-                                                <td><span class="badge bg-red">{{$product->chalan_no}}</span></td>
-
-                                                <td>#.</td>
-                                                <td>Lot Number :</td>
-                                                <td><span class="badge bg-red">{{$product->lot_no}}</span></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>#.</td>
-                                                <td>Customer:</td>
-                                                <td><span class="badge bg-red">{{$product->party_name}}</span></td>
-
-                                                <td>#.</td>
-                                                <td>Color:</td>
-                                                <td><span class="badge bg-red">{{$product->color_name}}</span>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>#.</td>
-                                                <td>Gsm:</td>
-                                                <td><span
-                                                            class="badge bg-red">{{$product->ggsm}}</span>
-                                                </td>
-
-                                                <td>#.</td>
-                                                <td>Card No :</td>
-                                                <td><span class="badge bg-red">{{$product->card_no}}</span></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>#.</td>
-                                                <td>Y. Count:</td>
-                                                <td><span
-                                                            class="badge bg-red">{{$product->yarn_count}}</span>
-                                                </td>
-
-                                                <td>#.</td>
-                                                <td>Y. Lot:</td>
-                                                <td><span
-                                                            class="badge bg-red">{{$product->yarn_lot_no}}</span>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>#.</td>
-                                                <td>s/L:</td>
-                                                <td><span class="badge bg-red">{{$product->sl_no}}</span>
-                                                </td>
-
-                                                <td>#.</td>
-                                                <td>Order No:</td>
-                                                <td><span class="badge bg-red">{{$product->order_no}}</span></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div style="padding: 10px;width: 500px;margin: 0 auto" class="center">{!! DNS1D::getBarcodeHTML($product->card_no, 'CODABAR') !!}  <div>{{$product->card_no}}</div>  </div>
+                                        <div style="padding: 10px;width: 500px;margin: 0 auto" class="center">{!! DNS1D::getBarcodeHTML($product->card_no, 'CODABAR') !!}  <span>{{$product->card_no}}</span> </div>
+                                        <div style="padding: 10px;width: 500px;margin: 0 auto" class="center">{!! DNS1D::getBarcodeHTML($product->card_no, 'CODABAR') !!}  <span>{{$product->card_no}}</span> </div>
+                                        <div style="padding: 10px;width: 500px;margin: 0 auto" class="center">{!! DNS1D::getBarcodeHTML($product->card_no, 'CODABAR') !!}  <span>{{$product->card_no}}</span> </div>
                                     </div>
                                 </div>
-                                <br>
-                                <div style="text-align: center; margin-left: 30%">{!! DNS1D::getBarcodeHTML($product->card_no, 'CODABAR') !!}</div>
                             </div>
                         </div>
                     </div>

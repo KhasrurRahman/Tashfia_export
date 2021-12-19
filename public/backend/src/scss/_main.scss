@@ -500,8 +500,8 @@ p {
 										    display: none;
 										}
 										&.active {
-											color: #ffffff;
-											background: #2dce89;
+											color: #eb525d;
+											font-weight: bold;
 										}
 									}
 									.nav-item {
@@ -653,10 +653,8 @@ p {
 			    		margin-bottom: 0;
 			    		font-weight: 700;
 			    		font-size: 18px;
-						padding-top: 10px;
 			    		&+span {
 			    			font-size: 13px;
-							padding-top: 10px;
 			    		}
 			    	}
 			    }

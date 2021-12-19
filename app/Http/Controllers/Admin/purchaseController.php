@@ -14,7 +14,7 @@ class purchaseController extends Controller
 {
     public function index()
     {
-        $products = ModelProduct::where('quantity','>',0)->get();
+        $products = ModelProduct::get();
         $supplier = supplierModel::all();
         return view('layouts.backend.purchase.purchase',compact('products','supplier'));
     }
@@ -29,7 +29,7 @@ class purchaseController extends Controller
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('product', function ($data) {
-                    return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="view_product(' . $data->product_id . ')">View Product</a>';
+                    return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="view_product(' . $data->product_id . ')">'.$data->product->chalan_no.'</a>';
                 })->addColumn('supplier', function ($data) {
                     return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="supplier_details(' . $data->supplier_id . ')">'.$data->supplier->name.'</a>';
                 })->addColumn('Quantity', function ($data) {
@@ -39,7 +39,7 @@ class purchaseController extends Controller
                 })->addColumn('total_purchas_price', function ($data) {
                     return $data->total_purchas_price;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/customer/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" target="null">Edit</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
                     return $actionBtn;
                 })->rawColumns(['product','supplier','Quantity','unit_price','total_purchas_price','action'])
                 ->make(true);

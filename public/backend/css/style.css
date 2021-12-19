@@ -256,7 +256,7 @@
   display: block;
 }
 .wrapper .page-wrap .app-sidebar .sidebar-content .nav-container .navigation-main .nav-item.has-sub .submenu-content .menu-item:after {
-    content: '--';
+    content: '+';
     position: absolute;
     left: 29px;
 }
@@ -272,14 +272,4 @@
   .pricing .card:hover .btn {
     opacity: 1;
   }
-}
-
-.wrapper .page-wrap .app-sidebar .sidebar-content .nav-container .navigation-main .nav-item.active{
-    background: #2dce89;
-}
-.wrapper .page-wrap .main-content .page-header .page-header-title h5{
-    margin-bottom: 0;
-    font-weight: 700;
-    font-size: 18px;
-    padding-top: 10px;
 }

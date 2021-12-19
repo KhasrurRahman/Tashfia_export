@@ -12,19 +12,20 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
-            <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add @yield('title')</a>
         </div>
         <div class="card-body">
             <table class="table yajra-datatable">
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>stock</th>
                     <th>Customer</th>
-                    <th>Product</th>
+                    <th>Customer Type</th>
+                    <th>Sales Code</th>
+                    <th>Total</th>
+                    <th>Paied Amount</th>
+                    <th>Due</th>
+                    <th>Payment Status</th>
                     <th>Date</th>
-                    <th>Unit Price</th>
-                    <th>Quantity of sale</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -34,8 +35,6 @@
         </div>
     </div>
     
-    @include('layouts.backend.sales_department.sales_add_model')
-    @include('layouts.backend.sales_department.sales_edit_model')
     @include('layouts.backend.product.view_model')
     @include('layouts.backend.sales_department.customer_details_modal')
 @endsection

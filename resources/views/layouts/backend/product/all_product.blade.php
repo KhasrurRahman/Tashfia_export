@@ -21,7 +21,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Product Type</th>
-                    <th>Bill no</th>
+                    <th>Chalan no</th>  
                     <th>Party Name</th>
                     <th>Color Name</th>
                     <th>S/L No</th>

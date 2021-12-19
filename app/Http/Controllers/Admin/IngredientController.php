@@ -28,18 +28,10 @@ class IngredientController extends Controller
                     return $data->name;
                 })->addColumn('quantity', function ($data) {
                     return $data->quantity;
-                })->addColumn('status', function ($data) {
-                    $status = '';
-                    if ($data->status == 1) {
-                        $status = '<span class="right badge badge-info">Active</span>';
-                    } elseif ($data->status == 0) {
-                        $status = '<span class="right badge badge-warning">Suspended</span>';
-                    }
-                    return $status;
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
                     return $actionBtn;
-                })->rawColumns(['name', 'quantity', 'status', 'action'])
+                })->rawColumns(['name', 'quantity','action'])
                 ->make(true);
         }
     }

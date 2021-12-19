@@ -26,21 +26,21 @@ class ProductController extends Controller
         $request->validate([
             'product_category_id' => 'required',
             'chalan_no' => 'required',
-            'party_name' => 'required',
-            'color_name' => 'required',
-            'open_tube' => 'required',
-            'sl_no' => 'required',
-            'ggsm' => 'required',
-            'yarn_count' => 'required',
-            'yarn_lot_no' => 'required',
-            'fb_rv_date' => 'required',
-            'batch_process_date' => 'required',
-            'lot_no' => 'required',
-            'batch_no' => 'required',
-            'order_no' => 'required',
-            'style_no' => 'required',
-            'finish_gsm' => 'required',
-            'fabric_type' => 'required',
+//            'party_name' => 'required',
+//            'color_name' => 'required',
+//            'open_tube' => 'required',
+//            'sl_no' => 'required',
+//            'ggsm' => 'required',
+//            'yarn_count' => 'required',
+//            'yarn_lot_no' => 'required',
+//            'fb_rv_date' => 'required',
+//            'batch_process_date' => 'required',
+//            'lot_no' => 'required',
+//            'batch_no' => 'required',
+//            'order_no' => 'required',
+//            'style_no' => 'required',
+//            'finish_gsm' => 'required',
+//            'fabric_type' => 'required',
         ]);
 
         if ($request->product_category_id == 2) {
@@ -56,7 +56,7 @@ class ProductController extends Controller
 
         if ($request->product_category_id == 2) {
             for ($i = 0; $i < count($request->ingredient_id); $i++) {
-                $ingreadient = IngredientModel::find($request->ingredient_id);
+                $ingreadient = IngredientModel::find($request->ingredient_id[$i]);
                 $ingreadient->quantity -= $request->quantity[$i];
                 $ingreadient->update();
 

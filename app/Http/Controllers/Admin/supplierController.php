@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\supplierModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Yajra\DataTables\Facades\DataTables;
 
 class supplierController extends Controller
@@ -20,42 +23,60 @@ class supplierController extends Controller
         if ($request->ajax()) {
             $query = supplierModel::query();
 
-            $query->orderBy('created_at', 'ASC');
+            $query->orderBy('created_at', 'DESC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('name', function ($data) {
                     return $data->name;
-                })->addColumn('phone', function ($data) {
-                    return $data->phone;
-                })->addColumn('address', function ($data) {
-                    return $data->address;
+                })->addColumn('personal_phone', function ($data) {
+                    return $data->personal_phone;
+                })->addColumn('present_address', function ($data) {
+                    return $data->present_address;
                 })->addColumn('email', function ($data) {
                     return $data->email;
                 })->addColumn('balance', function ($data) {
                     return $data->balance;
                 })->addColumn('company_name', function ($data) {
                     return $data->company_name;
+                })->addColumn('company_address', function ($data) {
+                    return $data->company_address;
+                })->addColumn('company_contact_no', function ($data) {
+                    return $data->company_contact_no;
+                })->addColumn('photo', function ($data) {
+                    $img = '<img src="'.asset('upload/supplier_image/'.$data->photo).'" style="height:100px">';
+                    return $img;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> ';
                     return $actionBtn;
-                })->rawColumns(['name', 'phone', 'address', 'email', 'company_name', 'balance', 'action'])
+                })->rawColumns(['name', 'personal_phone', 'present_address', 'email', 'balance', 'company_name', 'company_address', 'company_contact_no','photo','action'])
                 ->make(true);
         }
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-        ]);
+        
+        $image = $request->file('customer_photo'); 
+ 
+        if (isset($image)) {
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
 
-        $request->request->add(['created_by' => Auth::user()->id]);
+            if (!Storage::disk('public')->exists('customer_image')) {
+                Storage::disk('public')->makeDirectory('customer_image');
+            }
+
+            $moveImage = Image::make($image)->resize(600, 600)->stream();
+            Storage::disk('public')->put('supplier_image/' . $imageName, $moveImage);
+
+        } else {
+            $imageName = "";
+        }
+        
+        $request->request->add(['created_by' => Auth::user()->id,'photo'=>$imageName]);
         supplierModel::create($request->all());
-        return response()->json(['Done' => 'Done']);
+        return redirect()->back();
     }
 
     public function delete($id)

@@ -1,6 +1,19 @@
 @extends('layouts.backend.partial.app')
 @section('title','Purchase')
 @push('css')
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+    </style>
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
 @endpush
@@ -39,12 +52,7 @@
     @include('layouts.backend.supplier.supplier_details_model')
 @endsection
 @push('js')
-     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            $('.select2').select2();
-        });
-    </script>
+    <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/js/datatables.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>

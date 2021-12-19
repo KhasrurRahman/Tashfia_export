@@ -1,4 +1,3 @@
-
 <script>
     $(document).ready(function () {
         $('.select2').select2();
@@ -20,7 +19,7 @@
                 $('#total_data').html(api.ajax.json().recordsTotal);
             },
             ajax: {
-                url: "{{ url('admin/Department/get_sales_department_data') }}",
+                url: "{{ url('admin/sales/get_sales_department_data') }}",
                 type: 'POSt',
                 data: function (d) {
                     d._token = '{{csrf_token()}}'
@@ -28,12 +27,14 @@
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
-                {data: 'stock', name: 'stock', searchable: false},
                 {data: 'customer', name: 'customer', searchable: false},
-                {data: 'product', name: 'product'},
+                {data: 'customer_type', name: 'customer_type', searchable: false},
+                {data: 'sales_code', name: 'sales_code'},
+                {data: 'total', name: 'total'},
+                {data: 'paid_amount', name: 'paid_amount'},
+                {data: 'due', name: 'due'},
+                {data: 'payment_status', name: 'payment_status'},
                 {data: 'date', name: 'date'},
-                {data: 'unit_price', name: 'unit_price'},
-                {data: 'quantity_of_sell', name: 'quantity_of_sell'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });
@@ -63,7 +64,7 @@
                 event.preventDefault();
                 $.ajax({
                     type: 'get',
-                    url: '{{url('admin/Department/delete_sales_department_data')}}/' + id,
+                    url: '{{url('admin/sales/delete_sales_department_data')}}/' + id,
                     success: function (response) {
                         if (response) {
                             if (response.permission == false) {
@@ -92,7 +93,7 @@
     $('#save_info').on('submit', function (event) {
         event.preventDefault();
         $.ajax({
-            url: "{{url('admin/Department/store_sales_department_data')}}",
+            url: "{{url('admin/sales/store_sales_department_data')}}",
             type: "POST",
             data: $("form").serializeArray(),
             success: function (response) {
@@ -186,9 +187,9 @@
             }
         });
     }
-    
-    
-        $(function () {
+
+
+    $(function () {
         $('#stock_id').on('change', function () {
             var stock_id = $(this).val();
             $.ajax({
@@ -198,14 +199,14 @@
                     $('#stock_quantity').val(data.quantity);
                     $('#stock_sales_rate').val(data.sales_rate);
                     $('#stock_total_sales_rate').val(data.total_sales_price);
-                    
+
                 }
             });
         });
 
     });
-    
-        function customer_details(id) {
+
+    function customer_details(id) {
         $.ajax({
             url: "{{url('admin/customer/show')}}/" + id,
             type: "GET",
@@ -219,10 +220,9 @@
             }
         });
     }
-    
-    function print_invoice($id)
-    {
-         window.location.href = "{{url('admin/sales/sales_department_invoice')}}/" + $id;
+
+    function print_invoice($id) {
+        window.location.href = "{{url('admin/sales/sales_department_invoice')}}/" + $id;
     }
 
 </script>

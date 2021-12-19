@@ -184,8 +184,8 @@
         });
 
     });
-    
-    
+
+
     function view_product(id) {
         $.ajax({
             url: "{{url('admin/product/view')}}/" + id,
@@ -208,9 +208,8 @@
             }
         });
     }
-    
-    
-    
+
+
     function supplier_details(id) {
         $.ajax({
             url: "{{url('admin/supplier/show')}}/" + id,
@@ -225,6 +224,23 @@
             }
         });
     }
+
+
+    // $('.quantity, .unit_price').keyup(function () {
+    //     console.log('asdasd');
+    //     // $(".total_purchas_price").val($(".unit_price").val() * $(".quantity").val())
+    // });
+    
+    function total_price()
+    {
+        quantity = $("#quantity").val();
+        console.log(quantity)
+        $("#total_purchas_price").val($("#unit_price").val() * $("#quantity").val())
+    }
+
+    $(".quantity").on("keyup", function (event) {
+        console.log("asd");
+    });
 
 
 </script>
