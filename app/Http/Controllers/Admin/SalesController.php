@@ -118,7 +118,12 @@ class SalesController extends Controller
             $sales_payemnt->save();
         }
 
-
+        $total_due_amount = $total_paied_amount - $request->grand_total;
+        if ($total_due_amount < 0) {
+            $customer = CustomerModel::find($request->customer_id);
+            $customer->balance += $total_due_amount;
+            $customer->update();
+        }
         return response()->json(['done' => 'success']);
     }
 
@@ -155,7 +160,7 @@ class SalesController extends Controller
     {
         $sale = salesDepartmentModel::find($id)->sales_details;
 
-        $output = '<table>
+        $output = '<table border="1" width="100%">
                    <tr>
                     <th>Product Name</th>
                     <th>Product Unit Price (Tk)</th>
@@ -209,9 +214,32 @@ class SalesController extends Controller
         $sales_payemnt->amount = $request->amount;
         $sales_payemnt->payment_mode = $request->payment_type;
         $sales_payemnt->save();
+        
+        $customer = CustomerModel::find($sale->customer_id);
+        $customer->balance +=  $request->amount;
+        $customer->update();
 
         return response()->json(['done' => 'success']);
     }
 
+    public function invoice_payment_history($id)
+    {
+        $payments = salesDepartmentModel::find($id)->sales_payments;
+
+        $output = '<table border="1" width="100%">
+                   <tr>
+                    <th>Payment Date</th>
+                    <th>Payment mode</th>
+                    <th>Amount (Tk)</th>
+                   </tr>';
+        foreach ($payments as $data) {
+            $output .= '<tr>
+         <td>' . date("d-M-y h:i A", strtotime($data->created_at)) . '</td>
+         <td>' . $data->payment_mode . '</td>
+         <td>' . $data->amount . '</td>
+    </tr>';
+        }
+        return $output;
+    }
 
 }

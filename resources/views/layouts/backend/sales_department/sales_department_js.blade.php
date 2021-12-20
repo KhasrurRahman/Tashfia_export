@@ -1,8 +1,5 @@
 <script>
-    $(document).ready(function () {
-        $('.select2').select2();
-    });
-
+    $('.select2').select2();
     $(function () {
         var table = $('.yajra-datatable').DataTable({
             "order": [[1, 'desc']],
@@ -22,6 +19,11 @@
                 url: "{{ url('admin/sales/get_sales_department_data') }}",
                 type: 'POSt',
                 data: function (d) {
+                    d.search_customer_id = $('#search_customer_id').val();
+                    d.search_company_id = $('#search_company_id').val();
+                    d.search_payment_status = $('#search_payment_status').val();
+                    d.from_date = $('#from_date').val();
+                    d.to_date = $('#to_date').val();
                     d._token = '{{csrf_token()}}'
                 }
             },
@@ -43,6 +45,11 @@
             table.draw(true);
         });
     });
+    
+    function form_reset() {
+        document.getElementById("search_form").reset();
+        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+    }
 
 
     function delete_data(id) {
@@ -252,5 +259,36 @@
             }
         });
     })
+
+
+    function sales_details(id) {
+        $.ajax({
+            url: "{{url('admin/sales/sales_details_invoice')}}/" + id,
+            type: "GET",
+            success: function (data) {
+                $('#sales_details_model_content').html('');
+                $('#sales_details_model_content').append(data);
+                $('#sales_details').modal('show');
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        });
+    }
+
+    function invoice_payment_history(id) {
+        $.ajax({
+            url: "{{url('admin/sales/invoice_payment_history')}}/" + id,
+            type: "GET",
+            success: function (data) {
+                $('#invoice_payments_model_content').html('');
+                $('#invoice_payments_model_content').append(data);
+                $('#invoice_payments_details').modal('show');
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        });
+    }
 
 </script>

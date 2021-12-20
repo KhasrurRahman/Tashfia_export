@@ -26,4 +26,9 @@ class salesDepartmentModel extends Model
     {
         return $this->hasMany(SalesDetailsModel::class,'sales_id');
     }
+    
+    public function sales_payments()
+    {
+        return $this->hasMany(SalesPaymentModel::class,'sales_id');
+    }
 }

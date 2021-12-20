@@ -13,6 +13,9 @@
     <div class="sidebar-content sidebar_background">
         <div class="nav-container">
             <nav id="main-menu-navigation" class="navigation-main">
+                <div class="nav-item {{Request::is('*/adminDashboard')?'active': ''}}">
+                    <a href="{{route('admin.adminDashboard')}}"><i class="ik ik-home"></i><span>Dashboard</span></a>
+                </div>
                 @php
                     $segment = request()->segment(3)?request()->segment(2).'/'.request()->segment(3):request()->segment(2);
                 @endphp

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\CompanyModel;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerModel;
+use App\Models\SalesPaymentModel;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +57,7 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'company_id' => 'required',
         ]);
 
         $image = $request->file('customer_photo');
@@ -143,6 +146,30 @@ class CustomerController extends Controller
     public function view($id)
     {
         $customer = CustomerModel::find($id);
-        return view('layouts.backend.customer.customer_profile',compact('customer'));
+        return view('layouts.backend.customer.customer_profile', compact('customer'));
     }
+
+    public function manual_due_payment(Request $request)
+    {
+        $customer = CustomerModel::find($request->customer_id);
+        if ($request->amount < $customer->due) {
+            Toastr::error('Your Payment amount must be less than or equal to Due amount', '');
+            return redirect()->back();
+        }
+
+        $sales_payemnt = new SalesPaymentModel();
+        $sales_payemnt->customer_id = $request->customer_id;
+        $sales_payemnt->amount = $request->amount;
+        $sales_payemnt->payment_mode = $request->payment_type;
+        $sales_payemnt->remark = $request->remark;
+        $sales_payemnt->save();
+
+        $customer->balance += $request->amount;
+        $customer->update();
+
+        Toastr::success('Payment Updated', '');
+        return redirect()->back();
+    }
+
+
 }

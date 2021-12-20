@@ -22,6 +22,11 @@
                 url: "{{ url('admin/purchase/search') }}",
                 type: 'POSt',
                 data: function (d) {
+                    d.search_supplier_id = $('#search_supplier_id').val();
+                    d.search_company_id = $('#search_company_id').val();
+                    d.product_name = $('#product_name').val();
+                    d.from_date = $('#from_date').val();
+                    d.to_date = $('#to_date').val();
                     d._token = '{{csrf_token()}}'
                 }
             },
@@ -40,6 +45,11 @@
             table.draw(true);
         });
     });
+
+    function form_reset() {
+        document.getElementById("search_form").reset();
+        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+    }
 
 
     function delete_data(id) {
@@ -230,9 +240,8 @@
     //     console.log('asdasd');
     //     // $(".total_purchas_price").val($(".unit_price").val() * $(".quantity").val())
     // });
-    
-    function total_price()
-    {
+
+    function total_price() {
         quantity = $("#quantity").val();
         console.log(quantity)
         $("#total_purchas_price").val($("#unit_price").val() * $("#quantity").val())

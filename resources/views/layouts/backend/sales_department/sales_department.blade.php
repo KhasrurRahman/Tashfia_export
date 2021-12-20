@@ -11,9 +11,13 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
+            @include('layouts.backend.sales_department.sales_search')
         </div>
         <div class="card-body">
+            <div style="overflow: hidden">
+                <h3 class="card-title float-left">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
+                <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success float-right">Add @yield('title')</a>
+            </div>
             <table class="table yajra-datatable">
                 <thead>
                 <tr>
@@ -34,10 +38,12 @@
             </table>
         </div>
     </div>
-    
+
     @include('layouts.backend.product.view_model')
     @include('layouts.backend.sales_department.customer_details_modal')
     @include('layouts.backend.sales_department.sales_payment_model')
+    @include('layouts.backend.sales_department.new_sale.sales_details_model')
+    @include('layouts.backend.sales_department.invoice_payment_history_model')
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>

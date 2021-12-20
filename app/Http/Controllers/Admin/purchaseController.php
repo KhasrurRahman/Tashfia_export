@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CompanyModel;
 use App\Http\Controllers\Controller;
 use App\Models\ModelProduct;
 use App\Models\purchaseModel;
@@ -16,7 +17,8 @@ class purchaseController extends Controller
     {
         $products = ModelProduct::get();
         $supplier = supplierModel::all();
-        return view('layouts.backend.purchase.purchase',compact('products','supplier'));
+        $company = CompanyModel::all();
+        return view('layouts.backend.purchase.purchase', compact('products', 'supplier', 'company'));
     }
 
     public function search(Request $request)
@@ -24,14 +26,35 @@ class purchaseController extends Controller
         if ($request->ajax()) {
             $query = purchaseModel::query();
 
+            if ($request->from_date !== null and $request->to_date !== null) {
+                $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+            }
+
+            if ($request->search_company_id !== null) {
+                $query->whereHas('supplier', function ($query2) use ($request) {
+                    $query2->where('company_id', $request->search_company_id);
+                });
+            }
+            
+            if ($request->product_name !== null) {
+                $query->whereHas('product', function ($query2) use ($request) {
+                    $query2->where('chalan_no','like', '%' . $request->product_name . '%');
+                });
+            }
+
+            if ($request->search_supplier_id !== null) {
+                $query->where('supplier_id', $request->search_supplier_id);
+            }
+
+
             $query->orderBy('created_at', 'ASC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('product', function ($data) {
-                    return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="view_product(' . $data->product_id . ')">'.$data->product->chalan_no.'</a>';
+                    return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="view_product(' . $data->product_id . ')">' . $data->product->chalan_no . '</a>';
                 })->addColumn('supplier', function ($data) {
-                    return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="supplier_details(' . $data->supplier_id . ')">'.$data->supplier->name.'</a>';
+                    return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="supplier_details(' . $data->supplier_id . ')">' . $data->supplier->name . '</a>';
                 })->addColumn('Quantity', function ($data) {
                     return $data->quantity;
                 })->addColumn('unit_price', function ($data) {
@@ -41,7 +64,7 @@ class purchaseController extends Controller
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
                     return $actionBtn;
-                })->rawColumns(['product','supplier','Quantity','unit_price','total_purchas_price','action'])
+                })->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'action'])
                 ->make(true);
         }
     }
@@ -55,7 +78,7 @@ class purchaseController extends Controller
             'unit_price' => 'required',
             'total_purchas_price' => 'required',
         ]);
-        
+
         $product = ModelProduct::find($request->product_id);
         $product->quantity = $request->quantity;
         $product->update();
@@ -67,18 +90,18 @@ class purchaseController extends Controller
 
     public function delete($id)
     {
-        purchaseModel::find($id)->delete(); 
+        purchaseModel::find($id)->delete();
         return response()->json(['success' => 'Done']);
     }
-    
+
     public function show($id)
     {
         $purchase = purchaseModel::find($id);
-        
+
         return $data = [
-          'purchase' => $purchase,
-          'supplier' =>  $purchase->supplier->name,
-          'product' =>  $purchase->product->chalan_no,
+            'purchase' => $purchase,
+            'supplier' => $purchase->supplier->name,
+            'product' => $purchase->product->chalan_no,
         ];
     }
 }

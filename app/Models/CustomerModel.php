@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\CompanyModel;
+use App\SalesDetailsModel;
 use Illuminate\Database\Eloquent\Model;
 
 class CustomerModel extends Model
@@ -30,6 +31,16 @@ class CustomerModel extends Model
     public function company()
     {
         return $this->belongsTo(CompanyModel::class,'company_id');
+    }
+    
+    public function sales_history()
+    {
+        return $this->hasMany(salesDepartmentModel::class,'customer_id')->orderBy('created_at','desc');
+    }
+    
+    public function payment_history()
+    {
+        return $this->hasMany(SalesPaymentModel::class,'customer_id')->orderBy('created_at','desc');
     }
     
 }

@@ -21,7 +21,8 @@
                         <label for="product_id">Payment Type</label>
                         <select class="form-control select2 payment_type" name="payment_type" id="payment_type" required>
                             <option value="cache ">cache</option>
-                            <option value="Crd ">Card</option>
+                            <option value="card ">Card</option>
+                            <option value="Bkash">Bkash</option>
                         </select>
                     </div>
 

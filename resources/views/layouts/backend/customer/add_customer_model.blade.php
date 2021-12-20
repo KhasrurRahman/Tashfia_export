@@ -25,6 +25,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="Route_name">Balance</label>
+                        <input type="text" class="form-control" name="balance">
+                        <span id="Errorpo_status_name" class="text-red error_field"></span>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="Route_name">Customer name</label>
                         <input type="text" class="form-control" name="name" required>
                         <span id="Errorpo_status_name" class="text-red error_field"></span>

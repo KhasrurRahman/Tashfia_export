@@ -274,7 +274,11 @@ function store_sales_data() {
     function add_payment_mode()
     {
         console.log('sdsd')
-        var html = '<div class="col-md-8 p-5 mt-5" style="background: #6b279b52;border-radius: 1%"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">Amount</label> <div class="input-group"> <input type="number" class="form-control payment_amount" name="payment_amount" id="sub_total"> </div><span id="error_sub_total" class="text-red error_field"></span> </div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Payment Type</label> <select class="form-control select2 payment_type" name="payment_type" id="payment_type"> <option value="cache ">cache</option> <option value="Crd ">Card</option> </select> <span id="error_subtotal" class="text-red error_field"></span> </div></div><div class="col-md-12"> <div class="form-group"> <label for="product_id">Remarks</label> <div class="input-group"> <textarea name="remarks" id="remarks" style="width:100%" class="remarks"></textarea> </div><span id="error_remarks" class="text-red error_field"></span> </div></div></div></div>';
+        var html = '<div class="col-md-8 p-5 mt-5" style="background: #6b279b52;border-radius: 1%"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label ' +
+            'for="product_id">Amount</label> <div class="input-group"> <input type="number" class="form-control payment_amount" name="payment_amount" id="sub_total"> </div><span' +
+            ' id="error_sub_total" class="text-red error_field"></span> </div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Payment Type</label> ' +
+            '<select class="form-control select2 payment_type" name="payment_type" id="payment_type"> <option value="cache ">cache</option> <option value="Card">Card</option> ' +
+            '</select> <span id="error_subtotal" class="text-red error_field"></span> </div></div><div class="col-md-12"> <div class="form-group"> <label for="product_id">Remarks</label> <div class="input-group"> <textarea name="remarks" id="remarks" style="width:100%" class="remarks"></textarea> </div><span id="error_remarks" class="text-red error_field"></span> </div></div></div></div>';
         
         $('#multiple_payment_model').append(html);
     }

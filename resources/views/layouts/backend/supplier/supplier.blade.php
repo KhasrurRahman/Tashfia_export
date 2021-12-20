@@ -38,7 +38,6 @@
     </div>
 
     @include('layouts.backend.supplier.add_supplier_model')
-    @include('layouts.backend.supplier.edit_supplier_model')
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>

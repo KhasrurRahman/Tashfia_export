@@ -185,8 +185,8 @@
             }
         });
     }
-    
-    
+
+
     function view_ingredient(id) {
         $.ajax({
             url: "{{url('admin/product/ingredients')}}/" + id,
@@ -202,9 +202,9 @@
         });
     }
     
-    
+
     function form_reset() {
-            document.getElementById("search_form").reset();
-             $('.yajra-datatable').DataTable().ajax.reload(null, false);
-        }
+        document.getElementById("search_form").reset();
+        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+    }
 </script>

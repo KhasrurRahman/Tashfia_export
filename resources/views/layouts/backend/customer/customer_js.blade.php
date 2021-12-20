@@ -2,6 +2,8 @@
     $(document).ready(function () {
         $('.select2').select2();
     });
+    
+    $('.simpletable').DataTable();
 
     $(function () {
         var table = $('.yajra-datatable').DataTable({
@@ -159,4 +161,34 @@
             }
         });
     })
+
+    function sales_details(id) {
+        $.ajax({
+            url: "{{url('admin/sales/sales_details_invoice')}}/" + id,
+            type: "GET",
+            success: function (data) {
+                $('#sales_details_model_content').html('');
+                $('#sales_details_model_content').append(data);
+                $('#sales_details').modal('show');
+            },
+            error: function (data) {
+                // console.log(data)
+            }
+        });
+    }
+
+    function invoice_payment_history(id) {
+        $.ajax({
+            url: "{{url('admin/sales/invoice_payment_history')}}/" + id,
+            type: "GET",
+            success: function (data) {
+                $('#invoice_payments_model_content').html('');
+                $('#invoice_payments_model_content').append(data);
+                $('#invoice_payments_details').modal('show');
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        });
+    }
 </script>

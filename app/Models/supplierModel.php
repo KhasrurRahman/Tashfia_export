@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\CompanyModel;
 use Illuminate\Database\Eloquent\Model;
 
 class supplierModel extends Model
@@ -9,6 +10,7 @@ class supplierModel extends Model
     protected $table = 'suppliers';
     protected $fillable = [
         'name',
+        'company_id',
         'personal_phone',
         'optional_phone',
         'present_address',
@@ -27,4 +29,9 @@ class supplierModel extends Model
         'created_by',
         'company_name',
     ];
+    
+    public function company()
+    {
+        return $this->belongsTo(CompanyModel::class,'company_id');
+    }
 }

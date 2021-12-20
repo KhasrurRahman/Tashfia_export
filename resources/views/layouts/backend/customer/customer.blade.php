@@ -41,7 +41,7 @@
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
-    <script src="{{ asset('backend/js/datatables.js') }}"></script>
+{{--    <script src="{{ asset('backend/js/datatables.js') }}"></script>--}}
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
     @include('layouts.backend.customer.customer_js')
 

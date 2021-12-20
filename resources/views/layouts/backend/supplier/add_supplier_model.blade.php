@@ -11,32 +11,19 @@
                     </button>
                 </div>
                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="Route_name">Company Name</label>
-                        <input type="text" class="form-control" name="company_name">
-                        <span id="Errorpo_status_company_name" class="text-red error_field"></span>
+                   
+                   <div class="form-group">
+                        <div class="form-group">
+                            <label for="">Select Company</label>
+                            <select class="form-control select2" name="company_id" required>
+                                <option value="">Please select</option>
+                                @foreach($company as $data)
+                                    <option value="{{$data->id}}">{{$data->company_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    
-                    
-                    <div class="form-group">
-                        <label for="Route_name">Company address</label>
-                        <input type="text" class="form-control" name="company_address">
-                        <span id="Errorpo_status_company_address" class="text-red error_field"></span>
-                    </div>
-                    
-                    
-                    <div class="form-group">
-                        <label for="Route_name">Company contact no</label>
-                        <input type="number" class="form-control" name="company_contact_no">
-                        <span id="Errorpo_status_company_contact_no" class="text-red error_field"></span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="Route_name">Country</label>
-                        <input type="text" class="form-control" name="country" >
-                        <span id="Errorpo_status_country" class="text-red error_field"></span>
-                    </div>
-                    
+                   
                     <div class="form-group">
                         <label for="Route_name">Supplier name</label>
                         <input type="text" class="form-control" name="name" required>
