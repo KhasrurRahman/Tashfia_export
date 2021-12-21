@@ -11,7 +11,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h3>Create Menu</h3></div>
+                <div class="card-header"><h3>Edit Customer</h3></div>
                 <div class="card-body">
                     <form action="{{url('admin/customer/update/'.$customer->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <label for="Route_name">Balance</label>
-                            <input type="text" class="form-control" name="balance" value="{{$customer->balance}}">
+                            <input type="number" class="form-control" name="balance" value="{{$customer->balance}}">
                             <span id="Errorpo_status_name" class="text-red error_field"></span>
                         </div>
 
@@ -73,13 +73,13 @@
 
                         <div class="form-group">
                             <label for="Route_name">Personal phone number</label>
-                            <input type="text" class="form-control" name="personal_phone" value="{{$customer->personal_phone}}">
+                            <input type="number" class="form-control" name="personal_phone" value="{{$customer->personal_phone}}">
                             <span id="Errorpo_status_personal_phone" class="text-red error_field"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="Route_name">Optional phone number</label>
-                            <input type="text" class="form-control" name="optional_phone" value="{{$customer->optional_phone}}">
+                            <input type="number" class="form-control" name="optional_phone" value="{{$customer->optional_phone}}">
                             <span id="Errorpo_status_optional_phone" class="text-red error_field"></span>
                         </div>
 
@@ -91,7 +91,7 @@
 
                         <div class="form-group">
                             <label for="Route_name">NID</label>
-                            <input type="text" class="form-control" name="nid" value="{{$customer->nid}}">
+                            <input type="number" class="form-control" name="nid" value="{{$customer->nid}}">
                             <span id="Errorpo_status_nid" class="text-red error_field"></span>
                         </div>
 

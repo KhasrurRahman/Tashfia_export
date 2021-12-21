@@ -1,5 +1,4 @@
-<div class="modal fade" id="add_button" tabindex="-1" role="dialog" aria-labelledby="add_buttonLabel"
-     aria-hidden="true">
+<div class="modal hide fade" id="add_button" role="dialog" aria-labelledby="add_buttonLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg mt-0 mb-0" role="document">
         <div class="modal-content">
             <form action="" method="post" id="save_info">
@@ -10,7 +9,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
                     <div class="form-group">
                         <label for="product_id">Select Product</label>
                         <br>
@@ -22,7 +20,7 @@
                         </select>
                         <span id="Error_status_product_id" class="text-red error_field"></span>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="product_id">Select Supplier</label>
                         <br>
@@ -34,7 +32,6 @@
                         </select>
                         <span id="Error_status_supplier_id" class="text-red error_field"></span>
                     </div>
-
 
                     <div class="form-group">
                         <label for="Route_name">Quantity</label>
@@ -53,7 +50,13 @@
                         <input type="number" class="form-control " name="total_purchas_price" id="total_purchas_price" readonly>
                         <span id="Error_status_total_purchas_price" class="text-red error_field"></span>
                     </div>
-                    
+
+                    <div class="form-group">
+                        <label for="Route_name">Actual Purchase Price</label>
+                        <input type="number" class="form-control " name="actual_purchas_price" id="actual_purchas_price">
+                        <span id="Error_status_actual_purchas_price" class="text-red error_field"></span>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-secondary">save</button>

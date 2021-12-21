@@ -1,4 +1,4 @@
-<div class="modal fade" id="add_button" tabindex="-1" role="dialog" aria-labelledby="add_buttonLabel"
+<div class="modal hide fade" id="add_button" role="dialog" aria-labelledby="add_buttonLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -15,10 +15,10 @@
                    <div class="form-group">
                         <div class="form-group">
                             <label for="">Select Company</label>
-                            <select class="form-control select2" name="company_id" required>
+                            <select class="form-control select2" name="company_id">
                                 <option value="">Please select</option>
                                 @foreach($company as $data)
-                                    <option value="{{$data->id}}">{{$data->company_name}}</option>
+                                    <option value="{{$data->id}}">{{$data->company_name}} ({{$data->company_contact_no}})</option>
                                 @endforeach
                             </select>
                         </div>
@@ -63,13 +63,13 @@
 
                     <div class="form-group">
                         <label for="Route_name">Personal phone number</label>
-                        <input type="text" class="form-control" name="personal_phone" >
+                        <input type="number" class="form-control" name="personal_phone" >
                         <span id="Errorpo_status_personal_phone" class="text-red error_field"></span>
                     </div>
                     
                     <div class="form-group">
                         <label for="Route_name">Optional phone number</label>
-                        <input type="text" class="form-control" name="optional_phone">
+                        <input type="number" class="form-control" name="optional_phone">
                         <span id="Errorpo_status_optional_phone" class="text-red error_field"></span>
                     </div>
                     
@@ -81,7 +81,7 @@
                     
                      <div class="form-group">
                         <label for="Route_name">NID</label>
-                        <input type="text" class="form-control" name="nid" >
+                        <input type="number" class="form-control" name="nid" >
                         <span id="Errorpo_status_nid" class="text-red error_field"></span>
                     </div>
                    

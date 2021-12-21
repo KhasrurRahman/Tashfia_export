@@ -1,4 +1,4 @@
-<div class="modal fade" id="add_button" tabindex="-1" role="dialog" aria-labelledby="add_buttonLabel"
+<div class="modal hide fade" id="add_button" role="dialog" aria-labelledby="add_buttonLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-lg mt-0 mb-0" role="document">
         <div class="modal-content">

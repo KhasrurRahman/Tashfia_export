@@ -37,6 +37,7 @@
                 {data: 'Quantity', name: 'Quantity'},
                 {data: 'unit_price', name: 'unit_price'},
                 {data: 'total_purchas_price', name: 'total_purchas_price'},
+                {data: 'actual_purchas_price', name: 'actual_purchas_price'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });
@@ -121,6 +122,7 @@
                 $('#Error_status_quantity').text(response.responseJSON.errors.quantity);
                 $('#Error_status_unit_price').text(response.responseJSON.errors.unit_price);
                 $('#Error_status_total_purchas_price').text(response.responseJSON.errors.total_purchas_price);
+                $('#Error_status_actual_purchas_price').text(response.responseJSON.errors.actual_purchas_price);
             }
         });
     })

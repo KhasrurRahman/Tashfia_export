@@ -13,42 +13,22 @@
                     </select>
                 </div>
             </div>
-            
-            
+
             <div class="col-4">
                 <div class="form-group">
-                    <label>Supplier :</label>
-                    <select class="form-control select2" id="search_supplier_id">
-                        <option selected disabled>Please Select</option>
-                        @foreach($supplier as $data)
-                            <option value="{{$data->id}}">{{$data->name}}</option>
-                        @endforeach
-                    </select>
+                    <label>Name:</label>
+                    <input type="text" class="form-control" id="search_name">
                 </div>
             </div>
             
             <div class="col-4">
-                <label>Product Name</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="product_name">
+                    <label>Phone Number:</label>
+                    <input type="text" class="form-control" id="search_phone">
                 </div>
             </div>
-
-            <div class="col-4">
-                <div class="form-group">
-                    <label>Date from:</label>
-                    <input type="date" class="form-control" id="from_date">
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="form-group">
-                    <label>Date to:</label>
-                    <input type="date" class="form-control" id="to_date">
-                </div>
-            </div>
-
-
+            
+            
             <div class="col-3">
                 <div class="form-group">
                     <button type="submit" class="btn btn-success ml-2 btn-block" id="btnFiterSubmitSearch"

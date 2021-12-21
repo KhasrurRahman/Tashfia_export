@@ -15,6 +15,7 @@ class purchaseModel extends Model
         'status',
         'unit_price',
         'total_purchas_price',
+        'actual_purchas_price',
     ];
     
     public function product()

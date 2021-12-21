@@ -16,7 +16,7 @@
         <div class="card-body">
             <div style="overflow: hidden">
                 <h3 class="card-title float-left">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
-                <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success float-right">Add @yield('title')</a>
+{{--                <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success float-right">Add @yield('title')</a>--}}
             </div>
             <table class="table yajra-datatable">
                 <thead>

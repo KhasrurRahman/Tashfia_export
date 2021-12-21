@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ModelProduct;
 use App\Models\purchaseModel;
 use App\Models\supplierModel;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
@@ -61,10 +62,12 @@ class purchaseController extends Controller
                     return $data->unit_price;
                 })->addColumn('total_purchas_price', function ($data) {
                     return $data->total_purchas_price;
+                })->addColumn('actual_purchas_price', function ($data) {
+                    return $data->actual_purchas_price;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/purchase/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" >Edit</a>';
                     return $actionBtn;
-                })->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'action'])
+                })->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action'])
                 ->make(true);
         }
     }
@@ -77,6 +80,7 @@ class purchaseController extends Controller
             'quantity' => 'required',
             'unit_price' => 'required',
             'total_purchas_price' => 'required',
+            'actual_purchas_price' => 'required',
         ]);
 
         $product = ModelProduct::find($request->product_id);
@@ -97,11 +101,41 @@ class purchaseController extends Controller
     public function show($id)
     {
         $purchase = purchaseModel::find($id);
-
         return $data = [
             'purchase' => $purchase,
             'supplier' => $purchase->supplier->name,
             'product' => $purchase->product->chalan_no,
         ];
+    }
+    
+    public function edit($id)
+    {
+        $purchase = purchaseModel::find($id);
+        $products = ModelProduct::get();
+        $supplier = supplierModel::all();
+        $company = CompanyModel::all();
+        
+        return view('layouts.backend.purchase.purchase_edit',compact('purchase','products','supplier','company'));
+        
+    }
+    
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'product_id' => 'required',
+            'supplier_id' => 'required',
+            'quantity' => 'required',
+            'unit_price' => 'required',
+            'total_purchas_price' => 'required',
+            'actual_purchas_price' => 'required',
+        ]);
+
+        
+        purchaseModel::find($id)->update($request->all());
+
+        
+        Toastr::success('Update Successful', 'Updated');
+        return redirect()->back();
+        
     }
 }

@@ -2,7 +2,7 @@
     $(document).ready(function () {
         $('.select2').select2();
     });
-    
+
     $('.simpletable').DataTable();
 
     $(function () {
@@ -24,6 +24,9 @@
                 url: "{{ url('admin/customer/search') }}",
                 type: 'POSt',
                 data: function (d) {
+                    d.search_company_id = $('#search_company_id').val();
+                    d.search_name = $('#search_name').val();
+                    d.search_phone = $('#search_phone').val();
                     d._token = '{{csrf_token()}}'
                 }
             },
@@ -44,6 +47,11 @@
             table.draw(true);
         });
     });
+
+    function form_reset() {
+        document.getElementById("search_form").reset();
+        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+    }
 
 
     // save data

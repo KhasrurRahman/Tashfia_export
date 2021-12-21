@@ -27,6 +27,18 @@ class CustomerController extends Controller
         if ($request->ajax()) {
             $query = CustomerModel::query();
 
+            if ($request->search_company_id !== null) {
+                $query->where('company_id', $request->search_company_id);
+            }
+            
+            if ($request->search_phone !== null) {
+                $query->where('personal_phone', '%' .  $request->search_phone . '%');
+            }
+            
+            if ($request->search_name !== null) {
+                $query->where('name','like', '%' . $request->search_name . '%');
+            }
+
             $query->orderBy('created_at', 'DESC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())

@@ -163,7 +163,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -179,10 +179,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\xampp_7.4\htdocs\Tashfia_export\resources\views\layouts\backend\purchase" />
+      <recent name="E:\xampp_7.4\htdocs\Tashfia_export\resources\views\layouts\backend\customer" />
       <recent name="E:\xampp_7.4\htdocs\Tashfia_export\resources\views\layouts\backend\supplier" />
       <recent name="E:\xampp_7.4\htdocs\Tashfia_export\resources\views\layouts\backend\sales_department" />
       <recent name="C:\xampp\htdocs\tashfia_export\resources\views\layouts\backend\customer" />
-      <recent name="E:\Xampp\htdocs\tashfia_export\resources\views\layouts\backend\customer" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -208,6 +208,7 @@
       <workItem from="1639929461048" duration="7215000" />
       <workItem from="1640005100671" duration="17918000" />
       <workItem from="1640031745983" duration="638000" />
+      <workItem from="1640093600300" duration="9511000" />
     </task>
     <servers />
   </component>

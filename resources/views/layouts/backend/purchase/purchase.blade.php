@@ -40,6 +40,7 @@
                     <th>Quantity</th>
                     <th>Unit price</th>
                     <th>Total Purchase Price</th>
+                    <th>Actual Purchase Price</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -50,7 +51,6 @@
     </div>
 
     @include('layouts.backend.purchase.purchase_add_model')
-    @include('layouts.backend.purchase.purchase_edit_model')
     @include('layouts.backend.product.view_model')
     @include('layouts.backend.supplier.supplier_details_model')
 @endsection
