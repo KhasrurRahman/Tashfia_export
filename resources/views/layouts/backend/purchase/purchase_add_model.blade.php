@@ -20,6 +20,13 @@
                         </select>
                         <span id="Error_status_product_id" class="text-red error_field"></span>
                     </div>
+                    
+                    <ul>
+                        <li>Chalan No: <span></span></li>
+                        <li>Chalan No: <span></span></li>
+                        <li>Chalan No: <span></span></li>
+                        <li>Chalan No: <span></span></li>
+                    </ul>
 
                     <div class="form-group">
                         <label for="product_id">Select Supplier</label>

@@ -79,8 +79,7 @@ class ProductController extends Controller
     public function alldata(Request $request)
     {
         if ($request->ajax()) {
-            $query = ModelProduct::query();
-            $query->orderBy('id', 'desc');
+            $query = ModelProduct::orderBy('id', 'desc');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()

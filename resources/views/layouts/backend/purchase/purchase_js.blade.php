@@ -297,4 +297,21 @@
             }
         });
     });
+    
+    $('#purchase_id').on('change', function () {
+            var purchase_id = $(this).val();
+            $.ajax({
+                url: "{{url('admin/purchase/show')}}/" + purchase_id,
+                type: "GET",
+                success: function (data) {
+                    console.log(data)
+                    $('#create_supplier').val(data.supplier);
+                    $('#create_prodyct').val(data.product);
+                    $('#create_quantity').val(data.purchase.quantity);
+                    $('#create_unit_price').val(data.purchase.unit_price);
+                    $('#create_total_purchas_price').val(data.purchase.total_purchas_price);
+                    
+                }
+            });
+        });
 </script>

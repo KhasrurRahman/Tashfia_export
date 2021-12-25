@@ -1,43 +1,55 @@
 @extends('layouts.backend.partial.app')
-@section('title','Company')
+@section('title','profit Loss')
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
 @endpush
 @section('main_menu','HOME')
-@section('active_menu','Company')
+@section('active_menu','profit Loss')
 @section('link',route('admin.adminDashboard'))
 @section('content')
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
-            <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add @yield('title')</a>
+            {{--            @include('layouts.backend.customer.customer_search')--}}
         </div>
         <div class="card-body">
+            <div style="overflow: hidden">
+                <h3 class="card-title float-left">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
+            </div>
             <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Company name</th>
-                    <th>Address</th>
-                    <th>Company Contact info</th>
-                    <th>Country</th>
-                    <th>Action</th>
+                    <th>Date</th>
+                    <th>Customer Name</th>
+                    <th>Items</th>
+                    <th>Sales Amount</th>
+                    <th>Profit/loss</th>
                 </tr>
                 </thead>
                 <tbody>
                 </tbody>
+                <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align:right">Total:</th>
+                    <th class="bg-danger text-white"></th>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>
-
-    @include('layouts.backend.company.add_company_model')
+    
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
-    @include('layouts.backend.company.company_js')
+    <script src="https://cdn.datatables.net/plug-ins/1.10.22/api/sum().js"></script>
+    @include('layouts.backend.report.profit.profit_js')
 
 @endpush

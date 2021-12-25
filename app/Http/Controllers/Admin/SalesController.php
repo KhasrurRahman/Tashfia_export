@@ -92,6 +92,7 @@ class SalesController extends Controller
         $sales->save();
 
         for ($i = 0; $i < count($request->stock_id); $i++) {
+            $stock = lotDepartmentModel::find($request->stock_id[$i]);
             $sales_details = new SalesDetailsModel();
             $sales_details->customer_id = $request->customer_id;
             $sales_details->stock_id = $request->stock_id[$i];
@@ -99,6 +100,8 @@ class SalesController extends Controller
             $sales_details->quantity = $request->per_quantity[$i];
             $sales_details->unit_price = $request->per_unit_price[$i];
             $sales_details->total_price = $request->per_total_unit_price[$i];
+            $sales_details->purchase_uint_price = $stock->purchase->actual_unit_price;
+            $sales_details->purchase_total_price = $stock->purchase->actual_unit_price * $request->per_quantity[$i];
             $sales_details->save();
         }
 
@@ -124,6 +127,10 @@ class SalesController extends Controller
             $customer->balance += $total_due_amount;
             $customer->update();
         }
+        
+        $sales->profit_or_loss = $sales->total_price  - $sales->sales_details->sum('purchase_total_price');
+        $sales->update();
+        
         return response()->json(['done' => 'success']);
     }
 

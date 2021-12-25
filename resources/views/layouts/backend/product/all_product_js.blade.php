@@ -6,6 +6,7 @@
     $(function () {
         var table = $('.yajra-datatable').DataTable({
             "order": [[1, 'desc']],
+            "bFilter": false,
             "columnDefs": [
                 {"className": "dt-center", "targets": "_all"}
             ],
