@@ -23,6 +23,10 @@ Route::get('bar_code', 'HomeController2@bar_code')->name('bar_code');
 Route::post('sales_item_auto_complete', 'Admin\SalesController@sales_item_auto_complete')->name('sales_item_auto_complete');
 Route::get('get_product_single_data/{id}', 'Admin\SalesController@get_product_single_data')->name('get_product_single_data');
 
+Route::get('company_supplier_search/{id}', 'AjaxController@company_supplier_search')->name('company_supplier_search');
+
+Route::get('company_customer_search/{id}', 'AjaxController@company_customer_search')->name('company_customer_search');
+
 
 Auth::routes();
 

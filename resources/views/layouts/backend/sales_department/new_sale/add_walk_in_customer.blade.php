@@ -17,6 +17,12 @@
                         <span id="Errorpo_status_customer_name" class="text-red error_field"></span>
                     </div>
 
+                    <div class="form-group">
+                        <label for="Route_name">Company Name</label>
+                        <input type="text" class="form-control" name="company_name" required>
+                        <span id="Errorpo_status_company_name" class="text-red error_field"></span>
+                    </div>
+
 
                     <div class="form-group">
                         <label for="Route_name">Customer Phone</label>

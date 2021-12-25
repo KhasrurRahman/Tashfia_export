@@ -48,6 +48,7 @@
     
     function form_reset() {
         document.getElementById("search_form").reset();
+        $('.select2').val(null).trigger('change');
         $('.yajra-datatable').DataTable().ajax.reload(null, false);
     }
 
@@ -290,5 +291,18 @@
             }
         });
     }
+
+
+    $('#search_company_id').on('change', function() {
+        var id = $(this).val();
+        $.ajax({
+            type: 'get',
+            url: '{{ url('company_customer_search') }}/' + id,
+            success: function(data) {
+                // console.log(data)
+                $('#search_customer_id').html(data);
+            }
+        });
+    });
 
 </script>

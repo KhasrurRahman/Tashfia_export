@@ -187,6 +187,7 @@ class SalesController extends Controller
         $customer->name = $request->customer_name;
         $customer->present_address = $request->customer_address;
         $customer->personal_phone = $request->customer_phone;
+        $customer->company_name = $request->company_name;
         $customer->type = 'wal in customer';
         $customer->save();
 

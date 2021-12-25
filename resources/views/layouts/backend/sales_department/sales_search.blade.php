@@ -4,23 +4,24 @@
             
             <div class="col-4">
                 <div class="form-group">
-                    <label>Customer:</label>
-                    <select class="form-control select2" id="search_customer_id">
-                        <option selected disabled>Please Select</option>
-                        @foreach($customer as $data)
-                            <option value="{{$data->id}}">{{$data->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="form-group">
                     <label>Company:</label>
                     <select class="form-control select2" id="search_company_id">
                         <option selected disabled>Please Select</option>
                         @foreach($company as $data)
                             <option value="{{$data->id}}">{{$data->company_name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            
+            <div class="col-4">
+                <div class="form-group">
+                    <label>Customer:</label>
+                    <select class="form-control select2" id="search_customer_id">
+                        <option selected disabled>Please Select</option>
+                        @foreach($customer as $data)
+                            <option value="{{$data->id}}">{{$data->name}}</option>
                         @endforeach
                     </select>
                 </div>
