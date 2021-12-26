@@ -47,17 +47,16 @@
             width: 50%;
         }
 
-        
 
     </style>
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
 
     <style>
-    .select2-container{
+        .select2-container {
             width: 90% !important;
         }
-    
+
     </style>
 @endpush
 @section('main_menu', 'HOME')
@@ -84,12 +83,6 @@
                     </div>
                 </div>
 
-
-
-
-
-
-
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="product_id">Sales Date</label>
@@ -98,7 +91,7 @@
                                 <label class="input-group-text"><i class="ik ik-calendar"></i></label>
                             </span>
                             <input type="date" class="form-control" name="sales_date" id="sales_date"
-                                value="{{ date('Y-m-d') }}">
+                                   value="{{ date('Y-m-d') }}">
                         </div>
                         <span id="error_sales_date" class="text-red error_field"></span>
                     </div>
@@ -109,23 +102,22 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="product_id">Reference Number</label>
-                        <div class="input-group">
-                            <span class="input-group-prepend">
-                                <label class="input-group-text"><i class="ik ik-terminal"></i></label>
-                            </span>
-                            <input type="number" class="form-control" name="reference_number" id="reference_number">
+                        <label for="product_id">Reference</label>
+                        <div class="input-group input-group-button">
+                            <select class="form-control select2" name="sales_executive_id" id="sales_executive_id">
+                                <option value="">Select</option>
+                                @foreach ($sales_executive as $data)
+                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
+                            </select>
+                            <span id="error_sales_executive_id" class="text-red error_field"></span>
                         </div>
-                        <span id="error_reference_number" class="text-red error_field"></span>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-
-
-
 
     <div class="card" style="margin-bottom:10px;">
         <div class="card-body">
@@ -139,7 +131,7 @@
                             </span>
 
                             <input type="text" name="country_name" id="country_name" class="form-control input-lg"
-                                placeholder="Item name/Barcode/Itemcode" autocomplete="off" />
+                                   placeholder="Item name/Barcode/Itemcode" autocomplete="off"/>
                         </div>
 
                         <div id="countryList">
@@ -151,13 +143,13 @@
                 <div class="col-md-12">
                     <table id="dsTable">
                         <thead>
-                            <tr style="background:#6b279b;color:white">
-                                <th>Chalan No</th>
-                                <th>Quantity</th>
-                                <th>Unit Price</th>
-                                <th>Total Price (Tk)</th>
-                                <th>Action</th>
-                            </tr>
+                        <tr style="background:#6b279b;color:white">
+                            <th>Chalan No</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price (Tk)</th>
+                            <th>Action</th>
+                        </tr>
                         </thead>
                         <tbody>
 
@@ -184,7 +176,8 @@
 
     <div class="row justify-content-center">
         <button class="btn btn-lg btn-block btn-primary col-md-6 mb-10" onclick="show_payment_history()">Previous Payments
-            Information:</button>
+            Information:
+        </button>
     </div>
 
 
@@ -204,7 +197,7 @@
                                 <label for="product_id">Amount</label>
                                 <div class="input-group">
                                     <input type="number" class="form-control payment_amount" name="payment_amount"
-                                        id="sub_total" required>
+                                           id="sub_total" required>
                                 </div>
                                 <span id="error_sub_total" class="text-red error_field"></span>
                             </div>
@@ -228,16 +221,14 @@
                                 <label for="product_id">Remarks</label>
                                 <div class="input-group">
                                     <textarea name="remarks" id="remarks" style="width:100%"
-                                        class="remarks"></textarea>
+                                              class="remarks"></textarea>
                                 </div>
                                 <span id="error_remarks" class="text-red error_field"></span>
                             </div>
                         </div>
 
 
-
-
-                    {{-- <button class="btn btn-sm btn-danger" onclick="close_payment_tab">Close</button> --}}
+                        {{-- <button class="btn btn-sm btn-danger" onclick="close_payment_tab">Close</button> --}}
 
 
                     </div>
@@ -249,7 +240,8 @@
         <div class="card-footer">
             <div class="row justify-content-center">
                 <button type="button" class="btn btn-warning btn-lg col-md-6" onclick="add_payment_mode()"><i
-                        class="ik ik-plus-square"></i>Add Payment Mode</button>
+                            class="ik ik-plus-square"></i>Add Payment Mode
+                </button>
             </div>
         </div>
     </div>

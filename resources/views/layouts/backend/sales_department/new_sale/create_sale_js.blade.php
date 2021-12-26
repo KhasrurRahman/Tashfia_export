@@ -189,6 +189,7 @@ function store_sales_data() {
                 quantity:$("#total_quantity").text(),
                 subtotal:$("#sub_total").val(),
                 remark:$("#remarks").val(),
+                sales_executive_id:$("#sales_executive_id").val(),
                 stock_id:stock_id,
                 per_quantity:per_quantity,
                 per_unit_price:per_unit_price,
@@ -215,6 +216,7 @@ function store_sales_data() {
                 toastr.error(response.responseJSON.errors.per_total_unit_price);
                 toastr.error(response.responseJSON.errors.per_payment_type);
                 toastr.error(response.responseJSON.errors.per_payment_amount);
+                toastr.error(response.responseJSON.errors.sales_executive_id);
             }
         });
     }

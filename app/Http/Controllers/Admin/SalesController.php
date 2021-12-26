@@ -9,6 +9,7 @@ use App\Models\ModelProduct;
 use App\Models\salesDepartmentModel;
 use App\Models\SalesPaymentModel;
 use App\SalesDetailsModel;
+use App\SalesExecutiveModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -16,8 +17,9 @@ class SalesController extends Controller
 {
     public function create()
     {
+        $sales_executive = SalesExecutiveModel::all();
         $customers = CustomerModel::where('type', 'general')->get();
-        return view('layouts.backend.sales_department.new_sale.create_sale', compact('customers'));
+        return view('layouts.backend.sales_department.new_sale.create_sale', compact('customers','sales_executive'));
     }
 
 
@@ -27,7 +29,7 @@ class SalesController extends Controller
             $query = $request->get('query');
             $data = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.chalan_no', 'like', '%' . $query . '%')->orWhere('products.card_no', 'like', '%' . $query . '%')->select('products.chalan_no',
                 'stock.*')->get();
-            $output = '<ul class="list-group" style="display: block;position: relative;width: 100%;font-size: 17px;font-weight: bold;line-height: 25px;border: 1px solid;">';
+            $output = '<ul class="dropdown list-group" style="display: block;position: relative;width: 100%;font-size: 17px;font-weight: bold;line-height: 25px;border: 1px solid;">';
             foreach ($data as $row) {
                 $output .= '<li class="list-group-item"><a href="#" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . ' (QTY : ' . $row->quantity . ')</a></li>';
             }
@@ -55,6 +57,7 @@ class SalesController extends Controller
             'per_total_unit_price' => 'required',
             'per_payment_type' => 'required',
             'per_payment_amount' => 'required',
+            'sales_executive_id' => 'required',
         ]);
 
 
@@ -84,7 +87,7 @@ class SalesController extends Controller
         $sales->payment_amount = $total_paied_amount;
         $sales->due = $request->grand_total - $total_paied_amount;
         $sales->sales_date = $request->sales_date;
-        $sales->reference = $request->reference_number;
+        $sales->sales_executive_id = $request->sales_executive_id;
         $sales->sales_code = mt_rand();
         if ($request->grand_total == $total_paied_amount) {
             $sales->status = 1;
