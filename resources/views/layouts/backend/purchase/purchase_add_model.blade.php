@@ -44,7 +44,6 @@
                     
                     <br>
 
-
                     <div class="form-group">
                         <label for="product_id">Select Supplier</label>
                         <br>

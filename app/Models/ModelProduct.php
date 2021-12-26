@@ -14,9 +14,4 @@ class ModelProduct extends Model
     {
         return $this->belongsTo(ProductCategoryModel::class, 'product_category_id');
     }
-    
-    public function ingredients()
-    {
-        return $this->hasMany(ReadyProductModel::class, 'product_id');
-    }
 }
