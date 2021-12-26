@@ -21,12 +21,28 @@
                         <span id="Error_status_product_id" class="text-red error_field"></span>
                     </div>
                     
-                    <ul>
-                        <li>Chalan No: <span></span></li>
-                        <li>Chalan No: <span></span></li>
-                        <li>Chalan No: <span></span></li>
-                        <li>Chalan No: <span></span></li>
-                    </ul>
+                        <table class="table table-dark table-bordered" style="display: none" id="product_details_show">
+                            <thead>
+                            <tr>
+                                <th scope="col">Chalan No</th>
+                                <th scope="col">Card no</th>
+                                <th scope="col">S/L No</th>
+                                <th scope="col">Party name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <td id="create_chalan_no"></td>
+                                <td id="create_card_no"></td>
+                                <td id="create_party_name"></td>
+                                <td id="create_sl_no"></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    
+                    <br>
 
                     <div class="form-group">
                         <label for="product_id">Select Supplier</label>
@@ -39,6 +55,28 @@
                         </select>
                         <span id="Error_status_supplier_id" class="text-red error_field"></span>
                     </div>
+                    
+                    <table class="table table-dark table-bordered" style="display: none" id="supplier_details_show">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Email</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <td id="create_chalan_no"></td>
+                                <td id="create_card_no"></td>
+                                <td id="create_party_name"></td>
+                                <td id="create_sl_no"></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    <br>
 
                     <div class="form-group">
                         <label for="Route_name">Quantity</label>

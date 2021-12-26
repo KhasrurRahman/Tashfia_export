@@ -35,9 +35,10 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="">Product Type</label>
-                    <select class="form-control select2" name="product_category_id" onchange="ingredient_show(this)" >
-                        <option value="1">purchase product</option>
-                        <option value="2">Ready product</option>
+                    <select class="form-control select2" name="product_category_id" onchange="ingredient_show(this)">
+                        @foreach($category as $data)
+                            <option value="{{$data->id}}">{{$data->name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

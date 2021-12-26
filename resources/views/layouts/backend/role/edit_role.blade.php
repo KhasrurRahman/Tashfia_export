@@ -21,10 +21,12 @@
                 Permission
                 <hr>
 
+                <input type="checkbox" onclick="toggle(this);"/>Check all?<br/>
+
                 <div class="col-xs-12">
                     <div class="row">
                         @foreach($route as $head=>$data1)
-                            <div class="col-md-3">
+                            <div class="col-md-3 p-2">
                                 <ul class="list-group">
                                     <li class="list-group-item"><span class="text-bold">{{$head}}</span>
                                         @foreach($data1 as $data2)
@@ -68,4 +70,14 @@
 
 @endsection
 @push('js')
+
+    <script>
+        function toggle(source) {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i] != source)
+                    checkboxes[i].checked = source.checked;
+            }
+        }
+    </script>
 @endpush

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51288a2d-bb7d-404c-ba88-a35837fa1748" name="Changes" comment="" />
+    <list default="true" id="51288a2d-bb7d-404c-ba88-a35837fa1748" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/backend/blank/form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/backend/product/category/edit_category.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/backend/product/edit_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ModelProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ModelProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backend/product/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backend/product/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backend/purchase/purchase.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backend/purchase/purchase.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backend/purchase/purchase_add_model.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backend/purchase/purchase_add_model.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backend/purchase/purchase_js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backend/purchase/purchase_js.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backend/role/edit_role.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backend/role/edit_role.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,6 +169,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="21nwJwUWnucUatfYdb6iyG6UgKi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -169,7 +185,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NDC" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -178,11 +194,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Tashfia_export\resources\views\layouts\backend\product" />
       <recent name="E:\xampp_7.4\htdocs\Tashfia_export\resources\views\layouts\backend\report\profit" />
       <recent name="E:\xampp_7.4\htdocs\Tashfia_export\app\Http\Controllers\Admin" />
       <recent name="E:\xampp_7.4\htdocs\Tashfia_export\resources\views\layouts\backend\company" />
       <recent name="E:\xampp_7.4\htdocs\Tashfia_export\resources\views\layouts\backend\product" />
-      <recent name="E:\xampp_7.4\htdocs\Tashfia_export\resources\views\layouts\backend\purchase" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\xampp_7.4\htdocs\Tashfia_export\resources\views\layouts\backend\report\profit" />
@@ -215,11 +231,23 @@
       <workItem from="1640180567082" duration="372000" />
       <workItem from="1640437326566" duration="9442000" />
       <workItem from="1640455228103" duration="1453000" />
+      <workItem from="1640496770852" duration="10329000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -111,7 +111,7 @@ class ProductController extends Controller
                 })->addColumn('card_no', function ($data) {
                     return $data->card_no;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onclick="view_modal(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >View</a> <a href="' . url('paf_generate/' . $data->id) . '"  class="edit btn btn-outline-warning btn-sm" >Print</a>';
+                    $actionBtn = '<a href="javascript:void(0)" onclick="view_modal(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >View</a> <a href="' . url('admin/product/edit/' . $data->id) . '"  class="btn btn-outline-info btn-sm" >Edit</a> <a href="' . url('paf_generate/' . $data->id) . '"  class="edit btn btn-outline-warning btn-sm" >Print</a>';
                     return $actionBtn;
                 })->rawColumns(['product_type', 'chalan_no', 'party_name', 'color_name', 'sl_no', 'ggsm', 'fb_rv_date', 'lot_no', 'batch_no', 'order_no', 'card_no', 'action'])
                 ->make(true);
@@ -124,6 +124,14 @@ class ProductController extends Controller
     public function view($id)
     {
         return ModelProduct::find($id);
+    }
+
+    public function edit($id)
+    {
+        $ingredient = IngredientModel::where('quantity', '!=', 0)->get();
+        $product = ModelProduct::find($id);
+        $category = ProductCategoryModel::all();
+        return view('layouts.backend.product.edit_product', compact('product', 'category', 'ingredient'));
     }
 
     public function delete($id)
@@ -154,7 +162,21 @@ class ProductController extends Controller
   </tr>
 ' . $data . '
 </table>';
-        
+
         return $output;
+    }
+    
+    
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'product_category_id' => 'required',
+            'chalan_no' => 'required',
+        ]);
+        
+        $product = ModelProduct::find($id)->update($request->all());
+        
+        Toastr::success('product Updated Successfully', 'Updated');
+        return redirect()->back();
     }
 }
