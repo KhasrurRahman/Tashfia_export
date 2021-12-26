@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="text-center">
-                            <img src="{{asset('upload/customer_image/' . $customer->photo)}}" class="rounded-circle" width="150"/>
+                            <img src="{{asset('backend/img/user.jpg')}}" class="rounded-circle" width="150"/>
                             <h4 class="card-title mt-10">{{$customer->name}}</h4>
                             <p class="card-subtitle">{{$customer->company->company_name}}</p>
                         </div>

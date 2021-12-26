@@ -20,6 +20,7 @@
                         </select>
                         <span id="Error_status_product_id" class="text-red error_field"></span>
                     </div>
+<<<<<<< HEAD
                     
                         <table class="table table-dark table-bordered" style="display: none" id="product_details_show">
                             <thead>
@@ -43,6 +44,8 @@
                         </table>
                     
                     <br>
+=======
+>>>>>>> parent of 8f9d81f2 (complete profit report)
 
                     <div class="form-group">
                         <label for="product_id">Select Supplier</label>

@@ -46,8 +46,9 @@ class purchaseController extends Controller
             if ($request->search_supplier_id !== null) {
                 $query->where('supplier_id', $request->search_supplier_id);
             }
-            
-            $query->orderBy('created_at', 'DESC');
+
+
+            $query->orderBy('created_at', 'ASC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
@@ -85,10 +86,8 @@ class purchaseController extends Controller
         $product = ModelProduct::find($request->product_id);
         $product->quantity = $request->quantity;
         $product->update();
-        
-        $actual_unit_price = $request->actual_purchas_price / $request->quantity;
 
-        $request->request->add(['created_by' => Auth::user()->id,'actual_unit_price'=>$actual_unit_price]);
+        $request->request->add(['created_by' => Auth::user()->id]);
         purchaseModel::create($request->all());
         return response()->json(['Done' => 'Done']);
     }
