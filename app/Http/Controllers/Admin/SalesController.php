@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\ChequeDetailModel;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerModel;
 use App\Models\lotDepartmentModel;
@@ -122,6 +123,13 @@ class SalesController extends Controller
             $sales_payemnt->payment_mode = $request->per_payment_type[$i];
             $sales_payemnt->remark = $request->per_remarks[$i];
             $sales_payemnt->save();
+            
+            if ($request->per_payment_type[$i] == 'cheque'){
+                $check = new ChequeDetailModel();
+                $check->number = $request->per_cheque_number[$i];
+                $check->date = $request->per_cheque_date[$i];
+                $check->save();
+            }
         }
 
         $total_due_amount = $total_paied_amount - $request->grand_total;

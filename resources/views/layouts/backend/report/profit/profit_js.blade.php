@@ -37,7 +37,7 @@
                 $('#total_data').html(api.ajax.json().recordsTotal);
             },
             ajax: {
-                url: "{{ url('admin/profit/search') }}",
+                url: "{{ url('admin/report/profit_search') }}",
                 type: 'POSt',
                 data: function (d) {
                     d._token = '{{csrf_token()}}'
