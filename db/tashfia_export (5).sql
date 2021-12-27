@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2021 at 09:27 AM
+-- Generation Time: Dec 27, 2021 at 07:42 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.25
+-- PHP Version: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,6 +35,14 @@ CREATE TABLE `cheque_details` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cheque_details`
+--
+
+INSERT INTO `cheque_details` (`id`, `sales_payment_id`, `number`, `date`, `created_at`, `updated_at`) VALUES
+(1, NULL, '45', '2021-12-01', '2021-12-27 19:27:10', '2021-12-27 19:27:10'),
+(2, NULL, '123456', '2021-12-28', '2021-12-27 23:14:22', '2021-12-27 23:14:22');
 
 -- --------------------------------------------------------
 
@@ -94,8 +102,8 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`id`, `company_id`, `name`, `type`, `email`, `personal_phone`, `optional_phone`, `present_address`, `company_name`, `permanent_address`, `balance`, `reference`, `nid`, `photo`, `nationality`, `designation`, `created_by`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'Hollee Santiago', 'general', 'noqakivij@mailinator.com', '+1 (387) 426-2865', NULL, 'Commodo odio rerum q', NULL, NULL, '-20', NULL, NULL, NULL, NULL, NULL, 92, '2021-10-13 20:25:47', '2021-12-25 20:36:46'),
-(2, 1, 'Karyn Kinney', 'general', 'dynijepof@mailinator.com', '+1 (286) 427-3093', NULL, 'Aut laborum Sint q', NULL, NULL, '-341', NULL, NULL, '', NULL, NULL, 92, '2021-10-13 20:25:50', '2021-12-27 00:15:04'),
-(3, 1, 'Mason Silva', 'general', 'razygyz@mailinator.com', '+1 (254) 365-9538', NULL, 'Non fuga Dolore cil', NULL, NULL, '-64', NULL, NULL, '', NULL, NULL, 92, '2021-10-13 20:25:52', '2021-12-25 21:09:28'),
+(2, 1, 'Karyn Kinney', 'general', 'dynijepof@mailinator.com', '+1 (286) 427-3093', NULL, 'Aut laborum Sint q', NULL, NULL, '-3220', NULL, NULL, '', NULL, NULL, 92, '2021-10-13 20:25:50', '2021-12-27 23:14:22'),
+(3, 1, 'Mason Silva', 'general', 'razygyz@mailinator.com', '+1 (254) 365-9538', NULL, 'Non fuga Dolore cil', NULL, NULL, '-84', NULL, NULL, '', NULL, NULL, 92, '2021-10-13 20:25:52', '2021-12-27 19:27:10'),
 (4, NULL, 'khademul islam', 'general', 'tashfiaexport@gmail.com', '01848080971', NULL, '52/2 b.b road', NULL, NULL, '26', NULL, NULL, NULL, NULL, NULL, 92, '2021-11-27 23:32:14', '2021-12-21 02:14:40'),
 (5, NULL, 'Winifred Pratt', 'general', 'rydoredy@mailinator.com', '+1 (728) 971-9785', '+1 (798) 921-7253', 'Eos officia aut proi', NULL, 'Qui dolore eos comm', '0', 'Sit ut labore quibus', 'Iure quo et repudian', '2021-11-30-61a52b3ed959d.jpg', 'Laborum aperiam qui', 'Cillum aliquam maxim', 92, '2021-11-30 01:34:23', '2021-11-30 01:34:23'),
 (6, NULL, 'Miranda Schmidt', 'general', 'jedeg@mailinator.com', '+1 (287) 674-7165', '+1 (466) 896-5755', 'Nihil animi mollit', NULL, 'Voluptatem facilis d', '0', 'Vel ut deserunt temp', 'Dolor rerum asperior', '2021-11-30-61a52b6ac208d.jpg', 'Error incidunt est', 'Nihil amet fugiat', 92, '2021-11-30 01:35:07', '2021-11-30 01:35:07'),
@@ -117,7 +125,9 @@ INSERT INTO `customers` (`id`, `company_id`, `name`, `type`, `email`, `personal_
 (23, NULL, 'Nathaniel Webb', 'wal in customer', NULL, '+1 (938) 377-9215', NULL, 'Quis aliquid quis po', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-04 13:22:07', '2021-12-04 13:22:07'),
 (24, NULL, 'wesd', 'wal in customer', NULL, '23423', NULL, 'Nisi qui harum rerum', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-04 13:26:57', '2021-12-04 13:26:57'),
 (25, 1, 'Md. Khasrur Rahman', 'general', 'khasrur8@gmail.com', '01761955765', NULL, 'satkhira,khulna bangladrsh', NULL, NULL, '-40', NULL, NULL, '2021-12-25-61c71738314d9.png', 'asdas', 'asdad', 92, '2021-12-06 20:48:40', '2021-12-25 19:06:00'),
-(26, NULL, 'Md. Khasrur Rahman', 'wal in customer', NULL, '01761955765', NULL, 'satkhira,khulna bangladrsh', 'Ratin', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-27 11:07:04', '2021-12-27 11:07:04');
+(26, NULL, 'Md. Khasrur Rahman', 'wal in customer', NULL, '01761955765', NULL, 'satkhira,khulna bangladrsh', 'Ratin', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-27 11:07:04', '2021-12-27 11:07:04'),
+(27, NULL, 'Md. Khasrur Rahman', 'wal in customer', NULL, '01761955765', NULL, 'satkhira,khulna bangladrsh', 'Ratin', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-27 23:15:11', '2021-12-27 23:17:12'),
+(28, 1, 'Md. Khasrur Rahman', 'general', 'khasrur8@gmail.com', '01761955765', '01761955765', 'satkhira,khulna bangladrsh', NULL, 'Dhaka - North - Khilkhet', '-700', NULL, '123123123123', '2021-12-27-61c9f67172036.png', 'Numquam sed dolor re', 'In quo quidem non re', 92, '2021-12-27 23:22:57', '2021-12-27 23:25:20');
 
 -- --------------------------------------------------------
 
@@ -288,7 +298,8 @@ CREATE TABLE `expenses` (
 INSERT INTO `expenses` (`id`, `expenses_category_id`, `name`, `balance`, `Amount`, `created_by`, `created_at`, `updated_at`) VALUES
 (3, 6, 'Daniel Yates', '89', '81', '92', '2021-10-14 11:53:24', '2021-10-14 11:53:24'),
 (4, 6, 'Kyle Matthews', '28', '14', '92', '2021-10-14 11:53:29', '2021-10-14 11:53:29'),
-(5, 6, 'Hope Sandoval', '34', '51', '92', '2021-10-14 11:53:33', '2021-10-14 11:53:33');
+(5, 6, 'Hope Sandoval', '34', '51', '92', '2021-10-14 11:53:33', '2021-10-14 11:53:33'),
+(6, 10, 'tea', NULL, '500', '92', '2021-12-27 23:32:07', '2021-12-27 23:32:07');
 
 -- --------------------------------------------------------
 
@@ -312,7 +323,10 @@ INSERT INTO `expenses_category` (`id`, `name`, `created_by`, `created_at`, `upda
 (4, 'Zahir Norton', 92, '2021-10-14 10:33:46', '2021-10-14 10:33:46'),
 (5, 'Brynne Adkins', 92, '2021-10-14 10:33:49', '2021-10-14 10:33:49'),
 (6, 'Yoshio Reese', 92, '2021-10-14 10:33:54', '2021-10-14 10:33:54'),
-(7, 'intertainement', 92, '2021-11-27 23:54:13', '2021-11-27 23:54:13');
+(7, 'intertainement', 92, '2021-11-27 23:54:13', '2021-11-27 23:54:13'),
+(8, 'asdasd', 92, '2021-12-27 19:03:52', '2021-12-27 19:03:52'),
+(9, 'test', 92, '2021-12-27 23:30:27', '2021-12-27 23:30:27'),
+(10, 'office', 92, '2021-12-27 23:30:40', '2021-12-27 23:30:40');
 
 -- --------------------------------------------------------
 
@@ -568,7 +582,23 @@ INSERT INTO `permission_roles` (`id`, `role_id`, `dynamic_route_id`, `url`, `cre
 (16362, 11, 339, 'sales_executive/delete', '2021-12-27 03:03:34', '2021-12-27 03:03:34'),
 (16363, 11, 340, 'sales_executive/edit', '2021-12-27 03:03:34', '2021-12-27 03:03:34'),
 (16364, 11, 341, 'sales_executive/update', '2021-12-27 03:03:35', '2021-12-27 03:03:35'),
-(16365, 11, 342, 'sales_executive/store', '2021-12-27 03:03:35', '2021-12-27 03:03:35');
+(16365, 11, 342, 'sales_executive/store', '2021-12-27 03:03:35', '2021-12-27 03:03:35'),
+(16366, 18, 1, 'adminDashboard', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16367, 18, 91, 'admin/change_password', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16368, 18, 92, 'admin/save_change_password', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16369, 18, 260, 'sales/show_sales_department', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16370, 18, 261, 'sales/get_sales_department_data', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16371, 18, 262, 'sales/store_sales_department_data', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16372, 18, 263, 'sales/edit_sales_department_data', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16373, 18, 264, 'sales/update_sales_department_data', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16374, 18, 265, 'sales/delete_sales_department_data', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16375, 18, 273, 'sales/sales_department_invoice', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16376, 18, 316, 'sales/create', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16377, 18, 317, 'sales/customer_payment_history_search', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16378, 18, 318, 'sales/sales_details_invoice', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16379, 18, 319, 'sales/add_walk_in_cuatomer', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16380, 18, 325, 'sales/sales_due_payment', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
+(16381, 18, 328, 'sales/invoice_payment_history', '2021-12-27 16:43:55', '2021-12-27 16:43:55');
 
 -- --------------------------------------------------------
 
@@ -608,7 +638,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_category_id`, `chalan_no`, `party_name`, `quantity`, `unit_price`, `color_name`, `open_tube`, `sl_no`, `ggsm`, `yarn_count`, `yarn_lot_no`, `fb_rv_date`, `batch_process_date`, `lot_no`, `batch_no`, `order_no`, `style_no`, `finish_gsm`, `fabric_type`, `card_no`, `created_by`, `created_at`, `updated_at`) VALUES
-(23, 2, 'Doloremque suscipit', 'Grant Daniel', '500', NULL, 'Angelica Carey', 'Perferendis harum ex', 'Nesciunt voluptatib', 'Libero ab odit delen', 'Qui praesentium moll', 'Elit reiciendis lab', '1985-07-19 00:00:00', '1979-04-29 00:00:00', 'Assumenda laborum al', 'Incidunt in tempore', 'Molestiae nihil est', 'Culpa labore quibus', 'Impedit aute necess', 'Voluptatem molestias', '1972729482', NULL, '2021-10-13 15:54:53', '2021-12-25 14:23:02'),
+(23, 2, 'Doloremque suscipit', 'Grant Daniel', '500', NULL, 'Angelica Carey', 'Perferendis harum ex', 'Nesciunt voluptatib', 'Libero ab odit delen', 'Qui praesentium moll', 'Elit reiciendis lab', '1985-07-19 00:00:00', '1979-04-29 00:00:00', 'Assumenda laborum al', 'Incidunt in tempore', 'Molestiae nihil est', 'Culpa labore quibus', 'Impedit aute necess', 'Voluptatem molestias', '1972729482', NULL, '2021-10-13 15:54:53', '2021-12-27 17:06:42'),
 (24, 2, 'Quam quasi eiusmod v', 'Sacha Vang', '9645', NULL, 'Jordan Griffin', 'Quis repudiandae qui', 'Qui aliquam harum ex', 'Praesentium iure ea', 'Illo illum quaerat', 'Aliqua Veniam quam', '2013-09-23 00:00:00', '2001-08-25 00:00:00', 'Aute nihil ipsum pro', 'Quaerat beatae harum', 'Eos eos ullam labor', 'Ab cupiditate soluta', 'Ut quia est laudant', 'Perspiciatis sed of', '827148731', NULL, '2021-10-13 15:56:26', '2021-11-29 23:26:06'),
 (25, 2, 'Quam quasi eiusmod v', 'Sacha Vang', '500', NULL, 'Jordan Griffin', 'Quis repudiandae qui', 'Qui aliquam harum ex', 'Praesentium iure ea', 'Illo illum quaerat', 'Aliqua Veniam quam', '2013-09-23 00:00:00', '2001-08-25 00:00:00', 'Aute nihil ipsum pro', 'Quaerat beatae harum', 'Eos eos ullam labor', 'Ab cupiditate soluta', 'Ut quia est laudant', 'Perspiciatis sed of', '285231764', NULL, '2021-10-13 15:57:27', '2021-12-25 14:23:20'),
 (26, 2, 'Quam quasi eiusmod v', 'Sacha Vang', '45', NULL, 'Jordan Griffin', 'Quis repudiandae qui', 'Qui aliquam harum ex', 'Praesentium iure ea', 'Illo illum quaerat', 'Aliqua Veniam quam', '2013-09-23 00:00:00', '2001-08-25 00:00:00', 'Aute nihil ipsum pro', 'Quaerat beatae harum', 'Eos eos ullam labor', 'Ab cupiditate soluta', 'Ut quia est laudant', 'Perspiciatis sed of', '771333814', NULL, '2021-10-13 15:57:49', '2021-10-13 15:57:49'),
@@ -621,7 +651,10 @@ INSERT INTO `products` (`id`, `product_category_id`, `chalan_no`, `party_name`, 
 (33, 2, 'Aut aperiam voluptas', 'Jelani Jackson', '50', NULL, 'Ciara Mejia', 'Quia omnis ad do ab', 'Iusto veniam suscip', 'Sit mollit omnis cu', 'Consequuntur odio qu', 'Aut sed consectetur', '1997-10-27 00:00:00', '1972-09-25 00:00:00', 'Cumque minus magnam', 'Reprehenderit dolor', 'Consequatur Nisi eo', 'Porro iste qui moles', 'Dolore eos deserunt', 'Dolor ullam rerum pe', '1902869969', NULL, '2021-11-26 20:14:10', '2021-12-25 14:18:23'),
 (34, 2, 'Aut aperiam voluptas', 'Jelani Jackson', NULL, NULL, 'Ciara Mejia', 'Quia omnis ad do ab', 'Iusto veniam suscip', 'Sit mollit omnis cu', 'Consequuntur odio qu', 'Aut sed consectetur', '1997-10-27 00:00:00', '1972-09-25 00:00:00', 'Cumque minus magnam', 'Reprehenderit dolor', 'Consequatur Nisi eo', 'Porro iste qui moles', 'Dolore eos deserunt', 'Dolor ullam rerum pe', '1895828625', NULL, '2021-11-26 20:16:25', '2021-11-26 20:16:25'),
 (35, 1, '4963', 'Ridoy', '5000', NULL, 'Red', 'Open', '12345', '170', '30', '120', '2021-11-25 00:00:00', '2021-11-26 00:00:00', '12', '12', '32', '567', '160', 'Single J/S', '1055677609', NULL, '2021-11-27 21:19:33', '2021-11-27 21:24:20'),
-(36, 1, '2025', 'abdullah traders', '1000', NULL, 'black', 'open', '1.75', '160', '30', '110', NULL, NULL, '100', '200', '10', '50', '160', 's/j', '1269519468', NULL, '2021-11-27 23:27:04', '2021-12-26 16:15:25');
+(36, 1, '2025', 'abdullah traders', '1000', NULL, 'black', 'open', '1.75', '160', '30', '110', NULL, NULL, '100', '200', '10', '50', '160', 's/j', '1269519468', NULL, '2021-11-27 23:27:04', '2021-12-26 16:15:25'),
+(37, 2, 'Suscipit vel est rep', 'Joelle Johnston', NULL, NULL, 'Harlan Bush', 'Eiusmod impedit ven', 'Quos sed quo laudant', 'Duis do enim repelle', 'Voluptas dolorem con', 'Corporis accusamus v', '2001-10-29 00:00:00', '2001-07-21 00:00:00', 'Sit perferendis dol', 'Illum modi at conse', 'Pariatur Dolore pla', 'Sit reprehenderit q', 'Distinctio Vero eni', 'Anim inventore accus', '1725037484', NULL, '2021-12-27 12:40:10', '2021-12-27 12:40:10'),
+(38, 1, 'Et ducimus ut quisq', 'Leigh Merritt', NULL, NULL, 'Stone Boyle', 'Nostrum dolor facere', 'Quis qui nesciunt e', 'Libero ab consectetu', 'Consequat Molestiae', 'Do et sunt dicta ad', '2018-09-20 00:00:00', '1973-11-22 00:00:00', 'Perferendis pariatur', 'Voluptas reprehender', 'Rerum aliqua Proide', 'Ea exercitation elig', 'In praesentium iusto', 'Anim cupidatat conse', '1373451777', NULL, '2021-12-27 12:40:16', '2021-12-27 12:40:16'),
+(39, 8, 'Ut veniam incidunt', 'Blake Phillips', NULL, NULL, 'Jackson Harmon', 'Minima quis voluptat', 'At aut sit aliqua', 'Sequi in amet nihil', 'Modi ipsum providen', 'Pariatur Suscipit v', NULL, NULL, 'Eiusmod quasi eum no', 'Velit cum autem cons', 'Quia alias sit pari', 'Sint quia hic nostr', 'Repudiandae voluptat', 'Voluptatum iure nemo', '42458513', NULL, '2021-12-27 16:53:33', '2021-12-27 16:53:43');
 
 -- --------------------------------------------------------
 
@@ -648,7 +681,9 @@ INSERT INTO `product_categories` (`id`, `name`, `created_by`, `created_at`, `upd
 (4, 'interlock', 92, '2021-11-28 18:25:14', '2021-11-28 18:25:14'),
 (5, 'terry', 92, '2021-11-28 18:25:31', '2021-11-28 18:25:31'),
 (6, 'fleece', 92, '2021-11-28 18:25:45', '2021-11-28 18:25:45'),
-(7, 's/j', 92, '2021-11-28 18:25:56', '2021-11-28 18:25:56');
+(7, 's/j', 92, '2021-11-28 18:25:56', '2021-11-28 18:25:56'),
+(8, 'asdasd', 92, '2021-12-27 18:38:16', '2021-12-27 18:38:16'),
+(9, 'asdasd', 92, '2021-12-27 18:38:21', '2021-12-27 18:38:21');
 
 -- --------------------------------------------------------
 
@@ -672,7 +707,7 @@ CREATE TABLE `product_ingredients` (
 
 INSERT INTO `product_ingredients` (`id`, `name`, `quantity`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
 (1, 'gggggsdfsdf', '336', NULL, NULL, '2021-10-13 16:33:37', '2021-11-27 02:16:25'),
-(2, 'ssdfsdf', '232', NULL, NULL, '2021-10-13 16:33:37', '2021-10-13 16:33:37'),
+(2, 'ssdfsdf', '-183', NULL, NULL, '2021-10-13 16:33:37', '2021-12-27 18:40:10'),
 (3, 'Yan', '50', NULL, 92, '2021-11-27 21:07:40', '2021-11-27 21:07:40');
 
 -- --------------------------------------------------------
@@ -701,8 +736,10 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`id`, `product_id`, `supplier_id`, `created_by`, `quantity`, `status`, `unit_price`, `total_purchas_price`, `actual_unit_price`, `actual_purchas_price`, `created_at`, `updated_at`) VALUES
-(12, 23, 1, '92', '460', '1', '50.00', '25000.00', '60.00', '30000.00', '2021-12-25 20:23:02', '2021-12-25 20:27:55'),
-(13, 25, 2, '92', '100', '1', '40.00', '20000.00', '50.00', '25000.00', '2021-12-25 20:23:20', '2021-12-25 20:28:28');
+(12, 23, 1, '92', '-10', '1', '50.00', '25000.00', '60.00', '30000.00', '2021-12-25 20:23:02', '2021-12-27 18:41:25'),
+(13, 25, 2, '92', '100', '1', '40.00', '20000.00', '50.00', '25000.00', '2021-12-25 20:23:20', '2021-12-25 20:28:28'),
+(14, 23, 1, '92', '968', '1', '54.00', '52272.00', '6.20', '6000.00', '2021-12-27 18:40:56', '2021-12-27 18:40:56'),
+(15, 23, 4, '92', '100', '1', '50.00', '25000.00', '60.00', '30000.00', '2021-12-27 23:06:42', '2021-12-27 23:07:38');
 
 -- --------------------------------------------------------
 
@@ -728,7 +765,9 @@ INSERT INTO `ready_product_details` (`id`, `product_id`, `ingredient_id`, `quant
 (2, 28, 2, '312', '2021-10-13 21:59:39', '2021-10-13 21:59:39'),
 (3, 28, 2, '547', '2021-10-13 21:59:40', '2021-10-13 21:59:40'),
 (4, 34, 1, '5', '2021-11-27 02:16:25', '2021-11-27 02:16:25'),
-(5, 34, 1, '4', '2021-11-27 02:16:25', '2021-11-27 02:16:25');
+(5, 34, 1, '4', '2021-11-27 02:16:25', '2021-11-27 02:16:25'),
+(6, 37, 2, '45', '2021-12-27 18:40:10', '2021-12-27 18:40:10'),
+(7, 37, 2, '370', '2021-12-27 18:40:10', '2021-12-27 18:40:10');
 
 -- --------------------------------------------------------
 
@@ -753,7 +792,8 @@ INSERT INTO `roles` (`id`, `name`, `slag`, `created_at`, `updated_at`) VALUES
 (12, 'Admin', 'admin', '2021-01-21 02:25:27', '2021-01-21 02:25:27'),
 (14, 'Accounts', 'accounts', '2021-01-21 02:31:02', '2021-01-21 02:31:02'),
 (16, 'SubAdmin', 'subadmin', '2021-04-26 17:53:50', '2021-04-26 17:53:50'),
-(17, 'test', 'test', '2021-06-10 07:09:52', '2021-06-10 07:09:52');
+(17, 'test', 'test', '2021-06-10 07:09:52', '2021-06-10 07:09:52'),
+(18, 'sales Manager', 'sales_manager', '2021-12-27 16:43:55', '2021-12-27 16:43:55');
 
 -- --------------------------------------------------------
 
@@ -784,11 +824,16 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `customer_id`, `sales_executive_id`, `total_price`, `payment_amount`, `due`, `reference`, `sales_date`, `status`, `sales_code`, `profit_or_loss`, `date`, `created_by`, `created_at`, `updated_at`) VALUES
-(65, 2, NULL, '108', '60', '48', NULL, NULL, 0, '1910465470', NULL, NULL, NULL, '2021-12-25 20:43:40', '2021-12-25 20:43:40'),
-(66, 2, NULL, '108', '86', '22', NULL, NULL, 0, '51936560', '-2.00', NULL, NULL, '2021-12-25 21:07:16', '2021-12-25 21:07:16'),
-(67, 3, NULL, '68', '34', '34', NULL, NULL, 0, '1375712281', '-42.00', NULL, NULL, '2021-12-25 21:09:28', '2021-12-25 21:09:28'),
-(68, 2, NULL, '185', '23', '162', NULL, NULL, 0, '1531556237', '75.00', NULL, NULL, '2021-12-25 21:10:14', '2021-12-25 21:10:15'),
-(69, 2, 1, '54', '43', '11', NULL, NULL, 0, '1210744099', '-6.00', NULL, NULL, '2021-12-27 00:15:04', '2021-12-27 00:15:04');
+(65, 2, 1, '108', '60', '48', NULL, NULL, 0, '1910465470', NULL, NULL, NULL, '2021-12-25 20:43:40', '2021-12-25 20:43:40'),
+(66, 2, 2, '108', '86', '22', NULL, NULL, 0, '51936560', '-2.00', NULL, NULL, '2021-12-25 21:07:16', '2021-12-25 21:07:16'),
+(67, 3, 1, '68', '34', '34', NULL, NULL, 0, '1375712281', '-42.00', NULL, NULL, '2021-12-25 21:09:28', '2021-12-25 21:09:28'),
+(68, 2, 1, '185', '33', '152', NULL, NULL, 0, '1531556237', '75.00', NULL, NULL, '2021-12-25 21:10:14', '2021-12-27 19:05:36'),
+(69, 2, 1, '54', '54', '0', NULL, NULL, 1, '1210744099', '-6.00', NULL, NULL, '2021-12-27 00:15:04', '2021-12-27 18:47:23'),
+(70, 3, 1, '54', '34', '20', NULL, NULL, 0, '627622660', '-6.00', NULL, NULL, '2021-12-27 19:27:09', '2021-12-27 19:27:10'),
+(71, 3, 1, '5600', '200', '5400', NULL, NULL, 0, '973181898', NULL, NULL, NULL, '2021-12-27 23:12:47', '2021-12-27 23:12:47'),
+(72, 3, 1, '5600', '200', '5400', NULL, NULL, 0, '730704820', NULL, NULL, NULL, '2021-12-27 23:13:03', '2021-12-27 23:13:03'),
+(73, 2, 1, '3000', '100', '2900', NULL, NULL, 0, '1811061024', '500.00', NULL, NULL, '2021-12-27 23:14:22', '2021-12-27 23:14:23'),
+(74, 27, 1, '670', '670', '0', NULL, NULL, 1, '1359961092', '170.00', NULL, NULL, '2021-12-27 23:15:26', '2021-12-27 23:17:12');
 
 -- --------------------------------------------------------
 
@@ -823,7 +868,12 @@ INSERT INTO `sales_details` (`id`, `customer_id`, `sales_id`, `stock_id`, `quant
 (99, 3, 67, 12, '1', '34.00', '34.00', '50.00', '50.00', '2021-12-25 21:09:28', '2021-12-25 21:09:28'),
 (100, 2, 68, 11, '1', '76.00', '76.00', '60.00', '60.00', '2021-12-25 21:10:14', '2021-12-25 21:10:14'),
 (101, 2, 68, 12, '1', '109.00', '109.00', '50.00', '50.00', '2021-12-25 21:10:14', '2021-12-25 21:10:14'),
-(102, 2, 69, 11, '1', '54.00', '54.00', '60.00', '60.00', '2021-12-27 00:15:04', '2021-12-27 00:15:04');
+(102, 2, 69, 11, '1', '54.00', '54.00', '60.00', '60.00', '2021-12-27 00:15:04', '2021-12-27 00:15:04'),
+(103, 3, 70, 11, '1', '54.00', '54.00', '60.00', '60.00', '2021-12-27 19:27:10', '2021-12-27 19:27:10'),
+(104, 3, 71, 15, '56', '100.00', '5600.00', '60.00', '3360.00', '2021-12-27 23:12:47', '2021-12-27 23:12:47'),
+(105, 3, 72, 15, '56', '100.00', '5600.00', '60.00', '3360.00', '2021-12-27 23:13:03', '2021-12-27 23:13:03'),
+(106, 2, 73, 12, '50', '60.00', '3000.00', '50.00', '2500.00', '2021-12-27 23:14:22', '2021-12-27 23:14:22'),
+(107, 27, 74, 12, '10', '67.00', '670.00', '50.00', '500.00', '2021-12-27 23:15:26', '2021-12-27 23:15:26');
 
 -- --------------------------------------------------------
 
@@ -877,7 +927,21 @@ INSERT INTO `sales_payments` (`id`, `sales_id`, `customer_id`, `amount`, `paymen
 (66, 66, 2, 30, 'Card', NULL, '2021-12-25 21:07:16', '2021-12-25 21:07:16'),
 (67, 67, 3, 34, 'cache', NULL, '2021-12-25 21:09:28', '2021-12-25 21:09:28'),
 (68, 68, 2, 23, 'cache', NULL, '2021-12-25 21:10:14', '2021-12-25 21:10:14'),
-(69, 69, 2, 43, 'cache', NULL, '2021-12-27 00:15:04', '2021-12-27 00:15:04');
+(69, 69, 2, 43, 'cache', NULL, '2021-12-27 00:15:04', '2021-12-27 00:15:04'),
+(70, 69, 2, 10, 'cache', NULL, '2021-12-27 18:46:48', '2021-12-27 18:46:48'),
+(71, 69, 2, 1, 'cache', NULL, '2021-12-27 18:47:23', '2021-12-27 18:47:23'),
+(72, 68, 2, 10, 'Cheque', NULL, '2021-12-27 19:05:36', '2021-12-27 19:05:36'),
+(73, 70, 3, 34, 'Cheque', NULL, '2021-12-27 19:27:10', '2021-12-27 19:27:10'),
+(74, 71, 3, 100, 'cache', NULL, '2021-12-27 23:12:47', '2021-12-27 23:12:47'),
+(75, 71, 3, 100, 'Cheque', NULL, '2021-12-27 23:12:48', '2021-12-27 23:12:48'),
+(76, 72, 3, 100, 'cache', NULL, '2021-12-27 23:13:03', '2021-12-27 23:13:03'),
+(77, 72, 3, 100, 'Cheque', NULL, '2021-12-27 23:13:03', '2021-12-27 23:13:03'),
+(78, 73, 2, 100, 'Cheque', NULL, '2021-12-27 23:14:22', '2021-12-27 23:14:22'),
+(79, 74, 27, 12, 'cache', NULL, '2021-12-27 23:15:26', '2021-12-27 23:15:26'),
+(80, 74, 27, 10, 'Cheque', NULL, '2021-12-27 23:16:46', '2021-12-27 23:16:46'),
+(81, 74, 27, 648, 'Cheque', NULL, '2021-12-27 23:17:12', '2021-12-27 23:17:12'),
+(82, NULL, 28, 300, 'Cheque', NULL, '2021-12-27 23:23:30', '2021-12-27 23:23:30'),
+(83, NULL, 28, 3000, 'cache', NULL, '2021-12-27 23:25:20', '2021-12-27 23:25:20');
 
 -- --------------------------------------------------------
 
@@ -901,8 +965,11 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id`, `purchase_id`, `created_by`, `quantity`, `status`, `date`, `created_at`, `updated_at`) VALUES
-(11, 12, '92', '18', '1', NULL, '2021-12-25 20:27:55', '2021-12-27 00:15:04'),
-(12, 13, '92', '388', '1', NULL, '2021-12-25 20:28:29', '2021-12-25 21:10:14');
+(11, 12, '92', '16', '1', NULL, '2021-12-25 20:27:55', '2021-12-27 19:27:10'),
+(12, 13, '92', '268', '1', NULL, '2021-12-25 20:28:29', '2021-12-27 23:15:26'),
+(13, 12, '92', '430', '1', NULL, '2021-12-27 18:41:17', '2021-12-27 18:41:17'),
+(14, 12, '92', '40', '1', NULL, '2021-12-27 18:41:25', '2021-12-27 18:41:25'),
+(15, 15, '92', '176', '1', NULL, '2021-12-27 23:07:38', '2021-12-27 23:13:03');
 
 -- --------------------------------------------------------
 
@@ -946,7 +1013,7 @@ INSERT INTO `suppliers` (`id`, `company_id`, `name`, `email`, `personal_phone`, 
 (5, NULL, 'Winifred Pratt', 'rydoredy@mailinator.com', '+1 (728) 971-9785', '+1 (798) 921-7253', 'Eos officia aut proi', 'Qui dolore eos comm', NULL, 'Walsh Mcintosh Inc', 'Neal and Blankenship Inc', 0, 'Sit ut labore quibus', 'Iure quo et repudian', '2021-11-30-61a52b3ed959d.jpg', 'Laborum aperiam qui', 'Cillum aliquam maxim', 'Perspiciatis accusa', 92, '2021-11-30 01:34:23', '2021-11-30 01:34:23'),
 (6, NULL, 'Miranda Schmidt', 'jedeg@mailinator.com', '+1 (287) 674-7165', '+1 (466) 896-5755', 'Nihil animi mollit', 'Voluptatem facilis d', NULL, 'Shields and Ross LLC', 'Meyers Kelley Traders', 0, 'Vel ut deserunt temp', 'Dolor rerum asperior', '2021-11-30-61a52b6ac208d.jpg', 'Error incidunt est', 'Nihil amet fugiat', 'Quia aut in aut nihi', 92, '2021-11-30 01:35:07', '2021-11-30 01:35:07'),
 (7, NULL, 'Cailin Dominguez', 'xekuke@mailinator.com', '+1 (625) 354-2594', '+1 (989) 224-5922', 'Adipisci nostrud pos', 'Et at cupiditate sit', NULL, 'Montgomery Garrett Associates', 'Powers Kemp Inc', 0, 'Repudiandae minim an', 'Quas placeat ipsam', '2021-11-30-61a531f613d83.png', 'Enim dolor natus acc', 'Corrupti amet qui', 'Id voluptatem Volu', 92, '2021-11-30 02:03:02', '2021-11-30 02:03:02'),
-(8, NULL, 'Ora Joseph', 'pogykepo@mailinator.com', '+1 (887) 299-6734', '+1 (227) 722-9906', 'Velit reiciendis au', 'Reiciendis est quam', NULL, 'Parsons and George Plc', 'Chang Castillo Trading', 0, 'Provident culpa mol', 'Quisquam soluta sunt', '2021-11-30-61a5323c258aa.jpg', 'Sed cumque proident', 'Aut optio nostrum l', 'Doloribus vel adipis', 92, '2021-11-30 02:04:13', '2021-11-30 02:04:13');
+(8, 1, 'Ora Joseph', 'pogykepo@mailinator.com', '+1 (887) 299-6734', '+1 (227) 722-9906', 'Velit reiciendis au', 'Reiciendis est quam', NULL, 'Parsons and George Plc', 'Chang Castillo Trading', 0, 'Provident culpa mol', 'Quisquam soluta sunt', '', 'Sed cumque proident', 'Aut optio nostrum l', 'Doloribus vel adipis', 92, '2021-11-30 02:04:13', '2021-12-27 19:03:37');
 
 -- --------------------------------------------------------
 
@@ -977,8 +1044,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `lastname`, `mobile`, `email`, `password`, `company_name`, `status_id`, `created_at`, `created_by`, `updated_at`, `version`, `remember_token`, `role_id`, `type`) VALUES
-(92, 'Super Admin', '', '01761955765', 'admin@gmail.com', '$2y$10$9LVl8Xz0Ps2S2cUZ14c8e.QOho1XfDdB96.AlX9GmPzQJOONtYmJu', NULL, 1, '2021-02-07 11:07:04', 85, '2021-04-08 17:09:31', 1, 'UdZRk0KfceaO6DkLlVuAElqoEYN3iOF4hi4SIt2uHIyufdokP4qe1oJFh4L9', 11, 'admin'),
-(105, 'rhythms', NULL, '01761955765', 'rhythms@outlook.com', '$2y$12$8K5vJYIUMomXvJ4v6reHfeX55kn6dxus5u1Cff6SdE0DJ.VGPvDjK', NULL, 1, '2021-06-10 12:31:09', 92, '2021-06-10 14:06:14', NULL, NULL, 16, 'admin');
+(92, 'Super Admin', '', '01761955765', 'admin@gmail.com', '$2y$10$9LVl8Xz0Ps2S2cUZ14c8e.QOho1XfDdB96.AlX9GmPzQJOONtYmJu', NULL, 1, '2021-02-07 11:07:04', 85, '2021-04-08 17:09:31', 1, '1w2sfttbzvQifaA4b67xa8Q4Jwxf5l55lIm7WK45KNSW3TRGnLzPLHZEDEsJ', 11, 'admin'),
+(105, 'rhythms', NULL, '01761955765', 'rhythms@outlook.com', '$2y$12$8K5vJYIUMomXvJ4v6reHfeX55kn6dxus5u1Cff6SdE0DJ.VGPvDjK', NULL, 1, '2021-06-10 12:31:09', 92, '2021-06-10 14:06:14', NULL, NULL, 16, 'admin'),
+(106, 'sales Manager', NULL, '01761955765', 'sales@gmail.com', '$2y$10$8opRcX98SyaEidglieya5OsBmFjrG4e.DQ.3.ZKUIi4nyB1Iblyo6', NULL, 1, '2021-12-27 22:44:25', 92, '2021-12-27 22:44:25', NULL, NULL, 18, 'admin');
 
 --
 -- Indexes for dumped tables
@@ -1167,7 +1235,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cheque_details`
 --
 ALTER TABLE `cheque_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `company_info`
@@ -1179,7 +1247,7 @@ ALTER TABLE `company_info`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `dynamic_routes`
@@ -1191,13 +1259,13 @@ ALTER TABLE `dynamic_routes`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `expenses_category`
 --
 ALTER TABLE `expenses_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1221,19 +1289,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permission_roles`
 --
 ALTER TABLE `permission_roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16366;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16382;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
 --
 ALTER TABLE `product_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `product_ingredients`
@@ -1245,31 +1313,31 @@ ALTER TABLE `product_ingredients`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `ready_product_details`
 --
 ALTER TABLE `ready_product_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `sales_executive_models`
@@ -1281,13 +1349,13 @@ ALTER TABLE `sales_executive_models`
 -- AUTO_INCREMENT for table `sales_payments`
 --
 ALTER TABLE `sales_payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -1299,7 +1367,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- Constraints for dumped tables

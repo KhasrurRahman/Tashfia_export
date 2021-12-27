@@ -180,12 +180,12 @@
 
         var per_cheque_number = [];
         $('.cheque_number').each(function () {
-            cheque_number.push(this.value);
+            per_cheque_number.push(this.value);
         });
 
         var per_cheque_date = [];
         $('.cheque_date').each(function () {
-            cheque_date.push(this.value);
+            per_cheque_date.push(this.value);
         });
 
         $.ajax({
@@ -311,14 +311,14 @@
 
 
     function add_payment_mode() {
-        var html = '<div class="col-md-8 p-3 m-2" style="background: #6b279b52;border-radius: 1%" id="payment_mode_section"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">Amount</label> <div class="input-group"> <input type="number" class="form-control payment_amount" name="payment_amount" id="sub_total" required> </div><span id="error_sub_total" class="text-red error_field"></span> </div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Payment Type</label> <select class="form-control select2 payment_type" name="payment_type" id="payment_type" onchange="cheque_date_input(this)"> <option value="cache ">cache</option> <option value="Crd ">Card</option> <option value="cheque">cheque</option> </select> <span id="error_subtotal" class="text-red error_field "></span> </div></div><div class="col-12" id="check_section" style="display: none;border: 1px solid"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">cheque Number</label> <div class="input-group"> <input type="number" class="form-control cheque_number" name="cheque_number"> </div></div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Date</label> <div class="input-group"> <input type="date" class="form-control cheque_number" name="cheque_date"> </div></div></div></div></div><div class="col-md-12"> <div class="form-group"> <label for="product_id">Remarks</label> <div class="input-group"> <textarea name="remarks" id="remarks" style="width:100%" class="remarks"></textarea> </div><span id="error_remarks" class="text-red error_field"></span> </div></div></div></div>';
+        var html = '<div class="col-md-8 p-3 m-2" style="background: #6b279b52;border-radius: 1%" id="payment_mode_section"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">Amount</label> <div class="input-group"> <input type="number" class="form-control payment_amount" name="payment_amount" id="sub_total" required> </div><span id="error_sub_total" class="text-red error_field"></span> </div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Payment Type</label> <select class="form-control select2 payment_type" name="payment_type" id="payment_type" onchange="cheque_date_input(this)"> <option value="cache ">cache</option> <option value="Crd ">Card</option> <option value="Cheque">cheque</option> </select> <span id="error_subtotal" class="text-red error_field "></span> </div></div><div class="col-12" id="check_section" style="display: none;border: 1px solid"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">cheque Number</label> <div class="input-group"> <input type="number" class="form-control cheque_number" name="cheque_number"> </div></div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Date</label> <div class="input-group"> <input type="date" class="form-control cheque_number" name="cheque_date"> </div></div></div></div></div><div class="col-md-12"> <div class="form-group"> <label for="product_id">Remarks</label> <div class="input-group"> <textarea name="remarks" id="remarks" style="width:100%" class="remarks"></textarea> </div><span id="error_remarks" class="text-red error_field"></span> </div></div></div></div>';
 
         $('#multiple_payment_model').append(html);
     }
 
     
     function cheque_date_input(select) {
-        if (select.value === 'cheque') {            
+        if (select.value === 'Cheque') {            
            $(select).closest('.row').find('#check_section').show(1000);
         } else {
            $(select).closest('.row').find('#check_section').hide(1000);

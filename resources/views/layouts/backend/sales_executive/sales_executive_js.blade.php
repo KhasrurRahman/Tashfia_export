@@ -23,6 +23,9 @@
                 url: "{{ url('admin/sales_executive/search') }}",
                 type: 'POSt',
                 data: function (d) {
+                    d.search_sales_executive = $('#search_sales_executive').val();
+                    d.from_date = $('#from_date').val();
+                    d.to_date = $('#to_date').val();
                     d._token = '{{csrf_token()}}'
                 }
             },
@@ -41,5 +44,11 @@
         });
     });
 
+    function form_reset() {
+        document.getElementById("search_form").reset();
+        $('.select2').val(null).trigger('change');
+        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+    }
+    
 
 </script>

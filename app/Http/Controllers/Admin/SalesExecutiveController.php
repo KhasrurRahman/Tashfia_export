@@ -12,7 +12,8 @@ class SalesExecutiveController extends Controller
 {
     public function show()
     {
-        return view('layouts.backend.sales_executive.sales_executive');
+        $sales_executives = SalesExecutiveModel::all();
+        return view('layouts.backend.sales_executive.sales_executive', compact('sales_executives'));
     }
 
     public function search(Request $request)
@@ -62,7 +63,7 @@ class SalesExecutiveController extends Controller
         $sales = SalesExecutiveModel::find($id);
         return view('layouts.backend.sales_executive.edit_sales_executive', compact('sales'));
     }
-    
+
     public function add()
     {
         return view('layouts.backend.sales_executive.create_sales_executive');

@@ -206,10 +206,10 @@
 
 
         function ingredient_show(select) {
-            if (select.value == 1) {
-                document.getElementById('ingredient_section').style.display = "none";
-            } else {
+            if (select.value == 2) {
                 document.getElementById('ingredient_section').style.display = "block";
+            } else {
+                document.getElementById('ingredient_section').style.display = "none";
             }
         }
 

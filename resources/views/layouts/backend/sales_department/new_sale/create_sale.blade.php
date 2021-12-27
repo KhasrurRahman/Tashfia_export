@@ -180,9 +180,9 @@
     </div>
 
 
-    
-{{--    payment section--}}
-    
+
+    {{--    payment section--}}
+
     <div class="card">
         <div class="card-header">
             <div class="card-title">
@@ -209,8 +209,9 @@
                                 <label for="product_id">Payment Type</label>
                                 <select class="form-control select2 payment_type" name="payment_type" id="payment_type" onchange="cheque_date_input(this)">
                                     <option value="cache ">cache</option>
-                                    <option value="Crd ">Card</option>
-                                    <option value="cheque">cheque</option>
+                                    <option value="card ">Card</option>
+                                    <option value="Bkash">Bkash</option>
+                                    <option value="Cheque">Cheque</option>
                                 </select>
                                 <span id="error_subtotal" class="text-red error_field "></span>
                             </div>
@@ -246,7 +247,7 @@
                                 <span id="error_remarks" class="text-red error_field"></span>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
 

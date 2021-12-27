@@ -45,7 +45,7 @@
             table.draw(true);
         });
     });
-    
+
     function form_reset() {
         document.getElementById("search_form").reset();
         $('.select2').val(null).trigger('change');
@@ -293,16 +293,25 @@
     }
 
 
-    $('#search_company_id').on('change', function() {
+    $('#search_company_id').on('change', function () {
         var id = $(this).val();
         $.ajax({
             type: 'get',
             url: '{{ url('company_customer_search') }}/' + id,
-            success: function(data) {
+            success: function (data) {
                 // console.log(data)
                 $('#search_customer_id').html(data);
             }
         });
     });
+
+
+    function cheque_date_input(select) {
+        if (select.value === 'Cheque') {
+            $('#check_section').show(1000);
+        } else {
+            $('#check_section').hide(1000);
+        }
+    }
 
 </script>

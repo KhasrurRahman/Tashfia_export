@@ -11,7 +11,7 @@
 
     <div class="card">
         <div class="card-header">
-            {{--            @include('layouts.backend.customer.customer_search')--}}
+            @include('layouts.backend.report.profit.profit_loss_search_search')
         </div>
         <div class="card-body">
             <div style="overflow: hidden">
@@ -43,7 +43,7 @@
             </table>
         </div>
     </div>
-    
+
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>

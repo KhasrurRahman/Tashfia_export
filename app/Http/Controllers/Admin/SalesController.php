@@ -20,7 +20,7 @@ class SalesController extends Controller
     {
         $sales_executive = SalesExecutiveModel::all();
         $customers = CustomerModel::where('type', 'general')->get();
-        return view('layouts.backend.sales_department.new_sale.create_sale', compact('customers','sales_executive'));
+        return view('layouts.backend.sales_department.new_sale.create_sale', compact('customers', 'sales_executive'));
     }
 
 
@@ -123,8 +123,8 @@ class SalesController extends Controller
             $sales_payemnt->payment_mode = $request->per_payment_type[$i];
             $sales_payemnt->remark = $request->per_remarks[$i];
             $sales_payemnt->save();
-            
-            if ($request->per_payment_type[$i] == 'cheque'){
+
+            if ($request->per_payment_type[$i] == 'Cheque') {
                 $check = new ChequeDetailModel();
                 $check->number = $request->per_cheque_number[$i];
                 $check->date = $request->per_cheque_date[$i];
@@ -138,10 +138,10 @@ class SalesController extends Controller
             $customer->balance += $total_due_amount;
             $customer->update();
         }
-        
-        $sales->profit_or_loss = $sales->total_price  - $sales->sales_details->sum('purchase_total_price');
+
+        $sales->profit_or_loss = $sales->total_price - $sales->sales_details->sum('purchase_total_price');
         $sales->update();
-        
+
         return response()->json(['done' => 'success']);
     }
 
@@ -233,9 +233,18 @@ class SalesController extends Controller
         $sales_payemnt->amount = $request->amount;
         $sales_payemnt->payment_mode = $request->payment_type;
         $sales_payemnt->save();
-        
+
+
+        if ($request->payment_mode == 'Cheque') {
+            $check = new ChequeDetailModel();
+            $check->number = $request->cheque_number;
+            $check->date = $request->cheque_date;
+            $check->save();
+        }
+
+
         $customer = CustomerModel::find($sale->customer_id);
-        $customer->balance +=  $request->amount;
+        $customer->balance += $request->amount;
         $customer->update();
 
         return response()->json(['done' => 'success']);

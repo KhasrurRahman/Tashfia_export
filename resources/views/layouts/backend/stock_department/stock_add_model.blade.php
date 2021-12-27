@@ -54,7 +54,7 @@
 
                     <div class="form-group">
                         <label for="Route_name">quantity</label>
-                        <input type="number" class="form-control" name="quantity">
+                        <input type="number" class="form-control" name="quantity" id="input_quantity">
                         <span id="Error_quantity" class="text-red error_field"></span>
                     </div>
 

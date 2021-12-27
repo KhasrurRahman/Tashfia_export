@@ -30,6 +30,12 @@ class ProfitController extends Controller
     {
         if ($request->ajax()) {
             $query = salesDepartmentModel::query();
+            
+            if ($request->from_date !== null and $request->to_date !== null) {
+                $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+            }
+            
+            
             $query->orderBy('created_at', 'DESC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())

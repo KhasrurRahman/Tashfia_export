@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\ChequeDetailModel;
 use App\CompanyModel;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerModel;
@@ -30,13 +31,13 @@ class CustomerController extends Controller
             if ($request->search_company_id !== null) {
                 $query->where('company_id', $request->search_company_id);
             }
-            
+
             if ($request->search_phone !== null) {
-                $query->where('personal_phone', '%' .  $request->search_phone . '%');
+                $query->where('personal_phone', '%' . $request->search_phone . '%');
             }
-            
+
             if ($request->search_name !== null) {
-                $query->where('name','like', '%' . $request->search_name . '%');
+                $query->where('name', 'like', '%' . $request->search_name . '%');
             }
 
             $query->orderBy('created_at', 'DESC');
@@ -175,6 +176,14 @@ class CustomerController extends Controller
         $sales_payemnt->payment_mode = $request->payment_type;
         $sales_payemnt->remark = $request->remark;
         $sales_payemnt->save();
+
+        if ($request->payment_mode == 'Cheque') {
+            $check = new ChequeDetailModel();
+            $check->number = $request->cheque_number;
+            $check->date = $request->cheque_date;
+            $check->save();
+        }
+
 
         $customer->balance += $request->amount;
         $customer->update();
