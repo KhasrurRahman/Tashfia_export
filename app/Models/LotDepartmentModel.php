@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class lotDepartmentModel extends Model
+class LotDepartmentModel extends Model
 {
     protected $table = 'stock';
 

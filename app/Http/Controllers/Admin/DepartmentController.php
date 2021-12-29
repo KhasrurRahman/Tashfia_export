@@ -6,7 +6,7 @@ use App\CompanyModel;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerModel;
 use App\Models\purchaseModel;
-use App\Models\lotDepartmentModel;
+use App\Models\LotDepartmentModel;
 use App\Models\ModelProduct;
 use App\Models\salesDepartmentModel;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class DepartmentController extends Controller
     public function show_sales_department()
     {
         $customer = CustomerModel::all();
-        $stock = lotDepartmentModel::where('quantity', '>', 0)->get();
+        $stock = LotDepartmentModel::where('quantity', '>', 0)->get();
         $company = CompanyModel::all();
         return view('layouts.backend.sales_department.sales_department', compact('stock', 'customer', 'company'));
     }
@@ -131,7 +131,7 @@ class DepartmentController extends Controller
     public function search(Request $request)
     {
         if ($request->ajax()) {
-            $query = lotDepartmentModel::query();
+            $query = LotDepartmentModel::query();
             $query->orderBy('id', 'desc');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
@@ -162,13 +162,13 @@ class DepartmentController extends Controller
         $purchase->update();
 
         $request->request->add(['created_by' => Auth::user()->id]);
-        lotDepartmentModel::create($request->all());
+        LotDepartmentModel::create($request->all());
         return response()->json(['Done' => 'Done']);
     }
 
     public function delete_lot_department_data($id)
     {
-        $stock = lotDepartmentModel::find($id);
+        $stock = LotDepartmentModel::find($id);
         salesDepartmentModel::where('stock_id', $stock->id)->delete();
         $stock->delete();
         return response()->json(['Done' => 'Done']);
@@ -176,7 +176,7 @@ class DepartmentController extends Controller
 
     public function edit_lot_department_data($id)
     {
-        $data = lotDepartmentModel::find($id);
+        $data = LotDepartmentModel::find($id);
         $output = '';
 
         $product = ModelProduct::query()->select('id', 'chalan_no')->get();
@@ -199,13 +199,13 @@ class DepartmentController extends Controller
             'quantity' => 'required',
         ]);
         $request->request->add(['created_by' => Auth::user()->id]);
-        lotDepartmentModel::find($request->edit_id)->update($request->all());
+        LotDepartmentModel::find($request->edit_id)->update($request->all());
         return response()->json(['Done' => 'Done']);
     }
 
     public function show_single_lot_department_data($id)
     {
-        return lotDepartmentModel::find($id);
+        return LotDepartmentModel::find($id);
     }
 
     public function sales_department_invoice($id)

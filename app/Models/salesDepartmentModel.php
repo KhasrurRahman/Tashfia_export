@@ -15,7 +15,7 @@ class salesDepartmentModel extends Model
     
     public function stock()
     {
-        return $this->belongsTo(lotDepartmentModel::class,'stock_id');
+        return $this->belongsTo(LotDepartmentModel::class,'stock_id');
     }
     
     public function customer()

@@ -201,11 +201,7 @@
         });
     }
 
-    {{--var num = {{$customer->balance}};--}}
-    {{--num -= num * 2;--}}
-    {{--$('#customer_inputed_amount').attr({--}}
-    {{--    'max': num--}}
-    {{--})--}}
+
 
     function cheque_date_input(select) {
         if (select.value === 'Cheque') {

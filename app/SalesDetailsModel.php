@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Models\CustomerModel;
-use App\Models\lotDepartmentModel;
+use App\Models\LotDepartmentModel;
 use App\Models\salesDepartmentModel;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +18,7 @@ class SalesDetailsModel extends Model
     
     public function stock()
     {
-        return $this->belongsTo(lotDepartmentModel::class,'stock_id');
+        return $this->belongsTo(LotDepartmentModel::class,'stock_id');
     }
     
     public function sale()

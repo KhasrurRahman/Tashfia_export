@@ -22,6 +22,7 @@ class HomeController2 extends Controller
         $product = ModelProduct::find($id);
         $pdf = PDF::loadView('layouts.backend.product.product_pdf', compact('product'));
 
+//        return view('layouts.backend.product.product_pdf',compact('product'));
         return $pdf->download('product.pdf');
     }
 

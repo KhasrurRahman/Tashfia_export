@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\ChequeDetailModel;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerModel;
-use App\Models\lotDepartmentModel;
+use App\Models\LotDepartmentModel;
 use App\Models\ModelProduct;
 use App\Models\salesDepartmentModel;
 use App\Models\SalesPaymentModel;
@@ -41,7 +41,7 @@ class SalesController extends Controller
 
     public function get_product_single_data($id)
     {
-        $product = lotDepartmentModel::query()->join('purchase', 'purchase.id', '=', 'stock.purchase_id')->join('products', 'products.id', '=', 'purchase.product_id')->select('products.chalan_no', 'stock.*', 'purchase.unit_price', 'purchase.id as purchase_id')->where('stock.id', $id)->first();
+        $product = LotDepartmentModel::query()->join('purchase', 'purchase.id', '=', 'stock.purchase_id')->join('products', 'products.id', '=', 'purchase.product_id')->select('products.chalan_no', 'stock.*', 'purchase.unit_price', 'purchase.id as purchase_id')->where('stock.id', $id)->first();
 
         return response()->json(['product' => $product]);
     }
@@ -77,7 +77,7 @@ class SalesController extends Controller
             if ($request->stock_id[$i] == null) {
 
             }
-            $stock = lotDepartmentModel::find($request->stock_id[$i]);
+            $stock = LotDepartmentModel::find($request->stock_id[$i]);
             $stock->quantity -= $request->per_quantity[$i];
             $stock->update();
         }
@@ -96,7 +96,7 @@ class SalesController extends Controller
         $sales->save();
 
         for ($i = 0; $i < count($request->stock_id); $i++) {
-            $stock = lotDepartmentModel::find($request->stock_id[$i]);
+            $stock = LotDepartmentModel::find($request->stock_id[$i]);
             $sales_details = new SalesDetailsModel();
             $sales_details->customer_id = $request->customer_id;
             $sales_details->stock_id = $request->stock_id[$i];
@@ -110,7 +110,7 @@ class SalesController extends Controller
         }
 
         for ($i = 0; $i < count($request->stock_id); $i++) {
-            $sales_details = lotDepartmentModel::find($request->stock_id[$i]);
+            $sales_details = LotDepartmentModel::find($request->stock_id[$i]);
             $sales_details->quantity -= $request->per_quantity[$i];
             $sales_details->update();
         }
@@ -124,12 +124,14 @@ class SalesController extends Controller
             $sales_payemnt->remark = $request->per_remarks[$i];
             $sales_payemnt->save();
 
-            if ($request->per_payment_type[$i] == 'Cheque') {
+            if ($request->per_cheque_number[$i]) {
                 $check = new ChequeDetailModel();
+                $check->sales_payment_id = $sales_payemnt->id;
                 $check->number = $request->per_cheque_number[$i];
                 $check->date = $request->per_cheque_date[$i];
                 $check->save();
             }
+
         }
 
         $total_due_amount = $total_paied_amount - $request->grand_total;
