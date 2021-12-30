@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <label for="Route_name">Balance</label>
-                            <input type="number" class="form-control" name="balance" value="{{$customer->balance}}">
+                            <input type="number" class="form-control" name="balance" value="{{$customer->balance}}" min="1">
                             <span id="Errorpo_status_name" class="text-red error_field"></span>
                         </div>
 

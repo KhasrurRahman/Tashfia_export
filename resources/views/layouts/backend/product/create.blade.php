@@ -99,8 +99,16 @@
                     <div class="card-header"><h3>Create Product</h3></div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleInputUsername1">Bill/Challan No</label>
+                            <label for="exampleInputUsername1">Product name</label>
                             <input type="text" class="form-control" name="chalan_no">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Fabric Type</label>
+                            <input type="text" class="form-control" name="fabric_type">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Bill/chalan No</label>
+                            <input type="text" class="form-control" name="chalan_no_2">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Party Name </label>
@@ -167,10 +175,6 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Finish GSM</label>
                             <input type="text" class="form-control" name="finish_gsm">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Fabric Type</label>
-                            <input type="text" class="form-control" name="fabric_type">
                         </div>
                     </div>
                 </div>

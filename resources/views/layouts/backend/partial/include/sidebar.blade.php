@@ -94,8 +94,6 @@
                         <a href="{{route('admin.all_user')}}"><i class="ik ik-user-check"></i><span>Users</span></a>
                     </div>
                 @endif
-
-
             </nav>
         </div>
     </div>

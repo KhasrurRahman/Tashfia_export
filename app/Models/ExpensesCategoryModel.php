@@ -8,5 +8,5 @@ class ExpensesCategoryModel extends Model
 {
     protected $table = 'expenses_category';
 
-    protected $fillable = ["name","created_by"];
+    protected $fillable = ["name","remark","created_by"];
 }

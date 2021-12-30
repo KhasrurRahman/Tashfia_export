@@ -21,7 +21,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Product Type</th>
-                    <th>Chalan no</th>  
+                    <th>Product Name</th>  
                     <th>Party Name</th>
                     <th>Color Name</th>
                     <th>S/L No</th>
@@ -30,7 +30,7 @@
                     <th>Lot number</th>
                     <th>Batch number</th>
                     <th>Order number</th>
-                    <th>Crad No</th>
+                    <th>Card No</th>
                     <th>Action</th>
                 </tr>
                 </thead>

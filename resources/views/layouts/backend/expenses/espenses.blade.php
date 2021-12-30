@@ -28,8 +28,8 @@
                     <th>Id</th>
                     <th>Category</th>
                     <th>Name</th>
-                    <th>Balance</th>
                     <th>Amount</th>
+                    <th>Remarks</th>
                     <th>Date</th>
                     <th>Action</th>
                 </tr>

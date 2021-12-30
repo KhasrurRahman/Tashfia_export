@@ -27,10 +27,12 @@ class ExpensesController extends Controller
                 ->addIndexColumn()
                 ->addColumn('name', function ($data) {
                     return $data->name;
+                })->addColumn('remark', function ($data) {
+                    return $data->remark;
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
                     return $actionBtn;
-                })->rawColumns(['name', 'action'])
+                })->rawColumns(['name', 'remark', 'action'])
                 ->make(true);
         }
     }
@@ -80,8 +82,8 @@ class ExpensesController extends Controller
                     return $data->expenses_category->name;
                 })->addColumn('name', function ($data) {
                     return $data->name;
-                })->addColumn('balance', function ($data) {
-                    return $data->balance;
+                })->addColumn('remark', function ($data) {
+                    return $data->remarks;
                 })->addColumn('Amount', function ($data) {
                     return $data->Amount;
                 })->addColumn('date', function ($data) {
@@ -89,7 +91,7 @@ class ExpensesController extends Controller
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
                     return $actionBtn;
-                })->rawColumns(['Category', 'name', 'balance', 'Amount', 'date', 'action'])
+                })->rawColumns(['Category', 'name', 'remark', 'Amount', 'date', 'action'])
                 ->make(true);
         }
     }

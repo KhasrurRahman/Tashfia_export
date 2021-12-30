@@ -165,7 +165,7 @@ class CustomerController extends Controller
     public function manual_due_payment(Request $request)
     {
         $customer = CustomerModel::find($request->customer_id);
-        if ($request->amount < $customer->due) {
+        if ($request->amount > $customer->due) {
             Toastr::error('Your Payment amount must be less than or equal to Due amount', '');
             return redirect()->back();
         }

@@ -31,15 +31,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="Route_name">Balance</label>
-                        <input type="number" class="form-control" name="balance">
-                        <span id="Error_status_balance" class="text-red error_field"></span>
-                    </div>
-
-                    <div class="form-group">
                         <label for="Route_name">Amount</label>
                         <input type="number" class="form-control" name="Amount">
                         <span id="Error_status_Amount" class="text-red error_field"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Route_name">Remarks</label>
+                        <input type="text" class="form-control" name="remarks">
+                        <span id="Error_status_balance" class="text-red error_field"></span>
                     </div>
                     
                 </div>

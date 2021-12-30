@@ -28,6 +28,7 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
                 {data: 'name', name: 'name'},
+                {data: 'remark', name: 'remark'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });

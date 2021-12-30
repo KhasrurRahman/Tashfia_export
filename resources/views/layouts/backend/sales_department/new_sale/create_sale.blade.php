@@ -131,7 +131,7 @@
                             </span>
 
                             <input type="text" name="country_name" id="country_name" class="form-control input-lg"
-                                   placeholder="Item name/Barcode/Itemcode" autocomplete="off"/>
+                                   placeholder="Item name/Barcode/Item code" autocomplete="off"/>
                         </div>
 
                         <div id="countryList">

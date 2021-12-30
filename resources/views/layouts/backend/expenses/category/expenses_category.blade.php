@@ -20,6 +20,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Remark</th>
                     <th>Action</th>
                 </tr>
                 </thead>

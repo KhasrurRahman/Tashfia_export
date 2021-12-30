@@ -60,6 +60,7 @@
                     success: function (data) {
                         $('#countryList').fadeIn();
                         $('#countryList').html(data);
+                        $('#country_name').val('');
                     }
                 });
             }

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2021 at 07:42 PM
+-- Generation Time: Dec 30, 2021 at 07:56 AM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.23
+-- PHP Version: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -127,7 +127,8 @@ INSERT INTO `customers` (`id`, `company_id`, `name`, `type`, `email`, `personal_
 (25, 1, 'Md. Khasrur Rahman', 'general', 'khasrur8@gmail.com', '01761955765', NULL, 'satkhira,khulna bangladrsh', NULL, NULL, '-40', NULL, NULL, '2021-12-25-61c71738314d9.png', 'asdas', 'asdad', 92, '2021-12-06 20:48:40', '2021-12-25 19:06:00'),
 (26, NULL, 'Md. Khasrur Rahman', 'wal in customer', NULL, '01761955765', NULL, 'satkhira,khulna bangladrsh', 'Ratin', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-27 11:07:04', '2021-12-27 11:07:04'),
 (27, NULL, 'Md. Khasrur Rahman', 'wal in customer', NULL, '01761955765', NULL, 'satkhira,khulna bangladrsh', 'Ratin', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-27 23:15:11', '2021-12-27 23:17:12'),
-(28, 1, 'Md. Khasrur Rahman', 'general', 'khasrur8@gmail.com', '01761955765', '01761955765', 'satkhira,khulna bangladrsh', NULL, 'Dhaka - North - Khilkhet', '-700', NULL, '123123123123', '2021-12-27-61c9f67172036.png', 'Numquam sed dolor re', 'In quo quidem non re', 92, '2021-12-27 23:22:57', '2021-12-27 23:25:20');
+(28, 1, 'Md. Khasrur Rahman', 'general', 'khasrur8@gmail.com', '01761955765', '01761955765', 'satkhira,khulna bangladrsh', NULL, 'Dhaka - North - Khilkhet', '-700', NULL, '123123123123', '2021-12-27-61c9f67172036.png', 'Numquam sed dolor re', 'In quo quidem non re', 92, '2021-12-27 23:22:57', '2021-12-27 23:25:20'),
+(29, 1, 'werwer', 'general', NULL, NULL, NULL, NULL, NULL, NULL, '4000', NULL, NULL, '', NULL, NULL, 92, '2021-12-30 12:31:31', '2021-12-30 12:32:15');
 
 -- --------------------------------------------------------
 
@@ -286,6 +287,7 @@ CREATE TABLE `expenses` (
   `name` varchar(255) DEFAULT NULL,
   `balance` varchar(255) DEFAULT NULL,
   `Amount` varchar(255) DEFAULT NULL,
+  `remarks` longtext DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -295,11 +297,11 @@ CREATE TABLE `expenses` (
 -- Dumping data for table `expenses`
 --
 
-INSERT INTO `expenses` (`id`, `expenses_category_id`, `name`, `balance`, `Amount`, `created_by`, `created_at`, `updated_at`) VALUES
-(3, 6, 'Daniel Yates', '89', '81', '92', '2021-10-14 11:53:24', '2021-10-14 11:53:24'),
-(4, 6, 'Kyle Matthews', '28', '14', '92', '2021-10-14 11:53:29', '2021-10-14 11:53:29'),
-(5, 6, 'Hope Sandoval', '34', '51', '92', '2021-10-14 11:53:33', '2021-10-14 11:53:33'),
-(6, 10, 'tea', NULL, '500', '92', '2021-12-27 23:32:07', '2021-12-27 23:32:07');
+INSERT INTO `expenses` (`id`, `expenses_category_id`, `name`, `balance`, `Amount`, `remarks`, `created_by`, `created_at`, `updated_at`) VALUES
+(3, 6, 'Daniel Yates', '89', '81', NULL, '92', '2021-10-14 11:53:24', '2021-10-14 11:53:24'),
+(4, 6, 'Kyle Matthews', '28', '14', NULL, '92', '2021-10-14 11:53:29', '2021-10-14 11:53:29'),
+(5, 6, 'Hope Sandoval', '34', '51', NULL, '92', '2021-10-14 11:53:33', '2021-10-14 11:53:33'),
+(6, 10, 'tea', NULL, '500', NULL, '92', '2021-12-27 23:32:07', '2021-12-27 23:32:07');
 
 -- --------------------------------------------------------
 
@@ -310,6 +312,7 @@ INSERT INTO `expenses` (`id`, `expenses_category_id`, `name`, `balance`, `Amount
 CREATE TABLE `expenses_category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -319,14 +322,14 @@ CREATE TABLE `expenses_category` (
 -- Dumping data for table `expenses_category`
 --
 
-INSERT INTO `expenses_category` (`id`, `name`, `created_by`, `created_at`, `updated_at`) VALUES
-(4, 'Zahir Norton', 92, '2021-10-14 10:33:46', '2021-10-14 10:33:46'),
-(5, 'Brynne Adkins', 92, '2021-10-14 10:33:49', '2021-10-14 10:33:49'),
-(6, 'Yoshio Reese', 92, '2021-10-14 10:33:54', '2021-10-14 10:33:54'),
-(7, 'intertainement', 92, '2021-11-27 23:54:13', '2021-11-27 23:54:13'),
-(8, 'asdasd', 92, '2021-12-27 19:03:52', '2021-12-27 19:03:52'),
-(9, 'test', 92, '2021-12-27 23:30:27', '2021-12-27 23:30:27'),
-(10, 'office', 92, '2021-12-27 23:30:40', '2021-12-27 23:30:40');
+INSERT INTO `expenses_category` (`id`, `name`, `remark`, `created_by`, `created_at`, `updated_at`) VALUES
+(4, 'Zahir Norton', NULL, 92, '2021-10-14 10:33:46', '2021-10-14 10:33:46'),
+(5, 'Brynne Adkins', NULL, 92, '2021-10-14 10:33:49', '2021-10-14 10:33:49'),
+(6, 'Yoshio Reese', NULL, 92, '2021-10-14 10:33:54', '2021-10-14 10:33:54'),
+(7, 'intertainement', NULL, 92, '2021-11-27 23:54:13', '2021-11-27 23:54:13'),
+(8, 'asdasd', NULL, 92, '2021-12-27 19:03:52', '2021-12-27 19:03:52'),
+(10, 'office', NULL, 92, '2021-12-27 23:30:40', '2021-12-27 23:30:40'),
+(11, 'Walker Mays', 'Molestias qui labori', 92, '2021-12-30 12:49:58', '2021-12-30 12:49:58');
 
 -- --------------------------------------------------------
 
@@ -610,6 +613,7 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `product_category_id` int(11) DEFAULT NULL,
   `chalan_no` varchar(255) DEFAULT NULL,
+  `chalan_no_2` varchar(255) DEFAULT NULL,
   `party_name` varchar(255) DEFAULT NULL,
   `quantity` varchar(255) DEFAULT NULL,
   `unit_price` varchar(255) DEFAULT NULL,
@@ -637,24 +641,24 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product_category_id`, `chalan_no`, `party_name`, `quantity`, `unit_price`, `color_name`, `open_tube`, `sl_no`, `ggsm`, `yarn_count`, `yarn_lot_no`, `fb_rv_date`, `batch_process_date`, `lot_no`, `batch_no`, `order_no`, `style_no`, `finish_gsm`, `fabric_type`, `card_no`, `created_by`, `created_at`, `updated_at`) VALUES
-(23, 2, 'Doloremque suscipit', 'Grant Daniel', '500', NULL, 'Angelica Carey', 'Perferendis harum ex', 'Nesciunt voluptatib', 'Libero ab odit delen', 'Qui praesentium moll', 'Elit reiciendis lab', '1985-07-19 00:00:00', '1979-04-29 00:00:00', 'Assumenda laborum al', 'Incidunt in tempore', 'Molestiae nihil est', 'Culpa labore quibus', 'Impedit aute necess', 'Voluptatem molestias', '1972729482', NULL, '2021-10-13 15:54:53', '2021-12-27 17:06:42'),
-(24, 2, 'Quam quasi eiusmod v', 'Sacha Vang', '9645', NULL, 'Jordan Griffin', 'Quis repudiandae qui', 'Qui aliquam harum ex', 'Praesentium iure ea', 'Illo illum quaerat', 'Aliqua Veniam quam', '2013-09-23 00:00:00', '2001-08-25 00:00:00', 'Aute nihil ipsum pro', 'Quaerat beatae harum', 'Eos eos ullam labor', 'Ab cupiditate soluta', 'Ut quia est laudant', 'Perspiciatis sed of', '827148731', NULL, '2021-10-13 15:56:26', '2021-11-29 23:26:06'),
-(25, 2, 'Quam quasi eiusmod v', 'Sacha Vang', '500', NULL, 'Jordan Griffin', 'Quis repudiandae qui', 'Qui aliquam harum ex', 'Praesentium iure ea', 'Illo illum quaerat', 'Aliqua Veniam quam', '2013-09-23 00:00:00', '2001-08-25 00:00:00', 'Aute nihil ipsum pro', 'Quaerat beatae harum', 'Eos eos ullam labor', 'Ab cupiditate soluta', 'Ut quia est laudant', 'Perspiciatis sed of', '285231764', NULL, '2021-10-13 15:57:27', '2021-12-25 14:23:20'),
-(26, 2, 'Quam quasi eiusmod v', 'Sacha Vang', '45', NULL, 'Jordan Griffin', 'Quis repudiandae qui', 'Qui aliquam harum ex', 'Praesentium iure ea', 'Illo illum quaerat', 'Aliqua Veniam quam', '2013-09-23 00:00:00', '2001-08-25 00:00:00', 'Aute nihil ipsum pro', 'Quaerat beatae harum', 'Eos eos ullam labor', 'Ab cupiditate soluta', 'Ut quia est laudant', 'Perspiciatis sed of', '771333814', NULL, '2021-10-13 15:57:49', '2021-10-13 15:57:49'),
-(27, 2, 'Enim amet aperiam t', 'Leslie Dillon', '345', NULL, 'Hedley Kline', 'Rem blanditiis sunt', 'Ea occaecat cumque i', 'Neque doloribus ea p', 'Doloremque voluptate', 'Reprehenderit odit', '2017-09-29 00:00:00', '1980-12-06 00:00:00', 'Aperiam rerum adipis', 'Velit ut eaque ea vo', 'Doloremque eu aliqua', 'Enim rerum ut autem', 'Explicabo Accusamus', 'Est error in qui ani', '1108787644', NULL, '2021-10-13 15:58:47', '2021-10-13 15:58:47'),
-(28, 2, 'Enim amet aperiam t', 'Leslie Dillon', '45', NULL, 'Hedley Kline', 'Rem blanditiis sunt', 'Ea occaecat cumque i', 'Neque doloribus ea p', 'Doloremque voluptate', 'Reprehenderit odit', '2017-09-29 00:00:00', '1980-12-06 00:00:00', 'Aperiam rerum adipis', 'Velit ut eaque ea vo', 'Doloremque eu aliqua', 'Enim rerum ut autem', 'Explicabo Accusamus', 'Est error in qui ani', '266989971', NULL, '2021-10-13 15:59:39', '2021-10-13 15:59:39'),
-(29, 1, 'Ad fugit minima ass', 'Xerxes Norton', '45', NULL, 'Ishmael Morgan', 'Adipisci non molesti', 'Veniam dolore lorem', 'Sed inventore quia e', 'Commodo dolor et eiu', 'Blanditiis enim sit', '2014-02-22 00:00:00', '1972-03-28 00:00:00', 'Modi qui ipsa eveni', 'Id ex ea anim eos au', 'Sint dolor quis neq', 'Odit voluptas repell', 'Voluptas dolorem eve', 'Ipsum irure eu sit', '2139582579', NULL, '2021-10-13 16:06:55', '2021-10-13 16:06:55'),
-(30, 2, 'Magna dignissimos ip', 'Elijah Charles', NULL, NULL, 'Jena Talley', 'Veniam aut est reru', 'Delectus expedita c', 'Ipsum magnam quos o', 'Totam nemo rerum err', 'Explicabo Inventore', '1992-04-05 00:00:00', '1970-08-17 00:00:00', 'Quis eveniet quo ea', 'Quam molestiae vitae', 'Iusto in accusantium', 'Magnam dolorem eiusm', 'Rerum totam ut ex ea', 'Dolore quis esse vol', '429213367', NULL, '2021-11-26 20:06:16', '2021-11-26 20:06:16'),
-(31, 2, 'Magna dignissimos ip', 'Elijah Charles', '5', NULL, 'Jena Talley', 'Veniam aut est reru', 'Delectus expedita c', 'Ipsum magnam quos o', 'Totam nemo rerum err', 'Explicabo Inventore', '1992-04-05 00:00:00', '1970-08-17 00:00:00', 'Quis eveniet quo ea', 'Quam molestiae vitae', 'Iusto in accusantium', 'Magnam dolorem eiusm', 'Rerum totam ut ex ea', 'Dolore quis esse vol', '16784852', NULL, '2021-11-26 20:11:41', '2021-12-25 14:16:08'),
-(32, 2, 'Magna dignissimos ip', 'Elijah Charles', NULL, NULL, 'Jena Talley', 'Veniam aut est reru', 'Delectus expedita c', 'Ipsum magnam quos o', 'Totam nemo rerum err', 'Explicabo Inventore', '1992-04-05 00:00:00', '1970-08-17 00:00:00', 'Quis eveniet quo ea', 'Quam molestiae vitae', 'Iusto in accusantium', 'Magnam dolorem eiusm', 'Rerum totam ut ex ea', 'Dolore quis esse vol', '332264222', NULL, '2021-11-26 20:12:08', '2021-11-26 20:12:08'),
-(33, 2, 'Aut aperiam voluptas', 'Jelani Jackson', '50', NULL, 'Ciara Mejia', 'Quia omnis ad do ab', 'Iusto veniam suscip', 'Sit mollit omnis cu', 'Consequuntur odio qu', 'Aut sed consectetur', '1997-10-27 00:00:00', '1972-09-25 00:00:00', 'Cumque minus magnam', 'Reprehenderit dolor', 'Consequatur Nisi eo', 'Porro iste qui moles', 'Dolore eos deserunt', 'Dolor ullam rerum pe', '1902869969', NULL, '2021-11-26 20:14:10', '2021-12-25 14:18:23'),
-(34, 2, 'Aut aperiam voluptas', 'Jelani Jackson', NULL, NULL, 'Ciara Mejia', 'Quia omnis ad do ab', 'Iusto veniam suscip', 'Sit mollit omnis cu', 'Consequuntur odio qu', 'Aut sed consectetur', '1997-10-27 00:00:00', '1972-09-25 00:00:00', 'Cumque minus magnam', 'Reprehenderit dolor', 'Consequatur Nisi eo', 'Porro iste qui moles', 'Dolore eos deserunt', 'Dolor ullam rerum pe', '1895828625', NULL, '2021-11-26 20:16:25', '2021-11-26 20:16:25'),
-(35, 1, '4963', 'Ridoy', '5000', NULL, 'Red', 'Open', '12345', '170', '30', '120', '2021-11-25 00:00:00', '2021-11-26 00:00:00', '12', '12', '32', '567', '160', 'Single J/S', '1055677609', NULL, '2021-11-27 21:19:33', '2021-11-27 21:24:20'),
-(36, 1, '2025', 'abdullah traders', '1000', NULL, 'black', 'open', '1.75', '160', '30', '110', NULL, NULL, '100', '200', '10', '50', '160', 's/j', '1269519468', NULL, '2021-11-27 23:27:04', '2021-12-26 16:15:25'),
-(37, 2, 'Suscipit vel est rep', 'Joelle Johnston', NULL, NULL, 'Harlan Bush', 'Eiusmod impedit ven', 'Quos sed quo laudant', 'Duis do enim repelle', 'Voluptas dolorem con', 'Corporis accusamus v', '2001-10-29 00:00:00', '2001-07-21 00:00:00', 'Sit perferendis dol', 'Illum modi at conse', 'Pariatur Dolore pla', 'Sit reprehenderit q', 'Distinctio Vero eni', 'Anim inventore accus', '1725037484', NULL, '2021-12-27 12:40:10', '2021-12-27 12:40:10'),
-(38, 1, 'Et ducimus ut quisq', 'Leigh Merritt', NULL, NULL, 'Stone Boyle', 'Nostrum dolor facere', 'Quis qui nesciunt e', 'Libero ab consectetu', 'Consequat Molestiae', 'Do et sunt dicta ad', '2018-09-20 00:00:00', '1973-11-22 00:00:00', 'Perferendis pariatur', 'Voluptas reprehender', 'Rerum aliqua Proide', 'Ea exercitation elig', 'In praesentium iusto', 'Anim cupidatat conse', '1373451777', NULL, '2021-12-27 12:40:16', '2021-12-27 12:40:16'),
-(39, 8, 'Ut veniam incidunt', 'Blake Phillips', NULL, NULL, 'Jackson Harmon', 'Minima quis voluptat', 'At aut sit aliqua', 'Sequi in amet nihil', 'Modi ipsum providen', 'Pariatur Suscipit v', NULL, NULL, 'Eiusmod quasi eum no', 'Velit cum autem cons', 'Quia alias sit pari', 'Sint quia hic nostr', 'Repudiandae voluptat', 'Voluptatum iure nemo', '42458513', NULL, '2021-12-27 16:53:33', '2021-12-27 16:53:43');
+INSERT INTO `products` (`id`, `product_category_id`, `chalan_no`, `chalan_no_2`, `party_name`, `quantity`, `unit_price`, `color_name`, `open_tube`, `sl_no`, `ggsm`, `yarn_count`, `yarn_lot_no`, `fb_rv_date`, `batch_process_date`, `lot_no`, `batch_no`, `order_no`, `style_no`, `finish_gsm`, `fabric_type`, `card_no`, `created_by`, `created_at`, `updated_at`) VALUES
+(23, 2, 'Doloremque suscipit', NULL, 'Grant Daniel', '500', NULL, 'Angelica Carey', 'Perferendis harum ex', 'Nesciunt voluptatib', 'Libero ab odit delen', 'Qui praesentium moll', 'Elit reiciendis lab', '1985-07-19 00:00:00', '1979-04-29 00:00:00', 'Assumenda laborum al', 'Incidunt in tempore', 'Molestiae nihil est', 'Culpa labore quibus', 'Impedit aute necess', 'Voluptatem molestias', '1972729482', NULL, '2021-10-13 15:54:53', '2021-12-27 17:06:42'),
+(24, 2, 'Quam quasi eiusmod v', NULL, 'Sacha Vang', '9645', NULL, 'Jordan Griffin', 'Quis repudiandae qui', 'Qui aliquam harum ex', 'Praesentium iure ea', 'Illo illum quaerat', 'Aliqua Veniam quam', '2013-09-23 00:00:00', '2001-08-25 00:00:00', 'Aute nihil ipsum pro', 'Quaerat beatae harum', 'Eos eos ullam labor', 'Ab cupiditate soluta', 'Ut quia est laudant', 'Perspiciatis sed of', '827148731', NULL, '2021-10-13 15:56:26', '2021-11-29 23:26:06'),
+(25, 2, 'Quam quasi eiusmod v', NULL, 'Sacha Vang', '500', NULL, 'Jordan Griffin', 'Quis repudiandae qui', 'Qui aliquam harum ex', 'Praesentium iure ea', 'Illo illum quaerat', 'Aliqua Veniam quam', '2013-09-23 00:00:00', '2001-08-25 00:00:00', 'Aute nihil ipsum pro', 'Quaerat beatae harum', 'Eos eos ullam labor', 'Ab cupiditate soluta', 'Ut quia est laudant', 'Perspiciatis sed of', '285231764', NULL, '2021-10-13 15:57:27', '2021-12-25 14:23:20'),
+(26, 2, 'Quam quasi eiusmod v', NULL, 'Sacha Vang', '45', NULL, 'Jordan Griffin', 'Quis repudiandae qui', 'Qui aliquam harum ex', 'Praesentium iure ea', 'Illo illum quaerat', 'Aliqua Veniam quam', '2013-09-23 00:00:00', '2001-08-25 00:00:00', 'Aute nihil ipsum pro', 'Quaerat beatae harum', 'Eos eos ullam labor', 'Ab cupiditate soluta', 'Ut quia est laudant', 'Perspiciatis sed of', '771333814', NULL, '2021-10-13 15:57:49', '2021-10-13 15:57:49'),
+(27, 2, 'Enim amet aperiam t', NULL, 'Leslie Dillon', '345', NULL, 'Hedley Kline', 'Rem blanditiis sunt', 'Ea occaecat cumque i', 'Neque doloribus ea p', 'Doloremque voluptate', 'Reprehenderit odit', '2017-09-29 00:00:00', '1980-12-06 00:00:00', 'Aperiam rerum adipis', 'Velit ut eaque ea vo', 'Doloremque eu aliqua', 'Enim rerum ut autem', 'Explicabo Accusamus', 'Est error in qui ani', '1108787644', NULL, '2021-10-13 15:58:47', '2021-10-13 15:58:47'),
+(28, 2, 'Enim amet aperiam t', NULL, 'Leslie Dillon', '45', NULL, 'Hedley Kline', 'Rem blanditiis sunt', 'Ea occaecat cumque i', 'Neque doloribus ea p', 'Doloremque voluptate', 'Reprehenderit odit', '2017-09-29 00:00:00', '1980-12-06 00:00:00', 'Aperiam rerum adipis', 'Velit ut eaque ea vo', 'Doloremque eu aliqua', 'Enim rerum ut autem', 'Explicabo Accusamus', 'Est error in qui ani', '266989971', NULL, '2021-10-13 15:59:39', '2021-10-13 15:59:39'),
+(29, 1, 'Ad fugit minima ass', NULL, 'Xerxes Norton', '45', NULL, 'Ishmael Morgan', 'Adipisci non molesti', 'Veniam dolore lorem', 'Sed inventore quia e', 'Commodo dolor et eiu', 'Blanditiis enim sit', '2014-02-22 00:00:00', '1972-03-28 00:00:00', 'Modi qui ipsa eveni', 'Id ex ea anim eos au', 'Sint dolor quis neq', 'Odit voluptas repell', 'Voluptas dolorem eve', 'Ipsum irure eu sit', '2139582579', NULL, '2021-10-13 16:06:55', '2021-10-13 16:06:55'),
+(30, 2, 'Magna dignissimos ip', NULL, 'Elijah Charles', NULL, NULL, 'Jena Talley', 'Veniam aut est reru', 'Delectus expedita c', 'Ipsum magnam quos o', 'Totam nemo rerum err', 'Explicabo Inventore', '1992-04-05 00:00:00', '1970-08-17 00:00:00', 'Quis eveniet quo ea', 'Quam molestiae vitae', 'Iusto in accusantium', 'Magnam dolorem eiusm', 'Rerum totam ut ex ea', 'Dolore quis esse vol', '429213367', NULL, '2021-11-26 20:06:16', '2021-11-26 20:06:16'),
+(31, 2, 'Magna dignissimos ip', NULL, 'Elijah Charles', '5', NULL, 'Jena Talley', 'Veniam aut est reru', 'Delectus expedita c', 'Ipsum magnam quos o', 'Totam nemo rerum err', 'Explicabo Inventore', '1992-04-05 00:00:00', '1970-08-17 00:00:00', 'Quis eveniet quo ea', 'Quam molestiae vitae', 'Iusto in accusantium', 'Magnam dolorem eiusm', 'Rerum totam ut ex ea', 'Dolore quis esse vol', '16784852', NULL, '2021-11-26 20:11:41', '2021-12-25 14:16:08'),
+(32, 2, 'Magna dignissimos ip', NULL, 'Elijah Charles', NULL, NULL, 'Jena Talley', 'Veniam aut est reru', 'Delectus expedita c', 'Ipsum magnam quos o', 'Totam nemo rerum err', 'Explicabo Inventore', '1992-04-05 00:00:00', '1970-08-17 00:00:00', 'Quis eveniet quo ea', 'Quam molestiae vitae', 'Iusto in accusantium', 'Magnam dolorem eiusm', 'Rerum totam ut ex ea', 'Dolore quis esse vol', '332264222', NULL, '2021-11-26 20:12:08', '2021-11-26 20:12:08'),
+(33, 2, 'Aut aperiam voluptas', NULL, 'Jelani Jackson', '50', NULL, 'Ciara Mejia', 'Quia omnis ad do ab', 'Iusto veniam suscip', 'Sit mollit omnis cu', 'Consequuntur odio qu', 'Aut sed consectetur', '1997-10-27 00:00:00', '1972-09-25 00:00:00', 'Cumque minus magnam', 'Reprehenderit dolor', 'Consequatur Nisi eo', 'Porro iste qui moles', 'Dolore eos deserunt', 'Dolor ullam rerum pe', '1902869969', NULL, '2021-11-26 20:14:10', '2021-12-25 14:18:23'),
+(34, 2, 'Aut aperiam voluptas', NULL, 'Jelani Jackson', NULL, NULL, 'Ciara Mejia', 'Quia omnis ad do ab', 'Iusto veniam suscip', 'Sit mollit omnis cu', 'Consequuntur odio qu', 'Aut sed consectetur', '1997-10-27 00:00:00', '1972-09-25 00:00:00', 'Cumque minus magnam', 'Reprehenderit dolor', 'Consequatur Nisi eo', 'Porro iste qui moles', 'Dolore eos deserunt', 'Dolor ullam rerum pe', '1895828625', NULL, '2021-11-26 20:16:25', '2021-11-26 20:16:25'),
+(35, 1, '4963', NULL, 'Ridoy', '5000', NULL, 'Red', 'Open', '12345', '170', '30', '120', '2021-11-25 00:00:00', '2021-11-26 00:00:00', '12', '12', '32', '567', '160', 'Single J/S', '1055677609', NULL, '2021-11-27 21:19:33', '2021-11-27 21:24:20'),
+(36, 1, '2025', NULL, 'abdullah traders', '1000', NULL, 'black', 'open', '1.75', '160', '30', '110', NULL, NULL, '100', '200', '10', '50', '160', 's/j', '1269519468', NULL, '2021-11-27 23:27:04', '2021-12-26 16:15:25'),
+(37, 2, 'Suscipit vel est rep', NULL, 'Joelle Johnston', NULL, NULL, 'Harlan Bush', 'Eiusmod impedit ven', 'Quos sed quo laudant', 'Duis do enim repelle', 'Voluptas dolorem con', 'Corporis accusamus v', '2001-10-29 00:00:00', '2001-07-21 00:00:00', 'Sit perferendis dol', 'Illum modi at conse', 'Pariatur Dolore pla', 'Sit reprehenderit q', 'Distinctio Vero eni', 'Anim inventore accus', '1725037484', NULL, '2021-12-27 12:40:10', '2021-12-27 12:40:10'),
+(38, 1, 'Et ducimus ut quisq', NULL, 'Leigh Merritt', NULL, NULL, 'Stone Boyle', 'Nostrum dolor facere', 'Quis qui nesciunt e', 'Libero ab consectetu', 'Consequat Molestiae', 'Do et sunt dicta ad', '2018-09-20 00:00:00', '1973-11-22 00:00:00', 'Perferendis pariatur', 'Voluptas reprehender', 'Rerum aliqua Proide', 'Ea exercitation elig', 'In praesentium iusto', 'Anim cupidatat conse', '1373451777', NULL, '2021-12-27 12:40:16', '2021-12-27 12:40:16'),
+(39, 8, 'Ut veniam incidunt', NULL, 'Blake Phillips', NULL, NULL, 'Jackson Harmon', 'Minima quis voluptat', 'At aut sit aliqua', 'Sequi in amet nihil', 'Modi ipsum providen', 'Pariatur Suscipit v', NULL, NULL, 'Eiusmod quasi eum no', 'Velit cum autem cons', 'Quia alias sit pari', 'Sint quia hic nostr', 'Repudiandae voluptat', 'Voluptatum iure nemo', '42458513', NULL, '2021-12-27 16:53:33', '2021-12-27 16:53:43');
 
 -- --------------------------------------------------------
 
@@ -1247,7 +1251,7 @@ ALTER TABLE `company_info`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `dynamic_routes`
@@ -1259,13 +1263,13 @@ ALTER TABLE `dynamic_routes`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `expenses_category`
 --
 ALTER TABLE `expenses_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
