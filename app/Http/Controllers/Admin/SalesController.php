@@ -272,4 +272,25 @@ class SalesController extends Controller
         return $output;
     }
 
+    public function customer_details($id)
+    {
+        $customer = CustomerModel::find($id);
+        $output = '<div class="card" style="padding: 10px;background: #6b279b4d;">
+                    <div class="crad-header" style="padding: 5px"><b>Customer Details: </b></div>
+                    <div class="card_body">
+                    <ul class="list-group">
+                        <li class="list-group-item">Name: ' . $customer->name . '</li>
+                        <li class="list-group-item">Email: ' . $customer->email . '</li>
+                        <li class="list-group-item">Address: ' . $customer->present_address . '</li>
+                        <li class="list-group-item">Phone: ' . $customer->personal_phone . '</li>
+                      </ul>
+                    </div>
+                    </div>';
+        $total_due = $customer->sales_history->where('due', '>', 0)->sum('due');
+
+
+        return response()->json(['customer' => $output, 'total_due' => $total_due]);
+
+    }
+
 }

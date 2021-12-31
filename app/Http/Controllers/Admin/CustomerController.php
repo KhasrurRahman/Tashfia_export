@@ -191,6 +191,8 @@ class CustomerController extends Controller
         Toastr::success('Payment Updated', '');
         return redirect()->back();
     }
+    
+    
 
 
 }

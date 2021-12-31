@@ -1,11 +1,11 @@
 @extends('layouts.backend.partial.app')
-@section('title','Sales Executive')
+@section('title','Employee Details')
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
 @endpush
 @section('main_menu','HOME')
-@section('active_menu','Sales Executive')
+@section('active_menu','Employee Details')
 @section('link',route('admin.adminDashboard'))
 @section('content')
 
@@ -24,6 +24,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Address</th>
+                    <th>Salary</th>
                     <th>Action</th>
                 </tr>
                 </thead>

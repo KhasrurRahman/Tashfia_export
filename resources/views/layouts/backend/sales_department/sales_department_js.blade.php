@@ -39,6 +39,10 @@
                 {data: 'date', name: 'date'},
                 {data: 'action', name: 'action', searchable: false},
             ],
+            dom: 'lBfrtip',
+            buttons: [
+                'excel', 'csv', 'pdf', 'copy'
+            ],
         });
         $('#search_form').on('submit', function (event) {
             event.preventDefault();

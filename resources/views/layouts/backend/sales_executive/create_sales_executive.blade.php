@@ -31,6 +31,10 @@
                             <label for="exampleInputEmail1">Address</label>
                             <input type="text" class="form-control" name="address">
                         </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Salary</label>
+                            <input type="number" class="form-control" name="salary">
+                        </div>
                         <button type="submit" class="btn btn-primary mr-2">Create</button>
                     </form>
                 </div>

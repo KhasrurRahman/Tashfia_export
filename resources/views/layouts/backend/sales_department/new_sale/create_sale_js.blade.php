@@ -234,11 +234,14 @@
 
     function customer_details(id) {
         $.ajax({
-            url: "{{url('admin/customer/show')}}/" + id,
+            url: "{{url('admin/sales/customer_details')}}/" + id,
             type: "GET",
             success: function (data) {
-                $('#customer_details_model_content').html('');
-                $('#customer_details_model_content').append(data);
+                console.log(data.customer)
+                $('#customer_details').html('');
+                $('#customer_details').append(data.customer);
+                $("#customer_details").show();
+                $('#total_previous_due').html('Total Due:' + data.total_due + 'tk')
             },
             error: function (data) {
                 console.log(data)
@@ -261,27 +264,11 @@
             }
         });
     }
-
-
+    
     function show_payment_history() {
         $('#previous_payment_histoty').modal('show');
     }
-
-    function customer_details(id) {
-        $.ajax({
-            url: "{{url('admin/customer/show')}}/" + id,
-            type: "GET",
-            success: function (data) {
-                $('#customer_details').html('');
-                $('#customer_details').append(data);
-                $("#customer_details").show();
-            },
-            error: function (data) {
-            }
-        });
-    }
-
-
+    
     // save walk in customer info
     $('#wal_in_customer__form').on('submit', function (event) {
         event.preventDefault();

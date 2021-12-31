@@ -35,6 +35,7 @@
                 {data: 'email', name: 'email'},
                 {data: 'phone', name: 'phone'},
                 {data: 'address', name: 'address'},
+                {data: 'salary', name: 'salary'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });

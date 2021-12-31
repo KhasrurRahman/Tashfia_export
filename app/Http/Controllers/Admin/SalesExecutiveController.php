@@ -32,11 +32,13 @@ class SalesExecutiveController extends Controller
                     return $data->phone;
                 })->addColumn('address', function ($data) {
                     return $data->address;
+                })->addColumn('salary', function ($data) {
+                    return $data->salary;
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="' . url('admin/sales_executive/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" target="null">Edit</a>';
                     return $actionBtn;
                 })
-                ->rawColumns(['name', 'email', 'phone', 'address', 'action'])
+                ->rawColumns(['name', 'email', 'phone', 'address' , 'salary', 'action'])
                 ->make(true);
         }
     }
@@ -52,6 +54,7 @@ class SalesExecutiveController extends Controller
         $menu->email = $request->email;
         $menu->phone = $request->phone;
         $menu->address = $request->address;
+        $menu->salary = $request->salary;
         $menu->save();
 
         Toastr::success('Created Successfully', 'Created');
@@ -80,6 +83,7 @@ class SalesExecutiveController extends Controller
         $menu->email = $request->email;
         $menu->phone = $request->phone;
         $menu->address = $request->address;
+        $menu->salary = $request->address;
         $menu->update();
 
         Toastr::success('Update Successfully', 'Updated');

@@ -174,7 +174,7 @@
 
 
     <div class="row justify-content-center">
-        <button class="btn btn-lg btn-block btn-primary col-md-6 mb-10" onclick="show_payment_history()">Previous Payments
+        <button class="btn btn-lg btn-block btn-primary col-md-6 mb-10" onclick="show_payment_history()" id="total_previous_due">Previous Payments
             Information:
         </button>
     </div>

@@ -31,6 +31,10 @@
                             <label for="exampleInputEmail1">Address</label>
                             <input type="text" class="form-control" name="address" value="{{$sales->address}}">
                         </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Salary</label>
+                            <input type="number" class="form-control" name="salary" value="{{$sales->salary}}">
+                        </div>
                         <button type="submit" class="btn btn-primary mr-2">Update</button>
                     </form>
                 </div>

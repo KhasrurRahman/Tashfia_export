@@ -54,6 +54,10 @@
                 {data: 'profit_or_loss', name: 'profit_or_loss'},
                 // {data: 'action', name: 'action', searchable: false},
             ],
+            dom: 'lBfrtip',
+            buttons: [
+                'excel', 'csv', 'pdf', 'copy'
+            ],
         });
         $('#search_form').on('submit', function (event) {
             event.preventDefault();
@@ -61,7 +65,7 @@
         });
     });
 
-    
+
     function form_reset() {
         document.getElementById("search_form").reset();
         $('.select2').val(null).trigger('change');

@@ -5,7 +5,7 @@
             <div class="col-4">
                 <div class="form-group">
                     <label>Company:</label>
-                    <select class="form-control select2" id="search_company_id">
+                    <select class="form-control select2" id="search_company_id" name="search_company_id">
                         <option selected disabled>Please Select</option>
                         @foreach($company as $data)
                             <option value="{{$data->id}}">{{$data->company_name}}</option>
@@ -18,7 +18,7 @@
             <div class="col-4">
                 <div class="form-group">
                     <label>Customer:</label>
-                    <select class="form-control select2" id="search_customer_id">
+                    <select class="form-control select2" id="search_customer_id" name="search_customer_id">
                         <option selected disabled>Please Select</option>
                         @foreach($customer as $data)
                             <option value="{{$data->id}}">{{$data->name}}</option>
@@ -30,7 +30,7 @@
             <div class="col-4">
                 <div class="form-group">
                     <label>Payment status:</label>
-                    <select class="form-control select2" id="search_payment_status">
+                    <select class="form-control select2" id="search_payment_status" name="search_payment_status">
                         <option selected disabled>Please Select Category</option>
                         <option value="paid">paid</option>
                         <option value="unpaid">unpaid</option>
@@ -41,19 +41,19 @@
             <div class="col-4">
                 <div class="form-group">
                     <label>Date from:</label>
-                    <input type="date" class="form-control" id="from_date">
+                    <input type="date" class="form-control" id="from_date" name="from_date">
                 </div>
             </div>
 
             <div class="col-4">
                 <div class="form-group">
                     <label>Date to:</label>
-                    <input type="date" class="form-control" id="to_date">
+                    <input type="date" class="form-control" id="to_date" name="to_date">
                 </div>
             </div>
 
             
-            <div class="col-3">
+            <div class="col-2">
                 <div class="form-group">
                     <button type="submit" class="btn btn-success ml-2 btn-block" id="btnFiterSubmitSearch"
                             style="margin-top: 30px">search
@@ -68,10 +68,15 @@
                     </button>
                 </div>
             </div>
-
-
+            
+            <div class="col-1">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info btn-info" style="margin-top: 30px">
+                        Print
+                    </button>
+                </div>
+            </div>
         </div>
-
     </form>
 </div>
 
