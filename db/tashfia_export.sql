@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2021 at 04:34 PM
+-- Generation Time: Jan 03, 2022 at 09:09 AM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.23
+-- PHP Version: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -274,7 +274,10 @@ INSERT INTO `dynamic_routes` (`id`, `title`, `url`, `model_name`, `content`, `co
 (342, 'Sales Executive Store', 'sales_executive/store', 'sales_executive', NULL, 'SalesExecutiveController@store', 'Post', 1, NULL, 1, 0, '0', '2021-12-26 17:43:21', '2021-12-26 17:43:21'),
 (343, 'Sales Commision report', 'report/sales_commision_report', 'Report', NULL, 'ReportController@sales_commision_report', 'Post', 1, NULL, 1, 0, '1', '2021-12-26 18:24:47', '2021-12-26 18:24:47'),
 (344, 'Sales Commision report show', 'report/sales_commision_report_show', 'Report', NULL, 'ReportController@sales_commision_report_show', 'get', 1, NULL, 1, 1, '0', '2021-12-26 18:25:18', '2021-12-26 18:25:18'),
-(345, 'CUstomer Details show with due history', 'sales/customer_details', 'sales_department', NULL, 'SalesController@customer_details', 'get', 1, '{id}', 1, 0, '1', '2021-12-31 14:10:34', '2021-12-31 14:10:34');
+(346, 'create work order party', 'workorder/create_workorder_party', 'workorder', NULL, 'WorkorderController@create_workorder_party', 'get', 1, NULL, 1, 1, '0', '2022-01-03 06:20:03', '2022-01-03 06:20:03'),
+(347, 'Store Work Order party', 'workorder/store_workorder_party', 'workorder', NULL, 'WorkorderController@store_workorder_party', 'Post', 1, NULL, 1, 0, '0', '2022-01-03 06:20:46', '2022-01-03 06:20:46'),
+(348, 'Edit Word Order Party', 'workorder/edit_workorder_party', 'workorder', NULL, 'WorkorderController@edit_workorder_party', 'get', 1, '{id}', 1, 0, '0', '2022-01-03 06:21:25', '2022-01-03 06:21:25'),
+(349, 'Update Work Order party', 'workorder/update_workorder_party', 'workorder', NULL, 'WorkorderController@update_workorder_party', 'Post', 1, '{id}', 1, 0, '0', '2022-01-03 06:22:12', '2022-01-03 06:22:12');
 
 -- --------------------------------------------------------
 
@@ -396,7 +399,10 @@ INSERT INTO `master_menu` (`id`, `menu_name`, `menu_name_bn`, `menu_parent_id`, 
 (68, 'Sales Executive', 'Sales Executive', NULL, 1, 'ik-users', NULL, '2021-12-26 17:37:40', '2021-12-26 17:37:40', 92, 92),
 (69, 'All Sales Executive', 'All Sales Executive', 68, 1, NULL, 336, '2021-12-26 17:37:27', '2021-12-26 17:37:27', 92, NULL),
 (70, 'Create Sales Executive', 'Create Sales Executive', 68, 1, NULL, 338, '2021-12-26 17:39:12', '2021-12-26 17:39:12', 92, 92),
-(71, 'Sales Commission', 'Sales Commission', 66, 1, NULL, 344, '2021-12-26 18:27:00', '2021-12-26 18:27:00', 92, NULL);
+(71, 'Sales Commission', 'Sales Commission', 66, 1, NULL, 344, '2021-12-26 18:27:00', '2021-12-26 18:27:00', 92, NULL),
+(72, 'Work Order', 'Work Order', NULL, 1, 'ik-edit-1', NULL, '2022-01-03 06:29:06', '2022-01-03 06:29:06', 92, 92),
+(73, 'Work Order party', 'Work Order party', 72, 1, NULL, 346, '2022-01-03 06:27:10', '2022-01-03 06:27:10', 92, NULL),
+(74, 'Create Work order party', 'Create Work order party', 73, 1, NULL, 346, '2022-01-03 06:27:59', '2022-01-03 06:27:59', 92, NULL);
 
 -- --------------------------------------------------------
 
@@ -487,123 +493,126 @@ INSERT INTO `permission_roles` (`id`, `role_id`, `dynamic_route_id`, `url`, `cre
 (16379, 18, 319, 'sales/add_walk_in_cuatomer', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
 (16380, 18, 325, 'sales/sales_due_payment', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
 (16381, 18, 328, 'sales/invoice_payment_history', '2021-12-27 16:43:55', '2021-12-27 16:43:55'),
-(16382, 11, 1, 'adminDashboard', '2021-12-31 14:16:13', '2021-12-31 14:16:13'),
-(16383, 11, 91, 'admin/change_password', '2021-12-31 14:16:13', '2021-12-31 14:16:13'),
-(16384, 11, 92, 'admin/save_change_password', '2021-12-31 14:16:13', '2021-12-31 14:16:13'),
-(16385, 11, 3, 'dynamic_route', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16386, 11, 4, 'dynamic_route', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16387, 11, 14, 'delete_route', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16388, 11, 16, 'edit_route', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16389, 11, 19, 'update_route', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16390, 11, 5, 'role/all_role', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16391, 11, 6, 'role/add_role', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16392, 11, 8, 'save_role', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16393, 11, 11, 'edit_role', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16394, 11, 12, 'update_role', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16395, 11, 13, 'delete_role', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16396, 11, 9, 'all_user', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16397, 11, 10, 'save_user', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16398, 11, 93, 'edit_user', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16399, 11, 94, 'upadte_user', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16400, 11, 95, 'suspend_user', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16401, 11, 96, 'unsuspend_user', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16402, 11, 127, 'delete_user', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16403, 11, 130, 'test', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16404, 11, 131, 'menu/menu_create', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16405, 11, 133, 'menu/menu_save', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16406, 11, 134, 'menu/all_menu', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16407, 11, 135, 'menu/menu_search', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16408, 11, 138, 'menu/edit_menu', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16409, 11, 139, 'menu/update_menu', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16410, 11, 254, 'product/craete', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16411, 11, 255, 'product/store', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16412, 11, 256, 'product/alldata', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16413, 11, 257, 'product/index', '2021-12-31 14:16:14', '2021-12-31 14:16:14'),
-(16414, 11, 258, 'product/view', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16415, 11, 259, 'product/delete', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16416, 11, 286, 'product/ingredients', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16417, 11, 334, 'product/edit', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16418, 11, 335, 'product/update', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16419, 11, 260, 'sales/show_sales_department', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16420, 11, 261, 'sales/get_sales_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16421, 11, 262, 'sales/store_sales_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16422, 11, 263, 'sales/edit_sales_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16423, 11, 264, 'sales/update_sales_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16424, 11, 265, 'sales/delete_sales_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16425, 11, 273, 'sales/sales_department_invoice', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16426, 11, 316, 'sales/create', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16427, 11, 317, 'sales/customer_payment_history_search', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16428, 11, 318, 'sales/sales_details_invoice', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16429, 11, 319, 'sales/add_walk_in_cuatomer', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16430, 11, 325, 'sales/sales_due_payment', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16431, 11, 328, 'sales/invoice_payment_history', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16432, 11, 345, 'sales/customer_details', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16433, 11, 266, 'Department/show_lot_department', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16434, 11, 267, 'Department/search', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16435, 11, 268, 'Department/store_lot_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16436, 11, 269, 'Department/delete_lot_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16437, 11, 270, 'Department/edit_lot_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16438, 11, 271, 'Department/update_lot_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16439, 11, 272, 'Department/show_single_lot_department_data', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16440, 11, 274, 'customer/all_customer', '2021-12-31 14:16:15', '2021-12-31 14:16:15'),
-(16441, 11, 275, 'customer/search', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16442, 11, 276, 'customer/store', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16443, 11, 277, 'customer/edit', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16444, 11, 278, 'customer/update', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16445, 11, 279, 'customer/delete', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16446, 11, 307, 'customer/show', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16447, 11, 324, 'customer/view', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16448, 11, 329, 'customer/manual_due_payment', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16449, 11, 280, 'supplier/index', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16450, 11, 281, 'supplier/search', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16451, 11, 282, 'supplier/store', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16452, 11, 283, 'supplier/edit', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16453, 11, 284, 'supplier/update', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16454, 11, 285, 'supplier/delete', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16455, 11, 293, 'supplier/show', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16456, 11, 287, 'purchase/index', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16457, 11, 288, 'purchase/search', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16458, 11, 289, 'purchase/store', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16459, 11, 290, 'purchase/edit', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16460, 11, 291, 'purchase/update', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16461, 11, 292, 'purchase/delete', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16462, 11, 294, 'purchase/show', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16463, 11, 295, 'ingredient/index', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16464, 11, 296, 'ingredient/search', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16465, 11, 297, 'ingredient/store', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16466, 11, 298, 'ingredient/edit', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16467, 11, 299, 'ingredient/delete', '2021-12-31 14:16:16', '2021-12-31 14:16:16'),
-(16468, 11, 300, 'productcategory/index', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16469, 11, 301, 'productcategory/search', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16470, 11, 302, 'productcategory/store', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16471, 11, 303, 'productcategory/edit', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16472, 11, 304, 'productcategory/update', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16473, 11, 305, 'productcategory/delete', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16474, 11, 308, 'expenses/expenses_category_index', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16475, 11, 309, 'expenses/expenses_category_search', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16476, 11, 310, 'expenses/expenses_category_store', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16477, 11, 311, 'expenses/expenses_category_delete', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16478, 11, 312, 'expenses/expenses_index', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16479, 11, 313, 'expenses/expenses_search', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16480, 11, 314, 'expenses/expenses_store', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16481, 11, 315, 'expenses/expenses_delete', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16482, 11, 320, 'company/index', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16483, 11, 321, 'company/search', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16484, 11, 322, 'company/store', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16485, 11, 323, 'company/delete', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16486, 11, 330, 'company/edit_company', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16487, 11, 331, 'company/company_update', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16488, 11, 332, 'report/profit_show', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16489, 11, 333, 'report/profit_search', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16490, 11, 343, 'report/sales_commision_report', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16491, 11, 344, 'report/sales_commision_report_show', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16492, 11, 336, 'sales_executive/show', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16493, 11, 337, 'sales_executive/search', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16494, 11, 338, 'sales_executive/add', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16495, 11, 339, 'sales_executive/delete', '2021-12-31 14:16:17', '2021-12-31 14:16:17'),
-(16496, 11, 340, 'sales_executive/edit', '2021-12-31 14:16:18', '2021-12-31 14:16:18'),
-(16497, 11, 341, 'sales_executive/update', '2021-12-31 14:16:18', '2021-12-31 14:16:18'),
-(16498, 11, 342, 'sales_executive/store', '2021-12-31 14:16:18', '2021-12-31 14:16:18');
+(16382, 11, 1, 'adminDashboard', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16383, 11, 91, 'admin/change_password', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16384, 11, 92, 'admin/save_change_password', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16385, 11, 3, 'dynamic_route', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16386, 11, 4, 'dynamic_route', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16387, 11, 14, 'delete_route', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16388, 11, 16, 'edit_route', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16389, 11, 19, 'update_route', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16390, 11, 5, 'role/all_role', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16391, 11, 6, 'role/add_role', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16392, 11, 8, 'save_role', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16393, 11, 11, 'edit_role', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16394, 11, 12, 'update_role', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16395, 11, 13, 'delete_role', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16396, 11, 9, 'all_user', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16397, 11, 10, 'save_user', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16398, 11, 93, 'edit_user', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16399, 11, 94, 'upadte_user', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16400, 11, 95, 'suspend_user', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16401, 11, 96, 'unsuspend_user', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16402, 11, 127, 'delete_user', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16403, 11, 130, 'test', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16404, 11, 131, 'menu/menu_create', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16405, 11, 133, 'menu/menu_save', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16406, 11, 134, 'menu/all_menu', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16407, 11, 135, 'menu/menu_search', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16408, 11, 138, 'menu/edit_menu', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16409, 11, 139, 'menu/update_menu', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16410, 11, 254, 'product/craete', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16411, 11, 255, 'product/store', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16412, 11, 256, 'product/alldata', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16413, 11, 257, 'product/index', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16414, 11, 258, 'product/view', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16415, 11, 259, 'product/delete', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16416, 11, 286, 'product/ingredients', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16417, 11, 334, 'product/edit', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16418, 11, 335, 'product/update', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16419, 11, 260, 'sales/show_sales_department', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16420, 11, 261, 'sales/get_sales_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16421, 11, 262, 'sales/store_sales_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16422, 11, 263, 'sales/edit_sales_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16423, 11, 264, 'sales/update_sales_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16424, 11, 265, 'sales/delete_sales_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16425, 11, 273, 'sales/sales_department_invoice', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16426, 11, 316, 'sales/create', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16427, 11, 317, 'sales/customer_payment_history_search', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16428, 11, 318, 'sales/sales_details_invoice', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16429, 11, 319, 'sales/add_walk_in_cuatomer', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16430, 11, 325, 'sales/sales_due_payment', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16431, 11, 328, 'sales/invoice_payment_history', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16432, 11, 266, 'Department/show_lot_department', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16433, 11, 267, 'Department/search', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16434, 11, 268, 'Department/store_lot_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16435, 11, 269, 'Department/delete_lot_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16436, 11, 270, 'Department/edit_lot_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16437, 11, 271, 'Department/update_lot_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16438, 11, 272, 'Department/show_single_lot_department_data', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16439, 11, 274, 'customer/all_customer', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16440, 11, 275, 'customer/search', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16441, 11, 276, 'customer/store', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16442, 11, 277, 'customer/edit', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16443, 11, 278, 'customer/update', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16444, 11, 279, 'customer/delete', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16445, 11, 307, 'customer/show', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16446, 11, 324, 'customer/view', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16447, 11, 329, 'customer/manual_due_payment', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16448, 11, 280, 'supplier/index', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16449, 11, 281, 'supplier/search', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16450, 11, 282, 'supplier/store', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16451, 11, 283, 'supplier/edit', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16452, 11, 284, 'supplier/update', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16453, 11, 285, 'supplier/delete', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16454, 11, 293, 'supplier/show', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16455, 11, 287, 'purchase/index', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16456, 11, 288, 'purchase/search', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16457, 11, 289, 'purchase/store', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16458, 11, 290, 'purchase/edit', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16459, 11, 291, 'purchase/update', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16460, 11, 292, 'purchase/delete', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16461, 11, 294, 'purchase/show', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16462, 11, 295, 'ingredient/index', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16463, 11, 296, 'ingredient/search', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16464, 11, 297, 'ingredient/store', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16465, 11, 298, 'ingredient/edit', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16466, 11, 299, 'ingredient/delete', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16467, 11, 300, 'productcategory/index', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16468, 11, 301, 'productcategory/search', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16469, 11, 302, 'productcategory/store', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16470, 11, 303, 'productcategory/edit', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16471, 11, 304, 'productcategory/update', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16472, 11, 305, 'productcategory/delete', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16473, 11, 308, 'expenses/expenses_category_index', '2022-01-03 06:22:27', '2022-01-03 06:22:27'),
+(16474, 11, 309, 'expenses/expenses_category_search', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16475, 11, 310, 'expenses/expenses_category_store', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16476, 11, 311, 'expenses/expenses_category_delete', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16477, 11, 312, 'expenses/expenses_index', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16478, 11, 313, 'expenses/expenses_search', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16479, 11, 314, 'expenses/expenses_store', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16480, 11, 315, 'expenses/expenses_delete', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16481, 11, 320, 'company/index', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16482, 11, 321, 'company/search', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16483, 11, 322, 'company/store', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16484, 11, 323, 'company/delete', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16485, 11, 330, 'company/edit_company', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16486, 11, 331, 'company/company_update', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16487, 11, 332, 'report/profit_show', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16488, 11, 333, 'report/profit_search', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16489, 11, 343, 'report/sales_commision_report', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16490, 11, 344, 'report/sales_commision_report_show', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16491, 11, 336, 'sales_executive/show', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16492, 11, 337, 'sales_executive/search', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16493, 11, 338, 'sales_executive/add', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16494, 11, 339, 'sales_executive/delete', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16495, 11, 340, 'sales_executive/edit', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16496, 11, 341, 'sales_executive/update', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16497, 11, 342, 'sales_executive/store', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16498, 11, 346, 'workorder/create_workorder_party', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16499, 11, 347, 'workorder/store_workorder_party', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16500, 11, 348, 'workorder/edit_workorder_party', '2022-01-03 06:22:28', '2022-01-03 06:22:28'),
+(16501, 11, 349, 'workorder/update_workorder_party', '2022-01-03 06:22:28', '2022-01-03 06:22:28');
 
 -- --------------------------------------------------------
 
@@ -893,7 +902,6 @@ CREATE TABLE `sales_executive_models` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `salary` double DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -902,10 +910,9 @@ CREATE TABLE `sales_executive_models` (
 -- Dumping data for table `sales_executive_models`
 --
 
-INSERT INTO `sales_executive_models` (`id`, `name`, `email`, `phone`, `address`, `salary`, `created_at`, `updated_at`) VALUES
-(1, 'Josephine Slater', 'jafynizu@mailinator.com', '+1 (955) 237-8838', 'Et aliquid molestias', NULL, '2021-12-26 17:52:15', '2021-12-26 17:52:15'),
-(2, 'Timothy Logan', 'wulukevyj@mailinator.com', '+1 (749) 943-3655', 'Aut debitis laborios', NULL, '2021-12-26 17:52:19', '2021-12-26 17:52:52'),
-(3, 'Bernard Horn', 'nukameqowi@mailinator.com', '+1 (853) 206-7036', 'Impedit ex et labor', 0, '2021-12-31 15:00:03', '2021-12-31 15:00:10');
+INSERT INTO `sales_executive_models` (`id`, `name`, `email`, `phone`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Josephine Slater', 'jafynizu@mailinator.com', '+1 (955) 237-8838', 'Et aliquid molestias', '2021-12-26 17:52:15', '2021-12-26 17:52:15'),
+(2, 'Timothy Logan', 'wulukevyj@mailinator.com', '+1 (749) 943-3655', 'Aut debitis laborios', '2021-12-26 17:52:19', '2021-12-26 17:52:52');
 
 -- --------------------------------------------------------
 
@@ -1055,6 +1062,50 @@ INSERT INTO `users` (`id`, `name`, `lastname`, `mobile`, `email`, `password`, `c
 (92, 'Super Admin', '', '01761955765', 'admin@gmail.com', '$2y$10$9LVl8Xz0Ps2S2cUZ14c8e.QOho1XfDdB96.AlX9GmPzQJOONtYmJu', NULL, 1, '2021-02-07 11:07:04', 85, '2021-04-08 17:09:31', 1, '1w2sfttbzvQifaA4b67xa8Q4Jwxf5l55lIm7WK45KNSW3TRGnLzPLHZEDEsJ', 11, 'admin'),
 (105, 'rhythms', NULL, '01761955765', 'rhythms@outlook.com', '$2y$12$8K5vJYIUMomXvJ4v6reHfeX55kn6dxus5u1Cff6SdE0DJ.VGPvDjK', NULL, 1, '2021-06-10 12:31:09', 92, '2021-06-10 14:06:14', NULL, NULL, 16, 'admin'),
 (106, 'sales Manager', NULL, '01761955765', 'sales@gmail.com', '$2y$10$8opRcX98SyaEidglieya5OsBmFjrG4e.DQ.3.ZKUIi4nyB1Iblyo6', NULL, 1, '2021-12-27 22:44:25', 92, '2021-12-27 22:44:25', NULL, NULL, 18, 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `work_order_party`
+--
+
+CREATE TABLE `work_order_party` (
+  `id` int(11) NOT NULL,
+  `company_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `personal_phone` varchar(255) DEFAULT NULL,
+  `optional_phone` varchar(255) DEFAULT NULL,
+  `present_address` longtext DEFAULT NULL,
+  `permanent_address` longtext DEFAULT NULL,
+  `balance` varchar(255) DEFAULT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `company_address` longtext DEFAULT NULL,
+  `company_contact_no` int(11) DEFAULT NULL,
+  `reference` varchar(255) DEFAULT NULL,
+  `nid` varchar(255) DEFAULT NULL,
+  `photo` longtext DEFAULT NULL,
+  `nationality` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `work_order_party`
+--
+
+INSERT INTO `work_order_party` (`id`, `company_id`, `name`, `email`, `personal_phone`, `optional_phone`, `present_address`, `permanent_address`, `balance`, `company_name`, `company_address`, `company_contact_no`, `reference`, `nid`, `photo`, `nationality`, `designation`, `country`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Hollee Santiago', 'noqakivij@mailinator.com', '+1 (387) 426-2865', NULL, 'Commodo odio rerum q', NULL, NULL, 'Kelley and Hunt Co', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 92, '2021-10-13 20:25:47', '2021-10-13 20:25:47'),
+(2, NULL, 'Karyn Kinney', 'dynijepof@mailinator.com', '+1 (286) 427-3093', NULL, 'Aut laborum Sint q', NULL, NULL, 'Davenport Burris Inc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 92, '2021-10-13 20:25:50', '2021-10-13 20:25:50'),
+(3, NULL, 'Mason Silva', 'razygyz@mailinator.com', '+1 (254) 365-9538', NULL, 'Non fuga Dolore cil', NULL, NULL, 'Mcfarland and Hicks Associates', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 92, '2021-10-13 20:25:52', '2021-10-13 20:25:52'),
+(4, NULL, 'khademul islam', 'tashfiaexport@gmail.com', '01848080971', NULL, '52/2 b.b road', NULL, NULL, 'tashfia export', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 92, '2021-11-27 23:32:14', '2021-11-27 23:32:14'),
+(5, NULL, 'Winifred Pratt', 'rydoredy@mailinator.com', '+1 (728) 971-9785', '+1 (798) 921-7253', 'Eos officia aut proi', 'Qui dolore eos comm', NULL, 'Walsh Mcintosh Inc', 'Neal and Blankenship Inc', 0, 'Sit ut labore quibus', 'Iure quo et repudian', '2021-11-30-61a52b3ed959d.jpg', 'Laborum aperiam qui', 'Cillum aliquam maxim', 'Perspiciatis accusa', 92, '2021-11-30 01:34:23', '2021-11-30 01:34:23'),
+(6, NULL, 'Miranda Schmidt', 'jedeg@mailinator.com', '+1 (287) 674-7165', '+1 (466) 896-5755', 'Nihil animi mollit', 'Voluptatem facilis d', NULL, 'Shields and Ross LLC', 'Meyers Kelley Traders', 0, 'Vel ut deserunt temp', 'Dolor rerum asperior', '2021-11-30-61a52b6ac208d.jpg', 'Error incidunt est', 'Nihil amet fugiat', 'Quia aut in aut nihi', 92, '2021-11-30 01:35:07', '2021-11-30 01:35:07'),
+(7, NULL, 'Cailin Dominguez', 'xekuke@mailinator.com', '+1 (625) 354-2594', '+1 (989) 224-5922', 'Adipisci nostrud pos', 'Et at cupiditate sit', NULL, 'Montgomery Garrett Associates', 'Powers Kemp Inc', 0, 'Repudiandae minim an', 'Quas placeat ipsam', '2021-11-30-61a531f613d83.png', 'Enim dolor natus acc', 'Corrupti amet qui', 'Id voluptatem Volu', 92, '2021-11-30 02:03:02', '2021-11-30 02:03:02'),
+(8, 1, 'Ora Joseph', 'pogykepo@mailinator.com', '+1 (887) 299-6734', '+1 (227) 722-9906', 'Velit reiciendis au', 'Reiciendis est quam', NULL, 'Parsons and George Plc', 'Chang Castillo Trading', 0, 'Provident culpa mol', 'Quisquam soluta sunt', '', 'Sed cumque proident', 'Aut optio nostrum l', 'Doloribus vel adipis', 92, '2021-11-30 02:04:13', '2021-12-27 19:03:37');
 
 --
 -- Indexes for dumped tables
@@ -1236,6 +1287,13 @@ ALTER TABLE `users`
   ADD KEY `type` (`type`) USING BTREE;
 
 --
+-- Indexes for table `work_order_party`
+--
+ALTER TABLE `work_order_party`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `supplier_company_id` (`company_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1261,7 +1319,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `dynamic_routes`
 --
 ALTER TABLE `dynamic_routes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=346;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -1285,7 +1343,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `master_menu`
 --
 ALTER TABLE `master_menu`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1297,7 +1355,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permission_roles`
 --
 ALTER TABLE `permission_roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16499;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16502;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -1351,7 +1409,7 @@ ALTER TABLE `sales_details`
 -- AUTO_INCREMENT for table `sales_executive_models`
 --
 ALTER TABLE `sales_executive_models`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sales_payments`
@@ -1376,6 +1434,12 @@ ALTER TABLE `suppliers`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+
+--
+-- AUTO_INCREMENT for table `work_order_party`
+--
+ALTER TABLE `work_order_party`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -1464,6 +1528,12 @@ ALTER TABLE `stock`
 --
 ALTER TABLE `suppliers`
   ADD CONSTRAINT `supplier_company_id` FOREIGN KEY (`company_id`) REFERENCES `company_info` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `work_order_party`
+--
+ALTER TABLE `work_order_party`
+  ADD CONSTRAINT `work_order_party_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company_info` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
