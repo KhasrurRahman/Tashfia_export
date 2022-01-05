@@ -2,7 +2,7 @@
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form  action="{{url('admin/supplier/store')}}" method="post" enctype="multipart/form-data">
+            <form  action="{{url('admin/workorder/store_workorder_party')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="add_buttonLabel">Create @yield('title')</h5>

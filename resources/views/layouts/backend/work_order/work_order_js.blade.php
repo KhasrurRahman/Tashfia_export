@@ -19,7 +19,7 @@
                 $('#total_data').html(api.ajax.json().recordsTotal);
             },
             ajax: {
-                url: "{{ url('admin/workorder/search_workorder_party') }}",
+                url: "{{ url('admin/workorder/search_workorder') }}",
                 type: 'POSt',
                 data: function (d) {
                     d._token = '{{csrf_token()}}'
@@ -31,11 +31,11 @@
                 {data: 'personal_phone', name: 'personal_phone'},
                 {data: 'present_address', name: 'present_address'},
                 {data: 'email', name: 'email'},
-                {data: 'photo', name: 'photo'},
                 {data: 'company_name', name: 'company_name'},
-                {data: 'company_address', name: 'company_address'},
-                {data: 'company_contact_no', name: 'company_contact_no'},
-                {data: 'balance', name: 'balance'},
+                {data: 'tax', name: 'tax'},
+                {data: 'total_amount', name: 'total_amount'},
+                {data: 'due_date', name: 'due_date'},
+                {data: 'created_at', name: 'created_at'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });
@@ -64,7 +64,7 @@
                 event.preventDefault();
                 $.ajax({
                     type: 'get',
-                    url: '{{url('admin/workorder/delete_workorder_party')}}/' + id,
+                    url: '{{url('admin/workorder/delete_workorder')}}/' + id,
                     success: function (response) {
                         if (response) {
                             if (response.permission == false) {

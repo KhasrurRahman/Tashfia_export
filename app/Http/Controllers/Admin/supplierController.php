@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\CompanyModel;
 use App\Http\Controllers\Controller;
 use App\Models\supplierModel;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -70,8 +71,8 @@ class supplierController extends Controller
             $currentDate = Carbon::now()->toDateString();
             $imageName = $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
 
-            if (!Storage::disk('public')->exists('customer_image')) {
-                Storage::disk('public')->makeDirectory('customer_image');
+            if (!Storage::disk('public')->exists('supplier_image')) {
+                Storage::disk('public')->makeDirectory('supplier_image');
             }
 
             $moveImage = Image::make($image)->resize(600, 600)->stream();
@@ -83,6 +84,8 @@ class supplierController extends Controller
 
         $request->request->add(['created_by' => Auth::user()->id, 'photo' => $imageName]);
         supplierModel::create($request->all());
+        
+        Toastr::Success('created successfully', 'successful');
         return redirect()->back();
     }
 
@@ -127,8 +130,8 @@ class supplierController extends Controller
             $currentDate = Carbon::now()->toDateString();
             $imageName = $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
 
-            if (!Storage::disk('public')->exists('customer_image')) {
-                Storage::disk('public')->makeDirectory('customer_image');
+            if (!Storage::disk('public')->exists('supplier_image')) {
+                Storage::disk('public')->makeDirectory('supplier_image');
             }
 
             $moveImage = Image::make($image)->resize(600, 600)->stream();
@@ -140,6 +143,7 @@ class supplierController extends Controller
 
         $request->request->add(['created_by' => Auth::user()->id, 'photo' => $imageName]);
         supplierModel::find($id)->update($request->all());
+        Toastr::Success('Updated  successfully', 'successful');
         return redirect()->back();
     }
 }
