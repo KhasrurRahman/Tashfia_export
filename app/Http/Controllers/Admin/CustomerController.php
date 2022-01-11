@@ -47,7 +47,7 @@ class CustomerController extends Controller
                 ->addColumn('name', function ($data) {
                     return $data->name;
                 })->addColumn('company', function ($data) {
-                    return $data->company ? $data->party->company->company_name : '';
+                    return $data->company ? $data->company->company_name : '';
                 })->addColumn('personal_phone', function ($data) {
                     return $data->personal_phone;
                 })->addColumn('present_address', function ($data) {
