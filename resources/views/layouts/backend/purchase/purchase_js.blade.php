@@ -288,9 +288,15 @@
     // });
 
     function total_price() {
+        $("#quantity_pound").val(($("#quantity").val() * 2.2046).toFixed(3))
         quantity = $("#quantity").val();
-        console.log(quantity)
-        $("#total_purchas_price").val($("#unit_price").val() * $("#quantity").val())
+        $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
+    }
+    
+    function total_price_pound() {
+        $("#quantity").val(($("#quantity_pound").val() / 2.2046).toFixed(3))
+        quantity = $("#quantity").val();
+        $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
     }
 
     $(".quantity").on("keyup", function (event) {
@@ -304,7 +310,6 @@
             type: 'get',
             url: '{{ url('company_supplier_search') }}/' + id,
             success: function (data) {
-                // console.log(data)
                 $('#search_supplier_id').html(data);
             }
         });

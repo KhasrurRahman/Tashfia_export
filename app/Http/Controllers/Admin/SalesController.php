@@ -67,6 +67,12 @@ class SalesController extends Controller
                 return response()->json(['error' => 'Please Input unit price of an item']);
             }
         }
+        
+        for ($i = 0; $i < count($request->per_role_data); $i++) {
+            if ($request->per_role_data[$i] == null) {
+                return response()->json(['error' => 'Please Input role of an item properly']);
+            }
+        }
 
         $total_paied_amount = array_sum($request->per_payment_amount);
         if ($total_paied_amount > $request->grand_total) {
@@ -106,6 +112,7 @@ class SalesController extends Controller
             $sales_details->total_price = $request->per_total_unit_price[$i];
             $sales_details->purchase_uint_price = $stock->purchase->actual_unit_price;
             $sales_details->purchase_total_price = $stock->purchase->actual_unit_price * $request->per_quantity[$i];
+            $sales_details->role = $request->per_role_data[$i];
             $sales_details->save();
         }
 
@@ -144,7 +151,7 @@ class SalesController extends Controller
         $sales->profit_or_loss = $sales->total_price - $sales->sales_details->sum('purchase_total_price');
         $sales->update();
 
-        return response()->json(['done' => 'success']);
+        return response()->json(['success' => 'success','sales_id'=>$sales->id]);
     }
 
     public function customer_payment_history_search(Request $request)

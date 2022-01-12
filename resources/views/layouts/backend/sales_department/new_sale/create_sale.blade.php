@@ -144,8 +144,10 @@
                     <table id="dsTable">
                         <thead>
                         <tr style="background:#6b279b;color:white">
-                            <th>Chalan No</th>
-                            <th>Quantity</th>
+                            <th>Item name</th>
+                            <th>Quantity(KG)</th>
+                            <th>Quantity(Pound)</th>
+                            <th>Role</th>
                             <th>Unit Price</th>
                             <th>Total Price (Tk)</th>
                             <th>Action</th>
@@ -162,7 +164,7 @@
                     <div class="card">
                         <div class="card-body">
                             <ul class="list-group">
-                                <li class="list-group-item">Quantity: <span id="total_quantity">0</span></li>
+                                <li class="list-group-item">Quantity(KG): <span id="total_quantity">0</span></li>
                                 <li class="list-group-item">Grand Total: <span id="grand_total">0</span></li>
                             </ul>
                         </div>
@@ -264,8 +266,8 @@
 
 
     <div class="row justify-content-center">
-        <button class="btn btn-success col-md-4" onclick="store_sales_data()">Save</button>
-        <button class="btn btn-danger col-md-4" onclick="location.reload();">Cancel</button>
+        <button class="btn btn-success col-md-4" onclick="store_sales_data()" id="form_submission_button">Save</button>
+        <button class="btn btn-danger col-md-4" onclick="location.reload();">Reload</button>
     </div>
 
 

@@ -210,6 +210,7 @@ class DepartmentController extends Controller
 
     public function sales_department_invoice($id)
     {
+        
         $sales = salesDepartmentModel::find($id);
         return view('layouts.backend.sales_department.invoice', compact('sales'));
     }

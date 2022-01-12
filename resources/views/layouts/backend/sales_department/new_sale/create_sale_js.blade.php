@@ -96,8 +96,10 @@
             type: 'get',
             url: '{{ url('get_product_single_data') }}/' + id,
             success: function (data) {
-                var markup = "<tr><td>" + data.product.chalan_no +
-                    "</td><td><div> <input type='number' value='1' class='qty' name='input_quantity[]' id='qty'> </div></td> <td><input type='number' id='unit_price' class='unit_price'></td><td><input type='text' class='btn btn-sm btn-success total_unit_price' readonly id='total_unit_price' ><input type='hidden' disabled value=" + data.product.id + " class='stock_id'></td><td><input type='button' value='Delete' class='btn btn-sm btn-danger'></td></tr>";
+                var markup = "<tr><td>" + data.product.chalan_no + "</td><td><div> <input type='number' value='1' class='qty' name='input_quantity[]' id='qty' maxlength='4'> " +
+                    "</div></td><td><div> <input type='number' value='2.20462' class='qty_pound' name='input_quantity_pound[]' id='qty_pound'> </div></td><td><div> <input " +
+                    "type='number' value='0' class='role' name='role[]' id='role'> </div></td> <td><input type='number' " +
+                    "id='unit_price' class='unit_price'></td><td><input type='text' class='btn btn-sm btn-success total_unit_price' readonly id='total_unit_price' ><input type='hidden' disabled value=" + data.product.id + " class='stock_id'></td><td><input type='button' value='Delete' class='btn btn-sm btn-danger'></td></tr>";
                 $("#dsTable tbody").append(markup);
             }
         });
@@ -107,7 +109,17 @@
     $(document).on('keyup', '.qty', function () {
         var $row = $(this).closest('tr');
         var unit_price = $row.find('#unit_price').val();
-        $row.find('#total_unit_price').val($row.find('#qty').val() * unit_price)
+        $row.find('#qty_pound').val(($row.find('#qty').val() * 2.2046).toFixed(3))
+        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(3))
+        show_total_quantity();
+        show_total_grand_total()
+    });
+
+    $(document).on('keyup', '.qty_pound', function () {
+        var $row = $(this).closest('tr');
+        var unit_price = $row.find('#unit_price').val();
+        $row.find('#qty').val(($row.find('#qty_pound').val() / 2.2046).toFixed(3))
+        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(3))
         show_total_quantity();
         show_total_grand_total()
     });
@@ -115,7 +127,7 @@
     $(document).on('keyup', '.unit_price', function () {
         var $row = $(this).closest('tr');
         var unit_price = $row.find('#unit_price').val();
-        $row.find('#total_unit_price').val($row.find('#qty').val() * unit_price)
+        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(3))
         show_total_quantity();
         show_total_grand_total();
     });
@@ -144,6 +156,7 @@
 
 
     function store_sales_data() {
+        disableButton()
         var stock_id = [];
         $('.stock_id').each(function () {
             stock_id.push(this.value);
@@ -189,6 +202,11 @@
             per_cheque_date.push(this.value);
         });
 
+        var per_role_data = [];
+        $('.role').each(function () {
+            per_role_data.push(this.value);
+        });
+
         $.ajax({
             type: 'post',
             url: '{{ url('admin/sales/store_sales_department_data') }}',
@@ -199,6 +217,7 @@
                 subtotal: $("#sub_total").val(),
                 remark: $("#remarks").val(),
                 sales_executive_id: $("#sales_executive_id").val(),
+                per_role_data: per_role_data,
                 stock_id: stock_id,
                 per_quantity: per_quantity,
                 per_unit_price: per_unit_price,
@@ -212,13 +231,17 @@
             },
             success: function (data) {
                 if (data.error) {
+                    enableeButton()
                     toastr.error(data.error, 'Error');
-                } else {
-                    toastr.success('Sales successfullt Completed', 'Updated');
-                    window.location.href = "{{ url('admin/sales/show_sales_department') }}";
+                } else if (data.success) {
+                    document.getElementById('form_submission_button').innerText = 'saved';
+                    toastr.success('Sales successfully Completed', 'Updated');
+                    window.open(
+                        "{{ url('admin/sales/sales_department_invoice') }}/"+data.sales_id, "_blank");
                 }
             },
             error: function (response) {
+                enableeButton()
                 toastr.error(response.responseJSON.errors.customer_id);
                 toastr.error(response.responseJSON.errors.stock_id);
                 toastr.error(response.responseJSON.errors.grand_total);
@@ -232,12 +255,24 @@
         });
     }
 
+    function disableButton() {
+        var btn = document.getElementById('form_submission_button');
+        btn.disabled = true;
+        btn.innerText = 'Saving....';
+    }
+
+    function enableeButton() {
+        var btn = document.getElementById('form_submission_button');
+        btn.disabled = false;
+        btn.innerText = 'Save and continue'
+    }
+
+
     function customer_details(id) {
         $.ajax({
             url: "{{url('admin/sales/customer_details')}}/" + id,
             type: "GET",
             success: function (data) {
-                console.log(data.customer)
                 $('#customer_details').html('');
                 $('#customer_details').append(data.customer);
                 $("#customer_details").show();
@@ -254,7 +289,6 @@
             url: "{{url('admin/sales/sales_details_invoice')}}/" + id,
             type: "GET",
             success: function (data) {
-                console.log(data)
                 $('#sales_details_model_content').html('');
                 $('#sales_details_model_content').append(data);
                 $('#sales_details').modal('show');
@@ -264,11 +298,11 @@
             }
         });
     }
-    
+
     function show_payment_history() {
         $('#previous_payment_histoty').modal('show');
     }
-    
+
     // save walk in customer info
     $('#wal_in_customer__form').on('submit', function (event) {
         event.preventDefault();
@@ -304,12 +338,12 @@
         $('#multiple_payment_model').append(html);
     }
 
-    
+
     function cheque_date_input(select) {
-        if (select.value === 'Cheque') {            
-           $(select).closest('.row').find('#check_section').show(1000);
+        if (select.value === 'Cheque') {
+            $(select).closest('.row').find('#check_section').show(1000);
         } else {
-           $(select).closest('.row').find('#check_section').hide(1000);
+            $(select).closest('.row').find('#check_section').hide(1000);
         }
     }
 

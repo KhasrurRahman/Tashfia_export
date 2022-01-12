@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="90896454-a938-4f57-bcca-9b33c27e95a3" name="tashfia_export" url="https://tashfiaexport.bindusoft.com/">
-        <fileTransfer rootFolder="/tashfiaexport.bindusoft.com" host="63.250.45.84" port="21">
+        <fileTransfer rootFolder="/erp.tashfiaexport.com" host="63.250.45.84" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

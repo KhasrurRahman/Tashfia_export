@@ -128,11 +128,11 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputUsername1">Subtotal</label>
-                            <input type="number" class="form-control" name="subtotal" id="subtotal" min="0" onkeypress="total_price()" required>
+                            <input type="number" class="form-control" name="subtotal" id="subtotal" min="0" onkeyup="total_price()" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tax</label>
-                            <input type="number" class="form-control" name="tax" id="tax" min="0" onkeypress="total_price()" required>
+                            <input type="number" class="form-control" name="tax" id="tax" min="0" onkeyup="total_price()" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Total Amount</label>
@@ -171,9 +171,7 @@
         }
 
         function total_price() {
-            var subtotal = $("#subtotal").val();
-            var tax = $("#tax").val();
-            $("#total_amount").val(subtotal * tax)
+            $("#total_amount").val($("#tax").val() * $("#subtotal").val())
         }
     </script>
 @endpush

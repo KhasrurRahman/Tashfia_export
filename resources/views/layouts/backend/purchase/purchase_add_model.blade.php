@@ -79,9 +79,14 @@
                     <br>
 
                     <div class="form-group">
-                        <label for="Route_name">Quantity</label>
+                        <label for="Route_name">Quantity(kg)</label>
                         <input type="number" class="form-control" name="quantity" onkeyup="total_price()" id="quantity">
                         <span id="Error_status_quantity" class="text-red error_field"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Route_name">Quantity(Pound)</label>
+                        <input type="number" class="form-control" name="quantity_pound" onkeyup="total_price_pound()" id="quantity_pound">
                     </div>
 
                     <div class="form-group">
