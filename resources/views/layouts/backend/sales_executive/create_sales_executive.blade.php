@@ -1,10 +1,10 @@
 @extends('layouts.backend.partial.app')
-@section('title','Create Sales Executive')
+@section('title','Create Employee Details')
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
 @endpush
 @section('main_menu','HOME')
-@section('active_menu','Create Sales Executive')
+@section('active_menu','Create Employee Details')
 @section('link',route('admin.dynamic_route'))
 @section('content')
 
