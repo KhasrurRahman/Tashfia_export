@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2022 at 08:25 AM
+-- Generation Time: Jan 13, 2022 at 09:18 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -754,7 +754,7 @@ CREATE TABLE `purchase` (
   `product_id` int(11) DEFAULT NULL,
   `supplier_id` int(11) DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
-  `quantity` varchar(255) DEFAULT NULL,
+  `quantity` decimal(10,3) DEFAULT NULL,
   `status` varchar(255) DEFAULT '1',
   `unit_price` decimal(10,2) DEFAULT NULL,
   `total_purchas_price` decimal(10,2) DEFAULT NULL,
@@ -769,10 +769,10 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`id`, `product_id`, `supplier_id`, `created_by`, `quantity`, `status`, `unit_price`, `total_purchas_price`, `actual_unit_price`, `actual_purchas_price`, `created_at`, `updated_at`) VALUES
-(12, 23, 1, '92', '-10', '1', '50.00', '25000.00', '60.00', '30000.00', '2021-12-25 20:23:02', '2021-12-27 18:41:25'),
-(13, 25, 2, '92', '100', '1', '40.00', '20000.00', '50.00', '25000.00', '2021-12-25 20:23:20', '2021-12-25 20:28:28'),
-(14, 23, 1, '92', '968', '1', '54.00', '52272.00', '6.20', '6000.00', '2021-12-27 18:40:56', '2021-12-27 18:40:56'),
-(15, 23, 4, '92', '100', '1', '50.00', '25000.00', '60.00', '30000.00', '2021-12-27 23:06:42', '2021-12-27 23:07:38');
+(12, 23, 1, '92', '-10.000', '1', '50.00', '25000.00', '60.00', '30000.00', '2021-12-25 20:23:02', '2021-12-27 18:41:25'),
+(13, 25, 2, '92', '100.000', '1', '40.00', '20000.00', '50.00', '25000.00', '2021-12-25 20:23:20', '2021-12-25 20:28:28'),
+(14, 23, 1, '92', '968.000', '1', '54.00', '52272.00', '6.20', '6000.00', '2021-12-27 18:40:56', '2021-12-27 18:40:56'),
+(15, 23, 4, '92', '100.000', '1', '50.00', '25000.00', '60.00', '30000.00', '2021-12-27 23:06:42', '2021-12-27 23:07:38');
 
 -- --------------------------------------------------------
 
@@ -1064,7 +1064,7 @@ CREATE TABLE `stock` (
   `id` int(11) NOT NULL,
   `purchase_id` int(11) DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
-  `quantity` varchar(255) DEFAULT NULL,
+  `quantity` decimal(10,3) DEFAULT NULL,
   `status` varchar(255) DEFAULT '1',
   `date` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -1076,7 +1076,7 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id`, `purchase_id`, `created_by`, `quantity`, `status`, `date`, `created_at`, `updated_at`) VALUES
-(11, 12, '92', '-4.14', '1', NULL, '2021-12-25 20:27:55', '2022-01-12 11:43:45'),
+(11, 12, '92', '-4.140', '1', NULL, '2021-12-25 20:27:55', '2022-01-12 11:43:45'),
 (12, 13, '92', '223.044', '1', NULL, '2021-12-25 20:28:29', '2022-01-12 12:59:03'),
 (13, 12, '92', '419.649', '1', NULL, '2021-12-27 18:41:17', '2022-01-12 12:52:18'),
 (14, 12, '92', '31.196', '1', NULL, '2021-12-27 18:41:25', '2022-01-12 12:30:26'),
