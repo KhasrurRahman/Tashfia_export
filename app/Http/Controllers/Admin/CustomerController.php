@@ -93,7 +93,7 @@ class CustomerController extends Controller
         $request->request->add(['created_by' => Auth::user()->id, 'photo' => $imageName]);
         CustomerModel::create($request->all());
 
-        return redirect()->back();
+        return redirect()->route('admin.customer/all_customer');
     }
 
     public function delete($id)

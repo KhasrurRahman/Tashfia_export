@@ -96,15 +96,37 @@
             type: 'get',
             url: '{{ url('get_product_single_data') }}/' + id,
             success: function (data) {
-                var markup = "<tr><td>" + data.product.chalan_no + "</td><td><div> <input type='number' value='1' class='qty' name='input_quantity[]' id='qty' maxlength='4'> " +
-                    "</div></td><td><div> <input type='number' value='2.20462' class='qty_pound' name='input_quantity_pound[]' id='qty_pound'> </div></td><td><div> <input " +
-                    "type='number' value='0' class='role' name='role[]' id='role'> </div></td> <td><input type='number' " +
-                    "id='unit_price' class='unit_price'></td><td><input type='text' class='btn btn-sm btn-success total_unit_price' readonly id='total_unit_price' ><input type='hidden' disabled value=" + data.product.id + " class='stock_id'></td><td><input type='button' value='Delete' class='btn btn-sm btn-danger'></td></tr>";
-                $("#dsTable tbody").append(markup);
+                var stock_id = [];
+                $('.stock_id').each(function () {
+                    stock_id.push(this.value);
+                });
+
+                if (checkValue(id, stock_id) === 'yes') {
+                    toastr.warning('Item Already selected', 'Already Selected');
+                } else {
+                    var markup = "<tr><td>" + data.product.chalan_no + "</td><td><div> <input type='number' value='1' class='qty' name='input_quantity[]' id='qty' maxlength='4'> " +
+                        "</div></td><td><div> <input type='number' value='2.20462' class='qty_pound' name='input_quantity_pound[]' id='qty_pound'> </div></td><td><div> <input " +
+                        "type='number' value='0' class='role' name='role[]' id='role'> </div></td> <td><input type='number' " +
+                        "id='unit_price' class='unit_price'></td><td><input type='text' class='btn btn-sm btn-success total_unit_price' readonly id='total_unit_price' ><input type='hidden' disabled value=" + data.product.id + " class='stock_id'></td><td><input type='button' value='Delete' class='btn btn-sm btn-danger'></td></tr>";
+                    $("#dsTable tbody").append(markup);
+                }
             }
         });
     }
 
+
+    function checkValue(value, arr) {
+        var status = 'no';
+        for (var i = 0; i < arr.length; i++) {
+            var name = arr[i];
+            if (name == value) {
+                status = 'yes';
+                break;
+            }
+        }
+
+        return status;
+    }
 
     $(document).on('keyup', '.qty', function () {
         var $row = $(this).closest('tr');
@@ -197,6 +219,16 @@
             per_cheque_number.push(this.value);
         });
 
+        var bkash_number = [];
+        $('.bkash_number').each(function () {
+            bkash_number.push(this.value);
+        });
+
+        var bkash_trns_id = [];
+        $('.bkash_trns_id').each(function () {
+            bkash_trns_id.push(this.value);
+        });
+
         var per_cheque_date = [];
         $('.cheque_date').each(function () {
             per_cheque_date.push(this.value);
@@ -227,6 +259,8 @@
                 per_remarks: per_remarks,
                 per_cheque_number: per_cheque_number,
                 per_cheque_date: per_cheque_date,
+                bkash_number: bkash_number,
+                bkash_trns_id: bkash_trns_id,
                 "_token": "{{ csrf_token() }}",
             },
             success: function (data) {
@@ -237,7 +271,7 @@
                     document.getElementById('form_submission_button').innerText = 'saved';
                     toastr.success('Sales successfully Completed', 'Updated');
                     window.open(
-                        "{{ url('admin/sales/sales_department_invoice') }}/"+data.sales_id, "_blank");
+                        "{{ url('admin/sales/sales_department_invoice') }}/" + data.sales_id, "_blank");
                 }
             },
             error: function (response) {
@@ -333,17 +367,21 @@
 
 
     function add_payment_mode() {
-        var html = '<div class="col-md-8 p-3 m-2" style="background: #6b279b52;border-radius: 1%" id="payment_mode_section"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">Amount</label> <div class="input-group"> <input type="number" class="form-control payment_amount" name="payment_amount" id="sub_total" required> </div><span id="error_sub_total" class="text-red error_field"></span> </div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Payment Type</label> <select class="form-control select2 payment_type" name="payment_type" id="payment_type" onchange="cheque_date_input(this)"> <option value="cache ">cache</option> <option value="card ">Card</option> <option value="Bkash">Bkash</option> <option value="Cheque">Cheque</option> </select> <span id="error_subtotal" class="text-red error_field "></span> </div></div><div class="col-12" id="check_section" style="display: none;border: 1px solid"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">cheque Number</label> <div class="input-group"> <input type="number" class="form-control cheque_number" name="cheque_number"> </div></div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Date</label> <div class="input-group"> <input type="date" class="form-control cheque_date" name="cheque_date"> </div></div></div></div></div><div class="col-md-12"> <div class="form-group"> <label for="product_id">Remarks</label> <div class="input-group"> <textarea name="remarks" id="remarks" style="width:100%" class="remarks"></textarea> </div><span id="error_remarks" class="text-red error_field"></span> </div></div></div></div>';
+        var html = '<div class="col-md-8 p-3 m-2" style="background: #6b279b52;border-radius: 1%" id="payment_mode_section"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">Amount</label> <div class="input-group"> <input type="number" class="form-control payment_amount" name="payment_amount" id="sub_total" required> </div><span id="error_sub_total" class="text-red error_field"></span> </div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Payment Type</label> <select class="form-control select2 payment_type" name="payment_type" id="payment_type" onchange="cheque_date_input(this)"> <option value="Cache ">cache</option> <option value="Card ">Card</option> <option value="Bkash">Bkash</option> <option value="Cheque">Cheque</option> </select> <span id="error_subtotal" class="text-red error_field "></span> </div></div><div class="col-12" id="check_section" style="display: none;border: 1px solid"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">cheque Number</label> <div class="input-group"> <input type="number" class="form-control cheque_number" name="cheque_number"> </div></div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Date</label> <div class="input-group"> <input type="date" class="form-control cheque_date" name="cheque_date"> </div></div></div></div></div><div class="col-12" id="bkash_section" style="display: none;border: 1px solid"> <div class="row"> <div class="col-md-6"> <div class="form-group"> <label for="product_id">Bkash Number</label> <div class="input-group"> <input type="number" class="form-control bkash_number" name="bkash_number"> </div></div></div><div class="col-md-6"> <div class="form-group"> <label for="product_id">Transaction number</label> <div class="input-group"> <input type="text" class="form-control bkash_trns_id" name="bkash_trns_id"> </div></div></div></div></div><div class="col-md-12"> <div class="form-group"> <label for="product_id">Remarks</label> <div class="input-group"> <textarea name="remarks" id="remarks" style="width:100%" class="remarks"></textarea> </div><span id="error_remarks" class="text-red error_field"></span> </div></div></div></div>';
 
         $('#multiple_payment_model').append(html);
     }
 
 
     function cheque_date_input(select) {
+        console.log(select.value)
         if (select.value === 'Cheque') {
             $(select).closest('.row').find('#check_section').show(1000);
+        } else if (select.value === 'Bkash') {
+            $(select).closest('.row').find('#bkash_section').show(1000);
         } else {
             $(select).closest('.row').find('#check_section').hide(1000);
+            $(select).closest('.row').find('#bkash_section').hide(1000);
         }
     }
 

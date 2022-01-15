@@ -24,19 +24,19 @@
                         <table class="table table-dark table-bordered" style="display: none" id="product_details_show">
                             <thead>
                             <tr>
-                                <th scope="col">Chalan No</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Card no</th>
-                                <th scope="col">S/L No</th>
-                                <th scope="col">Party name</th>
+                                <th scope="col">Style No</th>
+                                <th scope="col">Fabric Type</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <tr>
-                                <td id="create_chalan_no"></td>
-                                <td id="create_card_no"></td>
-                                <td id="create_party_name"></td>
-                                <td id="create_sl_no"></td>
+                                <td id="details_chalan_no"></td>
+                                <td id="details_card_no"></td>
+                                <td id="details_style_no"></td>
+                                <td id="details_fabric_type"></td>
                             </tr>
 
                             </tbody>
@@ -50,7 +50,7 @@
                         <select class="form-control select2" name="supplier_id" id="supplier_id">
                             <option value="">Select</option>
                             @foreach($supplier as $data)
-                                <option value="{{$data->id}}">{{$data->name}}</option>
+                                <option value="{{$data->id}}">{{$data->name}} (Company: {{$data->company->company_name}})</option>
                             @endforeach
                         </select>
                         <span id="Error_status_supplier_id" class="text-red error_field"></span>
@@ -80,30 +80,30 @@
 
                     <div class="form-group">
                         <label for="Route_name">Quantity(kg)</label>
-                        <input type="number" class="form-control" name="quantity" onkeyup="total_price()" id="quantity">
+                        <input type="number" step="any" class="form-control" name="quantity" onkeyup="total_price()" id="quantity" >
                         <span id="Error_status_quantity" class="text-red error_field"></span>
                     </div>
                     
                     <div class="form-group">
                         <label for="Route_name">Quantity(Pound)</label>
-                        <input type="number" class="form-control" name="quantity_pound" onkeyup="total_price_pound()" id="quantity_pound">
+                        <input type="number" step="any" class="form-control" name="quantity_pound" onkeyup="total_price_pound()" id="quantity_pound">
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Unit Price</label>
-                        <input type="number" class="form-control" name="unit_price" id="unit_price" onkeyup="total_price()">
+                        <input type="number" step="any" class="form-control" name="unit_price" id="unit_price" onkeyup="total_price()">
                         <span id="Error_status_unit_price" class="text-red error_field"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Total Purchase Price</label>
-                        <input type="number" class="form-control " name="total_purchas_price" id="total_purchas_price" readonly>
+                        <input type="number" step="any" class="form-control " name="total_purchas_price" id="total_purchas_price" readonly>
                         <span id="Error_status_total_purchas_price" class="text-red error_field"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Actual Purchase Price</label>
-                        <input type="number" class="form-control " name="actual_purchas_price" id="actual_purchas_price">
+                        <input type="number" step="any" class="form-control " name="actual_purchas_price" id="actual_purchas_price">
                         <span id="Error_status_actual_purchas_price" class="text-red error_field"></span>
                     </div>
 

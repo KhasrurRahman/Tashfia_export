@@ -126,7 +126,7 @@
                                     class="alignright">+8801810077440</span><br/>
                             <span class="alignleft">Office Phone:</span> <span
                                     class="alignright">+8801810077441</span><br/>
-                            <span class="alignright">+8801310088007</span><br/>
+                            <span class="alignright">+8801810088007</span><br/>
                             <span class="alignleft">Main Shop TNT:</span> <span
                                     class="alignright">+88-02-7643899</span><br/>
                             <span class="alignleft">Store TNT:</span> <span
@@ -199,19 +199,13 @@
                                 <span class="alignleft">Compnay name:
                                     {{ $sales->customer->company_name }}</span><br/>
                         </td>
-                        <td style="font-size: 12px;font-weight: bold;width: 30%;">
-                                <span class="alignleft" style="color: red">previous Total Due:
-                                    {{ $sales->customer->sales_history->where('due', '>', 0)->sum('due') }} Tk</span><br/>
-                        </td>
                     </tr>
                 </table>
             </td>
         </tr>
 
         <tr>
-            <table
-                    style="height: 574px; width: 90%; margin-left: auto; margin-right: auto;text-align: center;border-collapse: collapse"
-                    class="invoice_table">
+            <table style="height: 574px; width: 90%; margin-left: auto; margin-right: auto;text-align: center;border-collapse: collapse" class="invoice_table">
                 <tbody>
                 <tr style="height: 7px;">
                     <td style="width: 286px; height: 7px;">
@@ -266,8 +260,15 @@
                     </td>
                 </tr>
                 <tr style="height: 6px;">
-                    <td style="width: 175px; height: 6px;" colspan="3">
-                        <p><b>Total: {{ $sales->total_price }}</b> (Due: {{ $sales->due }}) Tk</p>
+                    <td style="width: 175px; height: 6px;" colspan="2">
+                        <p><b>Total: {{ $sales->total_price }}</b>Tk</p>
+                        <p><b>Payment: {{ $sales->payment_amount }}</b>Tk</p>
+                        <p><b>Due: {{ $sales->due }}</b>Tk</p>
+                    </td>
+                </tr>
+                <tr style="height: 6px;">
+                    <td style="width: 175px; height: 6px;" colspan="6">
+                        <p style="font-weight: bold;color: red">previous Total Due: {{ $sales->customer->sales_history->where('due', '>', 0)->sum('due') }} Tk</p>
                     </td>
                 </tr>
                 </tbody>
@@ -298,19 +299,13 @@
                 </table>
             </td>
         </tr>
-
-        <br>
-        <br>
-        <br>
-        <br>
-
     </table>
 </div>
 </body>
-<script>
-    window.addEventListener('load', function () {
-        window.print()
-    })
+{{--<script>--}}
+{{--    window.addEventListener('load', function () {--}}
+{{--        window.print()--}}
+{{--    })--}}
 
-</script>
+{{--</script>--}}
 </html>

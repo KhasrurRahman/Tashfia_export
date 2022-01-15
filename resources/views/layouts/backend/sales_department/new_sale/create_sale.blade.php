@@ -47,6 +47,12 @@
             width: 50%;
         }
 
+        .list-group {
+            max-height: 300px;
+            margin-bottom: 10px;
+            overflow: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
 
     </style>
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
@@ -210,8 +216,8 @@
                             <div class="form-group">
                                 <label for="product_id">Payment Type</label>
                                 <select class="form-control select2 payment_type" name="payment_type" id="payment_type" onchange="cheque_date_input(this)">
-                                    <option value="cache ">cache</option>
-                                    <option value="card ">Card</option>
+                                    <option value="Cache ">cache</option>
+                                    <option value="Card ">Card</option>
                                     <option value="Bkash">Bkash</option>
                                     <option value="Cheque">Cheque</option>
                                 </select>
@@ -234,6 +240,27 @@
                                         <label for="product_id">Date</label>
                                         <div class="input-group">
                                             <input type="date" class="form-control cheque_date" name="cheque_date">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12" id="bkash_section" style="display: none;border: 1px solid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="product_id">Bkash Number</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control bkash_number" name="bkash_number">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="product_id">Transaction number</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bkash_trns_id" name="bkash_trns_id">
                                         </div>
                                     </div>
                                 </div>

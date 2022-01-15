@@ -1,4 +1,4 @@
-<div class="modal fade" id="add_button" tabindex="-1" role="dialog" aria-labelledby="add_buttonLabel"
+<div class="modal fade" id="add_button" role="dialog" aria-labelledby="add_buttonLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-lg mt-0 mb-0" role="document">
         <div class="modal-content">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="Route_name">Quantity</label>
+                        <label for="Route_name">Quantity(kg)</label>
                         <input type="text" class="form-control"  id="create_quantity" readonly>
                     </div>
 
@@ -53,8 +53,8 @@
                 
 
                     <div class="form-group">
-                        <label for="Route_name">quantity</label>
-                        <input type="number" class="form-control" name="quantity" id="input_quantity">
+                        <label for="Route_name">quantity(Kg)</label>
+                        <input type="number" step="any" class="form-control" name="quantity" id="input_quantity">
                         <span id="Error_quantity" class="text-red error_field"></span>
                     </div>
 

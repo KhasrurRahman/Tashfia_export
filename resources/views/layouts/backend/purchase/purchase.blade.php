@@ -37,10 +37,10 @@
                     <th>Id</th>
                     <th>Product</th>
                     <th>Supplier</th>
-                    <th>Quantity</th>
-                    <th>Unit price</th>
-                    <th>Total Purchase Price</th>
-                    <th>Actual Purchase Price</th>
+                    <th>Quantity(Kg)</th>
+                    <th>Unit price(Tk)</th>
+                    <th>Total Purchase Price(Tk)</th>
+                    <th>Actual Purchase Price(Tk)</th>
                     <th>Action</th>
                 </tr>
                 </thead>

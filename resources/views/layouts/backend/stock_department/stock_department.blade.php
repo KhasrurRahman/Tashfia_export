@@ -23,7 +23,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Product</th>
-                    <th>Quantity</th>
+                    <th>Quantity(kg)</th>
                     <th>Date</th>
                     <th>Action</th>
                 </tr>

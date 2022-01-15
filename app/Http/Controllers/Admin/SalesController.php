@@ -28,11 +28,10 @@ class SalesController extends Controller
     {
         if ($request->get('query')) {
             $query = $request->get('query');
-            $data = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.chalan_no', 'like', '%' . $query . '%')->orWhere('products.card_no', 'like', '%' . $query . '%')->select('products.chalan_no',
-                'stock.*')->get();
-            $output = '<ul class="dropdown list-group" style="display: block;position: relative;width: 100%;font-size: 17px;font-weight: bold;line-height: 25px;border: 1px solid;">';
+            $data = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.chalan_no', 'like', '%' . $query . '%')->orWhere('products.card_no', 'like', '%' . $query . '%')->select('products.chalan_no', 'stock.*')->get();
+            $output = '<ul class="list-group" style="display: block;position: relative;width: 100%;font-size: 17px;font-weight: bold;line-height: 25px;border: 1px solid;">';
             foreach ($data as $row) {
-                $output .= '<li class="list-group-item"><a href="#" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . ' (QTY : ' . $row->quantity . ')</a></li>';
+                $output .= '<li class="list-group-item" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . ' (QTY : ' . $row->quantity . ')</li>';
             }
             $output .= '</ul>';
             echo $output;
@@ -62,17 +61,31 @@ class SalesController extends Controller
         ]);
 
 
+        for ($i = 0; $i < count($request->stock_id); $i++) {
+            $quantity = LotDepartmentModel::find($request->stock_id[$i])->quantity;
+            if ($request->per_quantity[$i] > $quantity) {
+                return response()->json(['error' => 'Quantity of an item is grater than stock quantity']);
+            }
+        }
+
         for ($i = 0; $i < count($request->per_unit_price); $i++) {
             if ($request->per_unit_price[$i] == null) {
                 return response()->json(['error' => 'Please Input unit price of an item']);
             }
         }
-        
+
         for ($i = 0; $i < count($request->per_role_data); $i++) {
             if ($request->per_role_data[$i] == null) {
                 return response()->json(['error' => 'Please Input role of an item properly']);
             }
         }
+
+        for ($i = 0; $i < count($request->per_payment_amount); $i++) {
+            if ($request->per_payment_amount[$i] == null) {
+                return response()->json(['error' => 'Please Input Payment amount properly']);
+            }
+        }
+
 
         $total_paied_amount = array_sum($request->per_payment_amount);
         if ($total_paied_amount > $request->grand_total) {
@@ -80,9 +93,6 @@ class SalesController extends Controller
         }
 
         for ($i = 0; $i < count($request->stock_id); $i++) {
-            if ($request->stock_id[$i] == null) {
-
-            }
             $stock = LotDepartmentModel::find($request->stock_id[$i]);
             $stock->quantity -= $request->per_quantity[$i];
             $stock->update();
@@ -116,12 +126,6 @@ class SalesController extends Controller
             $sales_details->save();
         }
 
-        for ($i = 0; $i < count($request->stock_id); $i++) {
-            $sales_details = LotDepartmentModel::find($request->stock_id[$i]);
-            $sales_details->quantity -= $request->per_quantity[$i];
-            $sales_details->update();
-        }
-
         for ($i = 0; $i < count($request->per_payment_amount); $i++) {
             $sales_payemnt = new SalesPaymentModel();
             $sales_payemnt->sales_id = $sales->id;
@@ -129,15 +133,23 @@ class SalesController extends Controller
             $sales_payemnt->amount = $request->per_payment_amount[$i];
             $sales_payemnt->payment_mode = $request->per_payment_type[$i];
             $sales_payemnt->remark = $request->per_remarks[$i];
+            if ($request->per_payment_type[$i] == "Cheque"){
+                $sales_payemnt->cheque_number = $request->per_cheque_number[$i];
+                $sales_payemnt->cheque_due_date = $request->per_cheque_date[$i];
+            }
+            if ($request->per_payment_type[$i] == "Bkash"){
+                $sales_payemnt->bkash_number = $request->bkash_number[$i];
+                $sales_payemnt->bkash_trns_id = $request->bkash_trns_id[$i];
+            }
             $sales_payemnt->save();
 
-            if ($request->per_cheque_number[$i]) {
-                $check = new ChequeDetailModel();
-                $check->sales_payment_id = $sales_payemnt->id;
-                $check->number = $request->per_cheque_number[$i];
-                $check->date = $request->per_cheque_date[$i];
-                $check->save();
-            }
+//            if ($request->per_cheque_number[$i]) {
+//                $check = new ChequeDetailModel();
+//                $check->sales_payment_id = $sales_payemnt->id;
+//                $check->number = $request->per_cheque_number[$i];
+//                $check->date = $request->per_cheque_date[$i];
+//                $check->save();
+//            }
 
         }
 

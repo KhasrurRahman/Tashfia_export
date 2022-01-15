@@ -169,7 +169,6 @@ class DepartmentController extends Controller
     public function delete_lot_department_data($id)
     {
         $stock = LotDepartmentModel::find($id);
-        salesDepartmentModel::where('stock_id', $stock->id)->delete();
         $stock->delete();
         return response()->json(['Done' => 'Done']);
     }

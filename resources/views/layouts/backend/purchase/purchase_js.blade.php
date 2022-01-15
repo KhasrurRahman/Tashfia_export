@@ -212,10 +212,10 @@
                 url: "{{ url('admin/product/view') }}/" + product_id,
                 type: "GET",
                 success: function (data) {
-                    $('#create_chalan_no').html(data.chalan_no);
-                    $('#create_party_name').html(data.party_name);
-                    $('#create_card_no').html(data.order_no);
-                    $('#create_sl_no').html(data.sl_no);
+                    $('#details_chalan_no').html(data.chalan_no);
+                    $('#details_card_no').html(data.card_no);
+                    $('#details_style_no').html(data.style_no);
+                    $('#details_fabric_type').html(data.fabric_type);
                     $("#product_details_show").show(1000);
                 }
             });
@@ -230,11 +230,11 @@
                 url: "{{ url('admin/supplier/show') }}/" + supplier_id,
                 type: "GET",
                 success: function (data) {
-                    $('#create_chalan_no').html(data.chalan_no);
-                    $('#create_party_name').html(data.party_name);
-                    $('#create_card_no').html(data.order_no);
-                    $('#create_sl_no').html(data.sl_no);
-                    $("#product_details_show").show(1000);
+                    // $('#create_chalan_no').html(data.chalan_no);
+                    // $('#create_party_name').html(data.party_name);
+                    // $('#create_card_no').html(data.order_no);
+                    // $('#create_sl_no').html(data.sl_no);
+                    // $("#product_details_show").show(1000);
                 }
             });
         });

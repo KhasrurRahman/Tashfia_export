@@ -22,6 +22,7 @@ Route::get('test', 'HomeController2@test')->name('test');
 
 //ajax route
 Route::post('sales_item_auto_complete', 'Admin\SalesController@sales_item_auto_complete')->name('sales_item_auto_complete');
+Route::get('autocomplete-search', 'Admin\SalesController@autocompleteSearch')->name('autocompleteSearch');
 Route::get('get_product_single_data/{id}', 'Admin\SalesController@get_product_single_data')->name('get_product_single_data');
 
 Route::get('company_supplier_search/{id}', 'AjaxController@company_supplier_search')->name('company_supplier_search');
