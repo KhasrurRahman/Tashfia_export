@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\CompanyModel;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -68,6 +69,8 @@ class CompanyController extends Controller
         ]);
 
         CompanyModel::find($id)->update($request->all());
-        return redirect()->back();
+
+        Toastr::Success('Updated  successfully', 'successful');
+        return redirect()->route('admin.company/index');
     }
 }

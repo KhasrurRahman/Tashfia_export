@@ -143,7 +143,8 @@ class supplierController extends Controller
 
         $request->request->add(['created_by' => Auth::user()->id, 'photo' => $imageName]);
         supplierModel::find($id)->update($request->all());
+
         Toastr::Success('Updated  successfully', 'successful');
-        return redirect()->back();
+        return redirect()->route('admin.supplier/index');
     }
 }

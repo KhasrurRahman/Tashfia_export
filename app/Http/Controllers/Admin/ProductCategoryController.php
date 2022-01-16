@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductCategoryModel;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
@@ -53,8 +54,7 @@ class ProductCategoryController extends Controller
 
     public function delete($id)
     {
-//        return ProductCategoryModel::find($id);
-        ProductCategoryModel::find($id)->delete(); 
+        ProductCategoryModel::find($id)->delete();
         return response()->json(['success' => 'Done']);
     }
     
@@ -72,6 +72,8 @@ class ProductCategoryController extends Controller
 
         $request->request->add(['created_by' => Auth::user()->id]);
         ProductCategoryModel::find($id)->update($request->all());
-        return redirect()->back();
+
+        Toastr::success('Updated Successfully', 'Updated');
+        return redirect()->route('admin.productcategory/index');
     }
 }

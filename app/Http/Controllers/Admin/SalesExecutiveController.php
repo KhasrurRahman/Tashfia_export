@@ -87,6 +87,6 @@ class SalesExecutiveController extends Controller
         $menu->update();
 
         Toastr::success('Update Successfully', 'Updated');
-        return redirect()->back();
+        return redirect()->route('admin.sales_executive/show');
     }
 }

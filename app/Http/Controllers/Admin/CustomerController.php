@@ -29,11 +29,11 @@ class CustomerController extends Controller
             $query = CustomerModel::query();
 
             if ($request->search_company_id !== null) {
-                $query->where('company_id', $request->search_company_id);
+                $query->where('company_id',$request->search_company_id);
             }
 
             if ($request->search_phone !== null) {
-                $query->where('personal_phone', '%' . $request->search_phone . '%');
+                $query->where('personal_phone', 'like','%' . $request->search_phone . '%');
             }
 
             if ($request->search_name !== null) {
@@ -153,7 +153,8 @@ class CustomerController extends Controller
         $request->request->add(['created_by' => Auth::user()->id, 'photo' => $imageName]);
         CustomerModel::find($id)->update($request->all());
 
-        return redirect()->back();
+        Toastr::success('Updated Successfully', 'Updated');
+        return redirect()->route('admin.customer/all_customer');
     }
 
     public function view($id)

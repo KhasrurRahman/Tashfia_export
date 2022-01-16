@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2022 at 05:20 PM
+-- Generation Time: Jan 16, 2022 at 07:13 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -214,7 +214,7 @@ INSERT INTO `dynamic_routes` (`id`, `title`, `url`, `model_name`, `content`, `co
 (302, 'Product Category store', 'productcategory/store', 'productcategory', NULL, 'ProductCategoryController@store', 'Post', 1, NULL, 1, 0, '1', '2021-10-12 22:41:23', '2021-10-12 22:41:23'),
 (303, 'Product Category edit', 'productcategory/edit', 'productcategory', NULL, 'ProductCategoryController@edit', 'get', 1, '{id}', 1, 0, '1', '2021-10-12 22:41:52', '2021-10-12 22:41:52'),
 (304, 'Product Category update', 'productcategory/update', 'productcategory', NULL, 'ProductCategoryController@update', 'Post', 1, '{id}', 1, 0, '0', '2021-10-12 22:42:30', '2021-12-26 16:12:38'),
-(305, 'Product Category delete', 'productcategory/delete', 'productcategory', NULL, 'ProductController@delete', 'get', 1, '{id}', 1, 0, '1', '2021-10-12 22:43:04', '2021-10-12 22:43:04'),
+(305, 'Product Category delete', 'productcategory/delete', 'productcategory', NULL, 'ProductCategoryController@delete', 'get', 1, '{id}', 1, 0, '1', '2021-10-12 22:43:04', '2022-01-16 16:56:48'),
 (307, 'Customer show', 'customer/show', 'customer', NULL, 'CustomerController@show', 'get', 1, '{id}', 1, 0, '1', '2021-10-14 03:34:18', '2021-10-14 03:39:27'),
 (308, 'Expenses Category index', 'expenses/expenses_category_index', 'expenses', NULL, 'ExpensesController@expenses_category_index', 'get', 1, NULL, 1, 0, '1', '2021-10-14 04:23:16', '2021-10-14 04:23:16'),
 (309, 'Expenses Category search', 'expenses/expenses_category_search', 'expenses', NULL, 'ExpensesController@expenses_category_search', 'Post', 1, NULL, 1, 0, '1', '2021-10-14 04:23:45', '2021-10-14 04:23:45'),
@@ -282,16 +282,6 @@ CREATE TABLE `expenses` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `expenses`
---
-
-INSERT INTO `expenses` (`id`, `expenses_category_id`, `name`, `balance`, `Amount`, `remarks`, `created_by`, `created_at`, `updated_at`) VALUES
-(3, 6, 'Daniel Yates', '89', '81', NULL, '92', '2021-10-14 11:53:24', '2021-10-14 11:53:24'),
-(4, 6, 'Kyle Matthews', '28', '14', NULL, '92', '2021-10-14 11:53:29', '2021-10-14 11:53:29'),
-(5, 6, 'Hope Sandoval', '34', '51', NULL, '92', '2021-10-14 11:53:33', '2021-10-14 11:53:33'),
-(6, 10, 'tea', NULL, '500', NULL, '92', '2021-12-27 23:32:07', '2021-12-27 23:32:07');
-
 -- --------------------------------------------------------
 
 --
@@ -306,19 +296,6 @@ CREATE TABLE `expenses_category` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `expenses_category`
---
-
-INSERT INTO `expenses_category` (`id`, `name`, `remark`, `created_by`, `created_at`, `updated_at`) VALUES
-(4, 'Zahir Norton', NULL, 92, '2021-10-14 10:33:46', '2021-10-14 10:33:46'),
-(5, 'Brynne Adkins', NULL, 92, '2021-10-14 10:33:49', '2021-10-14 10:33:49'),
-(6, 'Yoshio Reese', NULL, 92, '2021-10-14 10:33:54', '2021-10-14 10:33:54'),
-(7, 'intertainement', NULL, 92, '2021-11-27 23:54:13', '2021-11-27 23:54:13'),
-(8, 'asdasd', NULL, 92, '2021-12-27 19:03:52', '2021-12-27 19:03:52'),
-(10, 'office', NULL, 92, '2021-12-27 23:30:40', '2021-12-27 23:30:40'),
-(11, 'Walker Mays', 'Molestias qui labori', 92, '2021-12-30 12:49:58', '2021-12-30 12:49:58');
 
 -- --------------------------------------------------------
 
@@ -662,8 +639,7 @@ INSERT INTO `products` (`id`, `product_category_id`, `chalan_no`, `chalan_no_2`,
 (35, 1, '4963', NULL, 'Ridoy', '5000', NULL, 'Red', 'Open', '12345', '170', '30', '120', '2021-11-25 00:00:00', '2021-11-26 00:00:00', '12', '12', '32', '567', '160', 'Single J/S', '1055677609', NULL, '2021-11-27 21:19:33', '2021-11-27 21:24:20'),
 (36, 1, '2025', NULL, 'abdullah traders', '1000', NULL, 'black', 'open', '1.75', '160', '30', '110', NULL, NULL, '100', '200', '10', '50', '160', 's/j', '1269519468', NULL, '2021-11-27 23:27:04', '2021-12-26 16:15:25'),
 (37, 2, 'Suscipit vel est rep', NULL, 'Joelle Johnston', NULL, NULL, 'Harlan Bush', 'Eiusmod impedit ven', 'Quos sed quo laudant', 'Duis do enim repelle', 'Voluptas dolorem con', 'Corporis accusamus v', '2001-10-29 00:00:00', '2001-07-21 00:00:00', 'Sit perferendis dol', 'Illum modi at conse', 'Pariatur Dolore pla', 'Sit reprehenderit q', 'Distinctio Vero eni', 'Anim inventore accus', '1725037484', NULL, '2021-12-27 12:40:10', '2021-12-27 12:40:10'),
-(38, 1, 'Et ducimus ut quisq', NULL, 'Leigh Merritt', NULL, NULL, 'Stone Boyle', 'Nostrum dolor facere', 'Quis qui nesciunt e', 'Libero ab consectetu', 'Consequat Molestiae', 'Do et sunt dicta ad', '2018-09-20 00:00:00', '1973-11-22 00:00:00', 'Perferendis pariatur', 'Voluptas reprehender', 'Rerum aliqua Proide', 'Ea exercitation elig', 'In praesentium iusto', 'Anim cupidatat conse', '1373451777', NULL, '2021-12-27 12:40:16', '2021-12-27 12:40:16'),
-(39, 8, 'Ut veniam incidunt', NULL, 'Blake Phillips', NULL, NULL, 'Jackson Harmon', 'Minima quis voluptat', 'At aut sit aliqua', 'Sequi in amet nihil', 'Modi ipsum providen', 'Pariatur Suscipit v', NULL, NULL, 'Eiusmod quasi eum no', 'Velit cum autem cons', 'Quia alias sit pari', 'Sint quia hic nostr', 'Repudiandae voluptat', 'Voluptatum iure nemo', '42458513', NULL, '2021-12-27 16:53:33', '2021-12-27 16:53:43');
+(38, 1, 'Et ducimus ut quisq', NULL, 'Leigh Merritt', NULL, NULL, 'Stone Boyle', 'Nostrum dolor facere', 'Quis qui nesciunt e', 'Libero ab consectetu', 'Consequat Molestiae', 'Do et sunt dicta ad', '2018-09-20 00:00:00', '1973-11-22 00:00:00', 'Perferendis pariatur', 'Voluptas reprehender', 'Rerum aliqua Proide', 'Ea exercitation elig', 'In praesentium iusto', 'Anim cupidatat conse', '1373451777', NULL, '2021-12-27 12:40:16', '2021-12-27 12:40:16');
 
 -- --------------------------------------------------------
 
@@ -684,15 +660,8 @@ CREATE TABLE `product_categories` (
 --
 
 INSERT INTO `product_categories` (`id`, `name`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 'purchase prodyct', 92, NULL, '2021-12-26 22:12:40'),
-(2, 'ready product', NULL, NULL, NULL),
-(3, 'Fabric Stock Purchase', 92, '2021-11-27 20:58:13', '2021-11-27 20:58:13'),
-(4, 'interlock', 92, '2021-11-28 18:25:14', '2021-11-28 18:25:14'),
-(5, 'terry', 92, '2021-11-28 18:25:31', '2021-11-28 18:25:31'),
-(6, 'fleece', 92, '2021-11-28 18:25:45', '2021-11-28 18:25:45'),
-(7, 's/j', 92, '2021-11-28 18:25:56', '2021-11-28 18:25:56'),
-(8, 'asdasd', 92, '2021-12-27 18:38:16', '2021-12-27 18:38:16'),
-(9, 'asdasd', 92, '2021-12-27 18:38:21', '2021-12-27 18:38:21');
+(1, 'Purchase product', 92, NULL, '2022-01-17 00:12:45'),
+(2, 'ready product', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -739,13 +708,6 @@ CREATE TABLE `purchase` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `purchase`
---
-
-INSERT INTO `purchase` (`id`, `product_id`, `supplier_id`, `created_by`, `quantity`, `status`, `unit_price`, `total_purchas_price`, `actual_unit_price`, `actual_purchas_price`, `created_at`, `updated_at`) VALUES
-(18, 23, 8, '92', '100.430', '1', '54.00', '27023.22', '55.95', '28000.22', '2022-01-15 22:00:48', '2022-01-15 22:01:13');
 
 -- --------------------------------------------------------
 
@@ -825,14 +787,6 @@ CREATE TABLE `sales` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `sales`
---
-
-INSERT INTO `sales` (`id`, `customer_id`, `sales_executive_id`, `total_price`, `payment_amount`, `due`, `reference`, `sales_date`, `status`, `sales_code`, `profit_or_loss`, `date`, `created_by`, `created_at`, `updated_at`) VALUES
-(0, 3, 1, '1080.00', '23.00', '1057.00', NULL, NULL, 0, '1767767205', '-31.00', NULL, NULL, '2022-01-15 19:31:49', '2022-01-15 19:31:49'),
-(111, 3, 1, '1404.00', '57.00', '1347.00', NULL, NULL, 0, '1206171120', '-50.70', NULL, NULL, '2022-01-15 22:03:26', '2022-01-15 22:03:26');
-
 -- --------------------------------------------------------
 
 --
@@ -853,13 +807,6 @@ CREATE TABLE `sales_details` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sales_details`
---
-
-INSERT INTO `sales_details` (`id`, `customer_id`, `sales_id`, `stock_id`, `quantity`, `unit_price`, `total_price`, `purchase_uint_price`, `purchase_total_price`, `role`, `created_at`, `updated_at`) VALUES
-(152, 3, 111, 21, '26', '54.00', '1404.00', '55.95', '1454.70', '3.00', '2022-01-15 22:03:26', '2022-01-15 22:03:26');
 
 -- --------------------------------------------------------
 
@@ -884,7 +831,7 @@ CREATE TABLE `sales_executive_models` (
 
 INSERT INTO `sales_executive_models` (`id`, `name`, `email`, `phone`, `address`, `salary`, `created_at`, `updated_at`) VALUES
 (1, 'Josephine Slater', 'jafynizu@mailinator.com', '+1 (955) 237-8838', 'Et aliquid molestias', NULL, '2021-12-26 17:52:15', '2021-12-26 17:52:15'),
-(2, 'Timothy Logan', 'wulukevyj@mailinator.com', '+1 (749) 943-3655', 'Aut debitis laborios', NULL, '2021-12-26 17:52:19', '2021-12-26 17:52:52');
+(2, 'Timothy Logan', 'wulukevyj@mailinator.com', '+1 (749) 943-3655', 'Aut debitis laborios', 'Aut debitis laborios', '2021-12-26 17:52:19', '2022-01-16 18:03:52');
 
 -- --------------------------------------------------------
 
@@ -909,14 +856,6 @@ CREATE TABLE `sales_payments` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `sales_payments`
---
-
-INSERT INTO `sales_payments` (`id`, `sales_id`, `customer_id`, `amount`, `payment_mode`, `cheque_number`, `cheque_due_date`, `bkash_number`, `bkash_trns_id`, `card_number`, `card_expire_date`, `remark`, `created_at`, `updated_at`) VALUES
-(112, 111, 3, 34, 'Bkash', NULL, NULL, '123123', '123123', NULL, NULL, NULL, '2022-01-15 22:03:26', '2022-01-15 22:03:26'),
-(113, 111, 3, 23, 'Cheque', '123123', '2022-01-20 00:00:00', NULL, NULL, NULL, NULL, 'ASDAD', '2022-01-15 22:03:26', '2022-01-15 22:03:26');
-
 -- --------------------------------------------------------
 
 --
@@ -933,13 +872,6 @@ CREATE TABLE `stock` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `stock`
---
-
-INSERT INTO `stock` (`id`, `purchase_id`, `created_by`, `quantity`, `status`, `date`, `created_at`, `updated_at`) VALUES
-(21, 18, '92', '374.000', '1', NULL, '2022-01-15 22:01:13', '2022-01-15 22:03:26');
 
 -- --------------------------------------------------------
 
@@ -970,13 +902,6 @@ CREATE TABLE `suppliers` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `suppliers`
---
-
-INSERT INTO `suppliers` (`id`, `company_id`, `name`, `email`, `personal_phone`, `optional_phone`, `present_address`, `permanent_address`, `balance`, `company_name`, `company_address`, `company_contact_no`, `reference`, `nid`, `photo`, `nationality`, `designation`, `country`, `created_by`, `created_at`, `updated_at`) VALUES
-(8, 1, 'Ora Joseph', 'pogykepo@mailinator.com', '+1 (887) 299-6734', '+1 (227) 722-9906', 'Velit reiciendis au', 'Reiciendis est quam', NULL, 'Parsons and George Plc', 'Chang Castillo Trading', 0, 'Provident culpa mol', 'Quisquam soluta sunt', '', 'Sed cumque proident', 'Aut optio nostrum l', 'Doloribus vel adipis', 92, '2021-11-30 02:04:13', '2021-12-27 19:03:37');
 
 -- --------------------------------------------------------
 
@@ -1034,13 +959,6 @@ CREATE TABLE `work_order` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `work_order`
---
-
-INSERT INTO `work_order` (`id`, `party_id`, `invoice_date`, `due_date`, `client_name`, `email`, `phone`, `address`, `project_desc`, `subtotal`, `tax`, `total_amount`, `created_at`, `updated_at`) VALUES
-(1, 8, '1976-03-04 00:00:00', '1985-10-06 00:00:00', NULL, NULL, NULL, NULL, 'Inventore minima mol', '79', '6', '99', '2022-01-12 13:24:32', '2022-01-12 13:24:32');
-
 -- --------------------------------------------------------
 
 --
@@ -1055,14 +973,6 @@ CREATE TABLE `work_order_ingredient` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `work_order_ingredient`
---
-
-INSERT INTO `work_order_ingredient` (`id`, `work_order_id`, `ingredient_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(12, 1, 1, '517', '2022-01-12 13:24:32', '2022-01-12 13:24:32'),
-(13, 1, 2, '188', '2022-01-12 13:24:32', '2022-01-12 13:24:32');
 
 -- --------------------------------------------------------
 
@@ -1093,21 +1003,6 @@ CREATE TABLE `work_order_party` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `work_order_party`
---
-
-INSERT INTO `work_order_party` (`id`, `company_id`, `name`, `email`, `personal_phone`, `optional_phone`, `present_address`, `permanent_address`, `balance`, `company_name`, `company_address`, `company_contact_no`, `reference`, `nid`, `photo`, `nationality`, `designation`, `country`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Hollee Santiago', 'noqakivij@mailinator.com', '+1 (387) 426-2865', NULL, 'Commodo odio rerum q', NULL, NULL, 'Kelley and Hunt Co', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 92, '2021-10-13 20:25:47', '2021-10-13 20:25:47'),
-(2, NULL, 'Karyn Kinney', 'dynijepof@mailinator.com', '+1 (286) 427-3093', NULL, 'Aut laborum Sint q', NULL, NULL, 'Davenport Burris Inc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 92, '2021-10-13 20:25:50', '2021-10-13 20:25:50'),
-(3, NULL, 'Mason Silva', 'razygyz@mailinator.com', '+1 (254) 365-9538', NULL, 'Non fuga Dolore cil', NULL, NULL, 'Mcfarland and Hicks Associates', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 92, '2021-10-13 20:25:52', '2021-10-13 20:25:52'),
-(4, NULL, 'khademul islam', 'tashfiaexport@gmail.com', '01848080971', NULL, '52/2 b.b road', NULL, NULL, 'tashfia export', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 92, '2021-11-27 23:32:14', '2021-11-27 23:32:14'),
-(5, NULL, 'Winifred Pratt', 'rydoredy@mailinator.com', '+1 (728) 971-9785', '+1 (798) 921-7253', 'Eos officia aut proi', 'Qui dolore eos comm', NULL, 'Walsh Mcintosh Inc', 'Neal and Blankenship Inc', 0, 'Sit ut labore quibus', 'Iure quo et repudian', '2021-11-30-61a52b3ed959d.jpg', 'Laborum aperiam qui', 'Cillum aliquam maxim', 'Perspiciatis accusa', 92, '2021-11-30 01:34:23', '2021-11-30 01:34:23'),
-(6, NULL, 'Miranda Schmidt', 'jedeg@mailinator.com', '+1 (287) 674-7165', '+1 (466) 896-5755', 'Nihil animi mollit', 'Voluptatem facilis d', NULL, 'Shields and Ross LLC', 'Meyers Kelley Traders', 0, 'Vel ut deserunt temp', 'Dolor rerum asperior', '2021-11-30-61a52b6ac208d.jpg', 'Error incidunt est', 'Nihil amet fugiat', 'Quia aut in aut nihi', 92, '2021-11-30 01:35:07', '2021-11-30 01:35:07'),
-(7, NULL, 'Cailin Dominguez', 'xekuke@mailinator.com', '+1 (625) 354-2594', '+1 (989) 224-5922', 'Adipisci nostrud pos', 'Et at cupiditate sit', NULL, 'Montgomery Garrett Associates', 'Powers Kemp Inc', 0, 'Repudiandae minim an', 'Quas placeat ipsam', '2021-11-30-61a531f613d83.png', 'Enim dolor natus acc', 'Corrupti amet qui', 'Id voluptatem Volu', 92, '2021-11-30 02:03:02', '2021-11-30 02:03:02'),
-(8, 1, 'Ora Joseph', 'pogykepo@mailinator.com', '+1 (887) 299-6734', '+1 (227) 722-9906', 'Velit reiciendis au', 'Reiciendis est quam', NULL, 'Parsons and George Plc', 'Chang Castillo Trading', 0, 'Provident culpa mol', 'Quisquam soluta sunt', '', 'Sed cumque proident', 'Aut optio nostrum l', 'Doloribus vel adipis', 92, '2021-11-30 02:04:13', '2021-12-27 19:03:37'),
-(11, 1, 'Md. Khasrur Rahman', 'khasrur8@gmail.com', '01761955765', '01761955765', 'Address : 99/1 Matikata Bazar Road, Dhaka', 'asda', NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-05-61d505e6f0423.png', 'Numquam sed dolor re', 'In quo quidem non re', NULL, 92, '2022-01-05 08:43:51', '2022-01-05 08:43:51');
 
 --
 -- Indexes for dumped tables
@@ -1384,7 +1279,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_categories`
 --
 ALTER TABLE `product_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product_ingredients`
