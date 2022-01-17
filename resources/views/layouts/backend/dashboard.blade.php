@@ -71,95 +71,103 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="widget">
-                    <div class="widget-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="state">
-                                <h6>Profit</h6>
-                                <h2>41,410</h2>
-                            </div>
-                            <div class="icon">
-                                <i class="ik ik-message-square"></i>
-                            </div>
-                        </div>
-{{--                        <small class="text-small mt-10 d-block">Total Comments</small>--}}
-                    </div>  
-                    <div class="progress progress-sm">
-                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
-                    </div>
-                </div>
-            </div>
+
+
+{{--            <div class="col-lg-3 col-md-6 col-sm-12">--}}
+{{--                <div class="widget">--}}
+{{--                    <div class="widget-body">--}}
+{{--                        <div class="d-flex justify-content-between align-items-center">--}}
+{{--                            <div class="state">--}}
+{{--                                <h6>Profit</h6>--}}
+{{--                                <h2>41,410</h2>--}}
+{{--                            </div>--}}
+{{--                            <div class="icon">--}}
+{{--                                <i class="ik ik-message-square"></i>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>  --}}
+{{--                    <div class="progress progress-sm">--}}
+{{--                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
-        <div class="row">
-            <div class="col-lg-6 col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>{{ __('3D Pie Chart')}}</h3>
-                    </div>
-                    <div class="card-block text-center">
-                        <div id="3D_pie_chart" class="chart-shadow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>{{ __('Bar Chart')}}</h3>
-                    </div>
-                    <div class="card-block text-center">
-                        <div id="bar_chart" class="chart-shadow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>{{ __('Smoothed Line Chart')}}</h3>
-                    </div>
-                    <div class="card-block text-center">
-                        <div id="smoothed_line_chart" class="chart-shadow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>{{ __('Angular Gauge')}}</h3>
-                    </div>
-                    <div class="card-block text-center">
-                        <div id="angular_guage" class="chart-shadow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>{{ __('Line Chart')}}</h3>
-                    </div>
-                    <div class="card-block text-center">
-                        <div id="line_chart" class="chart-shadow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="card sale-card">
-                    <div class="card-header">
-                        <h3>{{ __('Map Chart')}}</h3>
-                    </div>
-                    <div class="card-block">
-                        <div class="row">
-                            <div class="col-sm-8">
-                                <div id="allocation-map" class="chart-shadow"></div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div id="allocation-chart" class="chart-shadow"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+{{--        <div class="row">--}}
+{{--            <div class="col-lg-6 col-xl-6">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h3>{{ __('3D Pie Chart')}}</h3>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-block text-center">--}}
+{{--                        <div id="3D_pie_chart" class="chart-shadow"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-6 col-xl-6">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h3>{{ __('Bar Chart')}}</h3>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-block text-center">--}}
+{{--                        <div id="bar_chart" class="chart-shadow"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-6 col-xl-6">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h3>{{ __('Smoothed Line Chart')}}</h3>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-block text-center">--}}
+{{--                        <div id="smoothed_line_chart" class="chart-shadow"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-6 col-xl-6">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h3>{{ __('Angular Gauge')}}</h3>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-block text-center">--}}
+{{--                        <div id="angular_guage" class="chart-shadow"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-12 col-xl-12">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h3>{{ __('Line Chart')}}</h3>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-block text-center">--}}
+{{--                        <div id="line_chart" class="chart-shadow"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-md-12">--}}
+{{--                <div class="card sale-card">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h3>{{ __('Map Chart')}}</h3>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-block">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-sm-8">--}}
+{{--                                <div id="allocation-map" class="chart-shadow"></div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-sm-4">--}}
+{{--                                <div id="allocation-chart" class="chart-shadow"></div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+
+        <h1>
+            Coming Soon...
+        </h1>
     </div>
 
 @endsection
