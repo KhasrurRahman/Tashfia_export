@@ -150,6 +150,17 @@
 
     $(document).on('keyup', '.unit_price', function () {
         var $row = $(this).closest('tr');
+        $row.find('#unit_price_pound').val(($row.find('#unit_price').val() / 2.2046).toFixed(3))
+        var unit_price = $row.find('#unit_price').val();
+        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(3))
+        show_total_quantity();
+        show_total_grand_total();
+    });
+
+    $(document).on('keyup', '.unit_price_pound', function () {
+        var $row = $(this).closest('tr');
+        var unit_price_pound = $row.find('#unit_price_pound').val();
+        $row.find('#unit_price').val(($row.find('#unit_price_pound').val() * 2.2046).toFixed(3))
         var unit_price = $row.find('#unit_price').val();
         $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(3))
         show_total_quantity();

@@ -149,6 +149,16 @@
                     <div class="card-header"><h3>Create Product</h3></div>
                     <div class="card-body">
                         <div class="form-group">
+                            <label for="exampleInputUsername1">Roll</label>
+                            <input type="text" class="form-control" name="roll">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Dia</label>
+                            <input type="text" class="form-control" name="dia">
+                        </div>
+
+                        <div class="form-group">
                             <label for="exampleInputUsername1">Fabric Receive Date</label>
                             <input type="date" class="form-control" name="fb_rv_date">
                         </div>
@@ -219,4 +229,3 @@
 
     </script>
 @endpush
-

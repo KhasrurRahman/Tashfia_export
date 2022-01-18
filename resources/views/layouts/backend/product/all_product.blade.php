@@ -31,6 +31,8 @@
                     <th>Batch number</th>
                     <th>Order number</th>
                     <th>Card No</th>
+                    <th>Roll</th>
+                    <th>Dia</th>
                     <th>Action</th>
                 </tr>
                 </thead>

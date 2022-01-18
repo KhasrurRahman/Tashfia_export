@@ -39,6 +39,8 @@
                 {data: 'batch_no', name: 'batch_no'},
                 {data: 'order_no', name: 'order_no'},
                 {data: 'card_no', name: 'card_no'},
+                {data: 'roll', name: 'roll'},
+                {data: 'dia', name: 'dia'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });
