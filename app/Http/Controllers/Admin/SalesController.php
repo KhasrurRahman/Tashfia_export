@@ -307,7 +307,6 @@ class SalesController extends Controller
                     </div>';
         $total_due = $customer->sales_history->where('due', '>', 0)->sum('due');
 
-
         return response()->json(['customer' => $output, 'total_due' => $total_due]);
 
     }

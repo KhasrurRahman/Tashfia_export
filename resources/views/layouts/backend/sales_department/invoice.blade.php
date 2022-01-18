@@ -122,10 +122,10 @@
                 <table style="border-bottom:2px solid #CAB0B9">
                     <tr>
                         <td style="font-size: 12px;font-weight: bold">
-                            <span class="alignleft">Main Shop Phone:</span> <span
-                                    class="alignright">+8801810077440</span><br/>
                             <span class="alignleft">Office Phone:</span> <span
                                     class="alignright">+8801810077441</span><br/>
+                            <span class="alignleft">Main Shop Phone:</span> <span
+                                    class="alignright">+8801810077440</span><br/>
                             <span class="alignright">+8801810088007</span><br/>
                             <span class="alignleft">Main Shop TNT:</span> <span
                                     class="alignright">+88-02-7643899</span><br/>
@@ -168,12 +168,12 @@
                         </td>
 
                         <td>
-                            <h4 style="text-align: center">BILL</h4>
+                            <h4 style="text-align: center">Invoice</h4>
                         </td>
 
                         <td>
                             <p class="alignright">Date:
-                                <span>{{ date('d-M-y', strtotime($sales->created_at)) }}</span></p>
+                                <span style="border: 1px solid">{{ date('d-m-Y', strtotime($sales->created_at)) }}</span></p>
                         </td>
                     </tr>
                 </table>
@@ -182,23 +182,19 @@
 
         <tr class="information">
             <td>
-                <table style="margin-left: 10%">
+                <table style="margin-left: 5%">
                     <tr>
-                        <td style="font-size: 12px;font-weight: bold;width: 30%;padding-right: 135px">
-                            <span class="alignleft">Name:</span> <span
-                                    class="alignright">{{ $sales->customer->name }}</span><br/>
-                            <span class="alignleft">Address:</span> <span
-                                    class="alignright">{{ $sales->customer->permanent_address }}</span><br/>
-                            {{-- <span class="alignright">Gulshan Market,Nayamati,</span><br/> --}}
-                            {{-- <span class="alignright">Narayanganj-1400,Bangladesh</span><br/> --}}
-                            <span class="alignleft">Phone:</span> <span
-                                    class="alignright">{{ $sales->customer->personal_phone }}</span><br/>
+                        <td style="font-size: 12px;font-weight: bold;">
+                            <span class="alignleft" style="width: 60px">Name: </span> <input style="width: 83%" value="{{ $sales->customer->name }}" ><br/>
+                            <span class="alignleft" style="width: 60px">Address:</span> <input style="width: 83%" value="{{ $sales->customer->permanent_address }}"
+                            ><br/>
+                            <span class="alignleft" style="width: 60px">Phone:</span> <input style="width: 83%" value="{{ $sales->customer->personal_phone }}"><br/>
+                            <span class="alignleft" style="width: 60px">Company:</span> <input style="width: 83%" value="{{ $sales->customer->company_name }}"><br/>
                         </td>
 
-                        <td style="font-size: 12px;font-weight: bold;width: 30%;padding-left: 135px">
-                                <span class="alignleft">Compnay name:
-                                    {{ $sales->customer->company_name }}</span><br/>
-                        </td>
+{{--                        <td style="font-size: 12px;font-weight: bold;width: 30%;padding-left: 135px">--}}
+{{--                                <span class="alignleft">Company name:{{ $sales->customer->company_name }}</span><br/>--}}
+{{--                        </td>--}}
                     </tr>
                 </table>
             </td>
@@ -260,15 +256,16 @@
                     </td>
                 </tr>
                 <tr style="height: 6px;">
-                    <td style="width: 175px; height: 6px;" colspan="2">
+                    <td style="width: 175px; height: 6px;line-height: 10px" colspan="2">
                         <p><b>Total: {{ $sales->total_price }}</b>Tk</p>
                         <p><b>Payment: {{ $sales->payment_amount }}</b>Tk</p>
                         <p><b>Due: {{ $sales->due }}</b>Tk</p>
                     </td>
                 </tr>
                 <tr style="height: 6px;">
-                    <td style="width: 175px; height: 6px;" colspan="6">
-                        <p style="font-weight: bold;color: red">Previous Total Due: {{ ($sales->customer->sales_history->where('due', '>', 0)->sum('due')) - $sales->due }} Tk</p>
+                    <td style="width: 175px; height: 6px;line-height: 5px" colspan="6">
+                        <p style="font-weight: bold;color: red">Previous Due: {{ ($sales->customer->sales_history->where('due', '>', 0)->sum('due')) - $sales->due }} Tk</p>
+                        <p style="font-weight: bold;color: red">Total Due: {{ $sales->customer->sales_history->where('due', '>', 0)->sum('due') }} Tk</p>
                     </td>
                 </tr>
                 </tbody>

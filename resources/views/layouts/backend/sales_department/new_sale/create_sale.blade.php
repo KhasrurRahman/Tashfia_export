@@ -154,7 +154,8 @@
                             <th>Quantity(KG)</th>
                             <th>Quantity(Pound)</th>
                             <th>Role</th>
-                            <th>Unit Price</th>
+                            <th>Unit Price(kg)</th>
+                            <th>Unit Price(pound)</th>
                             <th>Total Price (Tk)</th>
                             <th>Action</th>
                         </tr>

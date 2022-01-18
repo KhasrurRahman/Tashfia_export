@@ -107,7 +107,9 @@
                     var markup = "<tr><td>" + data.product.chalan_no + "</td><td><div> <input type='number' value='' class='qty' name='input_quantity[]' id='qty' maxlength='4'> " +
                         "</div></td><td><div> <input type='number' value='' class='qty_pound' name='input_quantity_pound[]' id='qty_pound'> </div></td><td><div> <input " +
                         "type='number' value='0' class='role' name='role[]' id='role'> </div></td> <td><input type='number' " +
-                        "id='unit_price' class='unit_price'></td><td><input type='text' class='btn btn-sm btn-success total_unit_price' readonly id='total_unit_price' ><input type='hidden' disabled value=" + data.product.id + " class='stock_id'></td><td><input type='button' value='Delete' class='btn btn-sm btn-danger'></td></tr>";
+                        "id='unit_price' class='unit_price'></td><td><input type='number' " +
+                        "id='unit_price_pound' class='unit_price_pound'></td><td><input type='text' class='btn btn-sm btn-success total_unit_price' readonly " +
+                        "id='total_unit_price' ><input type='hidden' disabled value=" + data.product.id + " class='stock_id'></td><td><input type='button' value='Delete' class='btn btn-sm btn-danger'></td></tr>";
                     $("#dsTable tbody").append(markup);
                 }
             }
