@@ -15,6 +15,10 @@
             "language": {
                 processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
             },
+            dom: 'lBfrtip',
+            buttons: [
+                'excel', 'csv', 'pdf', 'copy'
+            ],
             drawCallback: function (settings) {
                 var api = this.api();
                 $('#total_data').html(api.ajax.json().recordsTotal);
@@ -189,8 +193,8 @@
             }
         });
     }
-    
-    
+
+
     function view_ingredient(id) {
         $.ajax({
             url: "{{url('admin/product/ingredients')}}/" + id,

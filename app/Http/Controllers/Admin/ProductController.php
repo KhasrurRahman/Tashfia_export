@@ -110,10 +110,14 @@ class ProductController extends Controller
                     return $data->order_no;
                 })->addColumn('card_no', function ($data) {
                     return $data->card_no;
+                })->addColumn('roll', function ($data) {
+                    return $data->roll;
+                })->addColumn('dia', function ($data) {
+                    return $data->dia;
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" onclick="view_modal(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >View</a> <a href="' . url('admin/product/edit/' . $data->id) . '"  class="btn btn-outline-info btn-sm" >Edit</a> <a href="' . url('paf_generate/' . $data->id) . '"  class="edit btn btn-outline-warning btn-sm" >Print</a>';
                     return $actionBtn;
-                })->rawColumns(['product_type', 'chalan_no', 'party_name', 'color_name', 'sl_no', 'ggsm', 'fb_rv_date', 'lot_no', 'batch_no', 'order_no', 'card_no', 'action'])
+                })->rawColumns(['product_type', 'chalan_no', 'party_name', 'color_name', 'sl_no', 'ggsm', 'fb_rv_date', 'lot_no', 'batch_no', 'order_no', 'card_no', 'roll', 'dia', 'action'])
                 ->make(true);
         }
     }
