@@ -37,17 +37,14 @@ Route::get('/', function () {
     return redirect()->route('login');
 })->middleware('auth');
 
-Route::middleware(['auth', 'routeprifix'])->prefix('{roleBased}')->group(function () {
-   Route::group(['as' => 'admin.', 'middleware' => ['auth', 'admin', 'lock'], 'namespace' => 'Admin'], function () {
-       foreach (dynamic_route::where('route_status', 1)->get() as $value) {
-           if ($value->method == 'get') {
-               Route::get($value->url . '/' . $value->parameter, $value->controller_action)->name($value->url);
-           } else {
-               Route::post($value->url . '/' . $value->parameter, $value->controller_action)->name($value->url);
-           }
-       }
-   });
-});
-
-
-
+//Route::middleware(['auth', 'routeprifix'])->prefix('{roleBased}')->group(function () {
+//   Route::group(['as' => 'admin.', 'middleware' => ['auth', 'admin', 'lock'], 'namespace' => 'Admin'], function () {
+//       foreach (dynamic_route::where('route_status', 1)->get() as $value) {
+//           if ($value->method == 'get') {
+//               Route::get($value->url . '/' . $value->parameter, $value->controller_action)->name($value->url);
+//           } else {
+//               Route::post($value->url . '/' . $value->parameter, $value->controller_action)->name($value->url);
+//           }
+//       }
+//   });
+//});
