@@ -6,6 +6,7 @@
     <title>Sales Invoice</title>
 
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
         .invoice-box {
             max-width: 1000px;
             margin: auto;
@@ -19,9 +20,10 @@
         }
 
         .invoice-box table {
-            width: 100%;
+            width: 95%;
             line-height: inherit;
             text-align: left;
+            margin-left:2.5%
         }
 
         .invoice-box table td {
@@ -111,20 +113,26 @@
             border: 2px solid black;
         }
 
+        .invoice_table tr {
+            border-bottom:1px solid black;
+        }
+
+
+
     </style>
 </head>
 
-<body>
+<body style="font-family:fantasy">
 <div class="invoice-box">
     <table cellpadding="0" cellspacing="0">
         <tr class="top">
             <td colspan="3">
-                <table style="border-bottom:2px solid #CAB0B9">
+                <table style="border-bottom:2px solid #CAB0B9;margin-top:20px;line-height:17px">
                     <tr>
-                        <td style="font-size: 12px;font-weight: bold">
-                            <span class="alignleft">Office Phone:</span> <span
-                                    class="alignright">+8801810077441</span><br/>
+                        <td style="font-size: 11px;">
                             <span class="alignleft">Main Shop Phone:</span> <span
+                                    class="alignright">+8801810077441</span><br/>
+                            <span class="alignleft">Office Phone:</span> <span
                                     class="alignright">+8801810077440</span><br/>
                             <span class="alignright">+8801810088007</span><br/>
                             <span class="alignleft">Main Shop TNT:</span> <span
@@ -132,17 +140,17 @@
                             <span class="alignleft">Store TNT:</span> <span
                                     class="alignright">+88-02-47651260</span><br/>
                             <span class="alignleft">Office Mail:</span> <span
-                                    class="alignright">tashfiaexportoffice@gmail.com</span>
+                                    class="alignright" style="font-size:8px">tashfiaexportoffice@gmail.com</span>
                         </td>
 
                         <td style="vertical-align: bottom;text-align: center">
-                            <img src="{{ asset('backend/img/tas_logo.png') }}"
-                                 style="width: 100%; max-width: 300px"/>
-                            <hr>
-                            <p>Website : www.tashfiaexport.com</p>
+                            <img src="{{ asset('backend/img/invoice_logo.png') }}"
+                                 style="width: 100%; max-width: 260px;padding-left:15px;padding-right:15px;margin-bottom:30px"/>
+                            {{-- <hr>
+                            <p>Website : www.tashfiaexport.com</p> --}}
                         </td>
 
-                        <td style="font-size: 12px;font-weight: bold">
+                        <td style="font-size: 11px;">
                             <span class="alignleft">MD:</span> <span
                                     class="alignright">+8801848080971</span><br/>
                             <span class="alignright">+8801711853521</span><br/>
@@ -158,22 +166,21 @@
             </td>
         </tr>
 
-
         <tr class="information">
             <td colspan="3">
-                <table>
+                <table style="line-height:1px">
                     <tr>
                         <td width="40%">
-                            <p class="alignleft">Bill Number: <span>{{ $sales->sales_code }}</span></p>
+                            <p class="alignleft" style="font-weight:bold;font-size:13px">Bill Number: <span>{{ $sales->sales_code }}</span></p>
                         </td>
 
                         <td>
-                            <h4 style="text-align: center">Invoice</h4>
+                            <h4 style="text-align: center;font-weight:bold;font-size:13px">Bill</h4>
                         </td>
 
                         <td>
-                            <p class="alignright">Date:
-                                <span style="border: 1px solid">{{ date('d-m-Y', strtotime($sales->created_at)) }}</span></p>
+                            <p class="alignright" style="font-weight:bold;font-size:13px">Date:
+                                <span style="border: 1px solid;padding:3">{{ date('d-m-Y', strtotime($sales->created_at)) }}</span></p>
                         </td>
                     </tr>
                 </table>
@@ -185,16 +192,12 @@
                 <table style="margin-left: 5%">
                     <tr>
                         <td style="font-size: 12px;font-weight: bold;">
-                            <span class="alignleft" style="width: 60px">Name: </span> <input style="width: 83%" value="{{ $sales->customer->name }}" ><br/>
-                            <span class="alignleft" style="width: 60px">Address:</span> <input style="width: 83%" value="{{ $sales->customer->permanent_address }}"
+                            <span class="alignleft" style="width: 80px">Name: </span> <input style="width: 83%;height:20px;margin:1px" value="{{ $sales->customer->company->company_name }}" ><br/>
+                            <span class="alignleft" style="width: 80px">Address:</span> <input style="width: 83%;height:20px;margin:1px" value="{{ $sales->customer->permanent_address }}"
                             ><br/>
-                            <span class="alignleft" style="width: 60px">Phone:</span> <input style="width: 83%" value="{{ $sales->customer->personal_phone }}"><br/>
-                            <span class="alignleft" style="width: 60px">Company:</span> <input style="width: 83%" value="{{ $sales->customer->company_name }}"><br/>
+                            <span class="alignleft" style="width: 80px">Buyer Name:</span> <input style="width: 83%;height:20px;margin:1px" value="{{ $sales->customer->name }}"><br/>
+                            <span class="alignleft" style="width: 80px">Phone:</span> <input style="width: 83%;height:20px;margin:1px" value="{{ $sales->customer->personal_phone }}"><br/>
                         </td>
-
-{{--                        <td style="font-size: 12px;font-weight: bold;width: 30%;padding-left: 135px">--}}
-{{--                                <span class="alignleft">Company name:{{ $sales->customer->company_name }}</span><br/>--}}
-{{--                        </td>--}}
                     </tr>
                 </table>
             </td>
@@ -251,12 +254,12 @@
                     </td>
                     <td style="width: 99px; height: 399.578px;">
                         @foreach ($sales->sales_details as $key => $data)
-                            <p>{{ $data->total_price }}</p>
+                            <p>{{ $data->total_price }}/-</p>
                         @endforeach
                     </td>
                 </tr>
                 <tr style="height: 6px;">
-                    <td style="width: 175px; height: 6px;line-height: 10px" colspan="2">
+                    <td style="width: 175px; height: 6px;line-height: 10px;background:#dfd7d7" colspan="2">
                         <p><b>Total: {{ $sales->total_price }}</b>Tk</p>
                         <p><b>Payment: {{ $sales->payment_amount }}</b>Tk</p>
                         <p><b>Due: {{ $sales->due }}</b>Tk</p>

@@ -20,6 +20,7 @@ class CompanyController extends Controller
     {
         $request->validate([
             'company_name' => 'required',
+            'category' => 'required',
         ]);
 
         CompanyModel::create($request->all());
@@ -66,6 +67,7 @@ class CompanyController extends Controller
     {
         $request->validate([
             'company_name' => 'required',
+            'category' => 'required',
         ]);
 
         CompanyModel::find($id)->update($request->all());

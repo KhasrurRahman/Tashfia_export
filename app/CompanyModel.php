@@ -12,5 +12,6 @@ class CompanyModel extends Model
         'company_address',
         'company_contact_no',
         'country',
+        'category',
     ];
 }

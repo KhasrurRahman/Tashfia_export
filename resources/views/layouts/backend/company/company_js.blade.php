@@ -31,6 +31,7 @@
                 {data: 'company_address', name: 'company_address'},
                 {data: 'company_contact_no', name: 'company_contact_no'},
                 {data: 'country', name: 'country'},
+                {data: 'category', name: 'category'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });

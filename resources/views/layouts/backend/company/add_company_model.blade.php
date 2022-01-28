@@ -1,8 +1,8 @@
-<div class="modal fade" id="add_button" tabindex="-1" role="dialog" aria-labelledby="add_buttonLabel"
-     aria-hidden="true">
+<div class="modal fade" id="add_button" role="dialog" aria-labelledby="add_buttonLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{{url('admin/company/store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('admin/company/store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="add_buttonLabel">Create @yield('title')</h5>
@@ -11,6 +11,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        <label for="Route_name">Company For</label>
+                        <select class="form-control select2" name="category">
+                            <option value="">Please select</option>                       
+                                <option value="purchase">For Purchase</option>
+                                <option value="sell">For Sell</option>
+                                <option value="workorder">For Workorder</option>                        
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="Route_name">Company Name</label>
                         <input type="text" class="form-control" name="company_name">
