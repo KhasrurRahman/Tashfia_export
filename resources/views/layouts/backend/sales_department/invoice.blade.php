@@ -7,13 +7,14 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
 
         .invoice-box {
             max-width: 1000px;
             margin: auto;
             padding: 10px;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            /*border: 1px solid #eee;*/
+            /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);*/
             font-size: 16px;
             line-height: 24px;
             color: #000000;
@@ -177,18 +178,18 @@
 
         <tr class="information">
             <td colspan="3">
-                <table style="line-height:1px">
+                <table style="line-height:0px">
                     <tr>
                         <td width="40%">
                             <p class="alignleft" style="font-weight:bold;font-size:13px">Bill Number: <span>{{ $sales->sales_code }}</span></p>
                         </td>
 
                         <td>
-                            <h4 style="text-align: center;font-weight:bold;font-size:13px">Bill</h4>
+                            <h4 style="text-align: center;font-size:20px;font-family: 'Playball', cursive;margin-top: 13px;">Bill</h4>
                         </td>
 
                         <td>
-                            <p class="alignright" style="font-weight:bold;font-size:13px">Date:
+                            <p class="alignright" style="font-weight:bold;font-size:13px;margin-right: 18px">Date:
                                 <span style="border: 1px solid;padding:3px">{{ date('d-m-Y', strtotime($sales->created_at)) }}</span></p>
                         </td>
                     </tr>
@@ -201,14 +202,14 @@
                 <table style="margin-left: 5%">
                     <tr>
                         <td style="font-size: 12px;font-weight: bold;">
-                            <span class="alignleft" style="width: 80px">Name: </span> <input style="width: 80%;height:20px;margin:1px"
+                            <span class="alignleft" style="width: 80px">Name: </span> <input style="width: 80%;height:15px;margin:1px"
                                                                                              value="{{ $sales->customer->company->company_name }}"><br/>
-                            <span class="alignleft" style="width: 80px">Address:</span> <input style="width: 80%;height:20px;margin:1px"
+                            <span class="alignleft" style="width: 80px">Address:</span> <input style="width: 80%;height:15px;margin:1px"
                                                                                                value="{{ $sales->customer->permanent_address }}"
                             ><br/>
-                            <span class="alignleft" style="width: 80px">Buyer Name:</span> <input style="width: 80%;height:20px;margin:1px"
+                            <span class="alignleft" style="width: 80px">Buyer Name:</span> <input style="width: 80%;height:15px;margin:1px"
                                                                                                   value="{{ $sales->customer->name }}"><br/>
-                            <span class="alignleft" style="width: 80px">Phone:</span> <input style="width: 80%;height:20px;margin:1px"
+                            <span class="alignleft" style="width: 80px">Phone:</span> <input style="width: 80%;height:15px;margin:1px"
                                                                                              value="{{ $sales->customer->personal_phone }}"><br/>
                         </td>
                     </tr>
@@ -217,9 +218,9 @@
         </tr>
 
         <tr>
-            <table style="height: 574px; width: 90%; margin-left: auto; margin-right: auto;text-align: center;border-collapse: collapse;margin-top: 10px" class="invoice_table">
+            <table style="height: 725px; width: 90%; margin-left: auto; margin-right: auto;text-align: center;border-collapse: collapse;margin-top: 10px" class="invoice_table">
                 <tbody>
-                <tr style="line-height: 7px;">
+                <tr style="line-height: 0px;">
                     <td style="width: 286px; height: 7px;">
                         <p>Description</p>
                     </td>
@@ -279,7 +280,7 @@
                     </td>
                 </tr>
                 <tr style="height: 6px;">
-                    <td style="width: 175px; height: 6px;line-height: 5px" colspan="6">
+                    <td style="width: 175px; height: 6px;line-height: 0px" colspan="6">
                         <p style="font-weight: bold;color: red">Previous Due: {{ ($sales->customer->sales_history->where('due', '>', 0)->sum('due')) - $sales->due }} Tk</p>
                         <p style="font-weight: bold;color: red">Total Due: {{ $sales->customer->sales_history->where('due', '>', 0)->sum('due') }} Tk</p>
                     </td>
