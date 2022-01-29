@@ -33,7 +33,7 @@
         }
 
         .invoice-box table tr td:nth-child(2) {
-            text-align: right;
+            /*text-align: right;*/
         }
 
         .invoice-box table tr.top table td {
@@ -118,6 +118,9 @@
             border-bottom: 1px solid black;
         }
 
+        .dotted_line td p{
+            border-bottom: 1px dotted #dddddd;
+        }
 
     </style>
 </head>
@@ -155,7 +158,7 @@
                         </td>
 
                         <td style="width: 8%">
-                            <span class="alignleft">CEO:</span> <br/>
+                            <span class="alignleft">CEO & MD:</span> <br/>
                             <span class="alignleft"></span> <br/>
                             <span class="alignleft">CEO Mail:</span> <br/>
                             <span class="alignleft">Address:</span> <br/>
@@ -207,10 +210,10 @@
                             <span class="alignleft" style="width: 80px">Address:</span> <input style="width: 80%;height:15px;margin:1px"
                                                                                                value="{{ $sales->customer->permanent_address }}"
                             ><br/>
-                            <span class="alignleft" style="width: 80px">Buyer Name:</span> <input style="width: 80%;height:15px;margin:1px"
-                                                                                                  value="{{ $sales->customer->name }}"><br/>
-                            <span class="alignleft" style="width: 80px">Phone:</span> <input style="width: 80%;height:15px;margin:1px"
-                                                                                             value="{{ $sales->customer->personal_phone }}"><br/>
+                            <span class="alignleft" style="width: 80px">Buyer Name:</span> <input style="width: 36%;height:15px;margin:1px" value="{{ $sales->customer->name }}">
+                            <span style="width: 80px">Phone:</span> <input style="width: 37%;height:15px;margin:1px" value="{{ $sales->customer->personal_phone }}"><br/>
+                            <span class="alignleft" style="width: 80px">ID: </span> <input style="width: 80%;height:15px;margin:1px"
+                                                                                             value=""><br/>
                         </td>
                     </tr>
                 </table>
@@ -221,6 +224,9 @@
             <table style="height: 725px; width: 90%; margin-left: auto; margin-right: auto;text-align: center;border-collapse: collapse;margin-top: 10px" class="invoice_table">
                 <tbody>
                 <tr style="line-height: 0px;">
+                    <td style="height: 7px;">
+                        <p>Ser.</p>
+                    </td>
                     <td style="width: 286px; height: 7px;">
                         <p>Description</p>
                     </td>
@@ -228,22 +234,30 @@
                         <p>ROLL</p>
                     </td>
                     <td style="width: 75.9844px; height: 7px;">
-                        <p>KG</p>
+                        <p>Qts(KG)</p>
                     </td>
                     <td style="width: 75.9844px; height: 7px;">
-                        <p>Pound</p>
+                        <p>Qts(Pound)</p>
                     </td>
                     <td style="width: 76px; height: 7px;">
-                        <p>Rate</p>
+                        <p>Rate(Kg)</p>
+                    </td>
+                    <td style="width: 76px; height: 7px;">
+                        <p>Rate(Pound)</p>
                     </td>
                     <td style="width: 99px; height: 7px;">
                         <p>Amount</p>
                     </td>
                 </tr>
-                <tr style="height: 399.578px;">
+                <tr style="height: 399.578px;" class="dotted_line">
+                    <td rowspan="2">
+                        @foreach ($sales->sales_details as $key => $data)
+                            <p>{{ $key + 1 }}</p>
+                        @endforeach
+                    </td>
                     <td style="width: 286px; height: 405.578px;" rowspan="2">
                         @foreach ($sales->sales_details as $key => $data)
-                            <p>{{ $key + 1 }} . {{ $data->stock->purchase->product->chalan_no }}</p>
+                            <p>{{ $data->stock->purchase->product->chalan_no }}</p>
                         @endforeach
                     </td>
                     <td style="width: 76.0156px; height: 405.578px;text-align: center" rowspan="2">
@@ -266,6 +280,11 @@
                             <p>{{ $data->unit_price }}</p>
                         @endforeach
                     </td>
+                    <td style="width: 76px; height: 399.578px;">
+                        @foreach ($sales->sales_details as $key => $data)
+                            <p>{{ round($data->unit_price / 2.20462262185) }}</p>
+                        @endforeach
+                    </td>
                     <td style="width: 99px; height: 399.578px;">
                         @foreach ($sales->sales_details as $key => $data)
                             <p>{{ $data->total_price }}/-</p>
@@ -273,14 +292,14 @@
                     </td>
                 </tr>
                 <tr style="height: 6px;">
-                    <td style="width: 175px; height: 6px;line-height: 10px;background:#dfd7d7" colspan="2">
+                    <td style="width: 175px; height: 6px;line-height: 10px;background:#dfd7d7" colspan="3">
                         <p><b>Total: {{ $sales->total_price }}</b>Tk</p>
                         <p><b>Payment: {{ $sales->payment_amount }}</b>Tk</p>
                         <p><b>Due: {{ $sales->due }}</b>Tk</p>
                     </td>
                 </tr>
                 <tr style="height: 6px;">
-                    <td style="width: 175px; height: 6px;line-height: 0px" colspan="6">
+                    <td style="width: 175px; height: 6px;line-height: 0px" colspan="8">
                         <p style="font-weight: bold;color: red">Previous Due: {{ ($sales->customer->sales_history->where('due', '>', 0)->sum('due')) - $sales->due }} Tk</p>
                         <p style="font-weight: bold;color: red">Total Due: {{ $sales->customer->sales_history->where('due', '>', 0)->sum('due') }} Tk</p>
                     </td>
