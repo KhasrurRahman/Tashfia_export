@@ -118,15 +118,15 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputUsername1">Product name</label>
-                            <input type="text" class="form-control" name="chalan_no">
+                            <input type="text" class="form-control" name="chalan_no" value="{{$product->chalan_no}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Fabric Type</label>
-                            <input type="text" class="form-control" name="fabric_type">
+                            <input type="text" class="form-control" name="fabric_type" value="{{$product->fabric_type}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputUsername1">Bill/chalan No</label>
-                            <input type="text" class="form-control" name="chalan_no_2">
+                            <input type="text" class="form-control" name="chalan_no_2" value="{{$product->chalan_no_2}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Party Name </label>

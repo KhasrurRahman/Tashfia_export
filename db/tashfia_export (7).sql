@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2022 at 08:22 AM
+-- Generation Time: Jan 31, 2022 at 08:52 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -645,6 +645,8 @@ CREATE TABLE `products` (
   `finish_gsm` varchar(255) DEFAULT NULL,
   `fabric_type` varchar(255) DEFAULT NULL,
   `card_no` varchar(255) DEFAULT NULL,
+  `roll` varchar(255) DEFAULT NULL,
+  `dia` varchar(255) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -654,10 +656,11 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product_category_id`, `chalan_no`, `chalan_no_2`, `party_name`, `quantity`, `unit_price`, `color_name`, `open_tube`, `sl_no`, `ggsm`, `yarn_count`, `yarn_lot_no`, `fb_rv_date`, `batch_process_date`, `lot_no`, `batch_no`, `order_no`, `style_no`, `finish_gsm`, `fabric_type`, `card_no`, `created_by`, `created_at`, `updated_at`) VALUES
-(42, 13, 'DENIM', '1267', 'MD. RAZIB SAHA', '3598', NULL, 'NAVY', 'Open', NULL, '200', NULL, NULL, '2022-01-15 00:00:00', '2022-01-15 00:00:00', '201', '201', '201', NULL, '200', 'DENIM', '1510004682', NULL, '2022-01-17 12:09:02', '2022-01-17 12:15:07'),
-(43, 12, 'pk', '202', 'MD. RAKIB', '500', NULL, 'black', 'Open', NULL, '200', NULL, NULL, '2022-01-17 00:00:00', '2022-01-16 00:00:00', '202', '202', NULL, NULL, '200', 'PK', '1922545858', NULL, '2022-01-17 12:28:56', '2022-01-17 12:31:41'),
-(44, 13, 'cotton s/j', '105', 'tajul islam', '500', NULL, 'NAVY', 'Open', '10', '150', NULL, NULL, '2022-01-19 00:00:00', '2022-01-19 00:00:00', '102', '102', '152', '36', '150', 'COTTON', '538574841', NULL, '2022-01-17 13:34:49', '2022-01-17 15:15:57');
+INSERT INTO `products` (`id`, `product_category_id`, `chalan_no`, `chalan_no_2`, `party_name`, `quantity`, `unit_price`, `color_name`, `open_tube`, `sl_no`, `ggsm`, `yarn_count`, `yarn_lot_no`, `fb_rv_date`, `batch_process_date`, `lot_no`, `batch_no`, `order_no`, `style_no`, `finish_gsm`, `fabric_type`, `card_no`, `roll`, `dia`, `created_by`, `created_at`, `updated_at`) VALUES
+(42, 13, 'DENIM', '1267', 'MD. RAZIB SAHA', '3598', NULL, 'NAVY', 'Open', NULL, '200', NULL, NULL, '2022-01-15 00:00:00', '2022-01-15 00:00:00', '201', '201', '201', NULL, '200', 'DENIM', '1510004682', NULL, NULL, NULL, '2022-01-17 12:09:02', '2022-01-17 12:15:07'),
+(43, 12, 'pk', '202', 'MD. RAKIB', '500', NULL, 'black', 'Open', NULL, '200', NULL, NULL, '2022-01-17 00:00:00', '2022-01-16 00:00:00', '202', '202', NULL, NULL, '200', 'PK', '1922545858', NULL, NULL, NULL, '2022-01-17 12:28:56', '2022-01-17 12:31:41'),
+(44, 13, 'cotton s/j', '105', 'tajul islam', '500', NULL, 'NAVY', 'Open', '10', '150', NULL, NULL, '2022-01-19 00:00:00', '2022-01-19 00:00:00', '102', '102', '152', '36', '150', 'COTTON', '538574841', NULL, NULL, NULL, '2022-01-17 13:34:49', '2022-01-17 15:15:57'),
+(45, 12, 'average colour viscos fine fabrics', 'Et quia ratione recu', 'Stephanie Cantu', NULL, NULL, 'Lilah Holman', 'Quasi quo nulla volu', 'Aliqua Dolores odio', 'Quia autem dolorem a', 'Lorem debitis nulla', 'Voluptatem minus ali', NULL, NULL, 'Voluptatem Ut ea ne', 'Nobis nostrud libero', 'Cum ad non ipsum es', 'Distinctio Irure ex', 'Veritatis vero et et', 'Anim dolores dolor e', '1064646714', 'Elit voluptas ducim', 'Sit fugiat voluptate', NULL, '2022-01-31 07:41:05', '2022-01-31 07:42:22');
 
 -- --------------------------------------------------------
 
@@ -1371,7 +1374,7 @@ ALTER TABLE `permission_roles`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
