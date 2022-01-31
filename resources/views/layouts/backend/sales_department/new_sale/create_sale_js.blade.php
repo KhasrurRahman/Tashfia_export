@@ -60,7 +60,6 @@
                     success: function (data) {
                         $('#countryList').fadeIn();
                         $('#countryList').html(data);
-                        $('#country_name').val('');
                     }
                 });
             }
@@ -68,6 +67,7 @@
 
         $(document).on('click', 'li', function () {
             event.preventDefault();
+            $('#country_name').val('');
             $('#countryList').fadeOut();
             setTimeout(show_total_quantity, 1000);
             setTimeout(show_total_grand_total, 1000);
@@ -106,7 +106,8 @@
                 } else {
                     var markup = "<tr><td>" + data.product.chalan_no + "</td><td><div> <input type='number' value='' class='qty' name='input_quantity[]' id='qty' maxlength='4'> " +
                         "</div></td><td><div> <input type='number' value='' class='qty_pound' name='input_quantity_pound[]' id='qty_pound'> </div></td><td><div> <input " +
-                        "type='number' value='0' class='role' name='role[]' id='role'> </div></td> <td><input type='number' " +
+                        "type='number' value='0' class='role' name='role[]' id='role'> </div></td><td><div> <input " +
+                        "type='text' class='chalan_no' name='chalan_no[]' id='chalan_no'> </div></td> <td><input type='number' " +
                         "id='unit_price' class='unit_price'></td><td><input type='number' " +
                         "id='unit_price_pound' class='unit_price_pound'></td><td><input type='text' class='btn btn-sm btn-success total_unit_price' readonly " +
                         "id='total_unit_price' ><input type='hidden' disabled value=" + data.product.id + " class='stock_id'></td><td><input type='button' value='Delete' class='btn btn-sm btn-danger'></td></tr>";
@@ -252,6 +253,11 @@
             per_role_data.push(this.value);
         });
 
+        var chalan_no = [];
+        $('.chalan_no').each(function () {
+            chalan_no.push(this.value);
+        });
+
         $.ajax({
             type: 'post',
             url: '{{ url('admin/sales/store_sales_department_data') }}',
@@ -274,6 +280,7 @@
                 per_cheque_date: per_cheque_date,
                 bkash_number: bkash_number,
                 bkash_trns_id: bkash_trns_id,
+                chalan_no: chalan_no,
                 "_token": "{{ csrf_token() }}",
             },
             success: function (data) {
@@ -390,8 +397,10 @@
         console.log(select.value)
         if (select.value === 'Cheque') {
             $(select).closest('.row').find('#check_section').show(1000);
+            $(select).closest('.row').find('#bkash_section').hide(1000);
         } else if (select.value === 'Bkash') {
             $(select).closest('.row').find('#bkash_section').show(1000);
+            $(select).closest('.row').find('#check_section').hide(1000);
         } else {
             $(select).closest('.row').find('#check_section').hide(1000);
             $(select).closest('.row').find('#bkash_section').hide(1000);

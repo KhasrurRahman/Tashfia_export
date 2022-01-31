@@ -7,6 +7,7 @@ use App\Models\ModelProduct;
 use App\Models\salesDepartmentModel;
 use App\SalesExecutiveModel;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController2 extends Controller
@@ -17,10 +18,12 @@ class HomeController2 extends Controller
         return view('layouts.backend.Bar_code.bar_code', compact('product'));
     }
 
-    public function paf_generate($id)
+    public function paf_generate(Request $request)
     {
-        $product = ModelProduct::find($id);
-        $pdf = PDF::loadView('layouts.backend.product.product_pdf', compact('product'));
+        $product = ModelProduct::find($request->bar_code_product_id);
+        $qty = $request->quantity;
+//        return view('layouts.backend.product.product_pdf',compact('product','qty'));
+        $pdf = PDF::loadView('layouts.backend.product.product_pdf', compact('product','qty'));
         return $pdf->download('product.pdf');
     }
 

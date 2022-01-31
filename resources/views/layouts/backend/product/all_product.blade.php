@@ -44,6 +44,7 @@
 
     @include('layouts.backend.product.view_model')
     @include('layouts.backend.product.view_ingredient')
+    @include('layouts.backend.product.bar_code_qts_modal')
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>

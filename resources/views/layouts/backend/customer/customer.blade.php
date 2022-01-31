@@ -21,7 +21,7 @@
             <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Customer ID</th>
                     <th>Per Name</th>
                     <th>Company Name</th>
                     <th>per Phone</th>

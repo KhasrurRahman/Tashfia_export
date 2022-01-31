@@ -27,11 +27,13 @@
                     d.search_company_id = $('#search_company_id').val();
                     d.search_name = $('#search_name').val();
                     d.search_phone = $('#search_phone').val();
+                    d.company_type = $('#company_type').val();
+                    d.customer_id = $('#customer_id').val();
                     d._token = '{{csrf_token()}}'
                 }
             },
             columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
+                {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
                 {data: 'company', name: 'company'},
                 {data: 'personal_phone', name: 'personal_phone'},

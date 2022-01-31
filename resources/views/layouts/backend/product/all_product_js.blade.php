@@ -194,6 +194,11 @@
         });
     }
 
+    function bar_code_modal(id) {
+        $('#bar_code_product_id').val(id);
+        $('#bar_code_print').modal('show');
+    }
+
 
     function view_ingredient(id) {
         $.ajax({

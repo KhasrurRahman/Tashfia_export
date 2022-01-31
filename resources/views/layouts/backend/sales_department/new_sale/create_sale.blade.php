@@ -79,7 +79,7 @@
                         <select class="form-control select2" name="customer_id" id="customer_id">
                             <option value="">Select</option>
                             @foreach ($customers as $data)
-                                <option value="{{ $data->id }}">{{ $data->name }} - ({{ $data->personal_phone }})
+                                <option value="{{ $data->id }}">{{ $data->name }} - (ID: {{ $data->id }})
                                 </option>
                             @endforeach
                         </select>
@@ -154,6 +154,7 @@
                             <th>Quantity(KG)</th>
                             <th>Quantity(Pound)</th>
                             <th>Role</th>
+                            <th>Chalan no</th>
                             <th>Unit Price(kg)</th>
                             <th>Unit Price(pound)</th>
                             <th>Total Price (Tk)</th>

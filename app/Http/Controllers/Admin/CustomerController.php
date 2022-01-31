@@ -40,6 +40,16 @@ class CustomerController extends Controller
                 $query->where('name', 'like', '%' . $request->search_name . '%');
             }
 
+            if ($request->customer_id !== null) {
+                $query->where('id', 'like', '%' . $request->customer_id . '%');
+            }
+
+            if ($request->company_type !== null) {
+                $query->whereHas('company', function ($query2) use ($request) {
+                    $query2->where('category','like', '%' . $request->company_type . '%');
+                });
+            }
+
             $query->orderBy('created_at', 'DESC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())

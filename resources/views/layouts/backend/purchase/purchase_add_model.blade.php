@@ -90,8 +90,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="Route_name">Unit Price</label>
-                        <input type="number" step="any" class="form-control" name="unit_price" id="unit_price" onkeyup="total_price()">
+                        <label for="Route_name">Unit Price(kg)</label>
+                        <input type="number" step="any" class="form-control" name="unit_price" id="unit_price" onkeyup="unit_price_kg()">
+                        <span id="Error_status_unit_price" class="text-red error_field"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Route_name">Unit Price(Pound)</label>
+                        <input type="number" step="any" class="form-control" name="unit_price_pound" id="unit_price_pound"
+                               onkeyup="pound_unit_price()">
                         <span id="Error_status_unit_price" class="text-red error_field"></span>
                     </div>
 

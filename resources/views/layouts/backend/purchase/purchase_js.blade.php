@@ -222,7 +222,7 @@
         });
 
     });
-    
+
     $(function () {
         $('#supplier_id').on('change', function () {
             var supplier_id = $(this).val();
@@ -288,14 +288,26 @@
     // });
 
     function total_price() {
-        $("#quantity_pound").val(($("#quantity").val() * 2.2046).toFixed(3))
+        $("#quantity_pound").val(($("#quantity").val() * 2.20462262185).toFixed(3))
         quantity = $("#quantity").val();
         $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
     }
-    
+
     function total_price_pound() {
-        $("#quantity").val(($("#quantity_pound").val() / 2.2046).toFixed(3))
+        $("#quantity").val(($("#quantity_pound").val() / 2.20462262185).toFixed(4))
         quantity = $("#quantity").val();
+        $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
+    }
+
+    function pound_unit_price() {
+        var unit_price_pound = $('#unit_price_pound').val();
+        $('#unit_price').val((unit_price_pound * 2.20462262185).toFixed(3))
+        $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
+    }
+
+    function unit_price_kg() {
+        var unit_price_kg = $('#unit_price').val();
+        $('#unit_price_pound').val((unit_price_kg / 2.20462262185).toFixed(3))
         $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
     }
 

@@ -68,6 +68,12 @@ class SalesController extends Controller
             }
         }
 
+        for ($i = 0; $i < count($request->chalan_no); $i++) {
+            if ($request->chalan_no[$i] == null) {
+                return response()->json(['error' => 'Please Input Chalan number of an item']);
+            }
+        }
+
         for ($i = 0; $i < count($request->per_unit_price); $i++) {
             if ($request->per_unit_price[$i] == null) {
                 return response()->json(['error' => 'Please Input unit price of an item']);
@@ -123,6 +129,7 @@ class SalesController extends Controller
             $sales_details->purchase_uint_price = $stock->purchase->actual_unit_price;
             $sales_details->purchase_total_price = $stock->purchase->actual_unit_price * $request->per_quantity[$i];
             $sales_details->role = $request->per_role_data[$i];
+            $sales_details->chalan_no = $request->chalan_no[$i];
             $sales_details->save();
         }
 
@@ -299,6 +306,7 @@ class SalesController extends Controller
                     <div class="card_body">
                     <ul class="list-group">
                         <li class="list-group-item">Name: ' . $customer->name . '</li>
+                        <li class="list-group-item">ID: ' . $customer->id . '</li>
                         <li class="list-group-item">Email: ' . $customer->email . '</li>
                         <li class="list-group-item">Address: ' . $customer->present_address . '</li>
                         <li class="list-group-item">Phone: ' . $customer->personal_phone . '</li>

@@ -16,19 +16,38 @@
 
             <div class="col-4">
                 <div class="form-group">
+                    <label>Company Type:</label>
+                    <select class="form-control select2" id="company_type">
+                        <option selected disabled>Please select</option>
+                        <option value="purchase">For Purchase</option>
+                        <option value="sell">For Sell</option>
+                        <option value="workorder">For Workorder</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
                     <label>Name:</label>
                     <input type="text" class="form-control" id="search_name">
                 </div>
             </div>
-            
+
+            <div class="col-4">
+                <div class="form-group">
+                    <label>Customer ID:</label>
+                    <input type="text" class="form-control" id="customer_id">
+                </div>
+            </div>
+
             <div class="col-4">
                 <div class="form-group">
                     <label>Phone Number:</label>
                     <input type="text" class="form-control" id="search_phone">
                 </div>
             </div>
-            
-            
+
+
             <div class="col-3">
                 <div class="form-group">
                     <button type="submit" class="btn btn-success ml-2 btn-block" id="btnFiterSubmitSearch"
@@ -50,5 +69,3 @@
 
     </form>
 </div>
-
-
