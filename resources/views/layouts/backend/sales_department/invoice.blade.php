@@ -153,7 +153,7 @@
                             <span class="alignleft">+8801810088007</span><br/>
                             <span class="alignleft">+8802224433899</span><br/>
                             <span class="alignleft">+88-02-47651260</span><br/>
-                            <span class="alignleft" style="font-size:9px;margin-left: -30px">tashfiaexportoffice@gmail.com</span>
+                            <span class="alignleft" style="font-size:10px;margin-left: -30px">tashfiaexportoffice@gmail.com</span>
                         </td>
 
                         <td style="vertical-align: top;text-align: center;width: 33%">
@@ -164,9 +164,9 @@
                         </td>
 
                         <td style="width: 8%">
-                            <span class="alignleft">CEO & MD:</span> <br/>
+                            <span class="alignleft">MD:</span> <br/>
                             <span class="alignleft"></span> <br/>
-                            <span class="alignleft">CEO Mail:</span> <br/>
+                            <span class="alignleft">MD Mail:</span> <br/>
                             <span class="alignleft">Address:</span> <br/>
                         </td>
 
