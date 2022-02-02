@@ -2,11 +2,11 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -44,18 +44,16 @@ class User extends Authenticatable
         return $this->belongsTo(role::class);
     }
 
-    public function submit_complain()
-    {
-        return $this->hasMany(complain::class, 'uid_in_charge');
+    public function getJWTIdentifier() {
+        return $this->getKey();
     }
 
-    public function bank_deposit()
-    {
-        return $this->hasMany(bank_deposit::class, 'submit_by');
-    }
-
-    public function created_subscriber()
-    {
-        return $this->belongsTo(subscriber::class, 'updated_by');
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims() {
+        return [];
     }
 }

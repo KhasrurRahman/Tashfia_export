@@ -42,18 +42,10 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
             'hash' => false,
         ],
-        'subscriber' => [
-            'driver' => 'session',
-            'provider' => 'subscribers',
-        ],
-//        'subscriber-api' => [
-//            'driver' => 'token',
-//            'provider' => 'subscribers',
-//        ],
     ],
 
     /*
@@ -77,11 +69,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
-        ],
-
-        'subscribers' => [
-            'driver' => 'eloquent',
-            'model' => App\subscriber::class,
         ],
     ],
 
@@ -107,13 +94,6 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'subscribers' => [
-            'provider' => 'subscribers',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-
     ],
 
     /*
