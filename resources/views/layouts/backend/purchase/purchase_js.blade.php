@@ -5,6 +5,32 @@
 
     $(function () {
         var table = $('.yajra-datatable').DataTable({
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(), data;
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                        i.replace(/[\$,]/g, '') * 1 :
+                        typeof i === 'number' ?
+                            i : 0;
+                };
+                total_purchas_price = this.api().ajax.json().total_purchas_price
+                pageTotal_total_purchas_price = api
+                    .column(5, {page: 'current'})
+                    .data()
+                    .sum()
+                $(api.column(5).footer()).html(
+                    'Tk ' + pageTotal_total_purchas_price + ' ( Tk ' + total_purchas_price + ' total)'
+                );
+
+                total_actual_purchas_price = this.api().ajax.json().total_actual_purchas_price
+                pageTotal_total_actual_purchas_price = api
+                    .column(6, {page: 'current'})
+                    .data()
+                    .sum()
+                $(api.column(6).footer()).html(
+                    'Tk ' + pageTotal_total_actual_purchas_price + ' ( Tk ' + total_actual_purchas_price + ' total)'
+                );
+            },
             "order": [
                 [1, 'desc']
             ],

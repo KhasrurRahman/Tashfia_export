@@ -66,7 +66,9 @@ class purchaseController extends Controller
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/purchase/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" >Edit</a>';
                     return $actionBtn;
-                })->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action'])
+                })->with('total_purchas_price', $query->sum('total_purchas_price'))
+                ->with('total_actual_purchas_price', $query->sum('actual_purchas_price'))
+                ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action'])
                 ->make(true);
         }
     }

@@ -46,6 +46,18 @@
                 </thead>
                 <tbody>
                 </tbody>
+                <tfoot>
+                <tr class="bg-success text-white">
+                    <th style="text-align:right">Total:</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -58,6 +70,7 @@
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.22/api/sum().js"></script>
     @include('layouts.backend.purchase.purchase_js')
 
 @endpush

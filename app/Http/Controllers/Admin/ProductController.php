@@ -80,6 +80,19 @@ class ProductController extends Controller
     {
         if ($request->ajax()) {
             $query = ModelProduct::orderBy('id', 'desc');
+
+            if ($request->product_name !== null) {
+                $query->where('chalan_no', 'like','%' . $request->product_name . '%');
+            }
+
+            if ($request->bar_code !== null) {
+                $query->where('card_no', 'like','%' . $request->bar_code . '%' );
+            }
+
+            if ($request->party_name !== null) {
+                $query->where('party_name', 'like','%' . $request->party_name . '%' );
+            }
+
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()

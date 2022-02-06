@@ -27,6 +27,9 @@
                 url: "{{ url('admin/product/alldata') }}",
                 type: 'POSt',
                 data: function (d) {
+                    d.product_name = $('#product_name').val();
+                    d.bar_code = $('#bar_code').val();
+                    d.party_name = $('#party_name').val();
                     d._token = '{{csrf_token()}}'
                 }
             },
@@ -53,6 +56,12 @@
             table.draw(true);
         });
     });
+
+    function form_reset() {
+        document.getElementById("search_form").reset();
+        $('.select2').val(null).trigger('change');
+        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+    }
 
 
     function delete_data(id) {

@@ -94,7 +94,10 @@ class DepartmentController extends Controller
                     $actionBtn = '<a href="' . url('admin/sales/sales_department_invoice/' .
                             $data->id) . '" class="edit btn btn-outline-warning btn-sm" target="_blank">Invoice</a> <a href="#" onclick="sales_details(' . $data->id . ')" class="edit btn btn-outline-dark btn-sm" >Invoice Details</a> <a href="#" onclick="invoice_payment_history(' . $data->id . ')" class="edit btn btn-outline-info btn-sm" >Payments</a>' . $pay_button;
                     return $actionBtn;
-                })->rawColumns(['customer', 'customer_type', 'sales_code', 'total', 'paid_amount', 'due', 'payment_status', 'date', 'action'])
+                })->with('total_sale', $query->sum('total_price'))
+                ->with('total_due', $query->sum('due'))
+                ->with('total_payment', $query->sum('payment_amount'))
+                ->rawColumns(['customer', 'customer_type', 'sales_code', 'total', 'paid_amount', 'due', 'payment_status', 'date', 'action'])
                 ->make(true);
         }
     }
@@ -145,7 +148,8 @@ class DepartmentController extends Controller
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a>';
                     return $actionBtn;
-                })->rawColumns(['product', 'date', 'quantity', 'action'])
+                })->with('total_quantity', $query->sum('quantity'))
+                ->rawColumns(['product', 'date', 'quantity', 'action'])
                 ->make(true);
         }
     }
@@ -209,7 +213,7 @@ class DepartmentController extends Controller
 
     public function sales_department_invoice($id)
     {
-        
+
         $sales = salesDepartmentModel::find($id);
         return view('layouts.backend.sales_department.invoice', compact('sales'));
     }

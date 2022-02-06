@@ -3,7 +3,9 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
-    <style>.select2-container--default .select2-selection--single {height: 40px !important;}</style>
+    <style>.select2-container--default .select2-selection--single {
+            height: 40px !important;
+        }</style>
 @endpush
 @section('main_menu','HOME')
 @section('active_menu','All Product')
@@ -12,16 +14,17 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
-            <a href="{{route('admin.product/craete')}}" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add Product</a>
+            @include('layouts.backend.product.product_search')
         </div>
         <div class="card-body">
+            <h3 class="card-title float-left">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
+            <a href="{{route('admin.product/craete')}}" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add Product</a>
             <table class="table yajra-datatable">
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>Product Type</th>
-                    <th>Product Name</th>  
+                    <th>Product Name</th>
                     <th>Party Name</th>
                     <th>Color Name</th>
                     <th>S/L No</th>

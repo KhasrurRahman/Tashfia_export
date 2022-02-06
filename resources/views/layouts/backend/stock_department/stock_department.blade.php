@@ -30,6 +30,15 @@
                 </thead>
                 <tbody>
                 </tbody>
+                <tfoot>
+                <tr class="bg-success text-white">
+                    <th style="text-align:right">Total:</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -39,7 +48,7 @@
     @include('layouts.backend.product.view_model')
 @endsection
 @push('js')
-     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('.select2').select2();
@@ -48,6 +57,7 @@
     <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/js/datatables.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.22/api/sum().js"></script>
     @include('layouts.backend.stock_department.stock_department_js')
 
 @endpush

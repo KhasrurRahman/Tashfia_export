@@ -196,7 +196,8 @@ class SalesController extends Controller
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" onclick="sales_details(' . $data->id . ')" class="edit btn btn-outline-info btn-sm" >Invoice Details</a>';
                     return $actionBtn;
-                })->rawColumns(['customer', 'date', 'total_unit_price', 'quantity_of_sell', 'due', 'payment_type', 'action'])
+                })
+                ->rawColumns(['customer', 'date', 'total_unit_price', 'quantity_of_sell', 'due', 'payment_type', 'action'])
                 ->make(true);
         }
     }
