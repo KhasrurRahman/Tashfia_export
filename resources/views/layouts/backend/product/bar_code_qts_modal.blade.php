@@ -2,7 +2,7 @@
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{{ url('paf_generate') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('paf_generate') }}" method="post" enctype="multipart/form-data" target="_blank">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="bar_code_printLabel">How many barcode you want to print</h5>
