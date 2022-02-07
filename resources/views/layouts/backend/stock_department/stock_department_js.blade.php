@@ -19,7 +19,7 @@
                     .data()
                     .sum()
                 $(api.column(2).footer()).html(
-                    'Tk ' + pageTotal_total_quantity + ' ( KG ' + total_quantity + ' total)'
+                    ' ( KG ' + total_quantity + ' )'
                 );
             },
             "order": [[1, 'desc']],

@@ -19,7 +19,7 @@
                     .data()
                     .sum()
                 $(api.column(5).footer()).html(
-                    'Tk ' + pageTotal + ' ( Tk ' + total + ' total)'
+                    ' ( Tk ' + total + ')'
                 );
             },
             "order": [[1, 'desc']],

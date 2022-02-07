@@ -11,10 +11,14 @@
                     <div class="active tab-pane">
                         <div class="card" id="printMe">
                             <div class="card-body">
+                                <br>
+                                <br>
                                 <div class="col-md-4" id="print_div">
                                     @for($i = 0; $i < 10; $i++)
                                         <div style="width: 250px;text-align: center;float: left" class="bar_code">
-                                            <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($product->card_no, 'C39',1,50,array(0,0,0), true)}}" alt="barcode" width="80px"/><br><br>
+                                            <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($product->card_no, 'C39',1,80,array(0,0,0), true)}}" alt="barcode"
+                                                 style="margin: 10px"
+                                                 width="90%"/><br><br>
                                         </div>
                                     @endfor
                                 </div>

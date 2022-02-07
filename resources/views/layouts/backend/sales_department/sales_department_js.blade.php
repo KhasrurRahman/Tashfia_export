@@ -16,7 +16,7 @@
                     .data()
                     .sum()
                 $(api.column(4).footer()).html(
-                    'Tk ' + pageTotal + ' ( Tk ' + total + ' total)'
+                    ' ( Tk ' + total + ')'
                 );
 
                 total_due = this.api().ajax.json().total_due
@@ -25,7 +25,7 @@
                     .data()
                     .sum()
                 $(api.column(6).footer()).html(
-                    'Tk ' + pageTotal_due + ' ( Tk ' + total_due + ' total)'
+                    ' ( Tk' + total_due + ' )'
                 );
 
                 total_payment = this.api().ajax.json().total_payment
@@ -34,7 +34,7 @@
                     .data()
                     .sum()
                 $(api.column(5).footer()).html(
-                    'Tk ' + pageTotal_total_payment + ' ( Tk ' + total_payment + ' total)'
+                    ' ( Tk' + total_payment + ' )'
                 );
             },
             "order": [[1, 'desc']],

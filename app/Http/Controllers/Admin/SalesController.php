@@ -28,10 +28,10 @@ class SalesController extends Controller
     {
         if ($request->get('query')) {
             $query = $request->get('query');
-            $data = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.chalan_no', 'like', '%' . $query . '%')->orWhere('products.card_no', 'like', '%' . $query . '%')->select('products.chalan_no', 'stock.*')->get();
+            $data = ModelProduct::where('products.chalan_no', 'like', '%' . $query . '%')->orWhere('products.card_no', 'like', '%' . $query . '%')->get();
             $output = '<ul class="list-group" style="display: block;position: relative;width: 100%;font-size: 17px;font-weight: bold;line-height: 25px;border: 1px solid;">';
             foreach ($data as $row) {
-                $output .= '<li class="list-group-item" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . ' (QTY : ' . $row->quantity . ')</li>';
+                $output .= '<li class="list-group-item" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . '</li>';
             }
             $output .= '</ul>';
             echo $output;
@@ -40,7 +40,11 @@ class SalesController extends Controller
 
     public function get_product_single_data($id)
     {
-        $product = LotDepartmentModel::query()->join('purchase', 'purchase.id', '=', 'stock.purchase_id')->join('products', 'products.id', '=', 'purchase.product_id')->select('products.chalan_no', 'stock.*', 'purchase.unit_price', 'purchase.id as purchase_id')->where('stock.id', $id)->first();
+        $product = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.id',$id)->select( 'stock.*','products.chalan_no')->first();
+
+
+// $product = LotDepartmentModel::query()->join('purchase', 'purchase.id', '=', 'stock.purchase_id')->join('products', 'products.id', '=', 'purchase.product_id')->select
+//('products.chalan_no', 'stock.*', 'purchase.unit_price', 'purchase.id as purchase_id')->where('stock.id', $id)->first();
 
         return response()->json(['product' => $product]);
     }

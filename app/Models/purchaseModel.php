@@ -28,4 +28,9 @@ class purchaseModel extends Model
     {
         return $this->belongsTo(supplierModel::class, 'supplier_id');
     }
+
+    public function stock()
+    {
+        return $this->hasMany(LotDepartmentModel::class, 'purchase_id');
+    }
 }

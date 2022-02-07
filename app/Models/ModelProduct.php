@@ -14,4 +14,11 @@ class ModelProduct extends Model
     {
         return $this->belongsTo(ProductCategoryModel::class, 'product_category_id');
     }
+
+    public function purchase()
+    {
+        return $this->hasMany(purchaseModel::class, 'product_id');
+    }
+
+
 }
