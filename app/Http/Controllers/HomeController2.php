@@ -23,7 +23,7 @@ class HomeController2 extends Controller
         $product = ModelProduct::find($request->bar_code_product_id);
         $qty = $request->quantity;
         return view('layouts.backend.product.product_pdf',compact('product','qty'));
-        $pdf = PDF::loadView('layouts.backend.product.product_pdf', compact('product','qty'));
+//        $pdf = PDF::loadView('layouts.backend.product.product_pdf', compact('product','qty'));
         return $pdf->download('product.pdf');
     }
 

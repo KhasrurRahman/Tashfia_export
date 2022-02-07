@@ -14,7 +14,7 @@
                                 <br>
                                 <br>
                                 <div class="col-md-4" id="print_div">
-                                    @for($i = 0; $i < 10; $i++)
+                                    @for($i = 0; $i < $qty; $i++)
                                         <div style="width: 250px;text-align: center;float: left" class="bar_code">
                                             <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($product->card_no, 'C39',1,80,array(0,0,0), true)}}" alt="barcode"
                                                  style="margin: 10px"

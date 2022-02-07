@@ -173,7 +173,7 @@
                         <td style="font-size: 11px;width: 19%">
                             <span class="alignleft">+8801848080971</span><br/>
                             <span class="alignleft">+8801711853521</span><br/>
-                            <span class="alignleft">tashliaexport@gmail.com</span><br/>
+                            <span class="alignleft">tashfiaexport@gmail.com</span><br/>
                             <span class="alignleft">52/2 B.B Road,Shop No # Gho 8,</span><br/>
                             <span class="alignleft">Gulshan Market,Nayamati,</span><br/>
                             <span class="alignleft">Narayanganj-1400,Bangladesh</span><br/>
