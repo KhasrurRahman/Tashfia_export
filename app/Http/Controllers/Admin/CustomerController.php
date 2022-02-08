@@ -6,7 +6,9 @@ use App\ChequeDetailModel;
 use App\CompanyModel;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerModel;
+use App\Models\salesDepartmentModel;
 use App\Models\SalesPaymentModel;
+use Barryvdh\DomPDF\Facade as PDF;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -29,11 +31,11 @@ class CustomerController extends Controller
             $query = CustomerModel::query();
 
             if ($request->search_company_id !== null) {
-                $query->where('company_id',$request->search_company_id);
+                $query->where('company_id', $request->search_company_id);
             }
 
             if ($request->search_phone !== null) {
-                $query->where('personal_phone', 'like','%' . $request->search_phone . '%');
+                $query->where('personal_phone', 'like', '%' . $request->search_phone . '%');
             }
 
             if ($request->search_name !== null) {
@@ -46,7 +48,7 @@ class CustomerController extends Controller
 
             if ($request->company_type !== null) {
                 $query->whereHas('company', function ($query2) use ($request) {
-                    $query2->where('category','like', '%' . $request->company_type . '%');
+                    $query2->where('category', 'like', '%' . $request->company_type . '%');
                 });
             }
 
@@ -176,7 +178,7 @@ class CustomerController extends Controller
     public function manual_due_payment(Request $request)
     {
         $customer = CustomerModel::find($request->customer_id);
-        if ($request->amount > $customer->due) {
+        if ($request->amount > $customer->balance or $request->amount == 0) {
             Toastr::error('Your Payment amount must be less than or equal to Due amount', '');
             return redirect()->back();
         }
@@ -196,14 +198,26 @@ class CustomerController extends Controller
         }
 
 
-        $customer->balance += $request->amount;
+        $customer->balance -= $request->amount;
         $customer->update();
 
         Toastr::success('Payment Updated', '');
         return redirect()->back();
     }
-    
-    
 
+
+    public function sales_payment_history_pdf($customer_id)
+    {
+        $sales_history = salesDepartmentModel::query()->join('sales_payments', 'sales_payments.sales_id', '=', 'sales.id')->where('sales.customer_id', $customer_id)->select(["sales.created_at", "sales.sales_code", "sales.due", "sales.payment_amount", "sales_payments.payment_mode", "sales.total_price"])->get();
+
+        $total_due = $sales_history->sum('due');
+        $total_payment = $sales_history->sum('payment_amount');
+        $total_amount = $sales_history->sum('total_price');
+
+        $pdf = PDF::loadView('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
+//        return view('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
+        return $pdf->download('customer_payment_history_invoice.pdf');
+
+    }
 
 }

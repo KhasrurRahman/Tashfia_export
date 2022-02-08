@@ -16,18 +16,6 @@
 
             <div class="col-4">
                 <div class="form-group">
-                    <label>Company Type:</label>
-                    <select class="form-control select2" id="company_type">
-                        <option selected disabled>Please select</option>
-                        <option value="purchase">For Purchase</option>
-                        <option value="sell">For Sell</option>
-                        <option value="workorder">For Workorder</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="form-group">
                     <label>Name:</label>
                     <input type="text" class="form-control" id="search_name">
                 </div>

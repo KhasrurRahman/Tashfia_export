@@ -23,11 +23,13 @@
                     <div class="card-body text-center">
                         <small class="text-muted d-block">Email address </small>
                         <h6>{{$customer->email}}</h6>
+                        <small class="text-muted d-block">Customer Id</small>
+                        <h6>{{$customer->id}}</h6>
                         <small class="text-muted d-block pt-10">Phone</small>
                         <h6>{{$customer->personal_phone}}</h6>
                         <small class="text-muted d-block pt-10">Address</small>
                         <h6>{{$customer->present_address}}</h6>
-                        <small class="text-muted d-block pt-10">Balance</small>
+                        <small class="text-muted d-block pt-10">Previous Due</small>
                         <h6>{{$customer->balance}}</h6>
                         <small class="text-muted d-block pt-10">Payment Status</small>
                         @if ($customer->balance >= 0)
@@ -35,7 +37,9 @@
                         @elseif ($customer->balance < 0)
                             <span class="right badge badge-warning">Unpaid</span>
                         @endif
+                        <br>
                     </div>
+                    <a href="{{route('admin.customer/sales_payment_history_pdf',$customer->id)}}" class="btn btn-success">Export Sales Payment history</a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
@@ -48,7 +52,7 @@
 
                         <li class="nav-item active">
                             <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#payment_history" role="tab" aria-controls="pills-profile"
-                               aria-selected="false">Payments History</a>
+                               aria-selected="false">Previous Due Payments History</a>
                         </li>
 
                         <li class="nav-item">
