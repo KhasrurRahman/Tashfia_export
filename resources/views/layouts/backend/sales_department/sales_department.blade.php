@@ -61,9 +61,8 @@
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
-    <script src="{{ asset('backend/js/datatables.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
+    <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
     <script src="https://cdn.datatables.net/plug-ins/1.10.22/api/sum().js"></script>
     @include('layouts.backend.sales_department.sales_department_js')
 
