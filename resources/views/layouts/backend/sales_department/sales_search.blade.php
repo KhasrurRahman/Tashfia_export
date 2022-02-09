@@ -1,7 +1,7 @@
 <div class="col-12">
-    <form id="search_form" name="search_form">
+    <form id="search_form" name="search_form" action="{{route('admin.sales/sales_history_pdf_generate')}}" method="post" target="_blank">
+        @csrf
         <div class="row">
-            
             <div class="col-4">
                 <div class="form-group">
                     <label>Company:</label>
@@ -14,12 +14,11 @@
                 </div>
             </div>
 
-            
             <div class="col-4">
                 <div class="form-group">
                     <label>Customer:</label>
                     <select class="form-control select2" id="search_customer_id" name="search_customer_id">
-                        <option selected disabled>Please Select</option>
+                        <option selected disabled>Please Select company first</option>
                         @foreach($customer as $data)
                             <option value="{{$data->id}}">{{$data->name}}</option>
                         @endforeach
@@ -55,7 +54,7 @@
             
             <div class="col-2">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success ml-2 btn-block" id="btnFiterSubmitSearch"
+                    <button type="button" class="btn btn-success ml-2 btn-block" id="btnFiterSubmitSearch"
                             style="margin-top: 30px">search
                     </button>
                 </div>
@@ -79,5 +78,3 @@
         </div>
     </form>
 </div>
-
-

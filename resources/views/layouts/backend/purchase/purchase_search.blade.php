@@ -1,7 +1,7 @@
 <div class="col-12">
-    <form id="search_form" name="search_form">
+    <form id="search_form" name="search_form" action="{{route('admin.purchase/purchase_pdf_generate')}}" method="post" target="_blank">
+        @csrf
         <div class="row">
-
             <div class="col-4">
                 <div class="form-group">
                     <label>Company:</label>
@@ -46,7 +46,7 @@
             </div>
 
 
-            <div class="col-3">
+            <div class="col-2">
                 <div class="form-group">
                     <button type="submit" class="btn btn-success ml-2 btn-block" id="btnFiterSubmitSearch"
                         style="margin-top: 30px">search
@@ -59,6 +59,14 @@
                     <button type="button" class="btn btn-danger btn-info" onclick="form_reset()"
                         style="margin-top: 30px">
                         Clear
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-1">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info btn-info" style="margin-top: 30px">
+                        Print
                     </button>
                 </div>
             </div>

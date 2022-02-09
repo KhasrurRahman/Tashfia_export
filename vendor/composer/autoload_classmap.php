@@ -12,7 +12,6 @@ return array(
     'App\\Console\\Commands\\CostomeCommend' => $baseDir . '/app/Console/Commands/CostomeCommend.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
-    'App\\Exports\\CustomerSalesHistoryExport' => $baseDir . '/app/Exports/CustomerSalesHistoryExport.php',
     'App\\Exports\\export_new_subscriber' => $baseDir . '/app/Exports/export_new_subscriber.php',
     'App\\Exports\\scratch_card_export' => $baseDir . '/app/Exports/scratch_card_export.php',
     'App\\Http\\Controllers\\Admin\\AdminDashboarController' => $baseDir . '/app/Http/Controllers/Admin/AdminDashboarController.php',

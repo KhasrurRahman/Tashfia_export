@@ -36,17 +36,17 @@ class purchaseController extends Controller
                     $query2->where('company_id', $request->search_company_id);
                 });
             }
-            
+
             if ($request->product_name !== null) {
                 $query->whereHas('product', function ($query2) use ($request) {
-                    $query2->where('chalan_no','like', '%' . $request->product_name . '%');
+                    $query2->where('chalan_no', 'like', '%' . $request->product_name . '%');
                 });
             }
 
             if ($request->search_supplier_id !== null) {
                 $query->where('supplier_id', $request->search_supplier_id);
             }
-            
+
             $query->orderBy('created_at', 'DESC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
@@ -87,10 +87,10 @@ class purchaseController extends Controller
         $product = ModelProduct::find($request->product_id);
         $product->quantity = $request->quantity;
         $product->update();
-        
+
         $actual_unit_price = $request->actual_purchas_price / $request->quantity;
 
-        $request->request->add(['created_by' => Auth::user()->id,'actual_unit_price'=>$actual_unit_price]);
+        $request->request->add(['created_by' => Auth::user()->id, 'actual_unit_price' => $actual_unit_price]);
         purchaseModel::create($request->all());
         return response()->json(['Done' => 'Done']);
     }
@@ -110,19 +110,19 @@ class purchaseController extends Controller
             'product' => $purchase->product->chalan_no,
         ];
     }
-    
+
     public function edit($id)
     {
         $purchase = purchaseModel::find($id);
         $products = ModelProduct::get();
         $supplier = supplierModel::all();
         $company = CompanyModel::all();
-        
-        return view('layouts.backend.purchase.purchase_edit',compact('purchase','products','supplier','company'));
-        
+
+        return view('layouts.backend.purchase.purchase_edit', compact('purchase', 'products', 'supplier', 'company'));
+
     }
-    
-    public function update(Request $request,$id)
+
+    public function update(Request $request, $id)
     {
         $request->validate([
             'product_id' => 'required',
@@ -133,12 +133,43 @@ class purchaseController extends Controller
             'actual_purchas_price' => 'required',
         ]);
 
-        
+
         purchaseModel::find($id)->update($request->all());
 
-        
+
         Toastr::success('Update Successful', 'Updated');
         return redirect()->back();
-        
+    }
+
+    public function purchase_pdf_generate(Request $request)
+    {
+        $query = purchaseModel::query();
+
+        if ($request->from_date !== null and $request->to_date !== null) {
+            $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+        }
+
+        if ($request->search_company_id !== null) {
+            $query->whereHas('supplier', function ($query2) use ($request) {
+                $query2->where('company_id', $request->search_company_id);
+            });
+        }
+
+        if ($request->product_name !== null) {
+            $query->whereHas('product', function ($query2) use ($request) {
+                $query2->where('chalan_no', 'like', '%' . $request->product_name . '%');
+            });
+        }
+
+        if ($request->search_supplier_id !== null) {
+            $query->where('supplier_id', $request->search_supplier_id);
+        }
+
+        $purchase_history = $query->orderBy('id', 'desc')->get();
+        $total_quantity = $purchase_history->sum('quantity');
+        $total_purchase_price = $purchase_history->sum('total_purchas_price');
+        $total_actual_purchase_price =  $purchase_history->sum('actual_purchas_price');
+
+        return view('layouts.backend.purchase.purchase_pdf_invoice',compact('purchase_history','total_quantity','total_purchase_price','total_actual_purchase_price'));
     }
 }

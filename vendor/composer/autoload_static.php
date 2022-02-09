@@ -570,7 +570,6 @@ class ComposerStaticInitc1361397dda1f6f7fff936c558cbbf32
         'App\\Console\\Commands\\CostomeCommend' => __DIR__ . '/../..' . '/app/Console/Commands/CostomeCommend.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Exports\\CustomerSalesHistoryExport' => __DIR__ . '/../..' . '/app/Exports/CustomerSalesHistoryExport.php',
         'App\\Exports\\export_new_subscriber' => __DIR__ . '/../..' . '/app/Exports/export_new_subscriber.php',
         'App\\Exports\\scratch_card_export' => __DIR__ . '/../..' . '/app/Exports/scratch_card_export.php',
         'App\\Http\\Controllers\\Admin\\AdminDashboarController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminDashboarController.php',

@@ -40,7 +40,7 @@ class SalesController extends Controller
 
     public function get_product_single_data($id)
     {
-        $product = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.id',$id)->select( 'stock.*','products.chalan_no')->first();
+        $product = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.id', $id)->select('stock.*', 'products.chalan_no')->first();
 
 
 // $product = LotDepartmentModel::query()->join('purchase', 'purchase.id', '=', 'stock.purchase_id')->join('products', 'products.id', '=', 'purchase.product_id')->select
@@ -144,11 +144,11 @@ class SalesController extends Controller
             $sales_payemnt->amount = $request->per_payment_amount[$i];
             $sales_payemnt->payment_mode = $request->per_payment_type[$i];
             $sales_payemnt->remark = $request->per_remarks[$i];
-            if ($request->per_payment_type[$i] == "Cheque"){
+            if ($request->per_payment_type[$i] == "Cheque") {
                 $sales_payemnt->cheque_number = $request->per_cheque_number[$i];
                 $sales_payemnt->cheque_due_date = $request->per_cheque_date[$i];
             }
-            if ($request->per_payment_type[$i] == "Bkash"){
+            if ($request->per_payment_type[$i] == "Bkash") {
                 $sales_payemnt->bkash_number = $request->bkash_number[$i];
                 $sales_payemnt->bkash_trns_id = $request->bkash_trns_id[$i];
             }
@@ -174,7 +174,7 @@ class SalesController extends Controller
         $sales->profit_or_loss = $sales->total_price - $sales->sales_details->sum('purchase_total_price');
         $sales->update();
 
-        return response()->json(['success' => 'success','sales_id'=>$sales->id]);
+        return response()->json(['success' => 'success', 'sales_id' => $sales->id]);
     }
 
     public function customer_payment_history_search(Request $request)
@@ -321,6 +321,43 @@ class SalesController extends Controller
         $total_due = $customer->sales_history->where('due', '>', 0)->sum('due');
 
         return response()->json(['customer' => $output, 'total_due' => $total_due]);
+
+    }
+
+
+    public function sales_history_pdf_generate(Request $request)
+    {
+        $query = salesDepartmentModel::query();
+        if ($request->from_date !== null and $request->to_date !== null) {
+            $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+        }
+
+        if ($request->search_payment_status !== null) {
+            if ($request->search_payment_status == 'paid') {
+                $query->where('status', '=', 1);
+            } else {
+                $query->where('status', '=', 0);
+            }
+        }
+
+        if ($request->search_company_id !== null) {
+            $query->whereHas('customer', function ($query2) use ($request) {
+                $query2->where('company_id', $request->search_company_id);
+            });
+        }
+
+        if ($request->search_customer_id !== null) {
+            $query->where('customer_id', $request->search_customer_id);
+        }
+
+
+        $sales_history = $query->orderBy('id', 'desc')->get();
+        $total_due = $sales_history->sum('due');
+        $total_payment = $sales_history->sum('payment_amount');
+        $total_amount = $sales_history->sum('total_price');
+
+
+        return view('layouts.backend.sales_department.sales_history_invoice_pdf',compact('sales_history','total_due','total_payment','total_amount'));
 
     }
 

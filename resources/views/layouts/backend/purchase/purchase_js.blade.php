@@ -96,7 +96,7 @@
                 },
             ],
         });
-        $('#search_form').on('submit', function (event) {
+        $('#btnFiterSubmitSearch').on('click', function (event) {
             event.preventDefault();
             table.draw(true);
         });

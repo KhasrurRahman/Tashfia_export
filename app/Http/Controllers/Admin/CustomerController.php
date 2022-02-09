@@ -214,9 +214,11 @@ class CustomerController extends Controller
         $total_payment = $sales_history->sum('payment_amount');
         $total_amount = $sales_history->sum('total_price');
 
-        $pdf = PDF::loadView('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
-//        return view('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
-        return $pdf->download('customer_payment_history_invoice.pdf');
+//        $pdf = PDF::loadView('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
+//        return $pdf->download('customer_payment_history_invoice.pdf');
+
+        return view('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
+
 
     }
 

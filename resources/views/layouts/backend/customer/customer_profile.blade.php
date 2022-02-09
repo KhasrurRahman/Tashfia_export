@@ -39,7 +39,7 @@
                         @endif
                         <br>
                     </div>
-                    <a href="{{route('admin.customer/sales_payment_history_pdf',$customer->id)}}" class="btn btn-success">Export Sales Payment history</a>
+                    <a href="{{route('admin.customer/sales_payment_history_pdf',$customer->id)}}" class="btn btn-success" target="_blank">Export Sales Payment history</a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
