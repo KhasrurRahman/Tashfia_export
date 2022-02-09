@@ -59,6 +59,10 @@ class DepartmentController extends Controller
                 ->addIndexColumn()
                 ->addColumn('customer', function ($data) {
                     return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="customer_details(' . $data->customer_id . ')">' . $data->customer->name . '</a>';
+                })->addColumn('customer_company_name', function ($data) {
+                    return $data->customer->company->company_name;
+                })->addColumn('customer_id', function ($data) {
+                    return $data->customer->id;
                 })->addColumn('sales_code', function ($data) {
                     return $data->sales_code;
                 })->addColumn('total', function ($data) {
@@ -84,7 +88,7 @@ class DepartmentController extends Controller
                     }
                     return $status;
                 })->addColumn('date', function ($data) {
-                    return date("d-M-y h:i A", strtotime($data->created_at));
+                    return date("d-M-y", strtotime($data->created_at));
                 })->addColumn('action', function ($data) {
                     if ($data->due > 0) {
                         $pay_button = ' <a href="javascript:void(0)" onclick="pay_due_bill(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >Pay bill</a>';
@@ -97,7 +101,7 @@ class DepartmentController extends Controller
                 })->with('total_sale', $query->sum('total_price'))
                 ->with('total_due', $query->sum('due'))
                 ->with('total_payment', $query->sum('payment_amount'))
-                ->rawColumns(['customer', 'customer_type', 'sales_code', 'total', 'paid_amount', 'due', 'payment_status', 'date', 'action'])
+                ->rawColumns(['customer', 'customer_type', 'sales_code', 'total', 'paid_amount', 'due', 'payment_status', 'customer_company_name', 'customer_id', 'date', 'action'])
                 ->make(true);
         }
     }
@@ -142,7 +146,7 @@ class DepartmentController extends Controller
                 ->addColumn('product', function ($data) {
                     return '<a href="javascript:void(0)" onclick="view_modal(' . $data->purchase->product_id . ')" class="edit btn btn-success btn-sm" >' . $data->purchase->product->chalan_no . '</a>';
                 })->addColumn('date', function ($data) {
-                    return date("d-M-y h:i A", strtotime($data->created_at));
+                    return date("d-M-y", strtotime($data->created_at));
                 })->addColumn('quantity', function ($data) {
                     return $data->quantity;
                 })->addColumn('product_bar_code', function ($data) {

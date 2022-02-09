@@ -19,7 +19,7 @@
                     .data()
                     .sum()
                 $(api.column(5).footer()).html(
-                    ' ( Tk ' + total_purchas_price + ' )'
+                    'Tk ' + total_purchas_price
                 );
 
                 total_actual_purchas_price = this.api().ajax.json().total_actual_purchas_price
@@ -28,15 +28,14 @@
                     .data()
                     .sum()
                 $(api.column(6).footer()).html(
-                    ' ( Tk ' + total_actual_purchas_price + ' )'
+                    'Tk ' + total_actual_purchas_price
                 );
             },
             "order": [
                 [1, 'desc']
             ],
             "columnDefs": [{
-                "className": "text-left",
-                "targets": "_all"
+                "className": "text-left", "targets": "_all",'orderable': false,'searchable':false,
             }],
             processing: true,
             serverSide: true,

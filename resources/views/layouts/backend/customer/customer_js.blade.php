@@ -9,7 +9,7 @@
         var table = $('.yajra-datatable').DataTable({
             "order": [[1, 'desc']],
             "columnDefs": [
-                {"className": "dt-center", "targets": "_all"}
+                {"className": "text-left", "targets": "_all",'orderable': false,'searchable':false}
             ],
             processing: true,
             serverSide: true,

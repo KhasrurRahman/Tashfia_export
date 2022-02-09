@@ -12,34 +12,34 @@
                 };
                 total = this.api().ajax.json().total_sale
                 pageTotal = api
-                    .column(4, {page: 'current'})
+                    .column(3, {page: 'current'})
                     .data()
                     .sum()
-                $(api.column(4).footer()).html(
-                    ' ( Tk ' + total + ')'
+                $(api.column(3).footer()).html(
+                    ' Tk ' + total
                 );
 
                 total_due = this.api().ajax.json().total_due
                 pageTotal_due = api
-                    .column(6, {page: 'current'})
-                    .data()
-                    .sum()
-                $(api.column(6).footer()).html(
-                    ' ( Tk ' + total_due + ' )'
-                );
-
-                total_payment = this.api().ajax.json().total_payment
-                pageTotal_total_payment = api
                     .column(5, {page: 'current'})
                     .data()
                     .sum()
                 $(api.column(5).footer()).html(
-                    ' ( Tk ' + total_payment + ' )'
+                    'Tk ' + total_due
+                );
+
+                total_payment = this.api().ajax.json().total_payment
+                pageTotal_total_payment = api
+                    .column(4, {page: 'current'})
+                    .data()
+                    .sum()
+                $(api.column(4).footer()).html(
+                    'Tk ' + total_payment
                 );
             },
             "order": [[1, 'desc']],
             "columnDefs": [
-                {"className": "text-left", "targets": "_all"}
+                {"className": "text-left", "targets": "_all",'orderable': false,'searchable':false}
             ],
             processing: true,
             serverSide: true,
@@ -63,15 +63,15 @@
                 }
             },
             columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
+                {data: 'customer_id', name: 'customer_id', searchable: false},
+                {data: 'customer_company_name', name: 'customer_company_name', searchable: false},
                 {data: 'customer', name: 'customer', searchable: false},
-                {data: 'customer_type', name: 'customer_type', searchable: false},
-                {data: 'sales_code', name: 'sales_code'},
                 {data: 'total', name: 'total'},
                 {data: 'paid_amount', name: 'paid_amount'},
                 {data: 'due', name: 'due'},
-                {data: 'payment_status', name: 'payment_status'},
                 {data: 'date', name: 'date'},
+                {data: 'customer_type', name: 'customer_type', searchable: false},
+                {data: 'payment_status', name: 'payment_status'},
                 {data: 'action', name: 'action', searchable: false},
             ],
             dom: 'lBfrtip',

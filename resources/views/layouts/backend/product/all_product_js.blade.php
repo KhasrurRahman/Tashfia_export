@@ -9,7 +9,7 @@
             "order": [[1, 'desc']],
             "bFilter": false,
             "columnDefs": [
-                {"className": "text-left", "targets": "_all"}
+                {"className": "text-left", "targets": "_all",'orderable': false,'searchable':false}
             ],
             processing: true,
             serverSide: true,
@@ -43,9 +43,6 @@
                 {data: 'sl_no', name: 'sl_no'},
                 {data: 'ggsm', name: 'ggsm'},
                 {data: 'fb_rv_date', name: 'fb_rv_date'},
-                {data: 'lot_no', name: 'lot_no'},
-                {data: 'batch_no', name: 'batch_no'},
-                {data: 'order_no', name: 'order_no'},
                 {data: 'card_no', name: 'card_no'},
                 {data: 'roll', name: 'roll'},
                 {data: 'dia', name: 'dia'},

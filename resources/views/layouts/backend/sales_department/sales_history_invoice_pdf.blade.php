@@ -18,18 +18,18 @@
                 <td>{{$key+1}}</td>
                 <td>{{$data->customer->id}}</td>
                 <td>{{date("d-M-y", strtotime($data->created_at))}}</td>
-                <td>{{$data->sales_code}}</td>
-                <td>{{$data->payment_amount}}</td>
-                <td>{{$data->due}}</td>
-                <td>{{$data->total_price}}</td>
+                <td style="text-align: right">{{$data->sales_code}}</td>
+                <td style="text-align: right">{{$data->payment_amount}}</td>
+                <td style="text-align: right">{{$data->due}}</td>
+                <td style="text-align: right">{{$data->total_price}}</td>
             </tr>
         @endforeach
         <tfoot>
         <tr>
             <td colspan="4">Total</td>
-            <td>{{$total_due}} TK</td>
-            <td>{{$total_payment}} TK</td>
-            <td>{{$total_amount}} TK</td>
+            <td style="text-align: right">{{$total_due}} TK</td>
+            <td style="text-align: right">{{$total_payment}} TK</td>
+            <td style="text-align: right">{{$total_amount}} TK</td>
         </tr>
         </tfoot>
 @endpush
