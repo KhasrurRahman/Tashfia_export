@@ -25,7 +25,7 @@
         <tfoot>
         <tr>
             <td colspan="2">Total</td>
-            <td>{{$total_quantity}} TK</td>
+            <td>{{$total_quantity}} KG</td>
             <td></td>
             <td>{{$total_purchase_price}} TK</td>
             <td>{{$total_actual_purchase_price}} TK</td>
