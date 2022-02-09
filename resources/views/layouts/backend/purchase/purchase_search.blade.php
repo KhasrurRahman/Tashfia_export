@@ -56,7 +56,7 @@
 
             <div class="col-1">
                 <div class="form-group">
-                    <button type="button" class="btn btn-danger btn-info" onclick="form_reset()"
+                    <button type="button" class="btn btn-danger btn-info btn-block" onclick="form_reset()"
                         style="margin-top: 30px">
                         Clear
                     </button>
@@ -66,7 +66,7 @@
             <div class="col-1">
                 <div class="form-group">
                     <button type="submit" class="btn btn-info btn-info" style="margin-top: 30px">
-                        Print
+                        Print Report
                     </button>
                 </div>
             </div>

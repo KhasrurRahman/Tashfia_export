@@ -15,7 +15,7 @@
         @foreach($purchase_history as $key=>$data)
             <tr>
                 <td>{{$key+1}}</td>
-                <td>{{$data->product->chalan_no}}</td>
+                <td style="text-align: left">{{$data->product->chalan_no}}</td>
                 <td>{{$data->quantity}}</td>
                 <td>{{$data->unit_price}}</td>
                 <td>{{$data->total_purchas_price}}</td>

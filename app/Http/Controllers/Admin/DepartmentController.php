@@ -145,11 +145,13 @@ class DepartmentController extends Controller
                     return date("d-M-y h:i A", strtotime($data->created_at));
                 })->addColumn('quantity', function ($data) {
                     return $data->quantity;
+                })->addColumn('product_bar_code', function ($data) {
+                    return $data->purchase->product->card_no;
                 })->addColumn('action', function ($data) {
                     $actionBtn = '<a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a>';
                     return $actionBtn;
                 })->with('total_quantity', $query->sum('quantity'))
-                ->rawColumns(['product', 'date', 'quantity', 'action'])
+                ->rawColumns(['product', 'date', 'quantity', 'action','product_bar_code'])
                 ->make(true);
         }
     }

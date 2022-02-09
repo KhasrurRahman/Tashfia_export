@@ -5,10 +5,11 @@
 
     $(function () {
         var table = $('.yajra-datatable').DataTable({
+            responsive: true,
             "order": [[1, 'desc']],
             "bFilter": false,
             "columnDefs": [
-                {"className": "dt-center", "targets": "_all"}
+                {"className": "text-left", "targets": "_all"}
             ],
             processing: true,
             serverSide: true,

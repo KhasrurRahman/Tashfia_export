@@ -86,13 +86,13 @@
                                     <table class="table table-striped table-bordered nowrap simpletable">
                                         <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>SL.</th>
                                             <th>Date</th>
                                             <th>Sales Code</th>
+                                            <th>Total Invoice Price</th>
                                             <th>Paid Amount</th>
                                             <th>Due</th>
                                             <th>Payment Status</th>
-                                            <th>Total</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -102,6 +102,7 @@
                                                 <td>{{$key+1}}</td>
                                                 <td>{{date("d-M-y h:i A", strtotime($data->created_at))}}</td>
                                                 <td>{{$data->sales_code}}</td>
+                                                <td>{{$data->total_price}}</td>
                                                 <td>{{$data->payment_amount}}</td>
                                                 <td>{{$data->due}}</td>
                                                 <td>
@@ -111,7 +112,6 @@
                                                         <span class="right badge badge-warning">Unpaid</span>
                                                     @endif
                                                 </td>
-                                                <td>{{$data->total_price}}</td>
                                                 <td>
                                                     <a href="{{url('admin/sales/sales_department_invoice/' .
                     $data->id)}}" class="btn btn-sm btn-success" target="_blank">Invoice</a>

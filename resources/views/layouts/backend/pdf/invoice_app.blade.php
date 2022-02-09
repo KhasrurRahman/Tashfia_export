@@ -149,7 +149,7 @@
         .invoice_table td, .invoice_table th {
             border: 1px solid #ddd;
             padding: 8px;
-            text-align: center;
+            text-align: left;
         }
 
         .invoice_table tr:nth-child(even) {
@@ -166,6 +166,9 @@
             text-align: center;
             background-color: #04AA6D;
             color: black;
+        }
+        .middle_align{
+            text-align: center;
         }
     </style>
 </head>

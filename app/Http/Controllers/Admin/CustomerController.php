@@ -210,6 +210,7 @@ class CustomerController extends Controller
     {
         $sales_history = salesDepartmentModel::query()->join('sales_payments', 'sales_payments.sales_id', '=', 'sales.id')->where('sales.customer_id', $customer_id)->select(["sales.created_at", "sales.sales_code", "sales.due", "sales.payment_amount", "sales_payments.payment_mode", "sales.total_price"])->get();
 
+        $customer = CustomerModel::find($customer_id);
         $total_due = $sales_history->sum('due');
         $total_payment = $sales_history->sum('payment_amount');
         $total_amount = $sales_history->sum('total_price');
@@ -217,9 +218,7 @@ class CustomerController extends Controller
 //        $pdf = PDF::loadView('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
 //        return $pdf->download('customer_payment_history_invoice.pdf');
 
-        return view('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
-
-
+        return view('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount','customer'));
     }
 
 }

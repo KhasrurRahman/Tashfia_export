@@ -25,7 +25,7 @@
                     .data()
                     .sum()
                 $(api.column(6).footer()).html(
-                    ' ( Tk' + total_due + ' )'
+                    ' ( Tk ' + total_due + ' )'
                 );
 
                 total_payment = this.api().ajax.json().total_payment
@@ -34,12 +34,12 @@
                     .data()
                     .sum()
                 $(api.column(5).footer()).html(
-                    ' ( Tk' + total_payment + ' )'
+                    ' ( Tk ' + total_payment + ' )'
                 );
             },
             "order": [[1, 'desc']],
             "columnDefs": [
-                {"className": "dt-center", "targets": "_all"}
+                {"className": "text-left", "targets": "_all"}
             ],
             processing: true,
             serverSide: true,

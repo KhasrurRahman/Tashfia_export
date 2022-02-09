@@ -24,7 +24,7 @@
             },
             "order": [[1, 'desc']],
             "columnDefs": [
-                {"className": "dt-center", "targets": "_all"}
+                {"className": "text-left", "targets": "_all"}
             ],
             processing: true,
             serverSide: true,
@@ -46,6 +46,7 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
                 {data: 'product', name: 'product', searchable: false},
                 {data: 'quantity', name: 'quantity', searchable: false},
+                {data: 'product_bar_code', name: 'product_bar_code', searchable: false},
                 {data: 'date', name: 'date'},
                 {data: 'action', name: 'action', searchable: false},
             ],

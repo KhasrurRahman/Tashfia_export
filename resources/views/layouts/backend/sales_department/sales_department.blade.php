@@ -35,7 +35,7 @@
                 <tbody>
                 </tbody>
                 <tfoot>
-                <tr class="bg-success text-white">
+                <tr class="bg-success text-white" style="font-size: 0.5vw">
                     <th style="text-align:right">Total:</th>
                     <th></th>
                     <th></th>

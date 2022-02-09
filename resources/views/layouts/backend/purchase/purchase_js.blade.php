@@ -35,7 +35,7 @@
                 [1, 'desc']
             ],
             "columnDefs": [{
-                "className": "dt-center",
+                "className": "text-left",
                 "targets": "_all"
             }],
             processing: true,

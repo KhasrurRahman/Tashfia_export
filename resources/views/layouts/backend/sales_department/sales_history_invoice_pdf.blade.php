@@ -1,5 +1,5 @@
 @extends('layouts.backend.pdf.invoice_app')
-@section('title','sales History')
+@section('title','Sales History')
 @push('invoice_body')
     <h3 style="text-align: center">@yield('title','') | Tashfia Export</h3>
     <table class="invoice_table">
