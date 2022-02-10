@@ -50,8 +50,10 @@ class supplierController extends Controller
                     $img = '<img src="' . asset('upload/supplier_image/' . $data->photo) . '" style="height:100px">';
                     return $img;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/supplier/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" >Edit</a> ';
-                    return $actionBtn;
+                   $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/supplier/edit/' . $data->id) . '" class="dropdown-item" >Edit</a>';
+
+                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">'. $buttons . ' </div> </div>';
+                    return $action_button;
                 })->rawColumns(['name', 'personal_phone', 'present_address', 'email', 'balance', 'company_name', 'company_address', 'company_contact_no', 'photo', 'action'])
                 ->make(true);
         }

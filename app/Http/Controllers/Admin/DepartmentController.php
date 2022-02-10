@@ -91,13 +91,20 @@ class DepartmentController extends Controller
                     return date("d-M-y", strtotime($data->created_at));
                 })->addColumn('action', function ($data) {
                     if ($data->due > 0) {
-                        $pay_button = ' <a href="javascript:void(0)" onclick="pay_due_bill(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >Pay bill</a>';
+                        $pay_button = ' <a href="javascript:void(0)" class="dropdown-item" onclick="pay_due_bill(' . $data->id . ')" >Pay bill</a>';
                     } else {
                         $pay_button = '';
                     }
-                    $actionBtn = '<a href="' . url('admin/sales/sales_department_invoice/' .
-                            $data->id) . '" class="edit btn btn-outline-warning btn-sm" target="_blank">Invoice</a> <a href="#" onclick="sales_details(' . $data->id . ')" class="edit btn btn-outline-dark btn-sm" >Invoice Details</a> <a href="#" onclick="invoice_payment_history(' . $data->id . ')" class="edit btn btn-outline-info btn-sm" >Payments</a>' . $pay_button;
-                    return $actionBtn;
+
+                    $invoice_print = '<a href="' . url('admin/sales/sales_department_invoice/' . $data->id) . '" class="dropdown-item" target="_blank">Invoice Print</a>';
+
+                    $invoice_details = '<a href="#" onclick="sales_details(' . $data->id . ')" class="dropdown-item" >Invoice Details</a>';
+                    $payments = '<a href="#" onclick="invoice_payment_history(' . $data->id . ')" class="dropdown-item">Payments</a>';
+
+                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">'. $invoice_print . $pay_button.$invoice_details . $payments . ' </div> </div>';
+                    return $action_button;
+
+
                 })->with('total_sale', $query->sum('total_price'))
                 ->with('total_due', $query->sum('due'))
                 ->with('total_payment', $query->sum('payment_amount'))

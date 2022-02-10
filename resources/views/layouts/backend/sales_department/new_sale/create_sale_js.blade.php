@@ -108,7 +108,8 @@
                     if (checkValue(id, stock_id) === 'yes') {
                         toastr.warning('Item Already selected', 'Already Selected');
                     } else {
-                        var markup = "<tr><td>" + data.product.chalan_no + "</td><td><div> <input type='number' value='' class='qty' name='input_quantity[]' id='qty' maxlength='4'> " +
+                        var markup = "<tr><td>" + data.product.chalan_no + "</td><td>" + data.product.quantity + "</td><td><div> <input type='number' value='' class='qty' " +
+                            "name='input_quantity[]' id='qty' maxlength='4'> " +
                             "</div></td><td><div> <input type='number' value='' class='qty_pound' name='input_quantity_pound[]' id='qty_pound'> </div></td><td><div> <input " +
                             "type='number' value='0' class='role' name='role[]' id='role'> </div></td><td><div> <input " +
                             "type='text' class='chalan_no' name='chalan_no[]' id='chalan_no'> </div></td> <td><input type='number' " +

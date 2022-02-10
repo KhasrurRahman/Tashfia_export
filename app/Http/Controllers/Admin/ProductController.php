@@ -128,8 +128,12 @@ class ProductController extends Controller
                 })->addColumn('dia', function ($data) {
                     return $data->dia;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onclick="view_modal(' . $data->id . ')" class="edit btn btn-outline-success btn-sm" >View</a> <a href="' . url('admin/product/edit/' . $data->id) . '"  class="btn btn-outline-info btn-sm" >Edit</a> <a <a href="javascript:void(0)" onclick="bar_code_modal(' . $data->id . ')"  class="edit btn btn-outline-warning btn-sm" >Print</a>';
-                    return $actionBtn;
+                    $buttons = '<a href="javascript:void(0)" onclick="view_modal(' . $data->id . ')" class="dropdown-item" >View</a> <a href="' . url('admin/product/edit/' .
+                            $data->id) . '"  class="dropdown-item" >Edit</a> <a <a href="javascript:void(0)" onclick="bar_code_modal(' . $data->id . ')"  class="dropdown-item" >Print</a>';
+
+                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">'. $buttons . ' </div> </div>';
+                    return $action_button;
+
                 })->rawColumns(['product_type', 'chalan_no', 'party_name', 'color_name', 'sl_no', 'ggsm', 'fb_rv_date', 'lot_no', 'batch_no', 'order_no', 'card_no', 'roll', 'dia', 'action'])
                 ->make(true);
         }

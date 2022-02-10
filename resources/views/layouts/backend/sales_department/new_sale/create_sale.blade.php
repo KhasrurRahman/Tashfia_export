@@ -21,7 +21,6 @@
         }
 
         .qty {
-            width: 55px;
             text-align: center;
         }
 
@@ -43,9 +42,9 @@
             vertical-align: middle;
         }
 
-        .qty {
-            width: 50%;
-        }
+        /*.qty {*/
+        /*    width: 100%%;*/
+        /*}*/
 
         .list-group {
             max-height: 300px;
@@ -55,7 +54,7 @@
         }
 
     </style>
-    <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
 
     <style>
@@ -151,6 +150,7 @@
                         <thead>
                         <tr style="background:#6b279b;color:white">
                             <th>Item name</th>
+                            <th>Stock(KG)</th>
                             <th>Quantity(KG)</th>
                             <th>Quantity(Pound)</th>
                             <th>Role</th>
@@ -162,7 +162,6 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         </tbody>
                     </table>
 
@@ -171,7 +170,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <ul class="list-group">
+                            <ul class="list-group" style="font-size: 20px;font-weight: bold">
                                 <li class="list-group-item">Quantity(KG): <span id="total_quantity">0</span></li>
                                 <li class="list-group-item">Grand Total: <span id="grand_total">0</span></li>
                             </ul>
@@ -308,9 +307,10 @@
 
 @endsection
 @push('js')
-    <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
-    <script src="{{ asset('backend/js/datatables.js') }}"></script>
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/js/datatables.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
     @include('layouts.backend.sales_department.new_sale.create_sale_js')
 @endpush
