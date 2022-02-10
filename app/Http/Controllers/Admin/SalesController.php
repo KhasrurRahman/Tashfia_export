@@ -42,10 +42,6 @@ class SalesController extends Controller
     {
         $product = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.id', $id)->select('stock.*', 'products.chalan_no')->first();
 
-
-// $product = LotDepartmentModel::query()->join('purchase', 'purchase.id', '=', 'stock.purchase_id')->join('products', 'products.id', '=', 'purchase.product_id')->select
-//('products.chalan_no', 'stock.*', 'purchase.unit_price', 'purchase.id as purchase_id')->where('stock.id', $id)->first();
-
         return response()->json(['product' => $product]);
     }
 
