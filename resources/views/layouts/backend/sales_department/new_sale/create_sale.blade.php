@@ -1,3 +1,4 @@
+
 @extends('layouts.backend.partial.app')
 @section('title', 'New Sales')
 @push('css')
