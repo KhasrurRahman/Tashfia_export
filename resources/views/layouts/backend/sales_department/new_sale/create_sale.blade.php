@@ -170,9 +170,21 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <ul class="list-group" style="font-size: 20px;font-weight: bold">
+                            <ul class="list-group" style="font-size: 20px;font-weight: bold;overflow: auto">
                                 <li class="list-group-item">Quantity(KG): <span id="total_quantity">0</span></li>
                                 <li class="list-group-item">Grand Total: <span id="grand_total">0</span></li>
+                                <div class="form-group">
+                                    <label for="product_id"></label>
+                                    <div class="input-group">
+                            <span class="input-group-prepend">
+                                <label class="input-group-text"><i class="ik ik-truck"></i></label>
+                            </span>
+                                        <input type="number" placeholder="labour bill" class="form-control" name="labour_bill" id="labour_bill" onkeyup="show_total_grand_total()">
+                                    </div>
+                                    <span id="error_sales_date" class="text-red error_field"></span>
+                                </div>
+
+
                             </ul>
                         </div>
                     </div>

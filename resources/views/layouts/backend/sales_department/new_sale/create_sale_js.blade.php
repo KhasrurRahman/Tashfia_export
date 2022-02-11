@@ -187,6 +187,7 @@
     };
 
     function show_total_grand_total() {
+        var labour_bill = Number($("#labour_bill").val())
         var calculated_total_sum = 0;
         $("#dsTable .total_unit_price").each(function () {
             var get_textbox_value = $(this).val();
@@ -194,8 +195,20 @@
                 calculated_total_sum += parseFloat(get_textbox_value);
             }
         });
-        $("#grand_total").html(calculated_total_sum);
+        var grand_total = Number(calculated_total_sum)
+        // calculated_total_sum + labour_bill
+        $("#grand_total").html(grand_total+labour_bill);
     };
+
+    // function sum_labour_bill() {
+    //     var labour_bill = Number($("#labour_bill").val())
+    //     var grand_total = Number($("#grand_total").html())
+    //
+    //     $total  = (labour_bill + grand_total)
+    //     console.log($total)
+    //
+    //     $("#grand_total").html($total);
+    // };
 
 
     function store_sales_data() {
@@ -275,6 +288,7 @@
                 subtotal: $("#sub_total").val(),
                 remark: $("#remarks").val(),
                 sales_executive_id: $("#sales_executive_id").val(),
+                labour_bill: $("#labour_bill").val(),
                 per_role_data: per_role_data,
                 stock_id: stock_id,
                 per_quantity: per_quantity,
@@ -312,6 +326,7 @@
                 toastr.error(response.responseJSON.errors.per_payment_type);
                 toastr.error(response.responseJSON.errors.per_payment_amount);
                 toastr.error(response.responseJSON.errors.sales_executive_id);
+                toastr.error(response.responseJSON.errors.labour_bill);
             }
         });
     }
@@ -328,7 +343,6 @@
         btn.innerText = 'Save and continue'
     }
 
-
     function customer_details(id) {
         $.ajax({
             url: "{{url('admin/sales/customer_details')}}/" + id,
@@ -340,7 +354,6 @@
                 $('#total_previous_due').html('Total Due:' + data.total_due + 'tk')
             },
             error: function (data) {
-                console.log(data)
             }
         });
     }

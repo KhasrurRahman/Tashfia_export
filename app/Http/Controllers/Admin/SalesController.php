@@ -58,6 +58,7 @@ class SalesController extends Controller
             'per_payment_type' => 'required',
             'per_payment_amount' => 'required',
             'sales_executive_id' => 'required',
+            'labour_bill' => 'required',
         ]);
 
 
