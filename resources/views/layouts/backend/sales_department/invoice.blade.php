@@ -306,6 +306,7 @@
                 </tr>
                 <tr style="height: 6px;">
                     <td style="width: 175px; height: 6px;line-height: 10px;background:#dfd7d7" colspan="3">
+                        <p><b>Labour Bill: {{ $sales->labour_bill }}</b>Tk</p>
                         <p><b>Total: {{ $sales->total_price }}</b>Tk</p>
                         <p><b>Payment: {{ $sales->payment_amount }}</b>Tk</p>
                         <p><b>Due: {{ $sales->due }}</b>Tk</p>

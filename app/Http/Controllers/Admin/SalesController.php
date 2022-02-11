@@ -61,7 +61,6 @@ class SalesController extends Controller
             'labour_bill' => 'required',
         ]);
 
-
         for ($i = 0; $i < count($request->stock_id); $i++) {
             $quantity = LotDepartmentModel::find($request->stock_id[$i])->quantity;
             if ($request->per_quantity[$i] > $quantity) {
@@ -110,6 +109,7 @@ class SalesController extends Controller
         $sales->total_price = $request->grand_total;
         $sales->payment_amount = $total_paied_amount;
         $sales->due = $request->grand_total - $total_paied_amount;
+        $sales->labour_bill = $request->labour_bill;
         $sales->sales_date = $request->sales_date;
         $sales->sales_executive_id = $request->sales_executive_id;
         $sales->sales_code = mt_rand();
