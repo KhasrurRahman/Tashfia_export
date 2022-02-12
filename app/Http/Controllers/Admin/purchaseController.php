@@ -55,8 +55,10 @@ class purchaseController extends Controller
                     return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="view_product(' . $data->product_id . ')">' . $data->product->chalan_no . '</a>';
                 })->addColumn('supplier', function ($data) {
                     return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="supplier_details(' . $data->supplier_id . ')">' . $data->supplier->name . '</a>';
-                })->addColumn('Quantity', function ($data) {
+                })->addColumn('available_quantity', function ($data) {
                     return $data->quantity;
+                })->addColumn('Quantity', function ($data) {
+                    return $data->main_quantity;
                 })->addColumn('unit_price', function ($data) {
                     return $data->unit_price;
                 })->addColumn('total_purchas_price', function ($data) {
@@ -68,7 +70,7 @@ class purchaseController extends Controller
                     return $actionBtn;
                 })->with('total_purchas_price', $query->sum('total_purchas_price'))
                 ->with('total_actual_purchas_price', $query->sum('actual_purchas_price'))
-                ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action'])
+                ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action','available_quantity'])
                 ->make(true);
         }
     }
@@ -90,7 +92,7 @@ class purchaseController extends Controller
 
         $actual_unit_price = $request->actual_purchas_price / $request->quantity;
 
-        $request->request->add(['created_by' => Auth::user()->id, 'actual_unit_price' => $actual_unit_price]);
+        $request->request->add(['created_by' => Auth::user()->id, 'actual_unit_price' => $actual_unit_price,'main_quantity' => $request->quantity]);
         purchaseModel::create($request->all());
         return response()->json(['Done' => 'Done']);
     }

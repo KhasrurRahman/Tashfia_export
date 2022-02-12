@@ -34,14 +34,14 @@
             <div class="col-4">
                 <div class="form-group">
                     <label>Date from:</label>
-                    <input type="date" class="form-control" id="from_date">
+                    <input type="date" class="form-control" id="from_date" name="from_date">
                 </div>
             </div>
 
             <div class="col-4">
                 <div class="form-group">
                     <label>Date to:</label>
-                    <input type="date" class="form-control" id="to_date">
+                    <input type="date" class="form-control" id="to_date" name="to_date">
                 </div>
             </div>
 

@@ -44,10 +44,10 @@
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
+                {data: 'date', name: 'date'},
                 {data: 'product', name: 'product', searchable: false},
                 {data: 'quantity', name: 'quantity', searchable: false},
                 {data: 'product_bar_code', name: 'product_bar_code', searchable: false},
-                {data: 'date', name: 'date'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });

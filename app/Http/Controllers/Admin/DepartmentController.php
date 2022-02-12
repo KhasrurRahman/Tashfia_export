@@ -153,7 +153,7 @@ class DepartmentController extends Controller
                 ->addColumn('product', function ($data) {
                     return '<a href="javascript:void(0)" onclick="view_modal(' . $data->purchase->product_id . ')" class="edit btn btn-success btn-sm" >' . $data->purchase->product->chalan_no . '</a>';
                 })->addColumn('date', function ($data) {
-                    return date("d-M-y", strtotime($data->created_at));
+                    return date("d/M/y", strtotime($data->created_at));
                 })->addColumn('quantity', function ($data) {
                     return $data->quantity;
                 })->addColumn('product_bar_code', function ($data) {

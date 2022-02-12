@@ -11,6 +11,7 @@ class purchaseModel extends Model
         'product_id',
         'supplier_id',
         'created_by',
+        'main_quantity',
         'quantity',
         'status',
         'unit_price',

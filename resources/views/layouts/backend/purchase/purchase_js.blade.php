@@ -77,6 +77,10 @@
                     name: 'Quantity'
                 },
                 {
+                    data: 'available_quantity',
+                    name: 'available_quantity'
+                },
+                {
                     data: 'unit_price',
                     name: 'unit_price'
                 },

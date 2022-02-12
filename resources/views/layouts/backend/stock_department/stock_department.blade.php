@@ -22,10 +22,10 @@
                 <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Date</th>
                     <th>Product</th>
                     <th>Quantity(kg)</th>
                     <th>Product bar code</th>
-                    <th>Date</th>
                     <th>Action</th>
                 </tr>
                 </thead>

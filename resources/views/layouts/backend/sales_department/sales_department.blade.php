@@ -3,6 +3,7 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
+
 @endpush
 @section('main_menu','HOME')
 @section('active_menu','sales')
