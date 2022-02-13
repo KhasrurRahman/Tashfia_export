@@ -256,6 +256,5 @@
     <script src="{{ asset('backend/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('backend/js/datatables.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
-    @include('layouts.backend.customer.customer_js')
 
 @endpush

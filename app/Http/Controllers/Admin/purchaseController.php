@@ -84,6 +84,7 @@ class purchaseController extends Controller
             'unit_price' => 'required',
             'total_purchas_price' => 'required',
             'actual_purchas_price' => 'required',
+            'payment_mode' => 'required',
         ]);
 
         $product = ModelProduct::find($request->product_id);

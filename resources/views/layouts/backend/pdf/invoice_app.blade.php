@@ -166,6 +166,7 @@
             text-align: center;
             background-color: #04AA6D;
             color: black;
+            font-size: 13px;
         }
         .middle_align{
             text-align: center;

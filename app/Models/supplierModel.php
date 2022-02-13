@@ -34,4 +34,13 @@ class supplierModel extends Model
     {
         return $this->belongsTo(CompanyModel::class,'company_id');
     }
+
+    public function purchase()
+    {
+        return $this->hasMany(purchaseModel::class,'supplier_id');
+    }
+    public function product()
+    {
+        return $this->belongsTo(ModelProduct::class,'product_id');
+    }
 }

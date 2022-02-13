@@ -27,12 +27,10 @@
                 <td style="text-align: center">{{$data->due}}</td>
             </tr>
         @endforeach
-        <tfoot>
         <tr>
             <td colspan="3">Total</td>
             <td style="text-align: center">{{$total_amount}} TK</td>
             <td style="text-align: center">{{$total_payment}} TK</td>
             <td style="text-align: center">{{$total_due}} TK</td>
         </tr>
-        </tfoot>
 @endpush

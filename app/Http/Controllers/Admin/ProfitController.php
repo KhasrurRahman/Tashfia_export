@@ -30,45 +30,45 @@ class ProfitController extends Controller
     {
         if ($request->ajax()) {
             $query = salesDepartmentModel::query();
-            
+
             if ($request->from_date !== null and $request->to_date !== null) {
                 $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
             }
-            
-            
+
+
             $query->orderBy('created_at', 'DESC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('date', function ($data) {
-                    return date("d/m/y,g:i A", strtotime($data->created_at));
+                    return date("d/m/y", strtotime($data->created_at));
                 })->addColumn('customer_name', function ($data) {
                     return $data->customer->name;
                 })->addColumn('sales_details', function ($data) {
-                    return '<a href="#" onclick="sales_details(' . $data->id . ')" class="edit btn btn-outline-dark btn-sm" >Invoice Details</a>'; 
+                    return '<a href="#" onclick="sales_details(' . $data->id . ')" class="edit btn btn-outline-dark btn-sm" >Invoice Details</a>';
                 })->addColumn('sales_amount', function ($data) {
                     return $data->total_price;
                 })->addColumn('profit_or_loss', function ($data) {
                     return $data->profit_or_loss;
                 })->with('sum_balance', $query->sum('profit_or_loss'))
-                ->rawColumns(['date', 'customer_name', 'sales_details', 'sales_amount','profit_or_loss'])
+                ->rawColumns(['date', 'customer_name', 'sales_details', 'sales_amount', 'profit_or_loss'])
                 ->make(true);
         }
     }
-    
+
     public function delete($id)
     {
         CompanyModel::find($id)->delete();
         return response()->json(['success' => 'Done']);
     }
-    
+
     public function edit_company($id)
     {
         $company = CompanyModel::find($id);
-        return view('layouts.backend.company.edit_company',compact('company'));
+        return view('layouts.backend.company.edit_company', compact('company'));
     }
-    
-    public function company_update(Request $request,$id)
+
+    public function company_update(Request $request, $id)
     {
         $request->validate([
             'company_name' => 'required',
@@ -76,5 +76,16 @@ class ProfitController extends Controller
 
         CompanyModel::find($id)->update($request->all());
         return redirect()->back();
+    }
+
+    public function profit_loss_report_generate(Request $request)
+    {
+        $query = salesDepartmentModel::query();
+        if ($request->from_date !== null and $request->to_date !== null) {
+            $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+        }
+
+        $profit_loss = $query->orderBy('id', 'desc')->get();
+        return view('layouts.backend.report.profit.profit_loss_invoice_pdf', compact('profit_loss'));
     }
 }

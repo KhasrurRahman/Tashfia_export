@@ -15,10 +15,10 @@
                 };
                 total = this.api().ajax.json().sum_balance
                 pageTotal = api
-                    .column(4, {page: 'current'})
+                    .column(5, {page: 'current'})
                     .data()
                     .sum()
-                $(api.column(4).footer()).html(
+                $(api.column(5).footer()).html(
                     ' ( Tk ' + total + ')'
                 );
             },
@@ -49,11 +49,16 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
                 {data: 'date', name: 'date'},
                 {data: 'customer_name', name: 'customer_name'},
+                {data: 'sales_details', name: 'sales_details'},
                 {data: 'sales_amount', name: 'sales_amount'},
                 {data: 'profit_or_loss', name: 'profit_or_loss'},
             ],
+            dom: 'lBfrtip',
+            buttons: [
+                'excel', 'csv', 'pdf', 'copy'
+            ],
         });
-        $('#btnFiterSubmitSearch').on('click', function (event) {
+        $('#search_form').on('submit', function (event) {
             event.preventDefault();
             table.draw(true);
         });

@@ -18,7 +18,7 @@
             <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Per Name</th>
                     <th>per Phone</th>
                     <th>Address</th>

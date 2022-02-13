@@ -20,10 +20,9 @@
             <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>SL</th>
                     <th>Date</th>
                     <th>Customer Name</th>
-                    <th>Items</th>
                     <th>Sales Amount</th>
                     <th>Profit/loss</th>
                 </tr>
@@ -32,7 +31,6 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>

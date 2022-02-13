@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\CompanyModel;
 use App\Http\Controllers\Controller;
+use App\Models\purchaseModel;
 use App\Models\supplierModel;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -50,7 +51,8 @@ class supplierController extends Controller
                     $img = '<img src="' . asset('upload/supplier_image/' . $data->photo) . '" style="height:100px">';
                     return $img;
                 })->addColumn('action', function ($data) {
-                   $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/supplier/edit/' . $data->id) . '" class="dropdown-item" >Edit</a>';
+                   $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/supplier/edit/' .
+                           $data->id) . '" class="dropdown-item" >Edit</a> <a href="' . url('admin/supplier/profile/' . $data->id) . '" class="dropdown-item" >View</a>';
 
                     $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">'. $buttons . ' </div> </div>';
                     return $action_button;
@@ -148,5 +150,22 @@ class supplierController extends Controller
 
         Toastr::Success('Updated  successfully', 'successful');
         return redirect()->route('admin.supplier/index');
+    }
+
+    public function profile($supplier_id)
+    {
+        $supplier = supplierModel::find($supplier_id);
+        return view('layouts.backend.supplier.supplier_profile',compact('supplier'));
+    }
+
+    public function supplier_purchase_history_generate($supplier_id)
+    {
+        $history = purchaseModel::where('supplier_id',$supplier_id)->get();
+        $supplier = supplierModel::find($supplier_id);
+        $total_price = $history->sum('total_purchas_price');
+        $total_actual_price = $history->sum('actual_purchas_price');
+        $total_quantity = $history->sum('quantity');
+
+        return view('layouts.backend.supplier.supplier_payment_history_invoice_pdf', compact('history', 'supplier', 'total_price','total_actual_price','total_quantity'));
     }
 }

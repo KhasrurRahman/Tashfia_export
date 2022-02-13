@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ExpensesModel;
+use App\Models\purchaseModel;
 use App\Models\salesDepartmentModel;
+use App\Models\SalesPaymentModel;
 use App\SalesExecutiveModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -53,7 +55,7 @@ class ReportController extends Controller
     {
         $profit = salesDepartmentModel::sum('profit_or_loss');
         $expence = ExpensesModel::sum('Amount');
-        return view('layouts.backend.report.account_summary.account_summary',compact('profit','expence'));
+        return view('layouts.backend.report.account_summary.account_summary', compact('profit', 'expence'));
     }
 
     public function search_account_summary(Request $request)
@@ -61,6 +63,21 @@ class ReportController extends Controller
         $profit = salesDepartmentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->sum('profit_or_loss');
         $expence = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->sum('Amount');
 
-        return view('layouts.backend.report.account_summary.account_summary',compact('profit','expence'));
+        return view('layouts.backend.report.account_summary.account_summary', compact('profit', 'expence'));
+    }
+
+    public function deposit_expense_report_index()
+    {
+        return view('layouts.backend.report.deposit_expense.deposit_expense');
+    }
+
+    public function deposit_expense_report_search(Request $request)
+    {
+        $sales_payments = SalesPaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $purchase_history = purchaseModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $expense_history = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        return view('layouts.backend.report.deposit_expense.deposit_expense_invoice_pdf',compact('sales_payments','purchase_history','expense_history'));
+
+
     }
 }

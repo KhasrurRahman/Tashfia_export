@@ -230,7 +230,7 @@
                 <tbody>
                 <tr style="line-height: 0px;">
                     <td style="height: 7px;">
-                        <p>Ser.</p>
+                        <p>SL.</p>
                     </td>
                     <td style="width: 286px; height: 7px;">
                         <p>Description</p>
@@ -239,7 +239,7 @@
                         <p>ROLL</p>
                     </td>
                     <td style="width: 76.0156px; height: 7px;text-align: center">
-                        <p>Chalan no</p>
+                        <p>Chalan</p>
                     </td>
                     <td style="width: 75.9844px; height: 7px;">
                         <p>Qts(KG)</p>
