@@ -5,9 +5,25 @@
 
     $(function () {
         var table = $('.yajra-datatable').DataTable({
-            "order": [[1, 'desc']],
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(), data;
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                        i.replace(/[\$,]/g, '') * 1 :
+                        typeof i === 'number' ?
+                            i : 0;
+                };
+                total = this.api().ajax.json().total_amount
+                pageTotal = api
+                    .column(3, {page: 'current'})
+                    .data()
+                    .sum()
+                $(api.column(3).footer()).html(
+                     total + ' Tk '
+                );
+            },
             "columnDefs": [
-                {"className": "dt-center", "targets": "_all"}
+                {"className": "text-left", "targets": "_all",'orderable': false,'searchable':false}
             ],
             processing: true,
             serverSide: true,

@@ -30,6 +30,16 @@
                 $(api.column(6).footer()).html(
                     'Tk ' + total_actual_purchas_price
                 );
+
+                total_total_quantity = this.api().ajax.json().total_quantity
+                $(api.column(3).footer()).html(
+                     total_total_quantity +' KG'
+                );
+
+                total_available_quantity_quantity = this.api().ajax.json().total_available_quantity_quantity
+                $(api.column(4).footer()).html(
+                     total_available_quantity_quantity +' KG'
+                );
             },
             "order": [
                 [1, 'desc']

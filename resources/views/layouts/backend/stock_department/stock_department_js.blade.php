@@ -14,12 +14,8 @@
                             i : 0;
                 };
                 total_quantity = this.api().ajax.json().total_quantity
-                pageTotal_total_quantity = api
-                    .column(2, {page: 'current'})
-                    .data()
-                    .sum()
-                $(api.column(2).footer()).html(
-                    ' ( KG ' + total_quantity + ' )'
+                $(api.column(3).footer()).html(
+                    total_quantity + ' KG'
                 );
             },
             "order": [[1, 'desc']],

@@ -1,7 +1,7 @@
 @extends('layouts.backend.partial.app')
 @section('title','Expenses')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
     <style>.select2-container--default .select2-selection--single {
             height: 40px !important;
@@ -22,7 +22,7 @@
                 <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success float-right">Add @yield('title')</a>
             </div>
 
-            <table class="table yajra-datatable">
+            <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -36,6 +36,17 @@
                 </thead>
                 <tbody>
                 </tbody>
+                <tfoot>
+                <tr class="bg-success text-white" style="font-size: 0.6vw">
+                    <th style="text-align:right">Total:</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -45,9 +56,11 @@
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('backend/plugins/DataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('backend/js/datatables.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.22/api/sum().js"></script>
     @include('layouts.backend.expenses.expenses_js')
 
 @endpush

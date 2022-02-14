@@ -69,6 +69,8 @@ class purchaseController extends Controller
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/purchase/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" >Edit</a>';
                     return $actionBtn;
                 })->with('total_purchas_price', $query->sum('total_purchas_price'))
+                ->with('total_quantity', $query->sum('main_quantity'))
+                ->with('total_available_quantity_quantity', $query->sum('Quantity'))
                 ->with('total_actual_purchas_price', $query->sum('actual_purchas_price'))
                 ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action','available_quantity'])
                 ->make(true);
