@@ -57,9 +57,11 @@
                 @endforeach
 
 
-                <div class="nav-lavel">Role & Permission</div>
+
 
                 @if(count(menu_check('Menu')) !== 0)
+                    <div class="nav-lavel">Role & Permission</div>
+
                     <div class="nav-item {{Request::is('*/menu/*')?'open': ''}} has-sub">
                         <a href="#"><i class="ik ik-activity"></i><span>Menu Creation</span></a>
                         <div class="submenu-content">
