@@ -20,4 +20,5 @@ Route::post('login', 'Api\ApiAuthController@login');
 
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user-profile', 'Api\ApiAuthController@userProfile');
+    Route::get('customers', 'Api\BasicController@customers');
 });

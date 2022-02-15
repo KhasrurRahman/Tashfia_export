@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\CustomerModel;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -61,22 +62,9 @@ class ApiAuthController extends Controller
     }
 
 
-    public function user_info(Request $request)
+    public function customers()
     {
-         $validator = Validator::make($request->all(), [
-            'username' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-        $subscriber = User::where('username',$request->username)->select('id_subscriber_key','username','status_id','official_mobile','firstname','lastname','package_id')->first();
-        $amount = $subscriber->package->price;
-
-        if($subscriber->status_id == 2){
-           return response()->json(['errors' => ['status' => ['User account deleted.Please contact with your provider']]], 422);
-        }
-
-        return response()->json(['subscriberInfo' => $subscriber,'amount'=>$amount]);
+        $customer  = CustomerModel::all();
+        return response()->json(['customers' => $customer]);
     }
 }
