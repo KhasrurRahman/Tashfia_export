@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\dealWithPrefix;
+use App\Http\Middleware\JwtMiddleware;
 use App\Http\Middleware\LockAccount;
 use App\Http\Middleware\SubscriberMiddleware;
 use App\Http\Middleware\UserMiddleware;
@@ -72,5 +73,8 @@ class Kernel extends HttpKernel
         'subscriber' => SubscriberMiddleware::class,
         'routeprifix' => dealWithPrefix::class,
         'lock' => LockAccount::class,
+        'jwt.verify' => JwtMiddleware::class,
+        'jwt.auth' => '\Tymon\JWTAuth\Middleware\GetUserFromToken',
+        'jwt.refresh' => '\Tymon\JWTAuth\Middleware\RefreshToken',
     ];
 }

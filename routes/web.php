@@ -11,10 +11,12 @@ Route::get('/clear_cache', function () {
     Artisan::call('config:clear');
     Artisan::call('config:cache');
     Artisan::call('view:clear');
+    Artisan::call('jwt:secret');
     return 'Clear Cache';
 });
-
 Route::get('php_v', function () {print_r(PDO::getAvailableDrivers());});
+
+
 Route::post('paf_generate', 'HomeController2@paf_generate')->name('paf_generate');
 Route::get('invoice/{id}', 'HomeController2@invoice')->name('invoice');
 Route::get('bar_code', 'HomeController2@bar_code')->name('bar_code');

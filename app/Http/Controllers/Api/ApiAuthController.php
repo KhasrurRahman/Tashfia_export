@@ -14,7 +14,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ApiAuthController extends Controller
 {
-      public function __construct()
+    public function __construct()
     {
         config(['auth.defaults.guard' => 'api', 'auth.defaults.passwords' => 'users']);
     }
@@ -24,47 +24,46 @@ class ApiAuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
+        //valid credential
+        $validator = Validator::make($credentials, [
+            'email' => 'required|email',
+            'password' => 'required|string|max:50'
+        ]);
+
+        //Send failed response if request is not valid
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->messages()], 200);
+        }
+
+        //Request is validated
+        //Crean token
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 400);
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Login credentials are invalid.',
+                ], 400);
             }
         } catch (JWTException $e) {
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            return $credentials;
+            return response()->json([
+                'success' => false,
+                'message' => 'Could not create token.',
+            ], 500);
         }
 
-        return response()->json(['token'=>$token,'Status' => 'Success']);
-    }
-
-
-    public function getAuthenticatedUser()
-    {
-        try {
-
-            if (!$user = JWTAuth::parseToken()->authenticate()) {
-                return response()->json(['user_not_found'], 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response()->json(['token_expired'], $e->getStatusCode());
-
-        } catch (TokenInvalidException $e) {
-
-            return response()->json(['token_invalid'], $e->getStatusCode());
-
-        } catch (JWTException $e) {
-
-            return response()->json(['token_absent'], $e->getStatusCode());
-
-        }
-
-        return response()->json(auth()->user());
+        //Token created, return with success response and jwt token
+        return response()->json([
+            'success' => true,
+            'token' => $token,
+        ]);
     }
 
 
     public function customers()
     {
-        $customer  = CustomerModel::all();
+        $customer = User::all();
         return response()->json(['customers' => $customer]);
     }
+
 }

@@ -60,6 +60,10 @@ class ReportController extends Controller
 
     public function search_account_summary(Request $request)
     {
+        $request->validate([
+            'from_date' => 'required|date',
+            'to_date' => 'required|date',
+        ]);
         $profit = salesDepartmentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->sum('profit_or_loss');
         $expence = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->sum('Amount');
 
@@ -76,7 +80,7 @@ class ReportController extends Controller
         $sales_payments = SalesPaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $purchase_history = purchaseModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $expense_history = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
-        return view('layouts.backend.report.deposit_expense.deposit_expense_invoice_pdf',compact('sales_payments','purchase_history','expense_history'));
+        return view('layouts.backend.report.deposit_expense.deposit_expense_invoice_pdf', compact('sales_payments', 'purchase_history', 'expense_history'));
 
 
     }
