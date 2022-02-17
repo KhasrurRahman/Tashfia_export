@@ -118,6 +118,7 @@
                         <label for="Route_name">Payment Mode</label>
                         <select class="form-control select2" name="payment_mode" id="payment_mode">
                             <option selected disabled>Select Bank</option>
+                            <option value="Cache">Cache</option>
                             <option value="Bkash">Bkash</option>
                             <option value="Agrani Bank Ltd">Agrani Bank Ltd</option>
                             <option value="Bangladesh Development Bank Ltd">Bangladesh Development Bank Ltd</option>
