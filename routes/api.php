@@ -9,4 +9,5 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('customers', 'Api\BasicController@customers');
     Route::get('suppliers', 'Api\BasicController@suppliers');
     Route::post('account_summary', 'Api\BasicController@account_summary');
+    Route::post('profit_loss', 'Api\BasicController@profit_loss');
 });

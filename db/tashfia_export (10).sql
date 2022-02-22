@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2022 at 06:00 AM
+-- Generation Time: Feb 22, 2022 at 08:13 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -359,23 +359,25 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `initial_cache`
+-- Table structure for table `initial_balance`
 --
 
-CREATE TABLE `initial_cache` (
+CREATE TABLE `initial_balance` (
   `id` int(11) NOT NULL,
   `date` datetime DEFAULT NULL,
-  `cache` varchar(255) DEFAULT NULL,
+  `opening_balance` decimal(5,0) DEFAULT NULL,
+  `closing_balance` decimal(5,0) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL COMMENT '0=not edited , 1 = edited ',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `initial_cache`
+-- Dumping data for table `initial_balance`
 --
 
-INSERT INTO `initial_cache` (`id`, `date`, `cache`, `created_at`, `updated_at`) VALUES
-(1, '2022-02-22 04:32:09', '20000', '2022-02-22 04:32:09', '2022-02-22 04:32:09');
+INSERT INTO `initial_balance` (`id`, `date`, `opening_balance`, `closing_balance`, `status`, `created_at`, `updated_at`) VALUES
+(1, '2022-02-22 04:32:09', '20000', NULL, NULL, '2022-02-22 04:32:09', '2022-02-22 04:32:09');
 
 -- --------------------------------------------------------
 
@@ -1310,9 +1312,9 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`) USING BTREE;
 
 --
--- Indexes for table `initial_cache`
+-- Indexes for table `initial_balance`
 --
-ALTER TABLE `initial_cache`
+ALTER TABLE `initial_balance`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1507,9 +1509,9 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `initial_cache`
+-- AUTO_INCREMENT for table `initial_balance`
 --
-ALTER TABLE `initial_cache`
+ALTER TABLE `initial_balance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

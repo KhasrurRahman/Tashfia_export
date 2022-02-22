@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class InitialCacheModel extends Model
 {
-    protected $table = 'initial_cache';
+    protected $table = 'initial_balance';
 }

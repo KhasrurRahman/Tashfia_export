@@ -81,7 +81,5 @@ class ReportController extends Controller
         $purchase_history = purchaseModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $expense_history = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         return view('layouts.backend.report.deposit_expense.deposit_expense_invoice_pdf', compact('sales_payments', 'purchase_history', 'expense_history'));
-
-
     }
 }

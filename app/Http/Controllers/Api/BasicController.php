@@ -39,4 +39,20 @@ class BasicController extends Controller
 
         return response()->json(['profit' => $profit, 'expense' => $expence]);
     }
+
+    public function profit_loss(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'from_date' => 'required|date',
+            'to_date' => 'required|date',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $data = salesDepartmentModel::select('customer_id','total_price','payment_amount','due','labour_bill','sales_code','profit_or_loss','status','created_at')->whereBetween('created_at', [$request->from_date, $request->to_date])->orderBy('created_at', 'DESC')->get();
+
+        $profit_or_loss = $data->sum('profit_or_loss');
+        return response()->json(['data' => $data,'profit_or_loss'=>$profit_or_loss]);
+    }
 }
