@@ -23,38 +23,34 @@
                         <span id="Error_status_purchase_id" class="text-red error_field"></span>
                     </div>
 
-
                     <div class="form-group">
                         <label for="Route_name">Supplier</label>
-                        <input type="text" class="form-control"  id="create_supplier" readonly>
+                        <input type="text" class="form-control" id="create_supplier" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Product</label>
-                        <input type="text" class="form-control"  id="create_prodyct" readonly>
+                        <input type="text" class="form-control" id="create_prodyct" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Quantity(kg)</label>
-                        <input type="text" class="form-control"  id="create_quantity" readonly>
+                        <input type="text" class="form-control" id="create_quantity" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Unit Price</label>
-                        <input type="text" class="form-control"  id="create_unit_price" readonly>
+                        <input type="text" class="form-control" id="create_unit_price" readonly>
                     </div>
-
 
                     <div class="form-group">
                         <label for="Route_name">Total Purchase Price</label>
                         <input type="text" class="form-control" id="create_total_purchas_price" readonly>
                     </div>
 
-                
-
                     <div class="form-group">
                         <label for="Route_name">quantity(Kg)</label>
-                        <input type="number" step="any" class="form-control" name="quantity" id="input_quantity">
+                        <input type="number" step="any" class="form-control" name="quantity" id="input_quantity" min="1">
                         <span id="Error_quantity" class="text-red error_field"></span>
                     </div>
 

@@ -14,7 +14,7 @@
                             i : 0;
                 };
                 total_quantity = this.api().ajax.json().total_quantity
-                $(api.column(3).footer()).html(
+                $(api.column(4).footer()).html(
                     total_quantity + ' KG'
                 );
             },
@@ -42,6 +42,7 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
                 {data: 'date', name: 'date'},
                 {data: 'product', name: 'product', searchable: false},
+                {data: 'main_quantity', name: 'main_quantity', searchable: false},
                 {data: 'quantity', name: 'quantity', searchable: false},
                 {data: 'product_bar_code', name: 'product_bar_code', searchable: false},
                 {data: 'action', name: 'action', searchable: false},

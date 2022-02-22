@@ -178,7 +178,7 @@ class DepartmentController extends Controller
         $purchase->quantity -= $request->quantity;
         $purchase->update();
 
-        $request->request->add(['created_by' => Auth::user()->id]);
+        $request->request->add(['created_by' => Auth::user()->id,'main_quantity'=>$request->quantity]);
         LotDepartmentModel::create($request->all());
         return response()->json(['Done' => 'Done']);
     }

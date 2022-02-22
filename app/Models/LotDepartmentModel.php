@@ -8,7 +8,7 @@ class LotDepartmentModel extends Model
 {
     protected $table = 'stock';
 
-    protected $fillable = ["sales_rate", "purchase_id", "total_sales_price", "total_purchas_price", "created_by", "quantity"];
+    protected $fillable = ["sales_rate", "purchase_id", "total_sales_price", "total_purchas_price", "created_by", "quantity", "main_quantity"];
 
     public function purchase()
     {

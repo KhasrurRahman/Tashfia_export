@@ -25,6 +25,7 @@
                     <th>Date</th>
                     <th>Product</th>
                     <th>Quantity(kg)</th>
+                    <th>Available Quantity(kg)</th>
                     <th>Product bar code</th>
                     <th>Action</th>
                 </tr>
@@ -34,6 +35,7 @@
                 <tfoot>
                 <tr class="bg-success text-white">
                     <th style="text-align:right">Total:</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>

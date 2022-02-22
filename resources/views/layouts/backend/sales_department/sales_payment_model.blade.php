@@ -52,7 +52,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Update changes</button>
+                        <button type="submit" class="btn btn-primary">Make Payment</button>
                     </div>
                 </form>
             </div>
