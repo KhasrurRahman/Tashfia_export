@@ -11,7 +11,7 @@ Route::get('/clear_cache', function () {
     Artisan::call('config:clear');
     Artisan::call('config:cache');
     Artisan::call('view:clear');
-    Artisan::call('jwt:secret');
+//    Artisan::call('jwt:secret');
     return 'Clear Cache';
 });
 Route::get('php_v', function () {print_r(PDO::getAvailableDrivers());});

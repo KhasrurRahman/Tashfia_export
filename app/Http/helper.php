@@ -1,5 +1,9 @@
 <?php
 
+use App\InitialCacheModel;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Carbon;
+
 function role_name()
 {
     $role_name = \Illuminate\Support\Facades\Auth::user()->role->slag;
@@ -30,6 +34,21 @@ function get_parent_menu()
     $segment = request()->segment(3) ? request()->segment(2) . '/' . request()->segment(3) : request()->segment(2);
     $route = \App\dynamic_route::where('url', $segment)->first();
     return isset($route->menu->parent) ? $route->menu->parent->id : '';
+
+}
+
+function check_initial_balance_status()
+{
+    return InitialCacheModel::where('date',Carbon::now()->toDateString())->first()->status;
+}
+
+function redirect_after_check_opening_balance()
+{
+    if (check_initial_balance_status() == 0)
+    {
+        Toastr::error('please Update Opening balance for purchase or sale', 'Update Opening Balance');
+        return redirect()->route('admin.adminDashboard');
+    }
 }
 
 

@@ -9,6 +9,7 @@ use App\Models\purchaseModel;
 use App\Models\LotDepartmentModel;
 use App\Models\ModelProduct;
 use App\Models\salesDepartmentModel;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,10 @@ class DepartmentController extends Controller
 {
     public function show_sales_department()
     {
+        if (check_initial_balance_status() == 0) {
+            Toastr::error('please Update Opening balance for purchase or sale,Contact With Accountant', 'Update Opening Balance');
+            return redirect()->route('admin.initalBalance/create_initial_balance');
+        }
         $customer = CustomerModel::all();
         $stock = LotDepartmentModel::where('quantity', '>', 0)->get();
         $company = CompanyModel::all();
@@ -101,7 +106,7 @@ class DepartmentController extends Controller
                     $invoice_details = '<a href="#" onclick="sales_details(' . $data->id . ')" class="dropdown-item" >Invoice Details</a>';
                     $payments = '<a href="#" onclick="invoice_payment_history(' . $data->id . ')" class="dropdown-item">Payments</a>';
 
-                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">'. $invoice_print . $pay_button.$invoice_details . $payments . ' </div> </div>';
+                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">' . $invoice_print . $pay_button . $invoice_details . $payments . ' </div> </div>';
                     return $action_button;
 
 
@@ -162,7 +167,7 @@ class DepartmentController extends Controller
                     $actionBtn = '<a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a>';
                     return $actionBtn;
                 })->with('total_quantity', $query->sum('quantity'))
-                ->rawColumns(['product', 'date', 'quantity', 'action','product_bar_code'])
+                ->rawColumns(['product', 'date', 'quantity', 'action', 'product_bar_code'])
                 ->make(true);
         }
     }
@@ -178,7 +183,7 @@ class DepartmentController extends Controller
         $purchase->quantity -= $request->quantity;
         $purchase->update();
 
-        $request->request->add(['created_by' => Auth::user()->id,'main_quantity'=>$request->quantity]);
+        $request->request->add(['created_by' => Auth::user()->id, 'main_quantity' => $request->quantity]);
         LotDepartmentModel::create($request->all());
         return response()->json(['Done' => 'Done']);
     }

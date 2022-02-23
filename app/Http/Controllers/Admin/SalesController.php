@@ -11,6 +11,7 @@ use App\Models\salesDepartmentModel;
 use App\Models\SalesPaymentModel;
 use App\SalesDetailsModel;
 use App\SalesExecutiveModel;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -18,6 +19,10 @@ class SalesController extends Controller
 {
     public function create()
     {
+        if (check_initial_balance_status() == 0) {
+            Toastr::error('please Update Opening balance for purchase or sale,Contact With Accountant', 'Update Opening Balance');
+            return redirect()->route('admin.initalBalance/create_initial_balance');
+        }
         $sales_executive = SalesExecutiveModel::all();
         $customers = CustomerModel::where('type', 'general')->get();
         return view('layouts.backend.sales_department.new_sale.create_sale', compact('customers', 'sales_executive'));
@@ -354,7 +359,7 @@ class SalesController extends Controller
         $total_amount = $sales_history->sum('total_price');
 
 
-        return view('layouts.backend.sales_department.sales_history_invoice_pdf',compact('sales_history','total_due','total_payment','total_amount'));
+        return view('layouts.backend.sales_department.sales_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
 
     }
 

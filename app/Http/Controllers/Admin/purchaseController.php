@@ -16,6 +16,10 @@ class purchaseController extends Controller
 {
     public function index()
     {
+        if (check_initial_balance_status() == 0) {
+            Toastr::error('please Update Opening balance for purchase or sale,Contact With Accountant', 'Update Opening Balance');
+            return redirect()->route('admin.initalBalance/create_initial_balance');
+        }
         $products = ModelProduct::get();
         $supplier = supplierModel::all();
         $company = CompanyModel::all();
@@ -72,7 +76,7 @@ class purchaseController extends Controller
                 ->with('total_quantity', $query->sum('main_quantity'))
                 ->with('total_available_quantity_quantity', $query->sum('Quantity'))
                 ->with('total_actual_purchas_price', $query->sum('actual_purchas_price'))
-                ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action','available_quantity'])
+                ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action', 'available_quantity'])
                 ->make(true);
         }
     }
@@ -95,7 +99,7 @@ class purchaseController extends Controller
 
         $actual_unit_price = $request->actual_purchas_price / $request->quantity;
 
-        $request->request->add(['created_by' => Auth::user()->id, 'actual_unit_price' => $actual_unit_price,'main_quantity' => $request->quantity]);
+        $request->request->add(['created_by' => Auth::user()->id, 'actual_unit_price' => $actual_unit_price, 'main_quantity' => $request->quantity]);
         purchaseModel::create($request->all());
         return response()->json(['Done' => 'Done']);
     }
@@ -173,8 +177,8 @@ class purchaseController extends Controller
         $purchase_history = $query->orderBy('id', 'desc')->get();
         $total_quantity = $purchase_history->sum('quantity');
         $total_purchase_price = $purchase_history->sum('total_purchas_price');
-        $total_actual_purchase_price =  $purchase_history->sum('actual_purchas_price');
+        $total_actual_purchase_price = $purchase_history->sum('actual_purchas_price');
 
-        return view('layouts.backend.purchase.purchase_pdf_invoice',compact('purchase_history','total_quantity','total_purchase_price','total_actual_purchase_price'));
+        return view('layouts.backend.purchase.purchase_pdf_invoice', compact('purchase_history', 'total_quantity', 'total_purchase_price', 'total_actual_purchase_price'));
     }
 }

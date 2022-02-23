@@ -13,13 +13,9 @@
                         typeof i === 'number' ?
                             i : 0;
                 };
-                total = this.api().ajax.json().sum_balance
-                pageTotal = api
-                    .column(5, {page: 'current'})
-                    .data()
-                    .sum()
-                $(api.column(5).footer()).html(
-                    ' ( Tk ' + total + ')'
+                total = this.api().ajax.json().total_opening_balance
+                $(api.column(2).footer()).html(
+                    'Tk ' + total
                 );
             },
             "order": [[1, 'desc']],
@@ -37,7 +33,7 @@
                 $('#total_data').html(api.ajax.json().recordsTotal);
             },
             ajax: {
-                url: "{{ url('admin/report/profit_search') }}",
+                url: "{{ url('admin/initalBalance/search_all_opening_and_closing_balance') }}",
                 type: 'POSt',
                 data: function (d) {
                     d.from_date = $('#from_date').val();
@@ -48,17 +44,11 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
                 {data: 'date', name: 'date'},
-                {data: 'customer_name', name: 'customer_name'},
-                {data: 'sales_details', name: 'sales_details'},
-                {data: 'sales_amount', name: 'sales_amount'},
-                {data: 'profit_or_loss', name: 'profit_or_loss'},
-            ],
-            dom: 'lBfrtip',
-            buttons: [
-                'excel', 'csv', 'pdf', 'copy'
+                {data: 'opening_balance', name: 'opening_balance'},
+                {data: 'closing_balance', name: 'closing_balance'},
             ],
         });
-        $('#search_form').on('submit', function (event) {
+        $('#btnFiterSubmitSearch').on('click', function (event) {
             event.preventDefault();
             table.draw(true);
         });
