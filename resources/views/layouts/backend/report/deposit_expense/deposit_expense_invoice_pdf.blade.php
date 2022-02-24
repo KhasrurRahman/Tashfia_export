@@ -40,7 +40,7 @@
                 @endforeach
                 @foreach($expense_history as $data)
                     <tr>
-                        <td>{{$data->name}}({{$data->expenses_category->name}})</td>
+                        <td>{{$data->name}}({{$data->expenses_category?$data->expenses_category->name:''}})</td>
                         <td></td>
                         <td></td>
                         <td>{{$data->Amount}}</td>

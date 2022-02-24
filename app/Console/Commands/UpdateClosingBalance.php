@@ -42,7 +42,7 @@ class UpdateClosingBalance extends Command
     public function handle()
     {
 //        calculate today's data
-        $today = Carbon::now()->toDateString();
+        $today = Carbon::now()->subDay(1)->toDateString();
         $today_total_sales = salesDepartmentModel::whereDate('created_at', $today)->sum('payment_amount');
         $today_total_purchase = purchaseModel::whereDate('created_at', $today)->sum('actual_purchas_price');
 
@@ -53,7 +53,7 @@ class UpdateClosingBalance extends Command
 
 //        creating opening date for next date
         $next_day_opening_balance = new InitialCacheModel();
-        $next_day_opening_balance->date = Carbon::now()->addDay(1)->toDateString();
+        $next_day_opening_balance->date = Carbon::now()->toDateString();
         $next_day_opening_balance->opening_balance = $opening_balance->closing_balance;
         $next_day_opening_balance->status = 0;
         $next_day_opening_balance->save();
