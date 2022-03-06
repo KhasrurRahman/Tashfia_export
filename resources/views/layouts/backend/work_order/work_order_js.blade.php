@@ -27,6 +27,7 @@
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
+                {data: 'product_name', name: 'product_name'},
                 {data: 'name', name: 'name'},
                 {data: 'personal_phone', name: 'personal_phone'},
                 {data: 'present_address', name: 'present_address'},

@@ -19,6 +19,7 @@
                 <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Product</th>
                     <th>Client name</th>
                     <th>Phone</th>
                     <th>Address</th>

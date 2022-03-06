@@ -230,8 +230,9 @@
                             <div class="form-group">
                                 <label for="product_id">Payment Type</label>
                                 <select class="form-control select2 payment_type" name="payment_type" id="payment_type" onchange="cheque_date_input(this)">
-                                    <option value="Cash ">Cash</option>
-                                    <option value="Card ">Card</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Card">Card</option>
+                                    <option value="Bank">Bank</option>
                                     <option value="Bkash">Bkash</option>
                                     <option value="Cheque">Cheque</option>
                                 </select>

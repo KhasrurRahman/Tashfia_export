@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\CompanyModel;
 use App\Http\Controllers\Controller;
 use App\Models\IngredientModel;
+use App\Models\ModelProduct;
+use App\Models\ProductCategoryModel;
 use App\workworderIngredientModel;
 use App\workworderModel;
 use App\workworderpartyModel;
@@ -20,7 +22,7 @@ class WorkorderController extends Controller
 {
     public function create_workorder_party()
     {
-        $company = workworderpartyModel::all();
+        $company = CompanyModel::all();
         return view('layouts.backend.work_order.work_order_party.work_order_party', compact('company'));
     }
 
@@ -53,7 +55,7 @@ class WorkorderController extends Controller
                     $img = '<img src="' . asset('upload/party_image/' . $data->photo) . '" style="height:100px">';
                     return $img;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/workorder/edit_workorder_party/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" >Edit</a> ';
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/workorder/edit_workorder_party/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" >Edit</a>';
                     return $actionBtn;
                 })->rawColumns(['name', 'personal_phone', 'present_address', 'email', 'balance', 'company_name', 'company_address', 'company_contact_no', 'photo', 'action'])
                 ->make(true);
@@ -150,20 +152,21 @@ class WorkorderController extends Controller
 
     public function create_workorder()
     {
+        $product = ModelProduct::all();
         $ingredient = IngredientModel::all();
         $party = workworderpartyModel::all();
-        return view('layouts.backend.work_order.create_work_order', compact('ingredient', 'party'));
+        return view('layouts.backend.work_order.create_work_order', compact('ingredient', 'party','product'));
     }
 
     public function store_workorder(Request $request)
     {
 
         $request->validate([
-            'ingredient_id' => 'required',
+            'product_id' => 'required',
         ]);
 
-
         $work_order = new workworderModel();
+        $work_order->product_id = $request->product_id;
         $work_order->invoice_date = $request->invoice_date;
         $work_order->due_date = $request->due_date;
         $work_order->party_id = $request->party_id;
@@ -173,13 +176,6 @@ class WorkorderController extends Controller
         $work_order->total_amount = $request->total_amount;
         $work_order->save();
 
-        for ($i = 0; $i < count($request->ingredient_id); $i++) {
-            $ingreadient = new workworderIngredientModel();
-            $ingreadient->work_order_id = $work_order->id;
-            $ingreadient->ingredient_id = $request->ingredient_id[$i];
-            $ingreadient->quantity = $request->quantity[$i];
-            $ingreadient->save();
-        }
         Toastr::success('Created Successfully', 'Created');
         return redirect()->back();
     }
@@ -198,6 +194,8 @@ class WorkorderController extends Controller
                 ->addIndexColumn()
                 ->addColumn('name', function ($data) {
                     return $data->party->name;
+                })->addColumn('product_name', function ($data) {
+                    return $data->product->chalan_no;
                 })->addColumn('personal_phone', function ($data) {
                     return $data->party->personal_phone;
                 })->addColumn('present_address', function ($data) {
@@ -213,7 +211,7 @@ class WorkorderController extends Controller
                 })->addColumn('action', function ($data) {
                     $actionBtn = ' <a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> ';
                     return $actionBtn;
-                })->rawColumns(['name', 'personal_phone', 'present_address', 'email', 'company_name', 'due_date', 'created_at', 'action'])
+                })->rawColumns(['name', 'personal_phone', 'present_address', 'email', 'company_name', 'due_date', 'created_at', 'action','product_name'])
                 ->make(true);
         }
     }

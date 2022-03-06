@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\InitialCacheModel;
 use App\Models\ExpensesModel;
 use App\Models\purchaseModel;
 use App\Models\salesDepartmentModel;
 use App\Models\SalesPaymentModel;
 use App\SalesExecutiveModel;
+use App\workworderModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -80,6 +83,8 @@ class ReportController extends Controller
         $sales_payments = SalesPaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $purchase_history = purchaseModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $expense_history = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
-        return view('layouts.backend.report.deposit_expense.deposit_expense_invoice_pdf', compact('sales_payments', 'purchase_history', 'expense_history'));
+        $work_order = workworderModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $initial_balance = InitialCacheModel::where('created_at',Carbon::now()->toDateString())->get();
+        return view('layouts.backend.report.deposit_expense.deposit_expense_invoice_pdf', compact('sales_payments', 'purchase_history', 'expense_history','work_order','initial_balance'));
     }
 }

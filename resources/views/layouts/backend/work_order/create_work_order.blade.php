@@ -34,50 +34,14 @@
         <div class="row">
             <div class="col-md-12" id="ingredient_section">
                 <div class="card">
-                    <div class="card-header"><h3>Add Ingredient</h3></div>
-                    <div class="card-body">
-                        <div class="row" x-data="handler()">
-                            <div class="col">
-                                <table class="table table-bordered align-items-center table-sm">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Select Ingredient</th>
-                                        <th>Quantity</th>
-                                        <th>Remove</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <template x-for="(field, index) in fields" :key="index">
-                                        <tr>
-                                            <td x-text="index + 1"></td>
-                                            <td>
-                                                <div class="form-group">
-                                                    <select class="form-control select2" name="ingredient_id[]">
-                                                        <option disabled selected>Please select</option>
-                                                        @foreach($ingredient as $data)
-                                                            <option value="{{$data->id}}">{{$data->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td><input x-model="field.txt2" type="text" name="quantity[]" class="form-control"></td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-small" @click="removeField(index)">&times;</button>
-                                            </td>
-                                        </tr>
-                                    </template>
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <td colspan="4" class="text-right">
-                                            <button type="button" class="btn btn-info" @click="addNewField()">+ Add Row</button>
-                                        </td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="card-body"><h3>Select Product</h3></div>
+                    <div class="form-group">
+                        <select class="form-control select2" name="product_id">
+                            <option disabled selected>Please select</option>
+                            @foreach($product as $data)
+                                <option value="{{$data->id}}">{{$data->chalan_no}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>

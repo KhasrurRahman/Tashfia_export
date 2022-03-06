@@ -20,6 +20,9 @@
                         <td>{{$data->amount}}</td>
                     </tr>
                 @endforeach
+                <tr>
+                    <td>{{$initial_balance->sum('opening_balance')}}(Opening Balance)</td>
+                </tr>
             </table>
         </div>
         <div style="float:right;width:49%;display: table-cell">
@@ -32,7 +35,7 @@
                 </tr>
                 @foreach($purchase_history as $data)
                     <tr>
-                        <td>{{$data->supplier->name}}</td>
+                        <td>{{$data->supplier->name}}(Purchase)</td>
                         <td>{{$data->id}}</td>
                         <td>{{$data->payment_mode}}</td>
                         <td>{{$data->actual_purchas_price}}</td>
@@ -40,10 +43,18 @@
                 @endforeach
                 @foreach($expense_history as $data)
                     <tr>
-                        <td>{{$data->name}}({{$data->expenses_category?$data->expenses_category->name:''}})</td>
+                        <td>{{$data->name}}({{$data->expenses_category?$data->expenses_category->name:''}})(expense)</td>
                         <td></td>
                         <td></td>
                         <td>{{$data->Amount}}</td>
+                    </tr>
+                @endforeach
+                @foreach($work_order as $data)
+                    <tr>
+                        <td>{{$data->product->chalan_no}}(work_order)</td>
+                        <td></td>
+                        <td></td>
+                        <td>{{$data->total_amount}}</td>
                     </tr>
                 @endforeach
             </table>
@@ -57,9 +68,8 @@
                     <th style="width: 15%;">{{$purchase_history->sum('actual_purchas_price') + $expense_history->sum('Amount')}} TK</th>
                 </tr>
                 <tr>
-                    <th colspan="4" style="text-align: right;background: #f90102;color: white">Balance: {{$sales_payments->sum('amount') - ($purchase_history->sum
-                    ('actual_purchas_price') + $expense_history->sum('Amount'))}}
-                        TK</th>
+                    <th colspan="4" style="text-align: right;background: #f90102;color: white">Balance: {{($initial_balance->sum('opening_balance')+$sales_payments->sum
+                    ('amount')) - ($purchase_history->sum('actual_purchas_price') + $expense_history->sum('Amount')+$work_order->sum('total_amount'))}}TK</th>
                 </tr>
             </table>
         </div>
