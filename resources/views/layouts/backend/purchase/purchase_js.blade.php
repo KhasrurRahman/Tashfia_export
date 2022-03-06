@@ -14,19 +14,11 @@
                             i : 0;
                 };
                 total_purchas_price = this.api().ajax.json().total_purchas_price
-                pageTotal_total_purchas_price = api
-                    .column(5, {page: 'current'})
-                    .data()
-                    .sum()
                 $(api.column(5).footer()).html(
                     'Tk ' + total_purchas_price
                 );
 
                 total_actual_purchas_price = this.api().ajax.json().total_actual_purchas_price
-                pageTotal_total_actual_purchas_price = api
-                    .column(6, {page: 'current'})
-                    .data()
-                    .sum()
                 $(api.column(6).footer()).html(
                     'Tk ' + total_actual_purchas_price
                 );
@@ -166,82 +158,6 @@
     }
 
 
-    // save country information
-    $('#save_info').on('submit', function (event) {
-        event.preventDefault();
-        $.ajax({
-            url: "{{ url('admin/purchase/store') }}",
-            type: "POST",
-            data: $("form").serializeArray(),
-            success: function (response) {
-                if (response) {
-                    if (response.permission == false) {
-                        toastr.error('you dont have that Permission', 'Permission Denied');
-                    } else {
-                        $('#add_button').modal('hide');
-                        $("#save_info")[0].reset();
-                        toastr.success('Information Saved', 'Saved');
-                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
-                    }
-                }
-            },
-            error: function (response) {
-                $('#Error_status_product_id').text(response.responseJSON.errors.product_id);
-                $('#Error_status_supplier_id').text(response.responseJSON.errors.supplier_id);
-                $('#Error_status_quantity').text(response.responseJSON.errors.quantity);
-                $('#Error_status_unit_price').text(response.responseJSON.errors.unit_price);
-                $('#Error_status_total_purchas_price').text(response.responseJSON.errors.total_purchas_price);
-                $('#Error_status_actual_purchas_price').text(response.responseJSON.errors.actual_purchas_price);
-            }
-        });
-    })
-
-
-    // edit country information
-    function edit_info(id) {
-        $.ajax({
-            type: 'get',
-            url: '{{ url('admin/Department/edit_lot_department_data') }}/' + id,
-            success: function (data) {
-                $('#modal_data').html('');
-                $('#modal_data').append(data);
-                $('#edit_modal_info').modal('show');
-            }
-        });
-    }
-
-    // update country information
-    $('#update_form').on('submit', function (event) {
-        event.preventDefault();
-        $.ajax({
-            url: "{{ url('admin/Department/update_lot_department_data') }}",
-            type: "POST",
-            data: $("form").serializeArray(),
-            success: function (response) {
-                if (response) {
-                    if (response.permission == false) {
-                        toastr.error('you dont have that Permission', 'Permission Denied');
-                    } else {
-                        $('#edit_modal_info').modal('hide');
-                        $("#update_form")[0].reset();
-                        toastr.success('Information Updated', 'Updated');
-                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
-                    }
-                }
-            },
-            error: function (response) {
-                $('#edit_Error_status_date').text(response.responseJSON.errors.date);
-                $('#edit_Error_status_buyer').text(response.responseJSON.errors.buyer);
-                $('#edit_Error_status_quantity').text(response.responseJSON.errors.quantity);
-                $('#edit_Error_status_roll').text(response.responseJSON.errors.roll);
-                $('#edit_Error_status_lot').text(response.responseJSON.errors.lot);
-                $('#edit_Error_status_sell').text(response.responseJSON.errors.sell);
-                $('#edit_Error_status_balance').text(response.responseJSON.errors.balance);
-                $('#edit_Error_status_product_id').text(response.responseJSON.errors.product_id);
-            }
-        });
-    })
-
 
     // get product data
     $(function () {
@@ -256,24 +172,6 @@
                     $('#details_style_no').html(data.style_no);
                     $('#details_fabric_type').html(data.fabric_type);
                     $("#product_details_show").show(1000);
-                }
-            });
-        });
-
-    });
-
-    $(function () {
-        $('#supplier_id').on('change', function () {
-            var supplier_id = $(this).val();
-            $.ajax({
-                url: "{{ url('admin/supplier/show') }}/" + supplier_id,
-                type: "GET",
-                success: function (data) {
-                    // $('#create_chalan_no').html(data.chalan_no);
-                    // $('#create_party_name').html(data.party_name);
-                    // $('#create_card_no').html(data.order_no);
-                    // $('#create_sl_no').html(data.sl_no);
-                    // $("#product_details_show").show(1000);
                 }
             });
         });
@@ -319,41 +217,6 @@
             }
         });
     }
-
-
-    // $('.quantity, .unit_price').keyup(function () {
-    //     console.log('asdasd');
-    //     // $(".total_purchas_price").val($(".unit_price").val() * $(".quantity").val())
-    // });
-
-    function total_price() {
-        $("#quantity_pound").val(($("#quantity").val() * 2.20462262185).toFixed(3))
-        quantity = $("#quantity").val();
-        $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
-    }
-
-    function total_price_pound() {
-        $("#quantity").val(($("#quantity_pound").val() / 2.20462262185).toFixed(4))
-        quantity = $("#quantity").val();
-        $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
-    }
-
-    function pound_unit_price() {
-        var unit_price_pound = $('#unit_price_pound').val();
-        $('#unit_price').val((unit_price_pound * 2.20462262185).toFixed(3))
-        $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
-    }
-
-    function unit_price_kg() {
-        var unit_price_kg = $('#unit_price').val();
-        $('#unit_price_pound').val((unit_price_kg / 2.20462262185).toFixed(3))
-        $("#total_purchas_price").val(($("#unit_price").val() * $("#quantity").val()).toFixed(3))
-    }
-
-    $(".quantity").on("keyup", function (event) {
-        console.log("asd");
-    });
-
 
     $('#search_company_id').on('change', function () {
         var id = $(this).val();

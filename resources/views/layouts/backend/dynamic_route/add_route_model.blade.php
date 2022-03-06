@@ -5,7 +5,7 @@
                     <form action="{{route('admin.dynamic_route')}}" method="post">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="add_buttonLabel">Route Details</h5>
+                            <h5 class="modal-title" id="add_buttonLabel">Route Create</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

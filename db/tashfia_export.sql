@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 06:16 AM
+-- Generation Time: Mar 06, 2022 at 09:21 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -71,7 +71,74 @@ INSERT INTO `company_info` (`id`, `company_name`, `category`, `company_address`,
 (4, 'SHAWON BHAI', 'sell', 'UKIL PARA, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-19 12:43:44', '2022-02-19 12:43:44'),
 (5, 'M/S GOPLA TRADERS', 'purchase', '2 NO RAIL GATE, NARAYANGONJ', '01881064583', 'BANGLADESH', '2022-02-19 14:53:25', '2022-02-19 14:53:25'),
 (6, 'MD MOSHAROF SIR', 'sell', 'KASHIPUR, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-19 15:05:10', '2022-02-19 15:05:10'),
-(7, 'Monir Traders', 'purchase', 'Nayamati, Narayangong', '017000000000', 'BANGLADESH', '2022-02-20 12:06:12', '2022-02-20 12:06:12');
+(7, 'Monir Traders', 'purchase', 'Nayamati, Narayangong', '017000000000', 'BANGLADESH', '2022-02-20 12:06:12', '2022-02-20 12:06:12'),
+(8, 'RAJIB ENTERPRISE', 'purchase', 'B B ROAD, NARAYANGONJ', '01681069256', 'BANGLADESHI', '2022-02-22 11:56:51', '2022-02-22 11:56:51'),
+(9, 'M/S PROTTOY TRADERS', 'purchase', 'B B ROAD, OKILPARA, NARAYANGONJ', '01713083989', 'BANGLADESHI', '2022-02-22 11:58:38', '2022-02-22 11:58:38'),
+(10, 'FIHA NIT & DYEING', 'purchase', 'RONI MARKER, NOYAMATI, NARAYANGONJ', '01763708533', 'BANGLADESHI', '2022-02-22 12:01:48', '2022-02-22 12:01:48'),
+(11, 'SUMAIYA NIT FABRICS', 'purchase', 'NOYAMATI, NARAYANGONJ', '01783222666', 'BANGLADESHI', '2022-02-22 12:03:26', '2022-02-22 12:03:26'),
+(12, 'M/S SANTA TRADERS', 'purchase', '2 NO; RAIL GATE , NARAYANGONJ', '01711343317', 'BANGLADESHI', '2022-02-22 12:04:48', '2022-02-22 12:04:48'),
+(13, 'M/S FARUK ENTERPRISE', 'purchase', 'TANBAZAR, NARAYANGONJ', '01711977174', 'BANGLADESHI', '2022-02-22 12:07:19', '2022-02-22 12:07:19'),
+(14, 'M/S FARUK ENTERPRISE', 'purchase', 'TANBAZAR, NARAYANGONJ', '01711977174', 'BANGLADESHI', '2022-02-22 12:07:21', '2022-02-22 12:07:21'),
+(15, 'G.N ENTERPRISE', 'purchase', 'D N ROAD, NONDIPARA, NARAYANGANJ', '01712785447', 'BANGLADESHI', '2022-02-22 12:09:05', '2022-02-22 12:09:05'),
+(16, 'TANJUM FABRICS', 'purchase', 'SIBU MARKET, WEST-LAMAPARA, FATULLAH, NARAYANGANJ', '01777452672', 'BANGLADESHI', '2022-02-22 12:11:09', '2022-02-22 12:11:09'),
+(17, 'MELA TRADE CENTER', 'purchase', 'Banga Bandhu Road, Narayanganj', '01815001570', 'BANGLADESHI', '2022-02-22 12:14:26', '2022-02-22 12:14:26'),
+(18, 'M/S MA ENTERPRISE', 'purchase', '2 NO; RAIL GATE , NARAYANGONJ', '01881064583', 'BANGLADESHI', '2022-02-22 12:16:30', '2022-02-22 12:16:30'),
+(19, 'FALGUNI YARN & FABRICS ZONE', 'purchase', 'NAYAMATI, NARAYANGANJ', '01715134711', 'BANGLADESHI', '2022-02-22 12:18:35', '2022-02-22 12:18:35'),
+(20, 'M/S AL-MADINA KNIT', 'purchase', 'FIRUJ MARKER, NAYAMATI, NARAYANGANJ', '01817573579', 'BANGLADESHI', '2022-02-22 12:20:24', '2022-02-22 12:20:24'),
+(21, 'ABDULLAH KNIT DYEING & FABRICS', 'purchase', 'NORTH KASHIPUR,FATULLAH, NARAYANGANJ', '01860639000', 'BANGLADESHI', '2022-02-22 12:22:48', '2022-02-22 12:22:48'),
+(22, 'AL-MADINA FABRICS', 'purchase', 'NAYAMATI, NARAYANGANJ', '01915611510', 'BANGLADESHI', '2022-02-22 12:24:26', '2022-02-22 12:24:26'),
+(23, 'M/S SIMON ENTERPRISE', 'purchase', 'TANBAZAR, NARAYANGANJ', '01711566091', 'BANGLADESHI', '2022-02-22 12:26:23', '2022-02-22 12:26:23'),
+(24, 'M/S ALVI ENTERPRISE', 'purchase', 'B B ROAD, NARAYANGONJ', '01825234190', 'BANGLADESHI', '2022-02-22 12:28:10', '2022-02-22 12:28:10'),
+(25, 'AL-ARABI KNIT GARDEN', 'purchase', 'NOYAMATI, NARAYANGONJ', '014811336194', 'BANGLADESHI', '2022-02-22 12:29:27', '2022-02-22 12:29:27'),
+(26, 'SHAHABUDDIN ENTERPRISE', 'purchase', 'PARIS ROAD,SECTION-10, MIRPUR, DHAKA', '01921522676', 'BANGLADESHI', '2022-02-22 12:31:42', '2022-02-22 12:31:42'),
+(27, 'M/S MAMUN & BROTHERS', 'purchase', 'NAYAMATI, NARAYANGANJ', '01712779296', 'BANGLADESHI', '2022-02-22 12:32:39', '2022-02-22 12:32:39'),
+(28, 'FRAULEN FASHION LTD', 'purchase', 'ASHULIA, SAVAR, DHAKA', '01741514337', 'BANGLADESHI', '2022-02-22 12:34:10', '2022-02-22 12:34:10'),
+(29, 'BROTHER\'S YARN & FABRICS', 'purchase', 'HAZI KALIMOLLAH MARKER, NARAYANGANJ', '01622161270', 'BANGLADESHI', '2022-02-22 12:35:49', '2022-02-22 12:35:49'),
+(30, 'J.M.T FABRICS', 'purchase', 'UKILPARA, NARAYANGANJ', '01625459000', 'BANGLADESHI', '2022-02-22 12:37:17', '2022-02-22 12:37:17'),
+(31, 'JANNATUL KINT FABRICS', 'purchase', 'B B ROAD, NARAYANGONJ', '01823471327', 'BANGLADESHI', '2022-02-22 12:38:46', '2022-02-22 12:38:46'),
+(32, 'M/S MAHIA KINT', 'purchase', 'AMENA MARKET, NAYAMATI, NARAYANGANJ', '01680102926', 'BANGLADESHI', '2022-02-22 12:40:25', '2022-02-22 12:40:25'),
+(33, 'SHILPI PRINTING PRESS', 'purchase', 'NAYAMATI, NARAYANGANJ', '01711127726', 'BANGLADESHI', '2022-02-22 12:41:46', '2022-02-22 12:41:46'),
+(34, 'M/S SHREYA ENTERPRISE', 'purchase', '2 NO RAIL GATE, PALPARA, NARAYANGANJ', '01781973396', 'BANGLADESHI', '2022-02-22 12:43:36', '2022-02-22 12:43:36'),
+(35, 'SAMIR FASHION LTD', 'sell', 'MIRPUR-01 DHAKA', '01847176414', 'BANGLADESH', '2022-02-24 12:12:16', '2022-02-24 12:12:16'),
+(36, 'TAHSIN FASHION LTD', 'sell', 'MIRPUR-01, DHAKA', NULL, 'BANGLADESH', '2022-02-24 12:19:48', '2022-02-24 12:19:48'),
+(37, 'MD RIYADUL ISLAM RIYAD', 'sell', '2 NO RAIL GATE, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:20:53', '2022-02-24 12:20:53'),
+(38, 'SATHIL SUTAGHAR', 'sell', 'HARUN COMPLEX, TANBAZAR', NULL, 'BANGLADESH', '2022-02-24 12:21:46', '2022-02-24 12:21:46'),
+(39, 'MD MAMUN HUZUR', 'sell', '2 NO RAILGATE, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:22:28', '2022-02-24 12:22:28'),
+(40, 'MD NIZAMUDDIN AHMED', 'sell', 'UTTARA, TONGI,', NULL, 'BANGLADESH', '2022-02-24 12:23:15', '2022-02-24 12:23:15'),
+(41, 'JONONI HOSIARY, MD SATTAR HOSSAIN', 'sell', 'CHOUWDHORY COMPLEX MASDAIR', NULL, 'BANGLADESH', '2022-02-24 12:24:12', '2022-02-24 12:24:12'),
+(42, 'ZAKIA TRADING, MUROBBI HAZI SHAHEB', 'sell', 'PATHANTOLI, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:26:08', '2022-02-24 12:26:08'),
+(43, 'ZAKIA TRADING MD, SAKHAWAT HOSSAIN', 'sell', 'PATHANTOLI, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:27:23', '2022-02-24 12:27:23'),
+(44, 'MD ALAMIN HOSSAIN, TERRY PATI', 'sell', 'KASHIPUR, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:28:11', '2022-02-24 12:28:11'),
+(45, 'MD SHAMIM AHMED, TERRY PARTY', 'sell', 'KASHIPUR, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:28:42', '2022-02-24 12:28:42'),
+(46, 'MONAF FASHION, MD FORID AHMED', 'sell', 'KAWLA, UTTARA, DHAKA', NULL, 'BANGLADESH', '2022-02-24 12:29:20', '2022-02-24 12:29:20'),
+(47, 'MD MONIR HOSSAIN, KALIBAZAR, NARAYANGONJ', 'sell', 'KALIBAZAR, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:30:10', '2022-02-24 12:30:10'),
+(48, 'HAQUE NIT FASHION, MD ALOM BHAI', 'sell', 'NIMTOLA, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:30:56', '2022-02-24 12:30:56'),
+(49, 'MD ROBIN AHMED, PRINT PARTY', 'sell', 'MONDOLPARA, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:31:37', '2022-02-24 12:31:37'),
+(50, 'MD ROBIN AHMED, PRINT PARTY', 'sell', 'MONDOLPARA, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:32:35', '2022-02-24 12:32:35'),
+(51, 'MD MOSTAQ AHMED BABU, PRINT PARTY', 'sell', 'RIVERVIEW, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:33:46', '2022-02-24 12:33:46'),
+(52, 'MD SHAHIN MAMA, PRINT PARTY', 'sell', 'HABIB TOWER, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:36:17', '2022-02-24 12:36:17'),
+(53, 'MD MANNAN MAMA', 'sell', 'NIJ MARKET, NOYAMATI, NARAYANGONJ', NULL, 'BANGLADESH', '2022-02-24 12:37:38', '2022-02-24 12:37:38'),
+(54, 'MEEKA PHARMACARE LTD', 'sell', 'Dhanmondi, Dhaka-1209', '01894885623', 'BANGLADESH', '2022-02-26 13:00:42', '2022-02-26 13:03:24'),
+(55, 'MD. ALAMIN HOSSAIN', 'purchase', '2 NO; RAIL GATE , NARAYANGONJ', '01629136436', 'BANGLADESHI', '2022-02-26 13:22:24', '2022-02-26 13:22:24'),
+(56, 'MAMUN ENTERPRISE', 'sell', 'BONDOR, NARAYANGONJ', '01967849608', 'BANGLADESH', '2022-02-26 15:23:45', '2022-02-26 15:23:45'),
+(57, 'JONONI HOSIERY', 'sell', 'MASDAIR, NARAYANGONJ', '8801711041906', 'BANGLADESH', '2022-02-26 15:28:29', '2022-02-26 15:28:29'),
+(58, 'HAQUE KNIT FASHION', 'sell', 'NIMTOLA, NARAYANGONJ', '8801616507999', 'BANGLADESH', '2022-02-26 15:38:30', '2022-02-26 15:38:30'),
+(59, 'RABEYA, GARMENTS', 'sell', 'BISIC, NARAYANGONJ', '8801922101081', 'BANGLADESHI', '2022-02-26 15:48:40', '2022-02-26 15:48:40'),
+(60, 'ZAHID TRADERS', 'sell', 'GOLACIPA, NARAYANGONJ', '8801733765777', 'BANGLADESH', '2022-02-26 15:59:19', '2022-02-26 15:59:19'),
+(61, 'SONJOY DADA', 'sell', 'UKIL PARA, NARAYANGONJ', '8801963290377', 'BANGLADESH', '2022-02-26 16:02:38', '2022-02-26 16:02:38'),
+(62, 'SAHAJALAL FASHION', 'sell', 'UTTARA, DHAKA', '8801742895296', 'BANGLADESH', '2022-02-26 16:07:27', '2022-02-26 16:07:27'),
+(63, 'MERI FASHION', 'sell', 'UTTAR NORSINPUR, NARAYANGONJ', '8801943336836', 'BANGLADESH', '2022-02-26 16:11:01', '2022-02-26 16:11:01'),
+(64, 'FAIZA FASHION', 'sell', 'BISIC, NARAYANGONJ', '8801629843065', 'BANGLADESH', '2022-02-26 16:14:16', '2022-02-26 16:14:16'),
+(65, 'ADURI FASHION', 'sell', 'KASHIPUR, COUNCIL OFFICE', '01882078261', 'BANGLADESHI', '2022-02-26 16:21:24', '2022-02-26 16:21:24'),
+(66, 'MEHEZABIN FASON', 'sell', 'PATAMTOLI  NARAYANGONJ', NULL, 'BANGLADESHI', '2022-02-27 12:08:28', '2022-02-27 12:08:44'),
+(67, 'AL-MAHAMUD TRIDARC', 'sell', '2 NO .REILGAT', NULL, 'BANGLADESHI', '2022-02-27 12:11:08', '2022-02-27 12:11:08'),
+(68, 'SHAWON ENTERPRAISE', 'purchase', 'NARAYANGONJ', '01612229798', 'BANGLADESHI', '2022-02-27 12:22:45', '2022-02-27 12:22:45'),
+(69, 'RAZIB-ENTERPRISE', 'purchase', 'TANBAZAR, NARAYANGONJ', '01304604386', 'BANGLADESHI', '2022-02-27 12:38:11', '2022-02-27 12:40:06'),
+(70, 'BEFORE  SALES', 'sell', 'NAYAMATI, NARAYANGANJ', '01304604386', 'BANGLADESHI', '2022-02-27 12:54:50', '2022-02-27 12:54:50'),
+(71, 'RAJIB ENTERPRISE', 'sell', 'NAYAMATI, NARAYANGANJ', '01752586743', 'BANGLADESHI', '2022-02-27 14:28:50', '2022-02-27 14:28:50'),
+(72, 'FANCY HOSIERY', 'purchase', 'NARAYANGONJ', '0170460458965', 'BANGLADESHI', '2022-02-28 15:36:51', '2022-02-28 15:36:51'),
+(73, 'SAYEM FASHION', 'sell', 'UTTAR NORSINPUR.NARAYANGONJ', '01914142921', 'BANGLADESHI', '2022-02-28 20:10:43', '2022-02-28 20:10:43'),
+(74, 'MEEKA PHARMACARE LTD', 'sell', '12/1 FLOOR #8th ROAD #12 NEW DHANMONDI DHAKA -1209', '01711404534', 'BANGLADESHI', '2022-03-02 16:08:41', '2022-03-02 16:08:41');
 
 -- --------------------------------------------------------
 
@@ -106,9 +173,39 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `company_id`, `name`, `type`, `email`, `personal_phone`, `optional_phone`, `present_address`, `company_name`, `permanent_address`, `balance`, `reference`, `nid`, `photo`, `nationality`, `designation`, `created_by`, `created_at`, `updated_at`) VALUES
-(2, 4, 'SHAWON BHAI', 'general', NULL, NULL, NULL, 'UKIL PARA, NARAYANGONJ', NULL, 'UKIL PARA, NARAYANGONJ', '-527865.375', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-19 12:44:30', '2022-02-23 11:08:42'),
+(2, 4, 'SHAWON BHAI', 'general', NULL, NULL, NULL, 'UKIL PARA, NARAYANGONJ', NULL, 'UKIL PARA, NARAYANGONJ', '-0.375', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-19 12:44:30', '2022-02-19 12:46:51'),
 (3, 6, 'MD MOSHAROF SIR', 'general', NULL, NULL, NULL, 'UKIL PARA, NARAYANGONJ', NULL, 'UKIL PARA, NARAYANGONJ', NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-19 15:06:16', '2022-02-19 15:06:16'),
-(4, 7, 'Dulal Vai', 'general', NULL, '01934821949', NULL, 'Kashipur, Narayangong', NULL, 'Kashipur, Narayangong', '-0.642', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-20 12:10:13', '2022-02-22 09:24:40');
+(4, 7, 'Dulal Vai', 'general', NULL, '01934821949', NULL, 'Kashipur, Narayangong', NULL, 'Kashipur, Narayangong', '-0.64199999999983', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-20 12:10:13', '2022-02-20 12:17:11'),
+(5, 7, 'Al-Amin', 'general', NULL, '0123456', NULL, 'narayanganj', NULL, 'narayanganj', NULL, NULL, NULL, '', 'bangladeshi', 'manager', 92, '2022-02-23 15:49:41', '2022-02-23 15:49:41'),
+(6, 53, 'MANNAN MAMA', 'general', NULL, NULL, NULL, 'NARAYANGONJ', NULL, 'NARAYANGANJ', NULL, NULL, NULL, '2022-02-24-621729fb9c61a.jpeg', 'BANGLADESH', 'OWNER', 107, '2022-02-24 12:47:23', '2022-02-24 12:47:23'),
+(7, 7, 'MONIR BHAI', 'general', NULL, NULL, NULL, 'KALIBAZAR, NARAYANGONJ', NULL, 'NARAYANGANJ', NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:12:53', '2022-02-24 13:12:53'),
+(8, 35, 'DELOWAR SIR', 'general', NULL, NULL, NULL, 'MIRPUR. 01- DHAKA', NULL, NULL, '490322', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:14:40', '2022-02-26 15:19:41'),
+(9, 36, 'TAHSIN SIR', 'general', NULL, NULL, NULL, 'MIRPUR. 01- DHAKA', NULL, 'MIRPUR. 01- DHAKA', '65', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:16:13', '2022-02-26 15:20:31'),
+(10, 37, 'RIYAD SIR', 'general', NULL, NULL, NULL, '2 NO RAIL GATE, NARAYANGONJ', NULL, '2 NO RAIL GATE, NARAYANGONJ', '10', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:17:18', '2022-02-26 15:21:43'),
+(11, 38, 'SATHIL SIR', 'general', NULL, NULL, NULL, 'HARUN COMPLEX', NULL, 'HARUN COMPLEX', NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:18:30', '2022-02-24 13:18:30'),
+(12, 42, 'AMIRUL HAZI SHAHEB', 'general', NULL, NULL, NULL, 'DHAKA, FACTORY, PATHANTOLI', NULL, 'DHAKA, FACTORY, PATHANTOLI', '998220', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 15:43:08', '2022-02-26 15:30:38'),
+(13, 43, 'SAKHAWAT HOSSAIN', 'general', NULL, NULL, NULL, 'PATHANTOLI, NARAYANGONJ', NULL, 'PATHANTOLI, NARAYANGONJ', '76908', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 15:44:32', '2022-02-26 15:31:06'),
+(14, 44, 'MD ALAMIN HOSSAIN', 'general', NULL, NULL, NULL, 'KASHIPUR, NARAYANGONJ', NULL, 'KASHIPUR, NARAYANGONJ', '1288363', NULL, NULL, '', 'BANGLADESH', 'OWNER', 107, '2022-02-24 15:46:11', '2022-02-26 15:33:05'),
+(15, 45, 'SHAMIM AHMED', 'general', NULL, NULL, NULL, 'KASHIPUR, NARAYANGONJ', NULL, 'KASHIPUR, NARAYANGONJ', '30384', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 15:47:18', '2022-02-26 15:33:57'),
+(16, 46, 'MD FORID AHMED', 'general', NULL, NULL, NULL, 'KAWLA, UTTARA, DHAKA', NULL, 'KAWLA, UTTARA, DHAKA', '55036', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 15:48:56', '2022-02-26 15:34:59'),
+(17, 47, 'MD MONIR HOSSAIN', 'general', NULL, NULL, NULL, 'KALIBAZAR, NARAYANGONJ', NULL, 'KALIBAZAR, NARAYANGONJ', '360', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 15:50:47', '2022-02-26 15:35:20'),
+(18, 54, 'MD. Nurun Nabi Sujuon', 'general', NULL, '01894885623', NULL, 'Dhanmondi, Dhaka-1209', NULL, 'Dhanmondi, Dhaka-1209', '-9', NULL, NULL, '', 'BANGLADESHI', 'Manager', 107, '2022-02-26 13:05:20', '2022-02-26 13:35:14'),
+(19, 56, 'MD. MAMUN', 'general', NULL, '8801967849608', NULL, 'BONDOR, GHARMORA, NARAYANGONJ', NULL, 'BONDOR, GHARMORA, NARAYANGONJ', '14187', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 15:25:51', '2022-02-26 15:25:51'),
+(20, 57, 'MD. SATTAR', 'general', NULL, '8801711041906', NULL, 'MASDAIR, NARAYANGONJ', NULL, 'MASDAIR, NARAYANGONJ', '3099413', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 15:29:49', '2022-02-26 15:29:49'),
+(21, 58, 'MD. ALOM MAMA', 'general', NULL, '8801616507999', NULL, 'NIMTIOLA, NARAYANGONJ', NULL, 'NIMTIOLA, NARAYANGONJ', '237806', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 15:40:00', '2022-02-26 15:40:00'),
+(22, 49, 'MD. ROBIN AHMED', 'general', NULL, '8801306427696', NULL, 'MONDOLPARA, NARAYANGONJ', NULL, 'MONDOLPARA, NARAYANGONJ', '100', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 15:41:50', '2022-02-26 15:41:50'),
+(23, 51, 'MD MOSTAQ AHMED BABU', 'general', NULL, '880178038800', NULL, 'RIVERVIEW, NARAYANGONJ', NULL, 'RIVERVIEW, NARAYANGONJ', '32476', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 15:44:35', '2022-02-26 15:45:08'),
+(24, 53, 'MANNAN MUROBBI', 'general', NULL, '8801624871445', NULL, 'NOYAMATI, NARAYANGONJ', NULL, 'NOYAMATI, NARAYANGONJ', '210925', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 15:46:56', '2022-02-26 15:46:56'),
+(25, 59, 'MD. MIZANUR RAHMAN', 'general', NULL, '8801922101081', NULL, 'BISIC, NARAYANGONJ', NULL, 'BISIC, NARAYANGONJ', '57020', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 15:56:44', '2022-02-26 15:56:44'),
+(26, 60, 'MD. ZAHID AHMED', 'general', NULL, '8801733765777', NULL, 'GOLACIPA, NARAYANGONJ', NULL, 'GOLACIPA, NARAYANGONJ', '33712', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:00:52', '2022-02-26 16:00:52'),
+(27, 60, 'MD. ZAHID AHMED', 'general', NULL, '8801733765777', NULL, 'GOLACIPA, NARAYANGONJ', NULL, 'GOLACIPA, NARAYANGONJ', '33712', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:00:56', '2022-02-26 16:00:56'),
+(28, 61, 'SRI SONJOY DADA', 'general', NULL, '8801963290377', NULL, 'UKIL PARA, NARAYANGONJ', NULL, 'UKIL PARA, NARAYANGONJ', '100', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:04:47', '2022-02-26 16:04:47'),
+(29, 62, 'MD. SAHAJALAL', 'general', NULL, '8801742895296', NULL, 'UTTARA,DHAKA', NULL, 'UTTARA,DHAKA', '1126185', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:09:48', '2022-02-26 16:09:48'),
+(30, 63, 'MD. BILLAL AHMED', 'general', NULL, '8801943336836', NULL, 'UTTAR NORSINPUR, NARAYANGONJ', NULL, 'UTTAR NORSINPUR, NARAYANGONJ', '314547', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:12:36', '2022-02-26 16:12:36'),
+(31, 64, 'MD. PARVEZ AHMED', 'general', NULL, '8801629843065', NULL, 'BISIC, NARAYANGONJ', NULL, 'BISIC, NARAYANGONJ', '380', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:16:48', '2022-02-26 16:16:48'),
+(32, 65, 'MD. TITU AHMED', 'general', NULL, '01882078261', NULL, 'KASHIPUR, COUNCIL, OFFICE', NULL, 'KASHIPUR, COUNCIL, OFFICE', '145550', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:27:04', '2022-02-26 16:27:04'),
+(33, 73, 'MD.MILON SIR GM', 'general', NULL, '01914142921', NULL, 'UTTAR NORSINPUR.NARAYANGONJ', NULL, 'UTTAR NORSINPUR.NARAYANGONJ', '15114860', NULL, NULL, '', 'BANGLADESHI', 'GM', 107, '2022-02-28 20:16:28', '2022-02-28 20:35:32'),
+(34, 74, 'MD.  NURUN NABI SUJON', 'general', NULL, '01894885623', NULL, 'DHANMONNDI  DHAKA', NULL, 'DHANMONNDI  DHAKA', '-0.5', NULL, NULL, '', 'BANGLADESHI', 'GM', 107, '2022-03-02 16:12:31', '2022-03-02 16:18:13');
 
 -- --------------------------------------------------------
 
@@ -276,10 +373,11 @@ INSERT INTO `dynamic_routes` (`id`, `title`, `url`, `model_name`, `content`, `co
 (365, 'Deposits and expenses report index', 'report/deposit_expense_report_index', 'Report', NULL, 'ReportController@deposit_expense_report_index', 'get', 1, NULL, 1, 1, '0', '2022-02-13 04:45:56', '2022-02-13 04:45:56'),
 (366, 'Deposits and expenses report search', 'report/deposit_expense_report_search', 'Report', NULL, 'ReportController@deposit_expense_report_search', 'Post', 1, NULL, 1, 0, '1', '2022-02-13 04:47:16', '2022-02-13 04:47:16'),
 (367, 'Profit Loss report generate', 'report/profit_loss_report_generate', 'Profit', NULL, 'ProfitController@profit_loss_report_generate', 'Post', 1, NULL, 1, 0, '0', '2022-02-13 06:43:51', '2022-02-13 06:43:51'),
-(368, 'Show all opening Balance and closing balance', 'initalBalance/show_all_opening_and_closing_balance', 'InitialBalance', NULL, 'InitialBalanceController@show_all_opening_and_closing_balance', 'get', 1, NULL, 1, 1, '0', '2022-02-23 03:18:36', '2022-02-23 03:18:36'),
-(369, 'Search All Opening and Closing Balance', 'initalBalance/search_all_opening_and_closing_balance', 'InitialBalance', NULL, 'InitialBalanceController@search_all_opening_and_closing_balance', 'Post', 1, NULL, 1, 0, '1', '2022-02-23 03:20:03', '2022-02-23 03:20:03'),
-(370, 'Create Initial Balance', 'initalBalance/create_initial_balance', 'InitialBalance', NULL, 'InitialBalanceController@create_initial_balance', 'get', 1, NULL, 1, 1, '0', '2022-02-23 03:20:49', '2022-02-23 03:20:49'),
-(371, 'Add Initial Balance', 'initalBalance/add_initial_balance', 'InitialBalance', NULL, 'InitialBalanceController@add_initial_balance', 'Post', 1, NULL, 1, 0, '0', '2022-02-23 03:21:26', '2022-02-23 03:21:26');
+(368, 'Show all opening Balance and closing balance', 'initalBalance/show_all_opening_and_closing_balance', 'InitialBalance', NULL, 'InitialBalanceController@show_all_opening_and_closing_balance', 'get', 1, NULL, 1, 1, '0', '2022-02-23 11:18:52', '2022-02-23 11:18:52'),
+(369, 'Search All Opening and Closing Balance', 'initalBalance/search_all_opening_and_closing_balance', 'InitialBalance', NULL, 'InitialBalanceController@search_all_opening_and_closing_balance', 'Post', 1, NULL, 1, 0, '1', '2022-02-23 11:19:41', '2022-02-23 11:19:41'),
+(370, 'Create Initial Balance', 'initalBalance/create_initial_balance', 'InitialBalance', NULL, 'InitialBalanceController@create_initial_balance', 'get', 1, NULL, 1, 1, '0', '2022-02-23 11:24:26', '2022-02-23 11:24:26'),
+(371, 'Add Initial Balance', 'initalBalance/add_initial_balance', 'InitialBalance', NULL, 'InitialBalanceController@add_initial_balance', 'Post', 1, NULL, 1, 0, '0', '2022-02-23 11:25:17', '2022-02-23 11:25:17'),
+(372, 'Create Purchase', 'purchase/create', 'purchase', NULL, 'purchaseController@create', 'get', 1, NULL, 1, 1, '0', '2022-03-06 04:48:41', '2022-03-06 05:14:01');
 
 -- --------------------------------------------------------
 
@@ -342,7 +440,9 @@ INSERT INTO `expenses_category` (`id`, `name`, `remark`, `created_by`, `created_
 (2, 'PARTY KHOROCH', NULL, 107, '2022-02-19 12:02:32', '2022-02-19 12:02:32'),
 (3, 'MALER DELIVERY', 'S S B NITING', 107, '2022-02-19 12:03:55', '2022-02-19 12:03:55'),
 (4, 'PARTY NASTA', 'AAGER HISHAB', 107, '2022-02-19 12:06:24', '2022-02-19 12:06:24'),
-(5, 'KHADEM MAMA', 'NIJ', 107, '2022-02-19 12:07:21', '2022-02-19 12:07:21');
+(5, 'KHADEM MAMA', 'NIJ', 107, '2022-02-19 12:07:21', '2022-02-19 12:07:21'),
+(6, 'TEA BILL', NULL, 107, '2022-02-22 15:58:06', '2022-02-22 15:58:06'),
+(7, 'LUNCH BILL', NULL, 107, '2022-02-22 15:58:25', '2022-02-22 15:58:25');
 
 -- --------------------------------------------------------
 
@@ -369,8 +469,8 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `initial_balance` (
   `id` int(11) NOT NULL,
   `date` date DEFAULT NULL,
-  `opening_balance` decimal(5,0) DEFAULT NULL,
-  `closing_balance` decimal(5,0) DEFAULT NULL,
+  `opening_balance` decimal(20,0) DEFAULT NULL,
+  `closing_balance` decimal(20,0) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL COMMENT '0=not edited , 1 = edited ',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -381,10 +481,17 @@ CREATE TABLE `initial_balance` (
 --
 
 INSERT INTO `initial_balance` (`id`, `date`, `opening_balance`, `closing_balance`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2022-02-23', '500', '-6592', '1', '2022-02-22 04:32:09', '2022-02-23 11:11:44'),
-(2, '2022-02-24', '500', NULL, NULL, '2022-02-23 10:59:48', '2022-02-23 10:59:48'),
-(3, '2022-02-24', '500', NULL, NULL, '2022-02-23 11:00:03', '2022-02-23 11:00:03'),
-(4, '2022-02-24', '-6592', NULL, NULL, '2022-02-23 11:11:44', '2022-02-23 11:11:44');
+(1, '2022-02-23', '0', '0', '1', '2022-02-22 04:32:09', '2022-02-24 08:39:25'),
+(12, '2022-02-24', '227400', '227400', '1', '2022-02-24 08:39:25', '2022-02-25 06:00:05'),
+(13, '2022-02-25', '227400', '227400', '1', '2022-02-25 06:00:05', '2022-02-25 06:00:05'),
+(14, '2022-02-26', '227400', '-2471670', '1', '2022-02-25 06:00:05', '2022-02-27 06:00:06'),
+(15, '2022-02-26', '227400', NULL, '0', '2022-02-26 06:00:07', '2022-02-26 06:00:07'),
+(16, '2022-02-27', '-2471670', '-4692545', '1', '2022-02-27 06:00:07', '2022-02-28 06:00:06'),
+(17, '2022-02-28', '-4692545', '-117921435', '1', '2022-02-28 06:00:06', '2022-03-01 06:00:08'),
+(18, '2022-03-01', '-117921435', '-163916257', '1', '2022-03-01 06:00:08', '2022-03-02 06:00:07'),
+(19, '2022-03-02', '28522', '-999841', '1', '2022-03-02 06:00:07', '2022-03-03 06:00:07'),
+(20, '2022-03-03', '-999841', NULL, '1', '2022-03-03 06:00:07', '2022-03-03 10:07:31'),
+(21, '2022-03-06', '-999841', NULL, '1', '2022-03-03 06:00:07', '2022-03-03 10:07:31');
 
 -- --------------------------------------------------------
 
@@ -442,9 +549,11 @@ INSERT INTO `master_menu` (`id`, `menu_name`, `menu_name_bn`, `menu_parent_id`, 
 (81, 'Account Summary', 'Account Summary', 66, 1, NULL, 358, '2022-01-17 03:27:35', '2022-01-17 03:27:35', 92, NULL),
 (82, 'peoples', 'peoples', NULL, 1, 'ik-users', 274, '2022-02-10 09:58:50', '2022-02-10 09:58:50', 92, NULL),
 (83, 'জমা ও খরচ', 'Deposits and expenses', 66, 1, NULL, 365, '2022-02-13 04:48:37', '2022-02-13 04:48:37', 92, NULL),
-(84, 'Initial Balance', 'Initial Balance', NULL, 1, 'ik-bold', 370, '2022-02-23 03:23:55', '2022-02-23 03:23:55', 92, NULL),
-(85, 'Daily initial Balance', 'Daily initial Balance', 84, 1, NULL, 368, '2022-02-23 03:25:25', '2022-02-23 03:25:25', 92, 92),
-(86, 'Create Initial Balance', 'Create Initial Balance', 84, 1, NULL, 370, '2022-02-23 03:25:54', '2022-02-23 03:25:54', 92, NULL);
+(84, 'Initial Balance', 'Initial Balance', NULL, 1, 'ik-bold', 370, '2022-02-23 11:26:42', '2022-02-23 11:26:42', 92, NULL),
+(85, 'Daily initial Balance', 'Daily initial Balance', 84, 1, NULL, 368, '2022-02-23 11:27:30', '2022-02-23 11:27:30', 92, NULL),
+(86, 'Create Initial Balance', 'Create Initial Balance', 84, 1, NULL, 370, '2022-02-23 11:27:55', '2022-02-23 11:27:55', 92, NULL),
+(87, 'New Purchase', 'New Purchase', 23, 1, NULL, 372, '2022-03-06 04:49:26', '2022-03-06 04:49:26', 92, NULL),
+(88, 'All Purchase', 'All Purchase', 23, 1, NULL, 287, '2022-03-06 04:49:52', '2022-03-06 04:49:52', 92, NULL);
 
 -- --------------------------------------------------------
 
@@ -558,249 +667,254 @@ INSERT INTO `permission_roles` (`id`, `role_id`, `dynamic_route_id`, `url`, `cre
 (17434, 19, 320, 'company/index', '2022-02-05 17:13:30', '2022-02-05 17:13:30'),
 (17435, 19, 321, 'company/search', '2022-02-05 17:13:30', '2022-02-05 17:13:30'),
 (17436, 19, 322, 'company/store', '2022-02-05 17:13:30', '2022-02-05 17:13:30'),
-(18632, 12, 1, 'adminDashboard', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18633, 12, 91, 'admin/change_password', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18634, 12, 92, 'admin/save_change_password', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18635, 12, 254, 'product/craete', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18636, 12, 255, 'product/store', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18637, 12, 256, 'product/alldata', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18638, 12, 257, 'product/index', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18639, 12, 258, 'product/view', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18640, 12, 259, 'product/delete', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18641, 12, 286, 'product/ingredients', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18642, 12, 334, 'product/edit', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18643, 12, 335, 'product/update', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18644, 12, 260, 'sales/show_sales_department', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18645, 12, 261, 'sales/get_sales_department_data', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18646, 12, 262, 'sales/store_sales_department_data', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18647, 12, 263, 'sales/edit_sales_department_data', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18648, 12, 264, 'sales/update_sales_department_data', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18649, 12, 273, 'sales/sales_department_invoice', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18650, 12, 316, 'sales/create', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18651, 12, 317, 'sales/customer_payment_history_search', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18652, 12, 318, 'sales/sales_details_invoice', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18653, 12, 319, 'sales/add_walk_in_cuatomer', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18654, 12, 325, 'sales/sales_due_payment', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18655, 12, 328, 'sales/invoice_payment_history', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18656, 12, 357, 'sales/customer_details', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18657, 12, 361, 'sales/sales_history_pdf_generate', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18658, 12, 266, 'Department/show_lot_department', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18659, 12, 267, 'Department/search', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18660, 12, 268, 'Department/store_lot_department_data', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18661, 12, 270, 'Department/edit_lot_department_data', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18662, 12, 271, 'Department/update_lot_department_data', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18663, 12, 272, 'Department/show_single_lot_department_data', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18664, 12, 274, 'customer/all_customer', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18665, 12, 275, 'customer/search', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18666, 12, 276, 'customer/store', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18667, 12, 277, 'customer/edit', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18668, 12, 278, 'customer/update', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18669, 12, 307, 'customer/show', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18670, 12, 324, 'customer/view', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18671, 12, 329, 'customer/manual_due_payment', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18672, 12, 362, 'customer/sales_payment_history_pdf', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18673, 12, 280, 'supplier/index', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18674, 12, 281, 'supplier/search', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18675, 12, 282, 'supplier/store', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18676, 12, 283, 'supplier/edit', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18677, 12, 284, 'supplier/update', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18678, 12, 293, 'supplier/show', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18679, 12, 363, 'supplier/profile', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18680, 12, 287, 'purchase/index', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18681, 12, 288, 'purchase/search', '2022-02-17 12:23:56', '2022-02-17 12:23:56'),
-(18682, 12, 289, 'purchase/store', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18683, 12, 290, 'purchase/edit', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18684, 12, 291, 'purchase/update', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18685, 12, 294, 'purchase/show', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18686, 12, 360, 'purchase/purchase_pdf_generate', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18687, 12, 295, 'ingredient/index', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18688, 12, 296, 'ingredient/search', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18689, 12, 297, 'ingredient/store', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18690, 12, 298, 'ingredient/edit', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18691, 12, 300, 'productcategory/index', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18692, 12, 301, 'productcategory/search', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18693, 12, 302, 'productcategory/store', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18694, 12, 303, 'productcategory/edit', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18695, 12, 304, 'productcategory/update', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18696, 12, 308, 'expenses/expenses_category_index', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18697, 12, 309, 'expenses/expenses_category_search', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18698, 12, 310, 'expenses/expenses_category_store', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18699, 12, 311, 'expenses/expenses_category_delete', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18700, 12, 312, 'expenses/expenses_index', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18701, 12, 313, 'expenses/expenses_search', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18702, 12, 314, 'expenses/expenses_store', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18703, 12, 320, 'company/index', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18704, 12, 321, 'company/search', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18705, 12, 322, 'company/store', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18706, 12, 330, 'company/edit_company', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18707, 12, 331, 'company/company_update', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18708, 12, 332, 'report/profit_show', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18709, 12, 333, 'report/profit_search', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18710, 12, 343, 'report/sales_commision_report', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18711, 12, 344, 'report/sales_commision_report_show', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18712, 12, 358, 'report/account_summary', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18713, 12, 359, 'report/search_account_summary', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18714, 12, 365, 'report/deposit_expense_report_index', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18715, 12, 366, 'report/deposit_expense_report_search', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18716, 12, 336, 'sales_executive/show', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18717, 12, 337, 'sales_executive/search', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18718, 12, 338, 'sales_executive/add', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18719, 12, 340, 'sales_executive/edit', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18720, 12, 341, 'sales_executive/update', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18721, 12, 342, 'sales_executive/store', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18722, 12, 346, 'workorder/create_workorder_party', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18723, 12, 347, 'workorder/store_workorder_party', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18724, 12, 348, 'workorder/edit_workorder_party', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18725, 12, 349, 'workorder/update_workorder_party', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18726, 12, 350, 'workorder/search_workorder_party', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18727, 12, 352, 'workorder/create_workorder', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18728, 12, 353, 'workorder/store_workorder', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18729, 12, 354, 'workorder/index_workorder', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18730, 12, 355, 'workorder/search_workorder', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18731, 12, 364, 'supplier/supplier_purchase_history_generate', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18732, 12, 367, 'report/profit_loss_report_generate', '2022-02-17 12:23:57', '2022-02-17 12:23:57'),
-(18733, 11, 1, 'adminDashboard', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18734, 11, 91, 'admin/change_password', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18735, 11, 92, 'admin/save_change_password', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18736, 11, 3, 'dynamic_route', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18737, 11, 4, 'dynamic_route', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18738, 11, 14, 'delete_route', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18739, 11, 16, 'edit_route', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18740, 11, 19, 'update_route', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18741, 11, 5, 'role/all_role', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18742, 11, 6, 'role/add_role', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18743, 11, 8, 'save_role', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18744, 11, 11, 'edit_role', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18745, 11, 12, 'update_role', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18746, 11, 13, 'delete_role', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18747, 11, 9, 'all_user', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18748, 11, 10, 'save_user', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18749, 11, 93, 'edit_user', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18750, 11, 94, 'upadte_user', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18751, 11, 95, 'suspend_user', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18752, 11, 96, 'unsuspend_user', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18753, 11, 127, 'delete_user', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18754, 11, 130, 'test', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18755, 11, 131, 'menu/menu_create', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18756, 11, 133, 'menu/menu_save', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18757, 11, 134, 'menu/all_menu', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18758, 11, 135, 'menu/menu_search', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18759, 11, 138, 'menu/edit_menu', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18760, 11, 139, 'menu/update_menu', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18761, 11, 254, 'product/craete', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18762, 11, 255, 'product/store', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18763, 11, 256, 'product/alldata', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18764, 11, 257, 'product/index', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18765, 11, 258, 'product/view', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18766, 11, 259, 'product/delete', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18767, 11, 286, 'product/ingredients', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18768, 11, 334, 'product/edit', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18769, 11, 335, 'product/update', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18770, 11, 260, 'sales/show_sales_department', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18771, 11, 261, 'sales/get_sales_department_data', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18772, 11, 262, 'sales/store_sales_department_data', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18773, 11, 263, 'sales/edit_sales_department_data', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18774, 11, 264, 'sales/update_sales_department_data', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18775, 11, 265, 'sales/delete_sales_department_data', '2022-02-23 03:21:43', '2022-02-23 03:21:43'),
-(18776, 11, 273, 'sales/sales_department_invoice', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18777, 11, 316, 'sales/create', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18778, 11, 317, 'sales/customer_payment_history_search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18779, 11, 318, 'sales/sales_details_invoice', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18780, 11, 319, 'sales/add_walk_in_cuatomer', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18781, 11, 325, 'sales/sales_due_payment', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18782, 11, 328, 'sales/invoice_payment_history', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18783, 11, 357, 'sales/customer_details', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18784, 11, 361, 'sales/sales_history_pdf_generate', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18785, 11, 266, 'Department/show_lot_department', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18786, 11, 267, 'Department/search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18787, 11, 268, 'Department/store_lot_department_data', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18788, 11, 269, 'Department/delete_lot_department_data', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18789, 11, 270, 'Department/edit_lot_department_data', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18790, 11, 271, 'Department/update_lot_department_data', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18791, 11, 272, 'Department/show_single_lot_department_data', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18792, 11, 274, 'customer/all_customer', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18793, 11, 275, 'customer/search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18794, 11, 276, 'customer/store', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18795, 11, 277, 'customer/edit', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18796, 11, 278, 'customer/update', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18797, 11, 279, 'customer/delete', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18798, 11, 307, 'customer/show', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18799, 11, 324, 'customer/view', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18800, 11, 329, 'customer/manual_due_payment', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18801, 11, 362, 'customer/sales_payment_history_pdf', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18802, 11, 280, 'supplier/index', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18803, 11, 281, 'supplier/search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18804, 11, 282, 'supplier/store', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18805, 11, 283, 'supplier/edit', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18806, 11, 284, 'supplier/update', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18807, 11, 285, 'supplier/delete', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18808, 11, 293, 'supplier/show', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18809, 11, 363, 'supplier/profile', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18810, 11, 287, 'purchase/index', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18811, 11, 288, 'purchase/search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18812, 11, 289, 'purchase/store', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18813, 11, 290, 'purchase/edit', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18814, 11, 291, 'purchase/update', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18815, 11, 292, 'purchase/delete', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18816, 11, 294, 'purchase/show', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18817, 11, 360, 'purchase/purchase_pdf_generate', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18818, 11, 295, 'ingredient/index', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18819, 11, 296, 'ingredient/search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18820, 11, 297, 'ingredient/store', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18821, 11, 298, 'ingredient/edit', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18822, 11, 299, 'ingredient/delete', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18823, 11, 300, 'productcategory/index', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18824, 11, 301, 'productcategory/search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18825, 11, 302, 'productcategory/store', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18826, 11, 303, 'productcategory/edit', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18827, 11, 304, 'productcategory/update', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18828, 11, 305, 'productcategory/delete', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18829, 11, 308, 'expenses/expenses_category_index', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18830, 11, 309, 'expenses/expenses_category_search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18831, 11, 310, 'expenses/expenses_category_store', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18832, 11, 311, 'expenses/expenses_category_delete', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18833, 11, 312, 'expenses/expenses_index', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18834, 11, 313, 'expenses/expenses_search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18835, 11, 314, 'expenses/expenses_store', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18836, 11, 315, 'expenses/expenses_delete', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18837, 11, 320, 'company/index', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18838, 11, 321, 'company/search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18839, 11, 322, 'company/store', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18840, 11, 323, 'company/delete', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18841, 11, 330, 'company/edit_company', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18842, 11, 331, 'company/company_update', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18843, 11, 332, 'report/profit_show', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18844, 11, 333, 'report/profit_search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18845, 11, 343, 'report/sales_commision_report', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18846, 11, 344, 'report/sales_commision_report_show', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18847, 11, 358, 'report/account_summary', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18848, 11, 359, 'report/search_account_summary', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18849, 11, 365, 'report/deposit_expense_report_index', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18850, 11, 366, 'report/deposit_expense_report_search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18851, 11, 336, 'sales_executive/show', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18852, 11, 337, 'sales_executive/search', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18853, 11, 338, 'sales_executive/add', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18854, 11, 339, 'sales_executive/delete', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18855, 11, 340, 'sales_executive/edit', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18856, 11, 341, 'sales_executive/update', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18857, 11, 342, 'sales_executive/store', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18858, 11, 346, 'workorder/create_workorder_party', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18859, 11, 347, 'workorder/store_workorder_party', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18860, 11, 348, 'workorder/edit_workorder_party', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18861, 11, 349, 'workorder/update_workorder_party', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18862, 11, 350, 'workorder/search_workorder_party', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18863, 11, 351, 'workorder/delete_workorder_party', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18864, 11, 352, 'workorder/create_workorder', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18865, 11, 353, 'workorder/store_workorder', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18866, 11, 354, 'workorder/index_workorder', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18867, 11, 355, 'workorder/search_workorder', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18868, 11, 356, 'workorder/delete_workorder', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18869, 11, 364, 'supplier/supplier_purchase_history_generate', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18870, 11, 367, 'report/profit_loss_report_generate', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18871, 11, 368, 'initalBalance/show_all_opening_and_closing_balance', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18872, 11, 369, 'initalBalance/search_all_opening_and_closing_balance', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18873, 11, 370, 'initalBalance/create_initial_balance', '2022-02-23 03:21:44', '2022-02-23 03:21:44'),
-(18874, 11, 371, 'initalBalance/add_initial_balance', '2022-02-23 03:21:44', '2022-02-23 03:21:44');
+(18875, 12, 1, 'adminDashboard', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18876, 12, 91, 'admin/change_password', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18877, 12, 92, 'admin/save_change_password', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18878, 12, 254, 'product/craete', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18879, 12, 255, 'product/store', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18880, 12, 256, 'product/alldata', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18881, 12, 257, 'product/index', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18882, 12, 258, 'product/view', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18883, 12, 259, 'product/delete', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18884, 12, 286, 'product/ingredients', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18885, 12, 334, 'product/edit', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18886, 12, 335, 'product/update', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18887, 12, 260, 'sales/show_sales_department', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18888, 12, 261, 'sales/get_sales_department_data', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18889, 12, 262, 'sales/store_sales_department_data', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18890, 12, 263, 'sales/edit_sales_department_data', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18891, 12, 264, 'sales/update_sales_department_data', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18892, 12, 273, 'sales/sales_department_invoice', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18893, 12, 316, 'sales/create', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18894, 12, 317, 'sales/customer_payment_history_search', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18895, 12, 318, 'sales/sales_details_invoice', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18896, 12, 319, 'sales/add_walk_in_cuatomer', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18897, 12, 325, 'sales/sales_due_payment', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18898, 12, 328, 'sales/invoice_payment_history', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18899, 12, 357, 'sales/customer_details', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18900, 12, 361, 'sales/sales_history_pdf_generate', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18901, 12, 266, 'Department/show_lot_department', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18902, 12, 267, 'Department/search', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18903, 12, 268, 'Department/store_lot_department_data', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18904, 12, 270, 'Department/edit_lot_department_data', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18905, 12, 271, 'Department/update_lot_department_data', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18906, 12, 272, 'Department/show_single_lot_department_data', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18907, 12, 274, 'customer/all_customer', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18908, 12, 275, 'customer/search', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18909, 12, 276, 'customer/store', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18910, 12, 277, 'customer/edit', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18911, 12, 278, 'customer/update', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18912, 12, 307, 'customer/show', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18913, 12, 324, 'customer/view', '2022-02-24 09:44:42', '2022-02-24 09:44:42'),
+(18914, 12, 329, 'customer/manual_due_payment', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18915, 12, 362, 'customer/sales_payment_history_pdf', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18916, 12, 280, 'supplier/index', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18917, 12, 281, 'supplier/search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18918, 12, 282, 'supplier/store', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18919, 12, 283, 'supplier/edit', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18920, 12, 284, 'supplier/update', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18921, 12, 293, 'supplier/show', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18922, 12, 363, 'supplier/profile', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18923, 12, 287, 'purchase/index', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18924, 12, 288, 'purchase/search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18925, 12, 289, 'purchase/store', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18926, 12, 290, 'purchase/edit', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18927, 12, 291, 'purchase/update', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18928, 12, 294, 'purchase/show', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18929, 12, 360, 'purchase/purchase_pdf_generate', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18930, 12, 295, 'ingredient/index', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18931, 12, 296, 'ingredient/search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18932, 12, 297, 'ingredient/store', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18933, 12, 298, 'ingredient/edit', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18934, 12, 300, 'productcategory/index', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18935, 12, 301, 'productcategory/search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18936, 12, 302, 'productcategory/store', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18937, 12, 303, 'productcategory/edit', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18938, 12, 304, 'productcategory/update', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18939, 12, 308, 'expenses/expenses_category_index', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18940, 12, 309, 'expenses/expenses_category_search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18941, 12, 310, 'expenses/expenses_category_store', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18942, 12, 311, 'expenses/expenses_category_delete', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18943, 12, 312, 'expenses/expenses_index', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18944, 12, 313, 'expenses/expenses_search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18945, 12, 314, 'expenses/expenses_store', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18946, 12, 320, 'company/index', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18947, 12, 321, 'company/search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18948, 12, 322, 'company/store', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18949, 12, 330, 'company/edit_company', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18950, 12, 331, 'company/company_update', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18951, 12, 332, 'report/profit_show', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18952, 12, 333, 'report/profit_search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18953, 12, 343, 'report/sales_commision_report', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18954, 12, 344, 'report/sales_commision_report_show', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18955, 12, 358, 'report/account_summary', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18956, 12, 359, 'report/search_account_summary', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18957, 12, 365, 'report/deposit_expense_report_index', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18958, 12, 366, 'report/deposit_expense_report_search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18959, 12, 336, 'sales_executive/show', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18960, 12, 337, 'sales_executive/search', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18961, 12, 338, 'sales_executive/add', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18962, 12, 340, 'sales_executive/edit', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18963, 12, 341, 'sales_executive/update', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18964, 12, 342, 'sales_executive/store', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18965, 12, 346, 'workorder/create_workorder_party', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18966, 12, 347, 'workorder/store_workorder_party', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18967, 12, 348, 'workorder/edit_workorder_party', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18968, 12, 349, 'workorder/update_workorder_party', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18969, 12, 350, 'workorder/search_workorder_party', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18970, 12, 352, 'workorder/create_workorder', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18971, 12, 353, 'workorder/store_workorder', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18972, 12, 354, 'workorder/index_workorder', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18973, 12, 355, 'workorder/search_workorder', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18974, 12, 364, 'supplier/supplier_purchase_history_generate', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18975, 12, 367, 'report/profit_loss_report_generate', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18976, 12, 368, 'initalBalance/show_all_opening_and_closing_balance', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18977, 12, 369, 'initalBalance/search_all_opening_and_closing_balance', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18978, 12, 370, 'initalBalance/create_initial_balance', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18979, 12, 371, 'initalBalance/add_initial_balance', '2022-02-24 09:44:43', '2022-02-24 09:44:43'),
+(18980, 11, 1, 'adminDashboard', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18981, 11, 91, 'admin/change_password', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18982, 11, 92, 'admin/save_change_password', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18983, 11, 3, 'dynamic_route', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18984, 11, 4, 'dynamic_route', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18985, 11, 14, 'delete_route', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18986, 11, 16, 'edit_route', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18987, 11, 19, 'update_route', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18988, 11, 5, 'role/all_role', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18989, 11, 6, 'role/add_role', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18990, 11, 8, 'save_role', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18991, 11, 11, 'edit_role', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18992, 11, 12, 'update_role', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18993, 11, 13, 'delete_role', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18994, 11, 9, 'all_user', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18995, 11, 10, 'save_user', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18996, 11, 93, 'edit_user', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18997, 11, 94, 'upadte_user', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18998, 11, 95, 'suspend_user', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(18999, 11, 96, 'unsuspend_user', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(19000, 11, 127, 'delete_user', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(19001, 11, 130, 'test', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(19002, 11, 131, 'menu/menu_create', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(19003, 11, 133, 'menu/menu_save', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(19004, 11, 134, 'menu/all_menu', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(19005, 11, 135, 'menu/menu_search', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(19006, 11, 138, 'menu/edit_menu', '2022-03-06 04:50:07', '2022-03-06 04:50:07'),
+(19007, 11, 139, 'menu/update_menu', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19008, 11, 254, 'product/craete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19009, 11, 255, 'product/store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19010, 11, 256, 'product/alldata', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19011, 11, 257, 'product/index', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19012, 11, 258, 'product/view', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19013, 11, 259, 'product/delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19014, 11, 286, 'product/ingredients', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19015, 11, 334, 'product/edit', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19016, 11, 335, 'product/update', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19017, 11, 260, 'sales/show_sales_department', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19018, 11, 261, 'sales/get_sales_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19019, 11, 262, 'sales/store_sales_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19020, 11, 263, 'sales/edit_sales_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19021, 11, 264, 'sales/update_sales_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19022, 11, 265, 'sales/delete_sales_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19023, 11, 273, 'sales/sales_department_invoice', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19024, 11, 316, 'sales/create', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19025, 11, 317, 'sales/customer_payment_history_search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19026, 11, 318, 'sales/sales_details_invoice', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19027, 11, 319, 'sales/add_walk_in_cuatomer', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19028, 11, 325, 'sales/sales_due_payment', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19029, 11, 328, 'sales/invoice_payment_history', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19030, 11, 357, 'sales/customer_details', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19031, 11, 361, 'sales/sales_history_pdf_generate', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19032, 11, 266, 'Department/show_lot_department', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19033, 11, 267, 'Department/search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19034, 11, 268, 'Department/store_lot_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19035, 11, 269, 'Department/delete_lot_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19036, 11, 270, 'Department/edit_lot_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19037, 11, 271, 'Department/update_lot_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19038, 11, 272, 'Department/show_single_lot_department_data', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19039, 11, 274, 'customer/all_customer', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19040, 11, 275, 'customer/search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19041, 11, 276, 'customer/store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19042, 11, 277, 'customer/edit', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19043, 11, 278, 'customer/update', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19044, 11, 279, 'customer/delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19045, 11, 307, 'customer/show', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19046, 11, 324, 'customer/view', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19047, 11, 329, 'customer/manual_due_payment', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19048, 11, 362, 'customer/sales_payment_history_pdf', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19049, 11, 280, 'supplier/index', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19050, 11, 281, 'supplier/search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19051, 11, 282, 'supplier/store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19052, 11, 283, 'supplier/edit', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19053, 11, 284, 'supplier/update', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19054, 11, 285, 'supplier/delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19055, 11, 293, 'supplier/show', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19056, 11, 363, 'supplier/profile', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19057, 11, 287, 'purchase/index', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19058, 11, 288, 'purchase/search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19059, 11, 289, 'purchase/store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19060, 11, 290, 'purchase/edit', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19061, 11, 291, 'purchase/update', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19062, 11, 292, 'purchase/delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19063, 11, 294, 'purchase/show', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19064, 11, 360, 'purchase/purchase_pdf_generate', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19065, 11, 372, 'purchase/create', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19066, 11, 295, 'ingredient/index', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19067, 11, 296, 'ingredient/search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19068, 11, 297, 'ingredient/store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19069, 11, 298, 'ingredient/edit', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19070, 11, 299, 'ingredient/delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19071, 11, 300, 'productcategory/index', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19072, 11, 301, 'productcategory/search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19073, 11, 302, 'productcategory/store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19074, 11, 303, 'productcategory/edit', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19075, 11, 304, 'productcategory/update', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19076, 11, 305, 'productcategory/delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19077, 11, 308, 'expenses/expenses_category_index', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19078, 11, 309, 'expenses/expenses_category_search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19079, 11, 310, 'expenses/expenses_category_store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19080, 11, 311, 'expenses/expenses_category_delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19081, 11, 312, 'expenses/expenses_index', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19082, 11, 313, 'expenses/expenses_search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19083, 11, 314, 'expenses/expenses_store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19084, 11, 315, 'expenses/expenses_delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19085, 11, 320, 'company/index', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19086, 11, 321, 'company/search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19087, 11, 322, 'company/store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19088, 11, 323, 'company/delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19089, 11, 330, 'company/edit_company', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19090, 11, 331, 'company/company_update', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19091, 11, 332, 'report/profit_show', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19092, 11, 333, 'report/profit_search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19093, 11, 343, 'report/sales_commision_report', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19094, 11, 344, 'report/sales_commision_report_show', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19095, 11, 358, 'report/account_summary', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19096, 11, 359, 'report/search_account_summary', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19097, 11, 365, 'report/deposit_expense_report_index', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19098, 11, 366, 'report/deposit_expense_report_search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19099, 11, 336, 'sales_executive/show', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19100, 11, 337, 'sales_executive/search', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19101, 11, 338, 'sales_executive/add', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19102, 11, 339, 'sales_executive/delete', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19103, 11, 340, 'sales_executive/edit', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19104, 11, 341, 'sales_executive/update', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19105, 11, 342, 'sales_executive/store', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19106, 11, 346, 'workorder/create_workorder_party', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19107, 11, 347, 'workorder/store_workorder_party', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19108, 11, 348, 'workorder/edit_workorder_party', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19109, 11, 349, 'workorder/update_workorder_party', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19110, 11, 350, 'workorder/search_workorder_party', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19111, 11, 351, 'workorder/delete_workorder_party', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19112, 11, 352, 'workorder/create_workorder', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19113, 11, 353, 'workorder/store_workorder', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19114, 11, 354, 'workorder/index_workorder', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19115, 11, 355, 'workorder/search_workorder', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19116, 11, 356, 'workorder/delete_workorder', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19117, 11, 364, 'supplier/supplier_purchase_history_generate', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19118, 11, 367, 'report/profit_loss_report_generate', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19119, 11, 368, 'initalBalance/show_all_opening_and_closing_balance', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19120, 11, 369, 'initalBalance/search_all_opening_and_closing_balance', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19121, 11, 370, 'initalBalance/create_initial_balance', '2022-03-06 04:50:08', '2022-03-06 04:50:08'),
+(19122, 11, 371, 'initalBalance/add_initial_balance', '2022-03-06 04:50:08', '2022-03-06 04:50:08');
 
 -- --------------------------------------------------------
 
@@ -843,9 +957,69 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_category_id`, `chalan_no`, `chalan_no_2`, `party_name`, `quantity`, `unit_price`, `color_name`, `open_tube`, `sl_no`, `ggsm`, `yarn_count`, `yarn_lot_no`, `fb_rv_date`, `batch_process_date`, `lot_no`, `batch_no`, `order_no`, `style_no`, `finish_gsm`, `fabric_type`, `card_no`, `roll`, `dia`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 'COTTON FINE FABRICS', '346', 'MIZANUR RAHMAN', '20.4117', NULL, 'AVERAGE', 'OPEN', NULL, '240', NULL, NULL, '2022-02-12 00:00:00', '2022-02-12 00:00:00', NULL, NULL, NULL, NULL, '240', 'S/J', '586867729', '800', '34', NULL, '2022-02-19 12:27:36', '2022-02-23 05:08:04'),
-(2, 1, 'POLYSTAR MICO FABRICS', '2004', 'MD ELIAS HOSSAIN', '56', NULL, 'AVERAGE', 'OPEN', NULL, '250', NULL, NULL, '2022-01-18 00:00:00', '2022-01-18 00:00:00', NULL, NULL, NULL, NULL, '250', 'S/J', '1819430039', '500', '34', NULL, '2022-02-19 12:40:28', '2022-02-23 05:00:48'),
-(3, 1, 'BLAZZER CHEQUE PIN COMBOL', '52', 'MD ALAMIN HOSSAIN', '8841.40', NULL, 'AVERAGE', 'OPEN', NULL, '260', NULL, NULL, '2021-12-18 00:00:00', '2021-12-18 00:00:00', NULL, NULL, NULL, NULL, '260', 'BLEEZER', '873206511', '178', '36', NULL, '2022-02-19 14:58:04', '2022-02-19 15:01:04');
+(1, 1, 'COTTON FINE FABRICS', '346', 'MIZANUR RAHMAN', '11226', NULL, 'AVERAGE', 'OPEN', NULL, '240', NULL, NULL, '2022-02-12 00:00:00', '2022-02-12 00:00:00', NULL, NULL, NULL, NULL, '240', 'S/J', '586867729', '800', '34', NULL, '2022-02-19 12:27:36', '2022-02-19 12:29:10'),
+(2, 1, 'AVERAGE COLOUR POLYSTAR MICO FABRICS', '2004', 'MD ELIAS HOSSAIN', '361.30', NULL, 'AVERAGE', 'OPEN', NULL, '250', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '250', 'S/J', '1819430039', '500', '34', NULL, '2022-02-19 12:40:28', '2022-02-27 15:01:47'),
+(3, 1, 'BLAZZER CHEQUE PIN COMBOL', '52', 'MD ALAMIN HOSSAIN', '8841.40', NULL, 'AVERAGE', 'OPEN', NULL, '260', NULL, NULL, '2021-12-18 00:00:00', '2021-12-18 00:00:00', NULL, NULL, NULL, NULL, '260', 'BLEEZER', '873206511', '178', '36', NULL, '2022-02-19 14:58:04', '2022-02-19 15:01:04'),
+(4, 1, 'T-Shart', '1111', 'na', '100', NULL, 'gray', NULL, NULL, '11', '11', '112', '2022-02-23 00:00:00', '2022-02-23 00:00:00', NULL, NULL, '500', NULL, NULL, 'Cotton', '245420442', '10', '90', NULL, '2022-02-23 15:43:38', '2022-02-23 15:44:42'),
+(5, 1, '2 SIDE BLEZAR PRINT FABRICS AVERAGE COLOUR', NULL, 'MD. ALA AMIN MAMA', '8841.40', NULL, 'AVERAGE', 'OPEN', NULL, '260', NULL, NULL, '2021-12-20 00:00:00', NULL, NULL, NULL, NULL, NULL, '260', '2 SIDE BRUSH', '1531791112', NULL, '72', NULL, '2022-02-26 13:25:31', '2022-02-26 13:30:55'),
+(6, 1, 'BRIGHT POLYSTAR FABRICS', '5903', 'HUMAYUN SIR', '401.50', NULL, 'WHITE', 'OPEN', NULL, '240', NULL, NULL, '2022-01-18 00:00:00', '2022-01-18 00:00:00', NULL, NULL, NULL, NULL, '240', 'S/J', '1610116258', '25', '30', NULL, '2022-02-27 12:00:31', '2022-02-27 12:07:53'),
+(7, 1, 'BRIGHT POLYSTAR FABRICS', '5903', 'MD ELIAS HOSSAIN', NULL, NULL, 'WHITE', 'OPEN', NULL, '240', NULL, NULL, '2022-01-18 00:00:00', '2022-01-18 00:00:00', NULL, NULL, NULL, NULL, '240', 'S/J', '997546201', '25', '240', NULL, '2022-02-27 12:06:15', '2022-02-27 12:06:15'),
+(8, 1, 'BRIGHT POLYSTAR COLOURING', '1561', 'MD ELIAS HOSSAIN', '416.60', NULL, 'AVERAGE', 'OPEN', NULL, '240', NULL, NULL, '2022-01-18 00:00:00', '2022-01-18 00:00:00', NULL, NULL, NULL, NULL, '240', 'S/J', '362360752', '25', '240', NULL, '2022-02-27 12:13:35', '2022-02-27 12:14:21'),
+(9, 1, 'BLACK+ NAVY MASH FABRICS', '8079+6156', 'MD ELIAS HOSSAIN', '592.05', NULL, 'AVERAGE', 'OPEN', NULL, '240', NULL, NULL, '2022-02-06 00:00:00', '2022-02-06 00:00:00', NULL, NULL, NULL, NULL, '240', 'S/J', '1290013273', '30', '240', NULL, '2022-02-27 12:21:51', '2022-02-27 12:23:03'),
+(10, 1, 'AVAREZ TARRY FABRICS', NULL, 'SHAWON', '30000', NULL, 'AVERAGE', 'OPEN', NULL, '160', NULL, NULL, '2022-02-27 00:00:00', '2022-02-10 00:00:00', NULL, NULL, NULL, NULL, '160', 'TERRY', '471851984', '100', NULL, NULL, '2022-02-27 12:29:54', '2022-02-27 12:33:23'),
+(11, 1, 'AVERAGE FLEECE FABRICS', '105', 'MD. RAZIB', '40000', NULL, 'NAVY', 'OPEN', NULL, '220', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '220', 'FLEECE', '1626132125', '1500', '72', NULL, '2022-02-27 12:47:53', '2022-03-01 16:07:27'),
+(12, 1, 'AVERAGE COTTON S/J', '106', 'MD . RAZIB', '20000', NULL, 'NAVY', 'OPEN', NULL, '260', NULL, NULL, '2022-01-05 00:00:00', '2022-01-28 00:00:00', NULL, NULL, NULL, NULL, '260', 'AVERAGE COTTON S/J', '1179191586', '1000', '72', NULL, '2022-02-27 14:33:25', '2022-03-01 16:08:58'),
+(13, 1, 'AVERAVE LYECRA  S/J', '107', 'MD BIPUL RHAMAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-10 00:00:00', '2022-02-16 00:00:00', NULL, NULL, NULL, NULL, NULL, 'LYECRA S/J', '221117491', '1300', '72', NULL, '2022-02-28 15:42:44', '2022-03-01 12:58:28'),
+(14, 1, 'AVARAVE LYECRA  S/J', '107', 'MD BIPUL RHAMAN', '2000', NULL, 'AVARECS RABRICS', NULL, NULL, NULL, NULL, NULL, '2022-02-03 00:00:00', '2022-02-16 00:00:00', NULL, NULL, NULL, NULL, NULL, 'LYECRA S/J', '743062399', '1300', '72', NULL, '2022-02-28 15:43:53', '2022-03-01 12:57:10'),
+(15, 1, 'SLUB COTTON FINE', '108', 'MD. RAZIB', '700', NULL, 'AVARECS RABRICS', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-04 00:00:00', '2022-02-03 00:00:00', NULL, NULL, NULL, NULL, NULL, 'SLUB CTTON FINE', '1354275450', '100', NULL, NULL, '2022-02-28 15:53:49', '2022-02-28 15:55:16'),
+(16, 1, 'AVERAGE COLOUR COTON FINE FABRCS', '1012', 'MD. MONIRUL ISLAM', '100000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-10 00:00:00', '2022-02-23 00:00:00', NULL, NULL, NULL, NULL, NULL, 'AVERAGE COLOUR COTON FINE FABRCS', '1873110645', '200', NULL, NULL, '2022-02-28 19:57:53', '2022-02-28 19:59:52'),
+(17, 1, 'AVERAGE COLOUR LECRA FINE FABRICS', NULL, 'MD. MONIRUL ISLAM', '10000', NULL, 'AVERAGE', NULL, NULL, NULL, NULL, NULL, '2022-02-01 00:00:00', '2022-02-16 00:00:00', NULL, NULL, NULL, NULL, NULL, 'AVERAGE COLOUR LECRA FINE FABRICS', '1555996862', '200', NULL, NULL, '2022-02-28 20:02:47', '2022-02-28 20:39:05'),
+(18, 1, 'AVERAGE COLOUR COTTON FINE FABRICS', '105', NULL, '100000', NULL, 'AVERAGE', NULL, NULL, NULL, NULL, NULL, '2022-02-01 00:00:00', '2022-02-01 00:00:00', NULL, NULL, NULL, NULL, NULL, 'AVERAGE COLOUR COTTON FINE FABRICS', '184655011', '200', NULL, NULL, '2022-02-28 20:07:05', '2022-02-28 20:37:51'),
+(19, 1, 'SLUB COTTON FINE SLUB LYCRA FINE', '109', 'MD. RAZIB', NULL, NULL, 'AVERAGE', 'OPEN', NULL, '220', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '260', 'SLUB COTTON FINE SLUB LYCRA FINE', '1841096856', '400', '72', NULL, '2022-03-01 12:35:28', '2022-03-01 13:03:03'),
+(20, 1, 'BLACK COTTON FINE', '110', 'MD BIPUL RHAMAN', NULL, NULL, 'AVERAGE', 'OPEN', NULL, '220', NULL, NULL, '2022-02-16 00:00:00', '2022-03-01 00:00:00', NULL, NULL, NULL, NULL, NULL, 'BLACK COTTON FINE', '1887131877', '10', '72', NULL, '2022-03-01 12:37:01', '2022-03-01 12:37:01'),
+(21, 1, 'BLACK LACRA FINE', '111', 'MD. MONIRUL ISLAM', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-17 00:00:00', '2022-02-28 00:00:00', NULL, NULL, NULL, NULL, NULL, 'BLACK LACRA FINE', '631775236', '20', '72', NULL, '2022-03-01 12:38:39', '2022-03-01 12:38:39'),
+(22, 1, 'WHITE COTTON FINE', '1012', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-18 00:00:00', '2022-02-27 00:00:00', NULL, NULL, NULL, NULL, NULL, 'WHITE COTTON FINE', '340579683', '50', '72', NULL, '2022-03-01 12:39:43', '2022-03-01 12:39:43'),
+(23, 1, 'WHITE LYCRA FINE', '113', 'MD. ALA AMIN MAMA', NULL, NULL, 'NAVY', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-22 00:00:00', '2022-02-26 00:00:00', NULL, NULL, NULL, NULL, NULL, 'WHITE LYCRA FINE', '11893175', '56', '72', NULL, '2022-03-01 12:40:46', '2022-03-01 12:40:46'),
+(24, 1, 'NEVY COTTON FINE', '114', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVARECS RABRICS', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-23 00:00:00', '2022-02-28 00:00:00', NULL, NULL, NULL, NULL, NULL, 'NEVY COTTON FINE', '1083110278', '100', '72', NULL, '2022-03-01 12:41:48', '2022-03-01 12:41:48'),
+(25, 1, 'NEVY LYCRA FINE', '115', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-10 00:00:00', '2022-02-16 00:00:00', NULL, NULL, NULL, NULL, NULL, 'NEVY LYCRA FINE', '555265973', '50', '72', NULL, '2022-03-01 12:42:42', '2022-03-01 12:42:42'),
+(26, 1, 'ANTHA COTTON FINE', '116', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVARECS RABRICS', NULL, NULL, NULL, NULL, NULL, '2022-02-03 00:00:00', '2022-03-10 00:00:00', NULL, NULL, NULL, NULL, NULL, 'ANTHA COTTON FINE', '1812134915', '40', '72', NULL, '2022-03-01 12:43:54', '2022-03-01 12:43:54'),
+(27, 1, 'ANTHA LYCRA FINE', '117', 'MD. ALA AMIN MAMA', NULL, NULL, 'NAVY', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-10 00:00:00', '2022-03-23 00:00:00', NULL, NULL, NULL, NULL, NULL, 'ANTHA LYCRA FINE', '1609662358', '70', '72', NULL, '2022-03-01 12:44:57', '2022-03-01 12:44:57'),
+(28, 1, 'TWISTING COTTON FINE', '118', 'MD. ALA AMIN MAMA', NULL, NULL, 'NAVY', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-02 00:00:00', '2022-03-10 00:00:00', NULL, NULL, NULL, NULL, NULL, 'TWISTING COTTON FINE', '2025723815', '119', '72', NULL, '2022-03-01 12:46:16', '2022-03-01 12:46:16'),
+(29, 1, 'TWISTING LYCRA FINE', '119', 'MD. ALA AMIN MAMA', NULL, NULL, 'NAVY', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-02 00:00:00', '2022-02-16 00:00:00', NULL, NULL, NULL, NULL, NULL, 'TWISTING LYCRA FINE', '115386847', '50', '72', NULL, '2022-03-01 12:49:40', '2022-03-01 12:49:40'),
+(30, 1, 'ECJET COTTON FINE', '120', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2022-02-05 00:00:00', '2022-02-25 00:00:00', NULL, NULL, NULL, NULL, '220', 'ECJET COTTON FINE', '27882575', '200', '72', NULL, '2022-03-01 13:06:53', '2022-03-01 13:06:53'),
+(31, 1, 'ENJET COTTON FINE', '121', 'MD. ALA AMIN MAMA', NULL, NULL, 'NAVY', 'OPEN', NULL, NULL, NULL, NULL, '2021-12-30 00:00:00', '2022-01-13 00:00:00', NULL, NULL, NULL, NULL, '220', 'ENJET COTTON FINE', '1550657279', '200', '72', NULL, '2022-03-01 13:08:10', '2022-03-01 13:08:10'),
+(32, 1, 'MILLANCE COTTON FINE', '105', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVARECS RABRICS', 'OPEN', NULL, NULL, NULL, NULL, '2022-01-05 00:00:00', '2022-03-10 00:00:00', NULL, NULL, NULL, NULL, '220', 'MILLANCE COTTON FINE', '816387838', '500', '72', NULL, '2022-03-01 13:09:31', '2022-03-01 13:09:31'),
+(33, 1, 'MILLANCE LYCRA FINE', '122', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2022-01-19 00:00:00', '2022-01-24 00:00:00', NULL, NULL, NULL, NULL, '260', 'MILLANCE LYCRA FINE', '570957478', '33', '72', NULL, '2022-03-01 13:10:37', '2022-03-01 13:10:37'),
+(34, 1, 'AVARAGE COLOUNING COTTON FINE', '123', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2022-01-05 00:00:00', '2022-01-13 00:00:00', NULL, NULL, NULL, NULL, '220', 'AVARAGE COLOUNING COTTON FINE', '1786758995', '700', '72', NULL, '2022-03-01 13:11:59', '2022-03-01 13:11:59'),
+(35, 1, 'AVARAGE COLOUNING COTTON  FINE', '124', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2022-01-18 00:00:00', '2022-02-04 00:00:00', NULL, NULL, NULL, NULL, '220', 'AVARAGE COLOUNING COTTON  FINE', '1655921685', '400', '72', NULL, '2022-03-01 13:13:04', '2022-03-01 13:13:04'),
+(36, 1, 'NEPS COTTON FINE', '125', 'MD. ALA AMIN MAMA', NULL, NULL, 'NAVY', 'OPEN', NULL, NULL, NULL, NULL, '2022-01-10 00:00:00', '2022-02-02 00:00:00', NULL, NULL, NULL, NULL, '260', 'NEPS COTTON FINE', '975096882', '550', '72', NULL, '2022-03-01 13:13:57', '2022-03-01 13:13:57'),
+(37, 1, 'NEPS LYCRA FINE', '127', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVARECS RABRICS', 'OPEN', NULL, NULL, NULL, NULL, '2021-12-07 00:00:00', '2021-12-14 00:00:00', NULL, NULL, NULL, NULL, '220', 'NEPS LYCRA FINE', '1010689000', '500', '72', NULL, '2022-03-01 13:15:00', '2022-03-01 13:15:00'),
+(38, 1, 'NEPS ENJET COTTON FINE', '128', 'MD. ALA AMIN MAMA', '3400', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-12-29 00:00:00', '2022-01-10 00:00:00', NULL, NULL, NULL, NULL, '220', 'NEPS ENJET COTTON FINE', '249341747', '400', '72', NULL, '2022-03-01 13:16:57', '2022-03-01 16:03:45'),
+(39, 1, 'NEPS ENJET LYCRA FINE', '129', 'MD. ALA AMIN MAMA', '2600', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-12-22 00:00:00', '2022-01-01 00:00:00', NULL, NULL, NULL, NULL, '220', 'NEPS ENJET LYCRA FINE', '137114206', '500', '72', NULL, '2022-03-01 13:19:48', '2022-03-01 16:01:59'),
+(40, 1, 'COTTON PRINT S/J', '130', 'MD. ALA AMIN MAMA', '3300', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-10-06 00:00:00', '2021-12-15 00:00:00', NULL, NULL, NULL, NULL, '260', 'COTTON PRINT S/J', '2025755751', '450', '72', NULL, '2022-03-01 13:21:49', '2022-03-01 15:59:59'),
+(41, 1, 'LYCRA PRINT S/J', '131', 'MD. ALA AMIN MAMA', '3000', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-18 00:00:00', '2022-01-11 00:00:00', NULL, NULL, NULL, NULL, '160', 'LYCRA PRINT S/J', '1129011602', '422', '72', NULL, '2022-03-01 13:23:03', '2022-03-01 15:58:31'),
+(42, 1, 'SLUB PRINT S/J COTTON', '132', 'MD. ALA AMIN MAMA', '3000', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2022-01-04 00:00:00', '2022-02-02 00:00:00', NULL, NULL, NULL, NULL, '220', 'SLUB PRINT S/J COTTON', '1371721044', '300', '72', NULL, '2022-03-01 13:24:05', '2022-03-01 15:54:47'),
+(43, 1, 'SLUB PRINT S/J LYCRA', '133', 'MD. ALA AMIN MAMA', '2000', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-12-15 00:00:00', '2022-01-18 00:00:00', NULL, NULL, NULL, NULL, '260', 'SLUB PRINT S/J LYCRA', '1043625048', '500', '72', NULL, '2022-03-01 13:25:16', '2022-03-01 15:52:59'),
+(44, 1, 'STEP COTTON FINE', '134', 'MD. ALA AMIN MAMA', '3000', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-12-08 00:00:00', '2022-01-18 00:00:00', NULL, NULL, NULL, NULL, '220', 'STEP COTTON FINE', '789956453', '430', '72', NULL, '2022-03-01 13:27:59', '2022-03-01 15:50:57'),
+(45, 1, 'STEP LYCRA FINE', '136', 'MD. ALA AMIN MAMA', '2500', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-12-07 00:00:00', '2022-01-11 00:00:00', NULL, NULL, NULL, NULL, '220', 'STEP LYCRA FINE', '605410357', '300', '72', NULL, '2022-03-01 13:29:11', '2022-03-01 15:49:39'),
+(46, 1, 'LYECRA  VISCOSS/JPRINT', '126', 'MD. SOHEL RANA', '6000', NULL, 'AVERAGE', 'OPEN', NULL, '160', NULL, NULL, '2022-02-27 00:00:00', '2022-02-27 00:00:00', NULL, NULL, NULL, NULL, NULL, 'LYECRA  VISCOSS/JPRINT', '391989065', '444', NULL, NULL, '2022-03-01 13:39:43', '2022-03-01 13:41:37'),
+(47, 1, 'MICO PRINT S/J', '136', 'MD. ALA AMIN MAMA', '3300', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-04 00:00:00', '2022-01-12 00:00:00', NULL, NULL, NULL, NULL, '220', 'MICO PRINT S/J', '762402617', '500', '72', NULL, '2022-03-01 14:13:25', '2022-03-01 15:46:21'),
+(48, 1, 'POLYSTER PRINT S/J', '137', 'MD. ALA AMIN MAMA', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-11 00:00:00', '2022-01-18 00:00:00', NULL, NULL, NULL, NULL, '260', 'POLYSTER PRINT S/J', '766212579', '600', '72', NULL, '2022-03-01 14:14:37', '2022-03-01 14:14:37'),
+(49, 1, 'SOLID POLYSTER S/J', '138', 'MD. ALA AMIN MAMA', '2500', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-09-01 00:00:00', '2022-01-07 00:00:00', NULL, NULL, NULL, NULL, '220', 'SOLID POLYSTER S/J', '1212716338', '300', '72', NULL, '2022-03-01 14:15:43', '2022-03-01 15:41:32'),
+(50, 1, 'STEP POLYSTER PRINT S/J', '140', 'MD. ALA AMIN MAMA', '3000', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-17 00:00:00', '2021-12-31 00:00:00', NULL, NULL, NULL, NULL, '220', 'STEP POLYSTER PRINT S/J', '151379230', '600', '72', NULL, '2022-03-01 14:16:51', '2022-03-01 15:43:00'),
+(51, 1, 'SOLID VISCOS S/J', '141', 'MD. ALA AMIN MAMA', '3000', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-17 00:00:00', '2022-01-16 00:00:00', NULL, NULL, NULL, NULL, '160', 'SOLID VISCOS S/J', '289668307', '400', '72', NULL, '2022-03-01 14:18:08', '2022-03-01 15:35:39'),
+(52, 1, 'MICO POLY STER', '142', 'MD. ALA AMIN MAMA', '2500', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-01 00:00:00', '2021-12-08 00:00:00', NULL, NULL, NULL, NULL, '220', 'MICO POLY STER', '1655619842', '500', '72', NULL, '2022-03-01 14:19:06', '2022-03-01 15:34:07'),
+(53, 1, 'ALL STECH POLYSTER S/J', '144', 'MD. ALA AMIN MAMA', '2000', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-11 00:00:00', '2021-11-01 00:00:00', NULL, NULL, NULL, NULL, '220', 'ALL STECH POLYSTER S/J', '1552588488', '500', '72', NULL, '2022-03-01 14:20:49', '2022-03-01 14:25:31'),
+(54, 1, 'ALL STECH POLYSTER PRINT S/J', '145', 'MD. ALA AMIN', '2000', NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-25 00:00:00', '2021-12-16 00:00:00', NULL, NULL, NULL, NULL, '220', 'ALL STECH POLYSTER PRINT S/J', '1094586103', '500', '72', NULL, '2022-03-01 14:23:03', '2022-03-01 15:30:17'),
+(55, 1, 'COTTON TERRY', '146', 'MD. ALA AMIN', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2022-01-04 00:00:00', '2022-02-07 00:00:00', NULL, NULL, NULL, NULL, '220', 'COTTON TERRY', '1618212665', '500', '72', NULL, '2022-03-01 15:22:02', '2022-03-01 15:22:02'),
+(56, 1, 'LYCRA TERRY', '147', 'MD. ALA AMIN', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-11 00:00:00', '2021-12-28 00:00:00', NULL, NULL, NULL, NULL, '260', 'LYCRA TERRY', '1398929260', '600', '72', NULL, '2022-03-01 15:23:04', '2022-03-01 15:23:04'),
+(57, 1, 'POLYSTER TERRY', '149', 'MD. ALA AMIN', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-10 00:00:00', '2022-01-04 00:00:00', NULL, NULL, NULL, NULL, '220', 'POLYSTER TERRY', '803502438', '500', '72', NULL, '2022-03-01 15:24:06', '2022-03-01 15:24:06'),
+(58, 1, 'COTTON PRINT TERRY', '150', 'MD. ALA AMIN', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-01 00:00:00', '2021-12-02 00:00:00', NULL, NULL, NULL, NULL, '220', 'COTTON PRINT TERRY', '814681468', '400', '72', NULL, '2022-03-01 15:25:07', '2022-03-01 15:25:07'),
+(59, 1, 'LYCRA PRINT TERRY', '150', 'MD. ALA AMIN', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-02 00:00:00', '2022-01-11 00:00:00', NULL, NULL, NULL, NULL, '220', 'LYCRA PRINT TERRY', '539929107', '500', '72', NULL, '2022-03-01 15:26:05', '2022-03-01 15:26:05'),
+(60, 1, 'POLYSTER PRINT TERRY', '151', 'MD. ALA AMIN', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-10-07 00:00:00', '2021-11-07 00:00:00', NULL, NULL, NULL, NULL, '220', 'POLYSTER PRINT TERRY', '1027370428', '500', '72', NULL, '2022-03-01 15:27:17', '2022-03-01 15:27:17'),
+(61, 1, 'POLYSTER PRINT TERRY', '152', 'MD. ALA AMIN', NULL, NULL, 'AVERAGE', 'OPEN', NULL, NULL, NULL, NULL, '2021-11-17 00:00:00', '2021-12-01 00:00:00', NULL, NULL, NULL, NULL, '220', 'POLYSTER PRINT TERRY', '912686132', '400', '72', NULL, '2022-03-01 15:28:31', '2022-03-01 15:28:31'),
+(62, 1, 'AVARAGE KOMBOL FABICS', '140', 'MD. ALA AMIN', '669', NULL, 'AVERAGE', NULL, NULL, '220', NULL, NULL, '2022-03-01 00:00:00', '2022-03-02 00:00:00', NULL, NULL, NULL, NULL, NULL, 'AVARAGE KOMBOL FABICS', '1050678109', '500', '72', NULL, '2022-03-02 15:52:29', '2022-03-06 04:08:21'),
+(63, 1, 'Dolorum commodi laud', 'Eaque nisi et eos se', 'Macey Peters', NULL, NULL, 'Xyla Holder', 'Voluptate est delect', 'Dolor recusandae Iu', 'Et facilis molestias', 'Ratione tempora volu', 'Laudantium neque es', '2018-05-04 00:00:00', '1998-06-01 00:00:00', 'Modi minima doloribu', 'Aut accusantium tene', 'Consequatur non nul', 'Placeat quis qui ni', 'Nihil reiciendis ex', 'Qui veritatis proide', '198888160', 'Dolore quia vel cons', 'Minim in ullamco sed', NULL, '2022-03-06 05:53:26', '2022-03-06 05:53:26');
 
 -- --------------------------------------------------------
 
@@ -903,22 +1077,36 @@ CREATE TABLE `purchase` (
   `unit_price` decimal(10,2) DEFAULT NULL,
   `total_purchas_price` decimal(10,2) DEFAULT NULL,
   `actual_unit_price` decimal(10,2) DEFAULT NULL,
+  `payment_amount` decimal(10,2) DEFAULT NULL,
+  `due` decimal(10,2) DEFAULT NULL,
   `actual_purchas_price` decimal(10,2) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `purchase`
+-- Table structure for table `purchase_payments`
 --
 
-INSERT INTO `purchase` (`id`, `product_id`, `supplier_id`, `created_by`, `quantity`, `payment_mode`, `main_quantity`, `status`, `unit_price`, `total_purchas_price`, `actual_unit_price`, `actual_purchas_price`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '107', '0.000', 'Cache', '11226.000', '1', '370.00', '4153620.00', '374.45', '4203620.00', '2022-02-19 12:29:10', '2022-02-22 09:15:22'),
-(2, 2, 2, '107', '0.000', 'Cache', '1020.210', '1', '250.00', '255052.50', '254.90', '260052.00', '2022-02-19 12:42:15', '2022-02-19 12:42:45'),
-(3, 3, 3, '107', '0.000', 'Cache', '8841.400', '1', '307.00', '2714309.80', '307.57', '2719308.00', '2022-02-19 15:01:04', '2022-02-19 15:01:27'),
-(4, 1, 1, '92', '965.000', 'Cache', '967.000', '1', '54.00', '52218.00', '54.81', '53000.00', '2022-02-22 09:18:44', '2022-02-22 09:27:17'),
-(5, 2, 1, '92', '56.000', 'Bkash', '56.000', '1', '52.00', '3024.00', '71.43', '4000.00', '2022-02-23 11:00:48', '2022-02-23 11:00:48'),
-(6, 1, 2, '92', '20.412', 'Cache', '20.412', '1', '147.71', '3015.01', '152.61', '3115.00', '2022-02-23 11:08:04', '2022-02-23 11:08:04');
+CREATE TABLE `purchase_payments` (
+  `id` int(11) NOT NULL,
+  `purchase_id` int(11) DEFAULT NULL,
+  `supplier_id` int(11) DEFAULT NULL,
+  `amount` int(11) NOT NULL,
+  `payment_mode` varchar(255) NOT NULL,
+  `bank_name` varchar(255) DEFAULT NULL,
+  `cheque_number` varchar(100) DEFAULT NULL,
+  `cheque_due_date` datetime DEFAULT NULL,
+  `bkash_number` varchar(255) DEFAULT NULL,
+  `bkash_trns_id` varchar(255) DEFAULT NULL,
+  `card_number` varchar(255) DEFAULT NULL,
+  `card_expire_date` varchar(255) DEFAULT NULL,
+  `remark` longtext DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -995,9 +1183,9 @@ INSERT INTO `sales` (`id`, `customer_id`, `sales_executive_id`, `total_price`, `
 (1, 2, 2, '11101.38', '11101.00', '0.38', '0', NULL, NULL, 0, '83079988', '1593.61', NULL, NULL, '2022-02-19 12:46:51', '2022-02-19 12:46:51'),
 (2, 3, 2, '1000.00', '1000.00', '0.00', '0', NULL, NULL, 1, '35274589', '231.07', NULL, NULL, '2022-02-19 15:08:20', '2022-02-19 15:08:20'),
 (3, 4, 4, '44035.64', '44035.00', '0.64', '200', NULL, NULL, 0, '1524751701', '5928.09', NULL, NULL, '2022-02-20 12:17:11', '2022-02-20 12:17:11'),
-(4, 2, 1, '561800.00', '34000.00', '527800.00', '500', NULL, NULL, 0, '1153085134', '-3641775.70', NULL, NULL, '2022-02-22 09:22:00', '2022-02-22 09:22:00'),
-(5, 4, 2, '176.00', '176.00', '0.00', '122', NULL, NULL, 1, '1427537863', '121.19', NULL, NULL, '2022-02-22 09:24:13', '2022-02-22 09:24:40'),
-(6, 2, 2, '88.00', '23.00', '65.00', '34', NULL, NULL, 0, '1615546690', '33.19', NULL, NULL, '2022-02-23 11:08:42', '2022-02-23 11:08:42');
+(5, 18, 1, '15249.00', '15240.00', '9.00', '0', NULL, NULL, 0, '223500888', '1679.60', NULL, NULL, '2022-02-26 13:35:14', '2022-02-26 13:35:14'),
+(6, 33, 7, '3596037.31', '0.00', '3596037.31', '10129', NULL, NULL, 0, '1464033206', '-79762.69', NULL, NULL, '2022-02-28 20:28:10', '2022-02-28 20:28:10'),
+(7, 34, 7, '171637.50', '171637.00', '0.50', '00', NULL, NULL, 0, '231964984', '-27362.50', NULL, NULL, '2022-03-02 16:18:13', '2022-03-02 16:18:13');
 
 -- --------------------------------------------------------
 
@@ -1020,18 +1208,6 @@ CREATE TABLE `sales_details` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sales_details`
---
-
-INSERT INTO `sales_details` (`id`, `customer_id`, `sales_id`, `stock_id`, `quantity`, `chalan_no`, `unit_price`, `total_price`, `purchase_uint_price`, `purchase_total_price`, `role`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 2, '37.30', '12578', '297.62', '11101.38', '254.90', '9507.77', '2.00', '2022-02-19 12:46:51', '2022-02-19 12:46:51'),
-(2, 3, 2, 3, '2.50', '0000', '400.00', '1000.00', '307.57', '768.93', '1.00', '2022-02-19 15:08:20', '2022-02-19 15:08:20'),
-(3, 4, 3, 2, '149.50', '12565', '293.22', '43835.64', '254.90', '38107.55', '8.00', '2022-02-20 12:17:11', '2022-02-20 12:17:11'),
-(4, 2, 4, 1, '11226', '121212', '50.00', '561300.00', '374.45', '4203575.70', '0.00', '2022-02-22 09:22:00', '2022-02-22 09:22:00'),
-(5, 4, 5, 5, '1', '121212', '54.00', '54.00', '54.81', '54.81', '0.00', '2022-02-22 09:24:13', '2022-02-22 09:24:13'),
-(6, 2, 6, 6, '1', '121212', '54.00', '54.00', '54.81', '54.81', '0.00', '2022-02-23 11:08:42', '2022-02-23 11:08:42');
 
 -- --------------------------------------------------------
 
@@ -1098,10 +1274,9 @@ INSERT INTO `sales_payments` (`id`, `sales_id`, `customer_id`, `amount`, `paymen
 (1, 1, 2, 11101, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-19 12:46:51', '2022-02-19 12:46:51'),
 (2, 2, 3, 1000, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-19 15:08:20', '2022-02-19 15:08:20'),
 (3, 3, 4, 44035, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-20 12:17:11', '2022-02-20 12:17:11'),
-(4, 4, 2, 34000, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-22 09:22:00', '2022-02-22 09:22:00'),
-(5, 5, 4, 11, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-22 09:24:13', '2022-02-22 09:24:13'),
-(6, 5, 4, 165, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-22 09:24:40', '2022-02-22 09:24:40'),
-(7, 6, 2, 23, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-23 11:08:42', '2022-02-23 11:08:42');
+(5, 5, 18, 15240, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, 'PAID', '2022-02-26 13:35:14', '2022-02-26 13:35:14'),
+(6, 6, 33, 0, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-28 20:28:10', '2022-02-28 20:28:10'),
+(7, 7, 34, 171637, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-02 16:18:13', '2022-03-02 16:18:13');
 
 -- --------------------------------------------------------
 
@@ -1120,17 +1295,6 @@ CREATE TABLE `stock` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `stock`
---
-
-INSERT INTO `stock` (`id`, `purchase_id`, `created_by`, `quantity`, `main_quantity`, `status`, `date`, `created_at`, `updated_at`) VALUES
-(1, 1, '107', '0.000', NULL, '1', NULL, '2022-02-19 12:32:57', '2022-02-22 09:22:00'),
-(2, 2, '107', '833.410', NULL, '1', NULL, '2022-02-19 12:42:45', '2022-02-20 12:17:11'),
-(3, 3, '107', '8838.900', NULL, '1', NULL, '2022-02-19 15:01:27', '2022-02-19 15:08:20'),
-(5, 4, '92', '0.000', NULL, '1', NULL, '2022-02-22 09:19:06', '2022-02-22 09:24:13'),
-(6, 4, '92', '0.000', '1', '1', NULL, '2022-02-22 09:27:17', '2022-02-23 11:08:42');
 
 -- --------------------------------------------------------
 
@@ -1169,7 +1333,14 @@ CREATE TABLE `suppliers` (
 INSERT INTO `suppliers` (`id`, `company_id`, `name`, `email`, `personal_phone`, `optional_phone`, `present_address`, `permanent_address`, `balance`, `company_name`, `company_address`, `company_contact_no`, `reference`, `nid`, `photo`, `nationality`, `designation`, `country`, `created_by`, `created_at`, `updated_at`) VALUES
 (1, 2, 'MIZANUR RAHMAN', NULL, '01863871993', NULL, 'NOYAMATI, NARAYANGONJ', 'NOYAMATI, NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-19 12:23:56', '2022-02-19 12:23:56'),
 (2, 3, 'ELIAS SIR', NULL, '01918185134', NULL, 'FATULLAH, NARAYANGONJ', 'FATULLAH, NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-19 12:38:51', '2022-02-19 12:38:51'),
-(3, 5, 'MD ALAMIN MAMA', NULL, '01881064583', NULL, 'BONDOR, NARAYANGONJ', 'BONDOR, NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-19 14:55:57', '2022-02-19 14:55:57');
+(3, 5, 'MD ALAMIN MAMA', NULL, '01881064583', NULL, 'BONDOR, NARAYANGONJ', 'BONDOR, NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-19 14:55:57', '2022-02-19 14:55:57'),
+(4, 65, 'MD TITU AHMED', NULL, '8801882078261', NULL, 'KASHIPUR, COUNCIL, OFFICE', 'KASHIPUR, COUNCIL, OFFICE', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-26 16:25:02', '2022-02-26 16:25:02'),
+(5, 68, 'MD. SHAWON  ISLAM', NULL, '01612229798', NULL, 'NARAYANGONJ', 'TANBAZAR  NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-27 12:26:16', '2022-02-27 12:26:16'),
+(6, 69, 'MD.BAZIB RHAMAN', NULL, '01304604686', NULL, 'MASDAIR, NARAYANGONJ', 'MASDAIR, NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-27 12:42:56', '2022-02-27 12:42:56'),
+(7, 69, 'MD RAZIB', NULL, '01752586743', NULL, 'NIMTIOLA, NARAYANGONJ', 'NIMTIOLA, NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-27 14:30:28', '2022-02-27 14:30:28'),
+(8, 72, 'MD . BIPUL RHAMJAN', NULL, '01524698234', NULL, 'MASDAIR, NARAYANGONJ', 'MASDAIR, NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-28 15:39:20', '2022-02-28 15:39:20'),
+(9, 72, 'MD. MONIRUL ISLAM', NULL, '01743368000', NULL, 'MASDAIR, NARAYANGONJ', 'BISIC, NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-28 15:50:43', '2022-02-28 15:50:43'),
+(10, 72, 'MD. MONIRUL ISLAM', NULL, '01304604386', '01304604386', 'GOLACIPA, NARAYANGONJ', 'BISIC, NARAYANGONJ', NULL, NULL, NULL, NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', NULL, 107, '2022-02-28 19:55:10', '2022-02-28 19:55:10');
 
 -- --------------------------------------------------------
 
@@ -1200,7 +1371,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `lastname`, `mobile`, `email`, `password`, `company_name`, `status_id`, `created_at`, `created_by`, `updated_at`, `version`, `remember_token`, `role_id`, `type`) VALUES
-(92, 'Super Admin', '', '01761955765', 'admin@gmail.com', '$2y$10$9LVl8Xz0Ps2S2cUZ14c8e.QOho1XfDdB96.AlX9GmPzQJOONtYmJu', NULL, 1, '2021-02-07 11:07:04', 85, '2021-04-08 17:09:31', 1, 'F8AqAQ9mb226fTseyJTd15jQ6shkS7yYdjahAPv8edgzbmCVr3RSu3XMCfVg', 11, 'admin'),
+(92, 'Super Admin', '', '01761955765', 'admin@gmail.com', '$2y$10$9LVl8Xz0Ps2S2cUZ14c8e.QOho1XfDdB96.AlX9GmPzQJOONtYmJu', NULL, 1, '2021-02-07 11:07:04', 85, '2021-04-08 17:09:31', 1, '7WI9gqCndzGsiSY6Xw3TNwTCweLXUZdf6Z9KpYfyIgSnaHMsAfP0CTdiFGmU', 11, 'admin'),
 (105, 'rhythms', NULL, '01761955765', 'rhythms@outlook.com', '$2y$12$8K5vJYIUMomXvJ4v6reHfeX55kn6dxus5u1Cff6SdE0DJ.VGPvDjK', NULL, 1, '2021-06-10 12:31:09', 92, '2021-06-10 14:06:14', NULL, NULL, 16, 'admin'),
 (106, 'sales Manager', NULL, '01672752911', 'sales@gmail.com', '$2y$10$8opRcX98SyaEidglieya5OsBmFjrG4e.DQ.3.ZKUIi4nyB1Iblyo6', NULL, 2, '2021-12-27 22:44:25', 92, '2022-02-05 17:00:31', NULL, NULL, 12, 'admin'),
 (107, 'Hridoy', NULL, '01672752911', 'hridoy_tashfia@gmail.com', '$2y$10$42CIFQvCH8K6j0G20nF83ec0DCeXhOzREFCHs7DBhhkkz4UiW8aHe', NULL, 1, '2022-02-05 17:01:57', 92, '2022-02-05 17:01:57', NULL, NULL, 12, 'admin'),
@@ -1393,6 +1564,14 @@ ALTER TABLE `purchase`
   ADD KEY `puchase_supplier_id` (`supplier_id`);
 
 --
+-- Indexes for table `purchase_payments`
+--
+ALTER TABLE `purchase_payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `purchase_payment_purchase_id` (`purchase_id`),
+  ADD KEY `purchase_payment_supplier_id` (`supplier_id`);
+
+--
 -- Indexes for table `ready_product_details`
 --
 ALTER TABLE `ready_product_details`
@@ -1495,19 +1674,19 @@ ALTER TABLE `cheque_details`
 -- AUTO_INCREMENT for table `company_info`
 --
 ALTER TABLE `company_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `dynamic_routes`
 --
 ALTER TABLE `dynamic_routes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=372;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=373;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -1519,7 +1698,7 @@ ALTER TABLE `expenses`
 -- AUTO_INCREMENT for table `expenses_category`
 --
 ALTER TABLE `expenses_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1531,13 +1710,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `initial_balance`
 --
 ALTER TABLE `initial_balance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `master_menu`
 --
 ALTER TABLE `master_menu`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1549,13 +1728,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permission_roles`
 --
 ALTER TABLE `permission_roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18875;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19123;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
@@ -1573,7 +1752,13 @@ ALTER TABLE `product_ingredients`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT for table `purchase_payments`
+--
+ALTER TABLE `purchase_payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `ready_product_details`
@@ -1591,13 +1776,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sales_executive_models`
@@ -1615,13 +1800,13 @@ ALTER TABLE `sales_payments`
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -1694,6 +1879,13 @@ ALTER TABLE `products`
 ALTER TABLE `purchase`
   ADD CONSTRAINT `puchase_supplier_id` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `purchase_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `purchase_payments`
+--
+ALTER TABLE `purchase_payments`
+  ADD CONSTRAINT `purchase_payment_purchase_id` FOREIGN KEY (`purchase_id`) REFERENCES `purchase` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `purchase_payment_supplier_id` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `ready_product_details`

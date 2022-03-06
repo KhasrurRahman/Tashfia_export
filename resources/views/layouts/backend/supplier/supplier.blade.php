@@ -11,22 +11,23 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
-            <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add @yield('title')</a>
+            @include('layouts.backend.supplier.supplier_search')
         </div>
         <div class="card-body">
+            <div style="overflow: hidden">
+                <h3 class="card-title">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
+                <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add @yield('title')</a>
+            </div>
             <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Per Name</th>
-                    <th>per Phone</th>
+                    <th>Name</th>
+                    <th>Phone</th>
                     <th>Address</th>
                     <th>Email</th>
                     <th>Photo</th>
                     <th>Company name</th>
-                    <th>Company Add</th>
-                    <th>Company contact no</th>
                     <th>Balance</th>
                     <th>Action</th>
                 </tr>

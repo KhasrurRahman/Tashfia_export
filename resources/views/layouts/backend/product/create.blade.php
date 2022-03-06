@@ -32,7 +32,7 @@
     <form class="forms-sample" method="post" action="{{route('admin.product/store')}}">
         @csrf
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" style="display: none">
                 <div class="form-group">
                     <label for="">Product Type</label>
                     <select class="form-control select2" name="product_category_id" onchange="ingredient_show(this)">

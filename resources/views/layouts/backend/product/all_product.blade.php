@@ -20,13 +20,12 @@
                 </div>
                 <div class="card-body">
                     <h3 class="card-title float-left">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
-                    <a href="{{route('admin.product/craete')}}" type="button" class="btn-sm btn-success" style="margin-left: 90%">Add Product</a>
+{{--                    <a href="{{route('admin.product/craete')}}" type="button" class="btn-sm btn-success" style="margin-left: 90%">Add Product</a>--}}
                     <div class="dt-responsive">
                         <table class="table table-striped table-bordered nowrap yajra-datatable">
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Product Type</th>
                                 <th>Product Name</th>
                                 <th>Party Name</th>
                                 <th>Color Name</th>

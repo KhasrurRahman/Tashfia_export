@@ -36,7 +36,6 @@
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
-                {data: 'product_type', name: 'product_type'},
                 {data: 'chalan_no', name: 'chalan_no'},
                 {data: 'party_name', name: 'party_name'},
                 {data: 'color_name', name: 'color_name'},

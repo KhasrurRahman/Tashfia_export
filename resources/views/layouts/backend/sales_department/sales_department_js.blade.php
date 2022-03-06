@@ -11,28 +11,16 @@
                             i : 0;
                 };
                 total = this.api().ajax.json().total_sale
-                pageTotal = api
-                    .column(3, {page: 'current'})
-                    .data()
-                    .sum()
                 $(api.column(3).footer()).html(
                     ' Tk ' + total
                 );
 
                 total_due = this.api().ajax.json().total_due
-                pageTotal_due = api
-                    .column(5, {page: 'current'})
-                    .data()
-                    .sum()
                 $(api.column(5).footer()).html(
                     'Tk ' + total_due
                 );
 
                 total_payment = this.api().ajax.json().total_payment
-                pageTotal_total_payment = api
-                    .column(4, {page: 'current'})
-                    .data()
-                    .sum()
                 $(api.column(4).footer()).html(
                     'Tk ' + total_payment
                 );

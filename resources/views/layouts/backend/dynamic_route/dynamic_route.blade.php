@@ -1,7 +1,7 @@
 @extends('layouts.backend.partial.app')
 @section('title','Route List')
 @push('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
 @endpush
 @section('main_menu','HOME')
 @section('active_menu','Route List')
@@ -109,13 +109,14 @@
 @endsection
 @push('js')
     <!-- DataTables -->
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('backend/plugins/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('#datatable').DataTable();
         });
     </script>
-    <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
+    <script src="{{ asset('backend/js/sweetalart.js') }}"></script>
     <script>
         $(function () {
             $("#example1").DataTable();

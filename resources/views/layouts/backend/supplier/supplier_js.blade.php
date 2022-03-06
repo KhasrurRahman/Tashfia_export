@@ -22,6 +22,10 @@
                 url: "{{ url('admin/supplier/search') }}",
                 type: 'POSt',
                 data: function (d) {
+                    d.search_company_id = $('#search_company_id').val();
+                    d.search_name = $('#search_name').val();
+                    d.supplier_id = $('#supplier_id').val();
+                    d.search_phone = $('#search_phone').val();
                     d._token = '{{csrf_token()}}'
                 }
             },
@@ -33,8 +37,6 @@
                 {data: 'email', name: 'email'},
                 {data: 'photo', name: 'photo'},
                 {data: 'company_name', name: 'company_name'},
-                {data: 'company_address', name: 'company_address'},
-                {data: 'company_contact_no', name: 'company_contact_no'},
                 {data: 'balance', name: 'balance'},
                 {data: 'action', name: 'action', searchable: false},
             ],
@@ -44,6 +46,12 @@
             table.draw(true);
         });
     });
+
+    function form_reset() {
+        document.getElementById("search_form").reset();
+        $('.select2').val(null).trigger('change');
+        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+    }
 
 
     // save data

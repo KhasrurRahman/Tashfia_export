@@ -20,10 +20,17 @@ class purchaseController extends Controller
             Toastr::error('please Update Opening balance for purchase or sale,Contact With Accountant', 'Update Opening Balance');
             return redirect()->route('admin.initalBalance/create_initial_balance');
         }
-        $products = ModelProduct::get();
+        $products = ModelProduct::all();
         $supplier = supplierModel::all();
         $company = CompanyModel::all();
         return view('layouts.backend.purchase.purchase', compact('products', 'supplier', 'company'));
+    }
+
+    public function create()
+    {
+        $supplier = supplierModel::all();
+        $products = ModelProduct::all();
+        return view('layouts.backend.purchase.create_purchase.create_purchase',compact('supplier','products'));
     }
 
     public function search(Request $request)
@@ -51,7 +58,7 @@ class purchaseController extends Controller
                 $query->where('supplier_id', $request->search_supplier_id);
             }
 
-            $query->orderBy('created_at', 'DESC');
+//            $query->orderBy('created_at', 'DESC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()

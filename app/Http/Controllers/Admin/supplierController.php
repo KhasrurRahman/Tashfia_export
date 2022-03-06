@@ -27,6 +27,22 @@ class supplierController extends Controller
         if ($request->ajax()) {
             $query = supplierModel::query();
 
+            if ($request->search_company_id !== null) {
+                $query->where('company_id', $request->search_company_id);
+            }
+
+            if ($request->search_name !== null) {
+                $query->where('name', 'like', '%' . $request->search_name . '%');
+            }
+
+            if ($request->supplier_id !== null) {
+                $query->where('id', 'like', '%' . $request->supplier_id . '%');
+            }
+
+            if ($request->search_phone !== null) {
+                $query->where('personal_phone', 'like', '%' . $request->search_phone . '%');
+            }
+
             $query->orderBy('created_at', 'DESC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
@@ -51,10 +67,10 @@ class supplierController extends Controller
                     $img = '<img src="' . asset('upload/supplier_image/' . $data->photo) . '" style="height:100px">';
                     return $img;
                 })->addColumn('action', function ($data) {
-                   $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/supplier/edit/' .
-                           $data->id) . '" class="dropdown-item" >Edit</a> <a href="' . url('admin/supplier/profile/' . $data->id) . '" class="dropdown-item" >View</a>';
+                    $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/supplier/edit/' .
+                            $data->id) . '" class="dropdown-item" >Edit</a> <a href="' . url('admin/supplier/profile/' . $data->id) . '" class="dropdown-item" >View</a>';
 
-                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">'. $buttons . ' </div> </div>';
+                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">' . $buttons . ' </div> </div>';
                     return $action_button;
                 })->rawColumns(['name', 'personal_phone', 'present_address', 'email', 'balance', 'company_name', 'company_address', 'company_contact_no', 'photo', 'action'])
                 ->make(true);
@@ -88,7 +104,7 @@ class supplierController extends Controller
 
         $request->request->add(['created_by' => Auth::user()->id, 'photo' => $imageName]);
         supplierModel::create($request->all());
-        
+
         Toastr::Success('created successfully', 'successful');
         return redirect()->back();
     }
@@ -102,14 +118,18 @@ class supplierController extends Controller
     public function show($id)
     {
         $supplier = supplierModel::find($id);
+        $total_due = $supplier->purchase->where('due', '>', 0)->sum('due');
+        $link = '<a href="' . url('admin/supplier/supplier_purchase_history_generate/' . $supplier->id) . '" class="edit btn btn-success btn-sm" target="_blank">Show all payment History</a>';
         $output = '<div class="card">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Name: ' . $supplier->name . '</li>
-    <li class="list-group-item">Email: ' . $supplier->email . '</li>
-    <li class="list-group-item">Address: ' . $supplier->address . '</li>
-    <li class="list-group-item">Phone: ' . $supplier->phone . '</li>
-  </ul>
-</div>';
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Name: ' . $supplier->name . '</li>
+            <li class="list-group-item">Company: ' . $supplier->company->company_name . '</li>
+            <li class="list-group-item">Address: ' . $supplier->present_address . '</li>
+            <li class="list-group-item">Phone: ' . $supplier->personal_phone . '</li>
+            <li class="list-group-item">Total Due: ' . $total_due . '</li>
+            '.$link.'
+          </ul>
+        </div>';
         return $output;
     }
 
@@ -155,17 +175,17 @@ class supplierController extends Controller
     public function profile($supplier_id)
     {
         $supplier = supplierModel::find($supplier_id);
-        return view('layouts.backend.supplier.supplier_profile',compact('supplier'));
+        return view('layouts.backend.supplier.supplier_profile', compact('supplier'));
     }
 
     public function supplier_purchase_history_generate($supplier_id)
     {
-        $history = purchaseModel::where('supplier_id',$supplier_id)->get();
+        $history = purchaseModel::where('supplier_id', $supplier_id)->get();
         $supplier = supplierModel::find($supplier_id);
         $total_price = $history->sum('total_purchas_price');
         $total_actual_price = $history->sum('actual_purchas_price');
         $total_quantity = $history->sum('quantity');
 
-        return view('layouts.backend.supplier.supplier_payment_history_invoice_pdf', compact('history', 'supplier', 'total_price','total_actual_price','total_quantity'));
+        return view('layouts.backend.supplier.supplier_payment_history_invoice_pdf', compact('history', 'supplier', 'total_price', 'total_actual_price', 'total_quantity'));
     }
 }

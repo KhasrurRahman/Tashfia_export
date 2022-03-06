@@ -8,6 +8,7 @@
         "showMethod": "slideDown",
         "hideMethod": "slideUp"
     }
+
 </script>
 {!! Toastr::message() !!}
 <script>
