@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ModelProduct;
 use App\Models\purchaseModel;
 use App\Models\supplierModel;
+use App\PurchasePaymentModel;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,7 @@ class purchaseController extends Controller
     {
         $supplier = supplierModel::all();
         $products = ModelProduct::all();
-        return view('layouts.backend.purchase.create_purchase.create_purchase',compact('supplier','products'));
+        return view('layouts.backend.purchase.create_purchase.create_purchase', compact('supplier', 'products'));
     }
 
     public function search(Request $request)
@@ -58,7 +59,7 @@ class purchaseController extends Controller
                 $query->where('supplier_id', $request->search_supplier_id);
             }
 
-//            $query->orderBy('created_at', 'DESC');
+//          $query->orderBy('created_at', 'DESC');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
@@ -76,14 +77,32 @@ class purchaseController extends Controller
                     return $data->total_purchas_price;
                 })->addColumn('actual_purchas_price', function ($data) {
                     return $data->actual_purchas_price;
+                })->addColumn('payment_status', function ($data) {
+                    $status = '';
+                    if ($data->status == 1) {
+                        $status = '<span class="right badge badge-info">Paid</span>';
+                    } elseif ($data->status == 0) {
+                        $status = '<span class="right badge badge-warning">Unpaid</span>';
+                    }
+                    return $status;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/purchase/edit/' . $data->id) . '" class="edit btn btn-outline-success btn-sm" >Edit</a>';
-                    return $actionBtn;
-                })->with('total_purchas_price', $query->sum('total_purchas_price'))
+                    if ($data->due > 0) {
+                        $pay_button = ' <a href="javascript:void(0)" class="dropdown-item" onclick="pay_due_bill(' . $data->id . ')" >Pay bill</a>';
+                    } else {
+                        $pay_button = '';
+                    }
+                    $single_button = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/purchase/edit/' . $data->id) . '" class="dropdown-item" >Edit</a>';
+
+                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">' . $single_button . $pay_button . ' </div> </div>';
+
+                    return $action_button;
+                })
                 ->with('total_quantity', $query->sum('main_quantity'))
                 ->with('total_available_quantity_quantity', $query->sum('Quantity'))
                 ->with('total_actual_purchas_price', $query->sum('actual_purchas_price'))
-                ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action', 'available_quantity'])
+                ->with('total_paid', $query->sum('payment_amount'))
+                ->with('total_due', $query->sum('due'))
+                ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action', 'available_quantity','payment_status'])
                 ->make(true);
         }
     }
@@ -97,18 +116,52 @@ class purchaseController extends Controller
             'unit_price' => 'required',
             'total_purchas_price' => 'required',
             'actual_purchas_price' => 'required',
-            'payment_mode' => 'required',
+            'payment_amount' => 'required',
+            'payment_type' => 'required',
         ]);
 
-        $product = ModelProduct::find($request->product_id);
-        $product->quantity = $request->quantity;
-        $product->update();
+        if ($request->total_purchas_price > $request->actual_purchas_price) {
+            return response()->json(['custom_error' => 'Your Actual Purchase price must be less than or equal to Total purchase price']);
+        }
+
+        if ($request->payment_amount > $request->actual_purchas_price) {
+            return response()->json(['custom_error' => 'Your Payment amount must be less than or equal to Total Amount']);
+        }
+
+
+//        $product = ModelProduct::find($request->product_id);
+//        $product->quantity = $request->quantity;
+//        $product->update();
 
         $actual_unit_price = $request->actual_purchas_price / $request->quantity;
+        $due = $request->actual_purchas_price - $request->payment_amount;
 
-        $request->request->add(['created_by' => Auth::user()->id, 'actual_unit_price' => $actual_unit_price, 'main_quantity' => $request->quantity]);
-        purchaseModel::create($request->all());
-        return response()->json(['Done' => 'Done']);
+        $request->request->add(['created_by' => Auth::user()->id, 'actual_unit_price' => $actual_unit_price, 'main_quantity' => $request->quantity, 'payment_amount' => $request->payment_amount, 'payment_mode' => $request->payment_type, 'due' => $due]);
+        $purchase = purchaseModel::create($request->all());
+
+        $purchase_payment = new PurchasePaymentModel();
+        $purchase_payment->purchase_id = $purchase->id;
+        $purchase_payment->supplier_id = $request->supplier_id;
+        $purchase_payment->amount = $request->payment_amount;
+        $purchase_payment->payment_mode = $request->payment_type;
+        $purchase_payment->remark = $request->per_remarks;
+        if ($request->actual_purchas_price == $request->payment_amount) {
+            $purchase_payment->status = 1;
+        }
+        if ($request->payment_type == "Cheque") {
+            $purchase_payment->cheque_number = $request->cheque_number;
+            $purchase_payment->cheque_due_date = $request->cheque_date;
+        }
+        if ($request->payment_type == "Bkash") {
+            $purchase_payment->bkash_number = $request->bkash_number;
+            $purchase_payment->bkash_trns_id = $request->bkash_trns_id;
+        }
+        if ($request->payment_type == "Bank") {
+            $purchase_payment->bank_name = $request->bank_name;
+        }
+        $purchase_payment->save();
+
+        return response()->json(['success' => 'success']);
     }
 
     public function delete($id)
@@ -188,4 +241,49 @@ class purchaseController extends Controller
 
         return view('layouts.backend.purchase.purchase_pdf_invoice', compact('purchase_history', 'total_quantity', 'total_purchase_price', 'total_actual_purchase_price'));
     }
+
+
+    public function purchase_due_payment(Request $request)
+    {
+
+        $request->validate([
+            'payment_amount' => 'required',
+            'payment_type' => 'required',
+        ]);
+
+        $purchase = purchaseModel::find($request->sale_id);
+        if ($request->payment_amount > $purchase->due) {
+            return response()->json(['error' => 'Your Payment amount must be less than or equal to Due amount']);
+        }
+        $purchase->payment_amount += $request->payment_amount;
+        $purchase->due -= $request->payment_amount;
+        $purchase->update();
+        if ($purchase->due == 0) {
+            $purchase->status = 1;
+            $purchase->update();
+        }
+
+        $purchase_payemnt = new PurchasePaymentModel();
+        $purchase_payemnt->purchase_id = $request->sale_id;
+        $purchase_payemnt->supplier_id = $purchase->supplier_id;
+        $purchase_payemnt->amount = $request->payment_amount;
+        $purchase_payemnt->payment_mode = $request->payment_type;
+        $purchase_payemnt->save();
+
+        if ($request->payment_type == "Cheque") {
+            $purchase_payemnt->cheque_number = $request->cheque_number;
+            $purchase_payemnt->cheque_due_date = $request->cheque_date;
+        }
+        if ($request->payment_type == "Bkash") {
+            $purchase_payemnt->bkash_number = $request->bkash_number;
+            $purchase_payemnt->bkash_trns_id = $request->bkash_trns_id;
+        }
+        if ($request->payment_type == "Bank") {
+            $purchase_payemnt->bank_name = $request->bank_name;
+        }
+        $purchase_payemnt->save();
+
+        return response()->json(['done' => 'success']);
+    }
+
 }

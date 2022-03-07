@@ -13,9 +13,15 @@
                         typeof i === 'number' ?
                             i : 0;
                 };
-                total_purchas_price = this.api().ajax.json().total_purchas_price
-                $(api.column(5).footer()).html(
-                    'Tk ' + total_purchas_price
+
+                total_total_quantity = this.api().ajax.json().total_quantity
+                $(api.column(3).footer()).html(
+                    total_total_quantity + ' KG'
+                );
+
+                total_available_quantity_quantity = this.api().ajax.json().total_available_quantity_quantity
+                $(api.column(4).footer()).html(
+                    total_available_quantity_quantity + ' KG'
                 );
 
                 total_actual_purchas_price = this.api().ajax.json().total_actual_purchas_price
@@ -23,21 +29,22 @@
                     'Tk ' + total_actual_purchas_price
                 );
 
-                total_total_quantity = this.api().ajax.json().total_quantity
-                $(api.column(3).footer()).html(
-                     total_total_quantity +' KG'
+                total_paid = this.api().ajax.json().total_paid
+                $(api.column(7).footer()).html(
+                    'Tk ' + total_paid
                 );
 
-                total_available_quantity_quantity = this.api().ajax.json().total_available_quantity_quantity
-                $(api.column(4).footer()).html(
-                     total_available_quantity_quantity +' KG'
+                total_due = this.api().ajax.json().total_due
+                $(api.column(8).footer()).html(
+                    'Tk ' + total_due
                 );
+
             },
             "order": [
                 [1, 'desc']
             ],
             "columnDefs": [{
-                "className": "text-left", "targets": "_all",'orderable': false,'searchable':false,
+                "className": "text-left", "targets": "_all", 'orderable': false, 'searchable': false,
             }],
             processing: true,
             serverSide: true,
@@ -87,12 +94,18 @@
                     name: 'unit_price'
                 },
                 {
-                    data: 'total_purchas_price',
-                    name: 'total_purchas_price'
-                },
-                {
                     data: 'actual_purchas_price',
                     name: 'actual_purchas_price'
+                },
+                {
+                    data: 'payment_amount',
+                    name: 'payment_amount'
+                }, {
+                    data: 'due',
+                    name: 'due'
+                }, {
+                    data: 'payment_status',
+                    name: 'payment_status'
                 },
                 {
                     data: 'action',
@@ -156,7 +169,6 @@
             }
         })
     }
-
 
 
     // get product data
@@ -228,4 +240,32 @@
             }
         });
     });
+
+    function pay_due_bill(id) {
+        $('#sales_due_payment').modal('show');
+        $('#pay_bill_sales_id').val(id);
+    }
+
+    $('#pay_bill_form').on('submit', function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: "{{url('admin/purchase/purchase_due_payment')}}",
+            type: "POST",
+            data: $("form").serializeArray(),
+            success: function (response) {
+                console.log(response)
+                if (response) {
+                    if (response.error) {
+                        toastr.error(response.error, 'Error');
+                    } else {
+                        $('#sales_due_payment').modal('hide');
+                        $("#pay_bill_form")[0].reset();
+                        toastr.success('Payment Successful', 'Successful');
+                        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+                    }
+                }
+            }
+        });
+    })
+
 </script>

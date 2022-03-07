@@ -19,6 +19,8 @@ class purchaseModel extends Model
         'actual_purchas_price',
         'actual_unit_price',
         'payment_mode',
+        'payment_amount',
+        'due',
     ];
     
     public function product()

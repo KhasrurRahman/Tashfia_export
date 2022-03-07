@@ -3,7 +3,6 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
-
     <style>
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -14,15 +13,17 @@
         input[type=number] {
             -moz-appearance: textfield;
         }
-
     </style>
 @endpush
 @section('main_menu', 'HOME')
 @section('active_menu', 'New Purchase')
 @section('link', route('admin.adminDashboard'))
 @section('content')
-
+    <div class="alert alert-danger text-center" role="alert">
+        Be careful to create. You cant not edit / delete after create this
+    </div>
     <div class="row justify-content-center">
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
@@ -84,25 +85,25 @@
 
                     <div class="form-group">
                         <label for="Route_name">Quantity(kg)</label>
-                        <input type="number" step="any" class="form-control" name="quantity" onkeyup="total_price()" id="quantity">
+                        <input type="number" step="any" class="form-control" name="quantity" onkeyup="total_price()" id="quantity" onwheel="return false;">
                         <span id="Error_status_quantity" class="text-red error_field"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Quantity(Pound)</label>
-                        <input type="number" step="any" class="form-control" name="quantity_pound" onkeyup="total_price_pound()" id="quantity_pound">
+                        <input type="number" step="any" class="form-control" name="quantity_pound" onkeyup="total_price_pound()" id="quantity_pound" onwheel="return false;">
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Unit Price(kg)</label>
-                        <input type="number" step="any" class="form-control" name="unit_price" id="unit_price" onkeyup="unit_price_kg()">
+                        <input type="number" step="any" class="form-control" name="unit_price" id="unit_price" onkeyup="unit_price_kg()" onwheel="return false;">
                         <span id="Error_status_unit_price" class="text-red error_field"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="Route_name">Unit Price(Pound)</label>
                         <input type="number" step="any" class="form-control" name="unit_price_pound" id="unit_price_pound"
-                               onkeyup="pound_unit_price()">
+                               onkeyup="pound_unit_price()" onwheel="return false;">
                         <span id="Error_status_unit_price" class="text-red error_field"></span>
                     </div>
 
@@ -114,7 +115,7 @@
 
                     <div class="form-group">
                         <label for="Route_name">Actual Purchase Price</label>
-                        <input type="number" step="any" class="form-control " name="actual_purchas_price" id="actual_purchas_price">
+                        <input type="number" step="any" class="form-control " name="actual_purchas_price" id="actual_purchas_price" onwheel="return false;">
                         <span id="Error_status_actual_purchas_price" class="text-red error_field"></span>
                     </div>
 
@@ -126,9 +127,17 @@
 
 
     {{--    payment section--}}
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h3><b>Payments:</b></h3>
+            </div>
 
-    @include('layouts.backend.purchase.bank_card')
-
+        </div>
+        <div class="card-body">
+            @include('layouts.backend.purchase.bank_card')
+        </div>
+    </div>
 
     <div class="row justify-content-center">
         <button class="btn btn-success col-md-4" onclick="store_sales_data()" id="form_submission_button">Create Purchase</button>

@@ -1,4 +1,3 @@
-
 @extends('layouts.backend.partial.app')
 @section('title', 'New Sales')
 @push('css')
@@ -69,7 +68,9 @@
 @section('active_menu', 'New Sales')
 @section('link', route('admin.adminDashboard'))
 @section('content')
-
+    <div class="alert alert-danger text-center" role="alert">
+        Be careful to create. You cant not edit / delete after create this
+    </div>
     <div class="card" style="margin-bottom: 10px">
         <div class="card-body">
             <div class="row">
