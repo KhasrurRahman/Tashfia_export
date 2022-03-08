@@ -67,6 +67,14 @@ class ExpensesController extends Controller
             if ($request->from_date !== null and $request->to_date !== null) {
                 $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
             }
+
+            if ($request->search_amount !== null) {
+                $query->where('Amount', 'like', '%' . $request->search_amount . '%');
+            }
+
+            if ($request->search_name !== null) {
+                $query->where('name', 'like', '%' . $request->search_name . '%');
+            }
              
             $query->whereHas('expenses_category', function ($query2) use ($request) {
                 if ($request->search_category_id !== null) {
