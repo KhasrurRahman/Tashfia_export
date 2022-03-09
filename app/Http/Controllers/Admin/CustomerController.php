@@ -73,7 +73,7 @@ class CustomerController extends Controller
                 })->addColumn('action', function ($data) {
                     $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/customer/edit/' . $data->id) . '" class="dropdown-item" >Edit</a> <a href="' . url('admin/customer/view/' . $data->id) . '" class="dropdown-item" >View</a>';
 
-                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">'. $buttons . ' </div> </div>';
+                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">' . $buttons . ' </div> </div>';
                     return $action_button;
                 })->rawColumns(['name', 'company', 'personal_phone', 'present_address', 'email', 'balance', 'photo', 'action'])
                 ->make(true);
@@ -119,18 +119,20 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = CustomerModel::find($id);
-        $output = '<div class="card" style="padding: 10px;background: #6b279b4d;">
-                    <div class="crad-header" style="padding: 5px"><b>Customer Details: </b></div>
-                    <div class="card_body">
-                    <ul class="list-group">
-                        <li class="list-group-item">Name: ' . $customer->name . '</li>
-                        <li class="list-group-item">Email: ' . $customer->email . '</li>
-                        <li class="list-group-item">Address: ' . $customer->present_address . '</li>
-                        <li class="list-group-item">Phone: ' . $customer->personal_phone . '</li>
-                      </ul>
-                    </div>
-                    </div>';
-        return $output;
+        $total_due = $customer->sales_history->where('due', '>', 0)->sum('due');
+        $link = '<a href="' . url('admin/customer/sales_payment_history_pdf/' . $customer->id) . '" class="edit btn btn-success btn-sm" target="_blank">Show all payment History</a>';
+        $data = '<div class="card">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Name: ' . $customer->name . '</li>
+            <li class="list-group-item">Company: ' . $customer->company->company_name . '</li>
+            <li class="list-group-item">Address: ' . $customer->present_address . '</li>
+            <li class="list-group-item">Phone: ' . $customer->personal_phone . '</li>
+            <li class="list-group-item">Previous Due: ' . $customer->balance . '</li>
+            <li class="list-group-item">Total Due: ' . $total_due . '</li>
+            ' . $link . '
+          </ul>
+        </div>';
+        return $data;
     }
 
     public function edit($id)
@@ -220,7 +222,7 @@ class CustomerController extends Controller
 //        $pdf = PDF::loadView('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount'));
 //        return $pdf->download('customer_payment_history_invoice.pdf');
 
-        return view('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount','customer'));
+        return view('layouts.backend.customer.customer_payment_history_invoice_pdf', compact('sales_history', 'total_due', 'total_payment', 'total_amount', 'customer'));
     }
 
 }

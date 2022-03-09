@@ -58,6 +58,7 @@
                         _token: _token
                     },
                     success: function (data) {
+                        console.log(data)
                         $('#countryList').fadeIn();
                         $('#countryList').html(data);
                     }
@@ -96,7 +97,7 @@
             type: 'get',
             url: '{{ url('get_product_single_data') }}/' + id,
             success: function (data) {
-                console.log(data)
+                // console.log(data)
                 if (data.product === null) {
                     toastr.error('Product Not Available in stock', 'Not Available');
                 } else {
@@ -115,7 +116,8 @@
                             "type='text' class='chalan_no' name='chalan_no[]' id='chalan_no'> </div></td> <td><input type='number' " +
                             "id='unit_price' class='unit_price'></td><td><input type='number' " +
                             "id='unit_price_pound' class='unit_price_pound'></td><td><input type='text' class='btn btn-sm btn-success total_unit_price' readonly " +
-                            "id='total_unit_price' ><input type='hidden' disabled value=" + data.product.id + " class='stock_id'></td><td><input type='button' value='Delete' class='btn btn-sm btn-danger'></td></tr>";
+                            "id='total_unit_price' ><input type='hidden' disabled value=" + data.product.id + " class='stock_id'></td><td><input type='button' " +
+                            "value='Delete' class='btn btn-sm btn-danger'></td></tr>";
                         $("#dsTable tbody").append(markup);
                     }
                 }
@@ -141,8 +143,8 @@
     $(document).on('keyup', '.qty', function () {
         var $row = $(this).closest('tr');
         var unit_price = $row.find('#unit_price').val();
-        $row.find('#qty_pound').val(($row.find('#qty').val() * 2.20462262185).toFixed(3))
-        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(3))
+        $row.find('#qty_pound').val(($row.find('#qty').val() * 2.20462262185).toFixed(4))
+        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(4))
         show_total_quantity();
         show_total_grand_total()
     });
@@ -151,16 +153,16 @@
         var $row = $(this).closest('tr');
         var unit_price = $row.find('#unit_price').val();
         $row.find('#qty').val(($row.find('#qty_pound').val() / 2.20462262185).toFixed(4))
-        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(3))
+        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(4))
         show_total_quantity();
         show_total_grand_total()
     });
 
     $(document).on('keyup', '.unit_price', function () {
         var $row = $(this).closest('tr');
-        $row.find('#unit_price_pound').val(($row.find('#unit_price').val() / 2.20462262185).toFixed(3))
+        $row.find('#unit_price_pound').val(($row.find('#unit_price').val() / 2.20462262185).toFixed(4))
         var unit_price = $row.find('#unit_price').val();
-        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(3))
+        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(4))
         show_total_quantity();
         show_total_grand_total();
     });
@@ -168,9 +170,9 @@
     $(document).on('keyup', '.unit_price_pound', function () {
         var $row = $(this).closest('tr');
         var unit_price_pound = $row.find('#unit_price_pound').val();
-        $row.find('#unit_price').val(($row.find('#unit_price_pound').val() * 2.20462262185).toFixed(3))
+        $row.find('#unit_price').val(($row.find('#unit_price_pound').val() * 2.20462262185).toFixed(4))
         var unit_price = $row.find('#unit_price').val();
-        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(3))
+        $row.find('#total_unit_price').val(($row.find('#qty').val() * unit_price).toFixed(4))
         show_total_quantity();
         show_total_grand_total();
     });
@@ -184,6 +186,7 @@
             }
         });
         $("#total_quantity").html(calculated_total_sum);
+        $("#labour_bill").val(((calculated_total_sum * 2.20462262185)  * .5).toFixed(4));
     };
 
     function show_total_grand_total() {
@@ -253,6 +256,11 @@
             per_cheque_number.push(this.value);
         });
 
+        var bank_name = [];
+        $('.bank_name').each(function () {
+            bank_name.push(this.value);
+        });
+
         var bkash_number = [];
         $('.bkash_number').each(function () {
             bkash_number.push(this.value);
@@ -302,6 +310,7 @@
                 bkash_number: bkash_number,
                 bkash_trns_id: bkash_trns_id,
                 chalan_no: chalan_no,
+                bank_name: bank_name,
                 "_token": "{{ csrf_token() }}",
             },
             success: function (data) {
@@ -345,11 +354,12 @@
 
     function customer_details(id) {
         $.ajax({
-            url: "{{url('admin/sales/customer_details')}}/" + id,
+            url: "{{url('admin/customer/show')}}/" + id,
             type: "GET",
             success: function (data) {
+                console.log(data)
                 $('#customer_details').html('');
-                $('#customer_details').append(data.customer);
+                $('#customer_details').append(data);
                 $("#customer_details").show();
                 $('#total_previous_due').html('Total Due:' + data.total_due + 'tk')
             },
@@ -413,19 +423,19 @@
     }
 
 
-    function cheque_date_input(select) {
-        console.log(select.value)
-        if (select.value === 'Cheque') {
-            $(select).closest('.row').find('#check_section').show(1000);
-            $(select).closest('.row').find('#bkash_section').hide(1000);
-        } else if (select.value === 'Bkash') {
-            $(select).closest('.row').find('#bkash_section').show(1000);
-            $(select).closest('.row').find('#check_section').hide(1000);
-        } else {
-            $(select).closest('.row').find('#check_section').hide(1000);
-            $(select).closest('.row').find('#bkash_section').hide(1000);
-        }
-    }
+    // function cheque_date_input(select) {
+    //     console.log(select.value)
+    //     if (select.value === 'Cheque') {
+    //         $(select).closest('.row').find('#check_section').show(1000);
+    //         $(select).closest('.row').find('#bkash_section').hide(1000);
+    //     } else if (select.value === 'Bkash') {
+    //         $(select).closest('.row').find('#bkash_section').show(1000);
+    //         $(select).closest('.row').find('#check_section').hide(1000);
+    //     } else {
+    //         $(select).closest('.row').find('#check_section').hide(1000);
+    //         $(select).closest('.row').find('#bkash_section').hide(1000);
+    //     }
+    // }
 
 
 </script>

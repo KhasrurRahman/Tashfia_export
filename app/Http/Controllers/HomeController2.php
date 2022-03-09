@@ -35,7 +35,22 @@ class HomeController2 extends Controller
 
     public function test()
     {
-        Artisan::call('UpdateClosingBalance');
+        $data = ModelProduct::query()->select('stock.*', 'products.chalan_no')->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->get();
+
+        return $data;
+
+        $data = ModelProduct::query()
+                ->select('products.chalan_no','products.card_no','stock.quantity','stock.id')
+                ->leftJoin('purchase', 'purchase.product_id', '=', 'products.id')
+                ->leftJoin('stock', 'stock.purchase_id', '=', 'purchase.id')
+//                ->orWhere('chalan_no', 'like', '%' . $query . '%')
+//                ->orWhere('card_no', 'like', '%' . $query . '%')
+                ->get();
+
+        return $data;
+
+
+//        Artisan::call('UpdateClosingBalance');
 //        dd(now());
     }
 

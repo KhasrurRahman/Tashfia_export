@@ -37,7 +37,6 @@
                     <th>Supplier</th>
                     <th>Quantity(Kg)</th>
                     <th>Available Quantity(Kg)</th>
-                    <th>Unit price(Tk)</th>
                     <th>Actual Purchase Price(Tk)</th>
                     <th>Total Paid</th>
                     <th>Due</th>
@@ -50,7 +49,6 @@
                 <tfoot>
                 <tr class="bg-success text-white">
                     <th style="text-align:right">Total:</th>
-                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>

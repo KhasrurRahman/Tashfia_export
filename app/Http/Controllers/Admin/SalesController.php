@@ -33,10 +33,22 @@ class SalesController extends Controller
     {
         if ($request->get('query')) {
             $query = $request->get('query');
-            $data = ModelProduct::where('products.chalan_no', 'like', '%' . $query . '%')->orWhere('products.card_no', 'like', '%' . $query . '%')->get();
+            $data = ModelProduct::query()
+                ->select('products.chalan_no', 'products.card_no', 'stock.quantity', 'stock.id')
+                ->leftJoin('purchase', 'purchase.product_id', '=', 'products.id')
+                ->leftJoin('stock', 'stock.purchase_id', '=', 'purchase.id')
+                ->orWhere('chalan_no', 'like', '%' . $query . '%')
+                ->orWhere('card_no', 'like', '%' . $query . '%')
+                ->get();
+
             $output = '<ul class="list-group" style="display: block;position: relative;width: 100%;font-size: 17px;font-weight: bold;line-height: 25px;border: 1px solid;">';
             foreach ($data as $row) {
-                $output .= '<li class="list-group-item" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . '</li>';
+                if ($row->quantity <= 0 or $row->quantity == null) {
+                    $output .= '<li class="list-group-item bg-danger" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . ' (Not Available)</li>';
+                } else {
+                    $output .= '<li class="list-group-item bg-success" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . '(Quantity:'.$row->quantity.')</li>';
+                }
+
             }
             $output .= '</ul>';
             echo $output;
@@ -45,7 +57,13 @@ class SalesController extends Controller
 
     public function get_product_single_data($id)
     {
-        $product = ModelProduct::query()->join('purchase', 'purchase.product_id', '=', 'products.id')->join('stock', 'stock.purchase_id', '=', 'purchase.id')->where('stock.quantity', '>', 0)->where('products.id', $id)->select('stock.*', 'products.chalan_no')->first();
+        $product = ModelProduct::query()->select('stock.id', '')
+            ->select('stock.*', 'products.chalan_no')
+            ->join('purchase', 'purchase.product_id', '=', 'products.id')
+            ->join('stock', 'stock.purchase_id', '=', 'purchase.id')
+            ->where('stock.quantity', '>', 0)
+            ->where('stock.id', $id)
+            ->first();
 
         return response()->json(['product' => $product]);
     }
@@ -96,7 +114,6 @@ class SalesController extends Controller
                 return response()->json(['error' => 'Please Input Payment amount properly']);
             }
         }
-
 
         $total_paied_amount = array_sum($request->per_payment_amount);
         if ($total_paied_amount > $request->grand_total) {
@@ -153,6 +170,8 @@ class SalesController extends Controller
             if ($request->per_payment_type[$i] == "Bkash") {
                 $sales_payemnt->bkash_number = $request->bkash_number[$i];
                 $sales_payemnt->bkash_trns_id = $request->bkash_trns_id[$i];
+            }if ($request->per_payment_type[$i] == "Bank") {
+                $sales_payemnt->bank_name = $request->bank_name[$i];
             }
             $sales_payemnt->save();
 

@@ -30,10 +30,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="Route_name">Bank</label>
-                            <select class="form-control select2" name="bank_name" id="bank_name">
+                            <select class="form-control select2 bank_name" name="bank_name" id="bank_name">
                                 <option selected disabled>Select Bank</option>
-                                <option value="Cache">Cache</option>
-                                <option value="Bkash">Bkash</option>
                                 <option value="Agrani Bank Ltd">Agrani Bank Ltd</option>
                                 <option value="Bangladesh Development Bank Ltd">Bangladesh Development Bank Ltd</option>
                                 <option value="Basic Bank Ltd">Basic Bank Ltd</option>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2022 at 07:49 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.25
+-- Generation Time: Mar 09, 2022 at 10:03 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -213,11 +213,11 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`id`, `company_id`, `name`, `type`, `email`, `personal_phone`, `optional_phone`, `present_address`, `company_name`, `permanent_address`, `balance`, `reference`, `nid`, `photo`, `nationality`, `designation`, `created_by`, `created_at`, `updated_at`) VALUES
 (2, 4, 'SHAWON BHAI', 'general', NULL, NULL, NULL, 'UKIL PARA, NARAYANGONJ', NULL, 'UKIL PARA, NARAYANGONJ', '-0.375', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-19 12:44:30', '2022-02-19 12:46:51'),
-(3, 6, 'MD MOSHAROF SIR', 'general', NULL, NULL, NULL, 'UKIL PARA, NARAYANGONJ', NULL, 'UKIL PARA, NARAYANGONJ', NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-19 15:06:16', '2022-02-19 15:06:16'),
-(4, 7, 'Dulal Vai', 'general', NULL, '01934821949', NULL, 'Kashipur, Narayangong', NULL, 'Kashipur, Narayangong', '-0.64199999999983', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-20 12:10:13', '2022-02-20 12:17:11'),
-(5, 7, 'Al-Amin', 'general', NULL, '0123456', NULL, 'narayanganj', NULL, 'narayanganj', NULL, NULL, NULL, '', 'bangladeshi', 'manager', 92, '2022-02-23 15:49:41', '2022-02-23 15:49:41'),
+(3, 6, 'MD MOSHAROF SIR', 'general', NULL, NULL, NULL, 'UKIL PARA, NARAYANGONJ', NULL, 'UKIL PARA, NARAYANGONJ', '-5.1023', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-19 15:06:16', '2022-03-10 03:02:44'),
+(4, 7, 'Dulal Vai', 'general', NULL, '01934821949', NULL, 'Kashipur, Narayangong', NULL, 'Kashipur, Narayangong', '-2023.0512', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-20 12:10:13', '2022-03-10 02:33:52'),
+(5, 7, 'Al-Amin', 'general', NULL, '0123456', NULL, 'narayanganj', NULL, 'narayanganj', '-23.33', NULL, NULL, '', 'bangladeshi', 'manager', 92, '2022-02-23 15:49:41', '2022-03-10 02:44:08'),
 (6, 53, 'MANNAN MAMA', 'general', NULL, NULL, NULL, 'NARAYANGONJ', NULL, 'NARAYANGANJ', NULL, NULL, NULL, '2022-02-24-621729fb9c61a.jpeg', 'BANGLADESH', 'OWNER', 107, '2022-02-24 12:47:23', '2022-02-24 12:47:23'),
-(7, 7, 'MONIR BHAI', 'general', NULL, NULL, NULL, 'KALIBAZAR, NARAYANGONJ', NULL, 'NARAYANGANJ', NULL, NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:12:53', '2022-02-24 13:12:53'),
+(7, 7, 'MONIR BHAI', 'general', NULL, NULL, NULL, 'KALIBAZAR, NARAYANGONJ', NULL, 'NARAYANGANJ', '-2489.7063', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:12:53', '2022-03-10 02:15:27'),
 (8, 35, 'DELOWAR SIR', 'general', NULL, NULL, NULL, 'MIRPUR. 01- DHAKA', NULL, NULL, '490322', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:14:40', '2022-02-26 15:19:41'),
 (9, 36, 'TAHSIN SIR', 'general', NULL, NULL, NULL, 'MIRPUR. 01- DHAKA', NULL, 'MIRPUR. 01- DHAKA', '65', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:16:13', '2022-02-26 15:20:31'),
 (10, 37, 'RIYAD SIR', 'general', NULL, NULL, NULL, '2 NO RAIL GATE, NARAYANGONJ', NULL, '2 NO RAIL GATE, NARAYANGONJ', '10', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-24 13:17:18', '2022-02-26 15:21:43'),
@@ -238,7 +238,7 @@ INSERT INTO `customers` (`id`, `company_id`, `name`, `type`, `email`, `personal_
 (25, 59, 'MD. MIZANUR RAHMAN', 'general', NULL, '8801922101081', NULL, 'BISIC, NARAYANGONJ', NULL, 'BISIC, NARAYANGONJ', '57020', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 15:56:44', '2022-02-26 15:56:44'),
 (26, 60, 'MD. ZAHID AHMED', 'general', NULL, '8801733765777', NULL, 'GOLACIPA, NARAYANGONJ', NULL, 'GOLACIPA, NARAYANGONJ', '33712', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:00:52', '2022-02-26 16:00:52'),
 (27, 60, 'MD. ZAHID AHMED', 'general', NULL, '8801733765777', NULL, 'GOLACIPA, NARAYANGONJ', NULL, 'GOLACIPA, NARAYANGONJ', '33712', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:00:56', '2022-02-26 16:00:56'),
-(28, 61, 'SRI SONJOY DADA', 'general', NULL, '8801963290377', NULL, 'UKIL PARA, NARAYANGONJ', NULL, 'UKIL PARA, NARAYANGONJ', '100', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:04:47', '2022-02-26 16:04:47'),
+(28, 61, 'SRI SONJOY DADA', 'general', NULL, '8801963290377', NULL, 'UKIL PARA, NARAYANGONJ', NULL, 'UKIL PARA, NARAYANGONJ', '81.7954', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:04:47', '2022-03-09 22:47:01'),
 (29, 62, 'MD. SAHAJALAL', 'general', NULL, '8801742895296', NULL, 'UTTARA,DHAKA', NULL, 'UTTARA,DHAKA', '1126185', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:09:48', '2022-02-26 16:09:48'),
 (30, 63, 'MD. BILLAL AHMED', 'general', NULL, '8801943336836', NULL, 'UTTAR NORSINPUR, NARAYANGONJ', NULL, 'UTTAR NORSINPUR, NARAYANGONJ', '314547', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:12:36', '2022-02-26 16:12:36'),
 (31, 64, 'MD. PARVEZ AHMED', 'general', NULL, '8801629843065', NULL, 'BISIC, NARAYANGONJ', NULL, 'BISIC, NARAYANGONJ', '380', NULL, NULL, '', 'BANGLADESHI', 'OWNER', 107, '2022-02-26 16:16:48', '2022-02-26 16:16:48'),
@@ -537,7 +537,9 @@ INSERT INTO `initial_balance` (`id`, `date`, `opening_balance`, `closing_balance
 (20, '2022-03-03', '-999841', NULL, '1', '2022-03-03 06:00:07', '2022-03-03 10:07:31'),
 (21, '2022-03-06', '-999841', '-999841', '1', '2022-03-03 06:00:07', '2022-03-07 10:18:01'),
 (22, '2022-03-07', '-999841', '-1002385', '1', '2022-03-07 10:18:01', '2022-03-08 10:52:53'),
-(23, '2022-03-08', '-1002385', NULL, '0', '2022-03-08 10:52:53', '2022-03-08 10:52:53');
+(23, '2022-03-08', '-1002385', '-1002385', '0', '2022-03-08 10:52:53', '2022-03-09 21:46:22'),
+(24, '2022-03-09', '500', '-1499', '1', '2022-03-09 21:46:22', '2022-03-10 00:02:51'),
+(25, '2022-03-10', '500', NULL, '1', '2022-03-10 00:02:51', '2022-03-10 00:03:00');
 
 -- --------------------------------------------------------
 
@@ -1142,7 +1144,9 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`id`, `product_id`, `supplier_id`, `created_by`, `quantity`, `payment_mode`, `main_quantity`, `status`, `unit_price`, `total_purchas_price`, `actual_unit_price`, `payment_amount`, `due`, `actual_purchas_price`, `created_at`, `updated_at`) VALUES
-(55, 2, 3, '92', '56.000', 'Cash', '56.000', 1, '45.00', '2520.00', '45.43', '2544.00', '0.00', '2544.00', '2022-03-07 13:02:46', '2022-03-07 13:33:34');
+(55, 2, 3, '92', '0.000', 'Cash', '56.000', 1, '45.00', '2520.00', '45.43', '2544.00', '0.00', '2544.00', '2022-03-07 13:02:46', '2022-03-09 22:54:03'),
+(56, 1, 2, '92', '15.000', 'Cash', '45.000', 0, '45.00', '2025.00', '45.93', '400.00', '1667.00', '2067.00', '2022-03-09 22:56:59', '2022-03-10 02:39:01'),
+(57, 2, 1, '92', '450.000', 'Cash', '500.000', 0, '40.00', '20000.00', '40.00', '500.00', '19500.00', '20000.00', '2022-03-10 01:28:57', '2022-03-10 01:29:35');
 
 -- --------------------------------------------------------
 
@@ -1190,7 +1194,9 @@ INSERT INTO `purchase_payments` (`id`, `purchase_id`, `supplier_id`, `amount`, `
 (22, 55, 3, 600, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-07 13:20:48', '2022-03-07 13:20:48'),
 (23, 55, 3, 550, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-07 13:22:15', '2022-03-07 13:22:15'),
 (24, 55, 3, 500, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-07 13:33:16', '2022-03-07 13:33:16'),
-(25, 55, 3, 1449, 'Cheque', NULL, '45646456', '2022-03-09', NULL, NULL, NULL, NULL, NULL, '2022-03-07 13:33:34', '2022-03-07 13:33:34');
+(25, 55, 3, 1449, 'Cheque', NULL, '45646456', '2022-03-09', NULL, NULL, NULL, NULL, NULL, '2022-03-07 13:33:34', '2022-03-07 13:33:34'),
+(26, 56, 2, 400, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-09 22:56:59', '2022-03-09 22:56:59'),
+(27, 57, 1, 500, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-10 01:28:57', '2022-03-10 01:28:57');
 
 -- --------------------------------------------------------
 
@@ -1269,7 +1275,21 @@ INSERT INTO `sales` (`id`, `customer_id`, `sales_executive_id`, `total_price`, `
 (3, 4, 4, '44035.64', '44035.00', '0.64', '200', NULL, NULL, 0, '1524751701', '5928.09', NULL, NULL, '2022-02-20 12:17:11', '2022-02-20 12:17:11'),
 (5, 18, 1, '15249.00', '15240.00', '9.00', '0', NULL, NULL, 0, '223500888', '1679.60', NULL, NULL, '2022-02-26 13:35:14', '2022-02-26 13:35:14'),
 (6, 33, 7, '3596037.31', '0.00', '3596037.31', '10129', NULL, NULL, 0, '1464033206', '-79762.69', NULL, NULL, '2022-02-28 20:28:10', '2022-02-28 20:28:10'),
-(7, 34, 7, '171637.50', '171637.00', '0.50', '00', NULL, NULL, 0, '231964984', '-27362.50', NULL, NULL, '2022-03-02 16:18:13', '2022-03-02 16:18:13');
+(7, 34, 7, '171637.50', '171637.00', '0.50', '00', NULL, NULL, 0, '231964984', '-27362.50', NULL, NULL, '2022-03-02 16:18:13', '2022-03-02 16:18:13'),
+(8, 28, 2, '52.20', '34.00', '18.20', '50', NULL, NULL, 0, '1429110349', '6.77', NULL, NULL, '2022-03-09 22:47:01', '2022-03-09 22:47:01'),
+(9, 4, 3, '1886.00', '34.00', '1852.00', '50', NULL, NULL, 0, '1877816420', '-567.22', NULL, NULL, '2022-03-09 22:51:35', '2022-03-09 22:51:36'),
+(10, 7, 3, '2534.71', '45.00', '2489.71', '50.7063', NULL, NULL, 0, '305499406', '689.28', NULL, NULL, '2022-03-10 02:15:27', '2022-03-10 02:15:27'),
+(11, 4, 2, '220.41', '50.00', '170.41', '4.4092', NULL, NULL, 0, '146445639', '60.41', NULL, NULL, '2022-03-10 02:33:52', '2022-03-10 02:33:52'),
+(12, 5, 4, '55.10', '45.00', '10.10', '1.1023', NULL, NULL, 0, '71520897', '15.10', NULL, NULL, '2022-03-10 02:35:53', '2022-03-10 02:35:53'),
+(13, 3, 3, '165.31', '132.00', '33.31', '3.3069', NULL, NULL, 0, '2109127736', NULL, NULL, NULL, '2022-03-10 02:39:31', '2022-03-10 02:39:31'),
+(14, 3, 3, '165.31', '132.00', '33.31', '3.3069', NULL, NULL, 0, '1392708582', NULL, NULL, NULL, '2022-03-10 02:39:37', '2022-03-10 02:39:37'),
+(15, 3, 3, '165.31', '132.00', '33.31', '3.3069', NULL, NULL, 0, '800699411', NULL, NULL, NULL, '2022-03-10 02:39:39', '2022-03-10 02:39:39'),
+(16, 6, 3, '110.20', '12.00', '98.20', '2.2046', NULL, NULL, 0, '1651403013', NULL, NULL, NULL, '2022-03-10 02:41:46', '2022-03-10 02:41:46'),
+(17, 6, 3, '110.20', '12.00', '98.20', '2.2046', NULL, NULL, 0, '518991573', NULL, NULL, NULL, '2022-03-10 02:41:58', '2022-03-10 02:41:58'),
+(18, 6, 3, '110.20', '12.00', '98.20', '2.2046', NULL, NULL, 0, '17188274', NULL, NULL, NULL, '2022-03-10 02:42:08', '2022-03-10 02:42:08'),
+(19, 5, 4, '25.23', '12.00', '13.23', '13.2277', NULL, NULL, 0, '470057181', '-525.93', NULL, NULL, '2022-03-10 02:44:08', '2022-03-10 02:44:08'),
+(20, 3, 4, '55.10', '1.00', '54.10', '1.1023', NULL, NULL, 0, '1432103141', NULL, NULL, NULL, '2022-03-10 02:44:50', '2022-03-10 02:44:50'),
+(21, 3, 3, '55.10', '50.00', '5.10', '1.1023', NULL, NULL, 0, '1118639765', '9.17', NULL, NULL, '2022-03-10 03:02:44', '2022-03-10 03:02:44');
 
 -- --------------------------------------------------------
 
@@ -1292,6 +1312,27 @@ CREATE TABLE `sales_details` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sales_details`
+--
+
+INSERT INTO `sales_details` (`id`, `customer_id`, `sales_id`, `stock_id`, `quantity`, `chalan_no`, `unit_price`, `total_price`, `purchase_uint_price`, `purchase_total_price`, `role`, `created_at`, `updated_at`) VALUES
+(9, 28, 8, 40, '1', '4545', '2.20', '2.20', '45.43', '45.43', '0.00', '2022-03-09 22:47:01', '2022-03-09 22:47:01'),
+(10, 4, 9, 40, '54', '234234', '34.00', '1836.00', '45.43', '2453.22', '0.00', '2022-03-09 22:51:36', '2022-03-09 22:51:36'),
+(11, 7, 10, 40, '1', '121212', '54.00', '54.00', '45.43', '45.43', '0.00', '2022-03-10 02:15:27', '2022-03-10 02:15:27'),
+(12, 7, 10, 41, '45', '121212', '54.00', '2430.00', '40.00', '1800.00', '0.00', '2022-03-10 02:15:27', '2022-03-10 02:15:27'),
+(13, 4, 11, 41, '4', '121212', '54.00', '216.00', '40.00', '160.00', '0.00', '2022-03-10 02:33:52', '2022-03-10 02:33:52'),
+(14, 5, 12, 41, '1', '121212', '54.00', '54.00', '40.00', '40.00', '0.00', '2022-03-10 02:35:53', '2022-03-10 02:35:53'),
+(15, 3, 13, 42, '3', '121212', '54.00', '162.00', '45.93', '137.79', '0.00', '2022-03-10 02:39:31', '2022-03-10 02:39:31'),
+(16, 3, 14, 42, '3', '121212', '54.00', '162.00', '45.93', '137.79', '0.00', '2022-03-10 02:39:38', '2022-03-10 02:39:38'),
+(17, 3, 15, 42, '3', '121212', '54.00', '162.00', '45.93', '137.79', '0.00', '2022-03-10 02:39:39', '2022-03-10 02:39:39'),
+(18, 6, 16, 42, '2', '121212', '54.00', '108.00', '45.93', '91.86', '0.00', '2022-03-10 02:41:46', '2022-03-10 02:41:46'),
+(19, 6, 17, 42, '2', '121212', '54.00', '108.00', '45.93', '91.86', '0.00', '2022-03-10 02:41:58', '2022-03-10 02:41:58'),
+(20, 6, 18, 42, '2', '121212', '54.00', '108.00', '45.93', '91.86', '0.00', '2022-03-10 02:42:08', '2022-03-10 02:42:08'),
+(21, 5, 19, 42, '12', '121212', '1.00', '12.00', '45.93', '551.16', '0.00', '2022-03-10 02:44:08', '2022-03-10 02:44:08'),
+(22, 3, 20, 42, '1', '121212', '54.00', '54.00', '45.93', '45.93', '0.00', '2022-03-10 02:44:50', '2022-03-10 02:44:50'),
+(23, 3, 21, 42, '1', '121212', '54.00', '54.00', '45.93', '45.93', '0.00', '2022-03-10 03:02:44', '2022-03-10 03:02:44');
 
 -- --------------------------------------------------------
 
@@ -1339,6 +1380,7 @@ CREATE TABLE `sales_payments` (
   `customer_id` int(11) DEFAULT NULL,
   `amount` int(11) NOT NULL,
   `payment_mode` varchar(255) NOT NULL,
+  `bank_name` varchar(255) DEFAULT NULL,
   `cheque_number` varchar(100) DEFAULT NULL,
   `cheque_due_date` datetime DEFAULT NULL,
   `bkash_number` varchar(255) DEFAULT NULL,
@@ -1354,13 +1396,20 @@ CREATE TABLE `sales_payments` (
 -- Dumping data for table `sales_payments`
 --
 
-INSERT INTO `sales_payments` (`id`, `sales_id`, `customer_id`, `amount`, `payment_mode`, `cheque_number`, `cheque_due_date`, `bkash_number`, `bkash_trns_id`, `card_number`, `card_expire_date`, `remark`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 11101, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-19 12:46:51', '2022-02-19 12:46:51'),
-(2, 2, 3, 1000, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-19 15:08:20', '2022-02-19 15:08:20'),
-(3, 3, 4, 44035, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-20 12:17:11', '2022-02-20 12:17:11'),
-(5, 5, 18, 15240, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, 'PAID', '2022-02-26 13:35:14', '2022-02-26 13:35:14'),
-(6, 6, 33, 0, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-28 20:28:10', '2022-02-28 20:28:10'),
-(7, 7, 34, 171637, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-02 16:18:13', '2022-03-02 16:18:13');
+INSERT INTO `sales_payments` (`id`, `sales_id`, `customer_id`, `amount`, `payment_mode`, `bank_name`, `cheque_number`, `cheque_due_date`, `bkash_number`, `bkash_trns_id`, `card_number`, `card_expire_date`, `remark`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 11101, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-19 12:46:51', '2022-02-19 12:46:51'),
+(2, 2, 3, 1000, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-19 15:08:20', '2022-02-19 15:08:20'),
+(3, 3, 4, 44035, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-20 12:17:11', '2022-02-20 12:17:11'),
+(5, 5, 18, 15240, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'PAID', '2022-02-26 13:35:14', '2022-02-26 13:35:14'),
+(6, 6, 33, 0, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-28 20:28:10', '2022-02-28 20:28:10'),
+(7, 7, 34, 171637, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-02 16:18:13', '2022-03-02 16:18:13'),
+(8, 8, 28, 34, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-09 22:47:01', '2022-03-09 22:47:01'),
+(9, 9, 4, 34, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-09 22:51:36', '2022-03-09 22:51:36'),
+(10, 10, 7, 45, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-10 02:15:27', '2022-03-10 02:15:27'),
+(11, 11, 4, 50, 'Bank', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'asdasd', '2022-03-10 02:33:52', '2022-03-10 02:33:52'),
+(12, 12, 5, 45, 'Bank', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sdfsfd', '2022-03-10 02:35:53', '2022-03-10 02:35:53'),
+(13, 19, 5, 12, 'Cash', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-10 02:44:08', '2022-03-10 02:44:08'),
+(14, 21, 3, 50, 'Bank', 'Bangladesh Development Bank Ltd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-10 03:02:44', '2022-03-10 03:02:44');
 
 -- --------------------------------------------------------
 
@@ -1379,6 +1428,15 @@ CREATE TABLE `stock` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stock`
+--
+
+INSERT INTO `stock` (`id`, `purchase_id`, `created_by`, `quantity`, `main_quantity`, `status`, `date`, `created_at`, `updated_at`) VALUES
+(40, 55, '92', '0.000', '56', '1', NULL, '2022-03-09 21:45:49', '2022-03-10 02:15:26'),
+(41, 57, '92', '0.000', '50', '1', NULL, '2022-03-10 01:29:35', '2022-03-10 02:35:53'),
+(42, 56, '92', '1.000', '30', '1', NULL, '2022-03-10 02:39:02', '2022-03-10 03:02:44');
 
 -- --------------------------------------------------------
 
@@ -1807,7 +1865,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `initial_balance`
 --
 ALTER TABLE `initial_balance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `master_menu`
@@ -1849,13 +1907,13 @@ ALTER TABLE `product_ingredients`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `purchase_payments`
 --
 ALTER TABLE `purchase_payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `ready_product_details`
@@ -1873,13 +1931,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `sales_executive_models`
@@ -1891,13 +1949,13 @@ ALTER TABLE `sales_executive_models`
 -- AUTO_INCREMENT for table `sales_payments`
 --
 ALTER TABLE `sales_payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `suppliers`

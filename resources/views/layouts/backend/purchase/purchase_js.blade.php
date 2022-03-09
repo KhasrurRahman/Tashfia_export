@@ -25,17 +25,17 @@
                 );
 
                 total_actual_purchas_price = this.api().ajax.json().total_actual_purchas_price
-                $(api.column(6).footer()).html(
+                $(api.column(5).footer()).html(
                     'Tk ' + total_actual_purchas_price
                 );
 
                 total_paid = this.api().ajax.json().total_paid
-                $(api.column(7).footer()).html(
+                $(api.column(6).footer()).html(
                     'Tk ' + total_paid
                 );
 
                 total_due = this.api().ajax.json().total_due
-                $(api.column(8).footer()).html(
+                $(api.column(7).footer()).html(
                     'Tk ' + total_due
                 );
 
@@ -88,10 +88,6 @@
                 {
                     data: 'available_quantity',
                     name: 'available_quantity'
-                },
-                {
-                    data: 'actual_unit_price',
-                    name: 'actual_unit_price'
                 },
                 {
                     data: 'actual_purchas_price',
