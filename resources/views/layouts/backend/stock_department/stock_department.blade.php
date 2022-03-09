@@ -26,7 +26,7 @@
                     <th>Product</th>
                     <th>Quantity(kg)</th>
                     <th>Available Quantity(kg)</th>
-                    <th>Product bar code</th>
+                    <th>Bar code number</th>
                     <th>Action</th>
                 </tr>
                 </thead>

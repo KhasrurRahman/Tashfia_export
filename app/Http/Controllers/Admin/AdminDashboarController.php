@@ -23,6 +23,11 @@ class AdminDashboarController extends Controller
     }
 
 
+    public function change_password()
+    {
+        return view('layouts.backend.change_password.change_password');
+    }
+
     public function save_change_password(Request $request)
     {
         $validatedData = $request->validate([
@@ -50,7 +55,5 @@ class AdminDashboarController extends Controller
             return redirect()->route('admin.admin/change_password');
         }
     }
-
-
 
 }

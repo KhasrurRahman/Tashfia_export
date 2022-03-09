@@ -38,15 +38,15 @@
                         <input type="text" class="form-control" id="create_quantity" readonly>
                     </div>
 
-                    <div class="form-group">
-                        <label for="Route_name">Unit Price</label>
-                        <input type="text" class="form-control" id="create_unit_price" readonly>
-                    </div>
+{{--                    <div class="form-group">--}}
+{{--                        <label for="Route_name">Unit Price</label>--}}
+{{--                        <input type="text" class="form-control" id="create_unit_price" readonly>--}}
+{{--                    </div>--}}
 
-                    <div class="form-group">
-                        <label for="Route_name">Total Purchase Price</label>
-                        <input type="text" class="form-control" id="create_total_purchas_price" readonly>
-                    </div>
+{{--                    <div class="form-group">--}}
+{{--                        <label for="Route_name">Total Purchase Price</label>--}}
+{{--                        <input type="text" class="form-control" id="create_total_purchas_price" readonly>--}}
+{{--                    </div>--}}
 
                     <div class="form-group">
                         <label for="Route_name">quantity(Kg)</label>

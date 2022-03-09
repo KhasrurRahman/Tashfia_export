@@ -183,8 +183,17 @@ class DepartmentController extends Controller
         $purchase->quantity -= $request->quantity;
         $purchase->update();
 
-        $request->request->add(['created_by' => Auth::user()->id, 'main_quantity' => $request->quantity]);
-        LotDepartmentModel::create($request->all());
+        $check_in_stock = LotDepartmentModel::where('purchase_id', $request->purchase_id)->count();
+        if ($check_in_stock !== 0) {
+            $stock = LotDepartmentModel::where('purchase_id', $request->purchase_id)->first();
+            $stock->main_quantity += $request->quantity;
+            $stock->quantity += $request->quantity;
+            $stock->update();
+        } else {
+            $request->request->add(['created_by' => Auth::user()->id, 'main_quantity' => $request->quantity]);
+            LotDepartmentModel::create($request->all());
+        }
+
         return response()->json(['Done' => 'Done']);
     }
 

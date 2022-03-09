@@ -90,8 +90,8 @@
                     name: 'available_quantity'
                 },
                 {
-                    data: 'unit_price',
-                    name: 'unit_price'
+                    data: 'actual_unit_price',
+                    name: 'actual_unit_price'
                 },
                 {
                     data: 'actual_purchas_price',

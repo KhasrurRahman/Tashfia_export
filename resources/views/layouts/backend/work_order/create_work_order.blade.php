@@ -1,5 +1,5 @@
 @extends('layouts.backend.partial.app')
-@section('title','Create Work order')
+@section('title','Create Advance Sell')
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
     <style>
@@ -26,7 +26,7 @@
     </style>
 @endpush
 @section('main_menu','Products')
-@section('active_menu','Create Work order')
+@section('active_menu','Create Advance Sell')
 @section('link',route('admin.adminDashboard'))
 @section('content')
     <form class="forms-sample" method="post" action="{{route('admin.workorder/store_workorder')}}">
