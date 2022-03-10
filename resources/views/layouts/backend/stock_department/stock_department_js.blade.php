@@ -14,7 +14,7 @@
                             i : 0;
                 };
                 total_quantity = this.api().ajax.json().total_quantity
-                $(api.column(4).footer()).html(
+                $(api.column(5).footer()).html(
                     total_quantity + ' KG'
                 );
             },
@@ -35,6 +35,10 @@
                 url: "{{ url('admin/Department/search') }}",
                 type: 'POSt',
                 data: function (d) {
+                    d.search_supplier_id = $('#search_supplier_id').val();
+                    d.product_name = $('#product_name').val();
+                    d.from_date = $('#from_date').val();
+                    d.to_date = $('#to_date').val();
                     d._token = '{{csrf_token()}}'
                 }
             },
@@ -42,17 +46,24 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
                 {data: 'date', name: 'date'},
                 {data: 'product', name: 'product', searchable: false},
+                {data: 'supplier_name', name: 'supplier_name', searchable: false},
                 {data: 'main_quantity', name: 'main_quantity', searchable: false},
                 {data: 'quantity', name: 'quantity', searchable: false},
                 {data: 'product_bar_code', name: 'product_bar_code', searchable: false},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });
-        $('#search_form').on('submit', function (event) {
+        $('#btnFiterSubmitSearch').on('click', function (event) {
             event.preventDefault();
             table.draw(true);
         });
     });
+
+    function form_reset() {
+        document.getElementById("search_form").reset();
+        $('.select2').val(null).trigger('change');
+        $('.yajra-datatable').DataTable().ajax.reload(null, false);
+    }
 
 
     function delete_data(id) {

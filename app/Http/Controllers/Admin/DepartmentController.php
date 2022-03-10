@@ -9,6 +9,7 @@ use App\Models\purchaseModel;
 use App\Models\LotDepartmentModel;
 use App\Models\ModelProduct;
 use App\Models\salesDepartmentModel;
+use App\Models\supplierModel;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -57,6 +58,10 @@ class DepartmentController extends Controller
                 $query->where('customer_id', $request->search_customer_id);
             }
 
+            if ($request->invoice_number !== null) {
+                $query->where('sales_code', 'like', '%' . $request->invoice_number . '%');
+            }
+
 
             $query->orderBy('id', 'desc');
             return Datatables::of($query)
@@ -65,7 +70,7 @@ class DepartmentController extends Controller
                 ->addColumn('customer', function ($data) {
                     return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="customer_details(' . $data->customer_id . ')">' . $data->customer->name . '</a>';
                 })->addColumn('customer_company_name', function ($data) {
-                    return $data->customer->company ?$data->customer->company->company_name:$data->customer->company_name;
+                    return $data->customer->company ? $data->customer->company->company_name : $data->customer->company_name;
                 })->addColumn('customer_id', function ($data) {
                     return $data->customer->id;
                 })->addColumn('sales_code', function ($data) {
@@ -96,7 +101,7 @@ class DepartmentController extends Controller
                     return date("d-M-y", strtotime($data->created_at));
                 })->addColumn('action', function ($data) {
                     if ($data->due > 0) {
-                        $pay_button = ' <a href="javascript:void(0)" class="dropdown-item" onclick="pay_due_bill(' . $data->id . ')" >Pay bill</a>';
+                        $pay_button = ' <a href="javascript:void(0)" class="dropdown-item" onclick="pay_due_bill(' . $data->id . ')" >Pay Due</a>';
                     } else {
                         $pay_button = '';
                     }
@@ -144,19 +149,39 @@ class DepartmentController extends Controller
     public function show_lot_department()
     {
         $purchase_product = purchaseModel::all();
-        return view('layouts.backend.stock_department.stock_department', compact('purchase_product'));
+        $supplier = supplierModel::all();
+        return view('layouts.backend.stock_department.stock_department', compact('purchase_product', 'supplier'));
     }
 
     public function search(Request $request)
     {
         if ($request->ajax()) {
             $query = LotDepartmentModel::query();
+            if ($request->from_date !== null and $request->to_date !== null) {
+                $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+            }
+            if ($request->search_supplier_id !== null) {
+                $query->whereHas('purchase', function ($query2) use ($request) {
+                    $query2->where('supplier_id', $request->search_supplier_id);
+                });
+            }
+
+            if ($request->product_name !== null) {
+                $query->whereHas('purchase', function ($query2) use ($request) {
+                    $query2->whereHas('product', function ($query3) use ($request) {
+                        $query3->where('chalan_no', 'like', '%' . $request->product_name . '%');
+                    });
+                });
+            }
+
             $query->orderBy('id', 'desc');
             return Datatables::of($query)
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('product', function ($data) {
                     return '<a href="javascript:void(0)" onclick="view_modal(' . $data->purchase->product_id . ')" class="edit btn btn-success btn-sm" >' . $data->purchase->product->chalan_no . '</a>';
+                })->addColumn('supplier_name', function ($data) {
+                    return '<a href="' . url('admin/supplier/profile/' . $data->purchase->supplier->id) . '" class="text-success font-weight-bold" target="_blank">' . $data->purchase->supplier->name . '</a>';
                 })->addColumn('date', function ($data) {
                     return date("d/M/y", strtotime($data->created_at));
                 })->addColumn('quantity', function ($data) {
@@ -167,7 +192,7 @@ class DepartmentController extends Controller
                     $actionBtn = '<a href="javascript:void(0)" onclick="delete_data(' . $data->id . ')" class="edit btn btn-outline-danger btn-sm" >Delete</a>';
                     return $actionBtn;
                 })->with('total_quantity', $query->sum('quantity'))
-                ->rawColumns(['product', 'date', 'quantity', 'action', 'product_bar_code'])
+                ->rawColumns(['product', 'supplier_name', 'date', 'quantity', 'action', 'product_bar_code'])
                 ->make(true);
         }
     }

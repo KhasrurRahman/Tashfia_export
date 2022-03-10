@@ -49,7 +49,7 @@ class supplierController extends Controller
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('name', function ($data) {
-                    return '<a href="' . url('admin/supplier/profile/' . $data->id) . '" class="text-success font-weight-bold" >'.$data->name.'</a>';
+                    return '<a href="' . url('admin/supplier/profile/' . $data->id) . '" class="text-success font-weight-bold" target="_blank">'.$data->name.'</a>';
                 })->addColumn('personal_phone', function ($data) {
                     return $data->personal_phone;
                 })->addColumn('present_address', function ($data) {
@@ -68,7 +68,7 @@ class supplierController extends Controller
                     $img = '<img src="' . asset('upload/supplier_image/' . $data->photo) . '" style="height:100px">';
                     return $img;
                 })->addColumn('action', function ($data) {
-                    $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/supplier/edit/' . $data->id) . '" class="dropdown-item" >Edit</a> <a href="' . url('admin/supplier/profile/' . $data->id) . '" class="dropdown-item" >View</a><a href="' . url('admin/supplier/supplier_purchase_history_generate/' . $data->id) . '" class="dropdown-item" target="_blank">Payment History</a>';
+                    $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/supplier/edit/' . $data->id) . '" class="dropdown-item" >Edit</a> <a href="' . url('admin/supplier/profile/' . $data->id) . '" class="dropdown-item" >View</a><a href="' . url('admin/supplier/supplier_purchase_history_generate/' . $data->id) . '" class="dropdown-item" target="_blank">Purchase History</a>';
 
                     $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">' . $buttons . ' </div> </div>';
                     return $action_button;

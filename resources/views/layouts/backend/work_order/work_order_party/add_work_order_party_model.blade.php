@@ -25,7 +25,7 @@
                     </div>
                    
                     <div class="form-group">
-                        <label for="Route_name">Supplier name</label>
+                        <label for="Route_name">name</label>
                         <input type="text" class="form-control" name="name" required>
                         <span id="Errorpo_status_name" class="text-red error_field"></span>
                     </div>

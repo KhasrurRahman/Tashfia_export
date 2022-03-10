@@ -26,19 +26,19 @@
                 <td>{{date("d-M-y", strtotime($data->created_at))}}</td>
                 <td>{{$data->product->chalan_no}}</td>
                 <td>{{$data->product->card_no}}</td>
-                <td style="text-align: right">{{$data->quantity}}</td>
-                <td style="text-align: right">{{$data->quantity * 2.2046}}</td>
-                <td style="text-align: right">{{$data->actual_purchas_price}}</td>
-                <td style="text-align: right">{{$data->payment_amount}}</td>
-                <td style="text-align: right">{{$data->due}}</td>
+                <td style="text-align: left">{{$data->main_quantity}}</td>
+                <td style="text-align: left">{{$data->main_quantity * 2.2046}}</td>
+                <td style="text-align: left">{{$data->actual_purchas_price}}</td>
+                <td style="text-align: left">{{$data->payment_amount}}</td>
+                <td style="text-align: left">{{$data->due}}</td>
             </tr>
         @endforeach
         <tr>
             <td colspan="4" style="text-align: left">Total</td>
-            <td style="text-align: right">{{$total_quantity}}</td>
-            <td style="text-align: right">{{$supplier->purchase->sum('quantity') * 2.2046}}</td>
-            <td style="text-align: right">{{$total_actual_price}}</td>
-            <td style="text-align: right">{{$supplier->purchase->sum('payment_amount')}}</td>
-            <td style="text-align: right">{{$supplier->purchase->sum('due')}}</td>
+            <td style="text-align: left">{{$total_quantity}}</td>
+            <td style="text-align: left">{{$supplier->purchase->sum('main_quantity') * 2.2046}}</td>
+            <td style="text-align: left">{{$total_actual_price}}</td>
+            <td style="text-align: left">{{$supplier->purchase->sum('payment_amount')}}</td>
+            <td style="text-align: left">{{$supplier->purchase->sum('due')}}</td>
         </tr>
 @endpush

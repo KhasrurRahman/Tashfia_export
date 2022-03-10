@@ -1,11 +1,11 @@
 @extends('layouts.backend.partial.app')
-@section('title','Work Order party')
+@section('title','party')
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
 @endpush
 @section('main_menu','HOME')
-@section('active_menu','Work Order party')
+@section('active_menu','party')
 @section('link',route('admin.adminDashboard'))
 @section('content')
 

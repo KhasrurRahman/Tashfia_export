@@ -2,7 +2,7 @@
     <form id="search_form" name="search_form" action="{{route('admin.sales/sales_history_pdf_generate')}}" method="post" target="_blank">
         @csrf
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <div class="form-group">
                     <label>Company:</label>
                     <select class="form-control select2" id="search_company_id" name="search_company_id">
@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-3">
                 <div class="form-group">
                     <label>Customer:</label>
                     <select class="form-control select2" id="search_customer_id" name="search_customer_id">
@@ -26,7 +26,7 @@
                 </div>
             </div>
             
-            <div class="col-4">
+            <div class="col-3">
                 <div class="form-group">
                     <label>Payment status:</label>
                     <select class="form-control select2" id="search_payment_status" name="search_payment_status">
@@ -34,6 +34,13 @@
                         <option value="paid">paid</option>
                         <option value="unpaid">unpaid</option>
                     </select>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Invoice Number:</label>
+                    <input type="text" class="form-control" id="invoice_number" name="invoice_number">
                 </div>
             </div>
 

@@ -46,7 +46,7 @@ class SalesController extends Controller
                 if ($row->quantity <= 0 or $row->quantity == null) {
                     $output .= '<li class="list-group-item bg-danger" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . ' (Not Available)</li>';
                 } else {
-                    $output .= '<li class="list-group-item bg-success" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . '(Quantity:'.$row->quantity.')</li>';
+                    $output .= '<li class="list-group-item bg-success" onclick=getproductdata(' . $row->id . ')>' . $row->chalan_no . '(Quantity:' . $row->quantity . ')</li>';
                 }
 
             }
@@ -170,7 +170,8 @@ class SalesController extends Controller
             if ($request->per_payment_type[$i] == "Bkash") {
                 $sales_payemnt->bkash_number = $request->bkash_number[$i];
                 $sales_payemnt->bkash_trns_id = $request->bkash_trns_id[$i];
-            }if ($request->per_payment_type[$i] == "Bank") {
+            }
+            if ($request->per_payment_type[$i] == "Bank") {
                 $sales_payemnt->bank_name = $request->bank_name[$i];
             }
             $sales_payemnt->save();
@@ -260,7 +261,7 @@ class SalesController extends Controller
         $customer->present_address = $request->customer_address;
         $customer->personal_phone = $request->customer_phone;
         $customer->company_name = $request->company_name;
-        $customer->type = 'wal in customer';
+        $customer->type = 'Walk-in Customer';
         $customer->save();
 
 
@@ -270,11 +271,11 @@ class SalesController extends Controller
     public function sales_due_payment(Request $request)
     {
         $sale = salesDepartmentModel::find($request->sale_id);
-        if ($request->amount > $sale->due) {
+        if ($request->payment_amount > $sale->due or $request->payment_amount == 0) {
             return response()->json(['error' => 'Your Payment amount must be less than or equal to Due amount']);
         }
-        $sale->payment_amount += $request->amount;
-        $sale->due -= $request->amount;
+        $sale->payment_amount += $request->payment_amount;
+        $sale->due -= $request->payment_amount;
         $sale->update();
         if ($sale->due == 0) {
             $sale->status = 1;
@@ -284,8 +285,21 @@ class SalesController extends Controller
         $sales_payemnt = new SalesPaymentModel();
         $sales_payemnt->sales_id = $request->sale_id;
         $sales_payemnt->customer_id = $sale->customer_id;
-        $sales_payemnt->amount = $request->amount;
+        $sales_payemnt->amount = $request->payment_amount;
         $sales_payemnt->payment_mode = $request->payment_type;
+
+        if ($request->payment_type == "Cheque") {
+            $sales_payemnt->cheque_number = $request->cheque_number;
+            $sales_payemnt->cheque_due_date = $request->cheque_date;
+        }
+        if ($request->payment_type == "Bkash") {
+            $sales_payemnt->bkash_number = $request->bkash_number;
+            $sales_payemnt->bkash_trns_id = $request->bkash_trns_id;
+        }
+        if ($request->payment_type == "Bank") {
+            $sales_payemnt->bank_name = $request->bank_name;
+        }
+
         $sales_payemnt->save();
 
 
@@ -369,6 +383,10 @@ class SalesController extends Controller
 
         if ($request->search_customer_id !== null) {
             $query->where('customer_id', $request->search_customer_id);
+        }
+
+        if ($request->invoice_number !== null) {
+            $query->where('sales_code', 'like', '%' . $request->invoice_number . '%');
         }
 
 

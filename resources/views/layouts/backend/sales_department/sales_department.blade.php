@@ -24,11 +24,12 @@
                     <th>Customer ID</th>
                     <th>Company</th>
                     <th>Customer</th>
-                    <th>Total</th>
-                    <th>Paid Amount</th>
+                    <th>Total amount</th>
+                    <th>Paid amount</th>
                     <th>Due</th>
                     <th>Date</th>
                     <th>Customer Type</th>
+                    <th>Invoice no.</th>
                     <th>Payment Status</th>
                     <th>Action</th>
                 </tr>
@@ -38,6 +39,7 @@
                 <tfoot>
                 <tr class="bg-success text-white" style="font-size: 0.6vw">
                     <th style="text-align:right">Total:</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>

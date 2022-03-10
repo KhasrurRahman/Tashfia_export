@@ -45,6 +45,7 @@
                     d.search_customer_id = $('#search_customer_id').val();
                     d.search_company_id = $('#search_company_id').val();
                     d.search_payment_status = $('#search_payment_status').val();
+                    d.invoice_number = $('#invoice_number').val();
                     d.from_date = $('#from_date').val();
                     d.to_date = $('#to_date').val();
                     d._token = '{{csrf_token()}}'
@@ -59,6 +60,7 @@
                 {data: 'due', name: 'due'},
                 {data: 'date', name: 'date'},
                 {data: 'customer_type', name: 'customer_type', searchable: false},
+                {data: 'sales_code', name: 'sales_code'},
                 {data: 'payment_status', name: 'payment_status'},
                 {data: 'action', name: 'action', searchable: false},
             ],
@@ -260,12 +262,10 @@
         window.location.href = "{{url('admin/sales/sales_department_invoice')}}/" + $id;
     }
 
-
     function pay_due_bill(id) {
         $('#sales_due_payment').modal('show');
         $('#pay_bill_sales_id').val(id);
     }
-
 
     $('#pay_bill_form').on('submit', function (event) {
         event.preventDefault();
@@ -326,19 +326,10 @@
             type: 'get',
             url: '{{ url('company_customer_search') }}/' + id,
             success: function (data) {
-                // console.log(data)
                 $('#search_customer_id').html(data);
             }
         });
     });
 
-
-    function cheque_date_input(select) {
-        if (select.value === 'Cheque') {
-            $('#check_section').show(1000);
-        } else {
-            $('#check_section').hide(1000);
-        }
-    }
 
 </script>

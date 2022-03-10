@@ -14,27 +14,28 @@
             <th>Sales Code</th>
             <th>Quantity(KG)</th>
             <th>Quantity(Pound)</th>
-            <th>Total Amount</th>
-            <th>Paid Amount</th>
-            <th>Due</th>
+            <th>Total Amount (Tk)t</th>
+            <th>Paid Amount (Tk)</th>
+            <th>Due (Tk)</th>
         </tr>
-
-        @foreach($sales_history as $key=>$data)
+        @foreach($customer->sales_history as $key=>$data)
             <tr>
                 <td>{{$key+1}}</td>
                 <td>{{date("d-M-y", strtotime($data->created_at))}}</td>
-                <td style="text-align: center">{{$data->sales_code}}</td>
-                <td style="text-align: center">{{$data->sales_details->sum('quantity')}}</td>
-                <td style="text-align: center">{{$data->sales_details->sum('quantity') * 2.2046}}</td>
-                <td style="text-align: center">{{$data->total_price}}</td>
-                <td style="text-align: center">{{$data->payment_amount}}</td>
-                <td style="text-align: center">{{$data->due}}</td>
+                <td style="text-align: left">{{$data->sales_code}}</td>
+                <td style="text-align: left">{{$data->sales_details->sum('quantity')}}</td>
+                <td style="text-align: left">{{$data->sales_details->sum('quantity') * 2.2046}}</td>
+                <td style="text-align: left">{{$data->total_price}}</td>
+                <td style="text-align: left">{{$data->payment_amount}}</td>
+                <td style="text-align: left">{{$data->due}}</td>
             </tr>
         @endforeach
         <tr>
-            <td colspan="3">Total</td>
-            <td style="text-align: center">{{$total_amount}} TK</td>
-            <td style="text-align: center">{{$total_payment}} TK</td>
-            <td style="text-align: center">{{$total_due}} TK</td>
+            <td colspan="5">Total</td>
+            {{--            <td style="text-align: left">{{$customer->sales_history->sales_details->sum('quantity')}}</td>--}}
+            {{--            <td style="text-align: left">{{$customer->sales_history->sales_details->sum('quantity') * 2.2046}}</td>--}}
+            <td style="text-align: left">{{$customer->sales_history->sum('total_price')}}</td>
+            <td style="text-align: left">{{$customer->sales_history->sum('payment_amount')}}</td>
+            <td style="text-align: left">{{$customer->sales_history->sum('due')}}</td>
         </tr>
 @endpush

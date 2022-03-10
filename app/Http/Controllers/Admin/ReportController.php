@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AssetModel;
 use App\Http\Controllers\Controller;
 use App\InitialCacheModel;
 use App\Models\ExpensesModel;
 use App\Models\purchaseModel;
 use App\Models\salesDepartmentModel;
 use App\Models\SalesPaymentModel;
+use App\PurchasePaymentModel;
 use App\SalesExecutiveModel;
 use App\workworderModel;
 use Carbon\Carbon;
@@ -75,16 +77,26 @@ class ReportController extends Controller
 
     public function deposit_expense_report_index()
     {
-        return view('layouts.backend.report.deposit_expense.deposit_expense');
+        $date  = date('Y-m-d');
+        $opening_balance = InitialCacheModel::whereDate('date', $date)->first();
+        $sales = SalesPaymentModel::whereDate('created_at', $date)->get();
+        $asset = AssetModel::whereDate('created_at', $date)->get();
+        $advance_sell = workworderModel::whereDate('created_at', $date)->get();
+        $total_asset = $opening_balance->opening_balance + $sales->sum('amount') + $asset->sum('Amount') + $advance_sell->sum('subtotal');
+
+        $purchase = PurchasePaymentModel::whereDate('created_at', $date)->get();
+        $expense = ExpensesModel::whereDate('created_at', $date)->get();
+        $total_expense = $purchase->sum('amount') + $expense->sum('Amount');
+        return view('layouts.backend.report.deposit_expense.deposit_expense',compact('sales','purchase','asset','expense','opening_balance','advance_sell','total_asset','total_expense'));
     }
 
     public function deposit_expense_report_search(Request $request)
     {
-        $sales_payments = SalesPaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $sales = SalesPaymentModel::whereDate('created_at', $request->date)->get();
         $purchase_history = purchaseModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $expense_history = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $work_order = workworderModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $initial_balance = InitialCacheModel::where('created_at',Carbon::now()->toDateString())->get();
-        return view('layouts.backend.report.deposit_expense.deposit_expense_invoice_pdf', compact('sales_payments', 'purchase_history', 'expense_history','work_order','initial_balance'));
+        return view('layouts.backend.report.deposit_expense.deposit_expense_invoice_pdf', compact('sales', 'purchase_history', 'expense_history','work_order','initial_balance'));
     }
 }

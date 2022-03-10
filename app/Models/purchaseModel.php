@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\PurchasePaymentModel;
 use Illuminate\Database\Eloquent\Model;
 
 class purchaseModel extends Model
@@ -36,5 +37,9 @@ class purchaseModel extends Model
     public function stock()
     {
         return $this->hasMany(LotDepartmentModel::class, 'purchase_id');
+    }
+    public function purchase_paymets()
+    {
+        return $this->hasMany(PurchasePaymentModel::class, 'purchase_id');
     }
 }

@@ -30,12 +30,12 @@
                 );
 
                 total_paid = this.api().ajax.json().total_paid
-                $(api.column(6).footer()).html(
+                $(api.column(7).footer()).html(
                     'Tk ' + total_paid
                 );
 
                 total_due = this.api().ajax.json().total_due
-                $(api.column(7).footer()).html(
+                $(api.column(8).footer()).html(
                     'Tk ' + total_due
                 );
 
@@ -70,7 +70,6 @@
             columns: [{
                 data: 'DT_RowIndex',
                 name: 'DT_RowIndex',
-                searchable: false
             },
                 {
                     data: 'product',
@@ -79,7 +78,6 @@
                 {
                     data: 'supplier',
                     name: 'supplier',
-                    searchable: false
                 },
                 {
                     data: 'Quantity',
@@ -88,6 +86,10 @@
                 {
                     data: 'available_quantity',
                     name: 'available_quantity'
+                },
+                {
+                    data: 'actual_unit_price',
+                    name: 'actual_unit_price'
                 },
                 {
                     data: 'actual_purchas_price',
@@ -263,5 +265,20 @@
             }
         });
     })
+
+    function invoice_payment_history(id) {
+        $.ajax({
+            url: "{{url('admin/purchase/purchase_invoice_payment_history')}}/" + id,
+            type: "GET",
+            success: function (data) {
+                $('#invoice_payments_model_content').html('');
+                $('#invoice_payments_model_content').append(data);
+                $('#invoice_payments_details').modal('show');
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        });
+    }
 
 </script>

@@ -1,5 +1,5 @@
 @extends('layouts.backend.partial.app')
-@section('title','Asset')
+@section('title','জমা')
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/select2/dist/css/select2.min.css') }}">
@@ -8,7 +8,7 @@
         }</style>
 @endpush
 @section('main_menu','HOME')
-@section('active_menu','Asset')
+@section('active_menu','জমা')
 @section('link',route('admin.adminDashboard'))
 @section('content')
 
@@ -19,18 +19,18 @@
         <div class="card-body">
             <div style="overflow: hidden">
                 <h3 class="card-title float-left">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
-                <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success float-right">Add @yield('title')</a>
+                <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success float-right">নতুন  @yield('title')</a>
             </div>
 
             <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Date</th>
                     <th>Category</th>
                     <th>Name</th>
                     <th>Amount</th>
                     <th>Remarks</th>
-                    <th>Date</th>
                     <th>Action</th>
                 </tr>
                 </thead>

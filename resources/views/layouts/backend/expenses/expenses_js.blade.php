@@ -14,11 +14,7 @@
                             i : 0;
                 };
                 total = this.api().ajax.json().total_amount
-                pageTotal = api
-                    .column(3, {page: 'current'})
-                    .data()
-                    .sum()
-                $(api.column(3).footer()).html(
+                $(api.column(4).footer()).html(
                      total + ' Tk '
                 );
             },
@@ -49,11 +45,11 @@
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
+                {data: 'date', name: 'date'},
                 {data: 'Category', name: 'Category'},
                 {data: 'name', name: 'name'},
                 {data: 'Amount', name: 'Amount'},
                 {data: 'remark', name: 'remark'},
-                {data: 'date', name: 'date'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });

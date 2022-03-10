@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
-            <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add @yield('title')</a>
+            <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 85%">নতুন @yield('title')</a>
         </div>
         <div class="card-body">
             <table class="table table-bordered yajra-datatable">

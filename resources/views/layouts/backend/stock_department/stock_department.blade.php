@@ -14,16 +14,20 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
-            <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 85%">Add @yield('title')</a>
+            @include('layouts.backend.stock_department.stock_search')
         </div>
         <div class="card-body">
+            <div style="overflow: hidden;display: flex">
+                <h3 class="card-title">Total: <span class="badge badge-secondary" id="total_data"></span></h3>
+                <a href="#add_button" data-toggle="modal" type="button" class="btn-sm btn-success" style="margin-left: 88%">Add @yield('title')</a>
+            </div>
             <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>Date</th>
                     <th>Product</th>
+                    <th>Supplier</th>
                     <th>Quantity(kg)</th>
                     <th>Available Quantity(kg)</th>
                     <th>Bar code number</th>
@@ -35,6 +39,7 @@
                 <tfoot>
                 <tr class="bg-success text-white">
                     <th style="text-align:right">Total:</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>

@@ -9,47 +9,9 @@
                 </button>
             </div>
             <div class="modal-body" id="edit_model_content">
-                <form action="" method="post" id="pay_bill_form">
-                    @csrf
+                <form action="" id="pay_bill_form">
                     <input type="hidden" id="pay_bill_sales_id" name="sale_id">
-                    <div class="form-group">
-                        <label for="Route_name">Amount</label>
-                        <input type="text" class="form-control" name="amount" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="product_id">Payment Type</label>
-                        <select class="form-control select2 payment_type" name="payment_type" id="payment_type" required onchange="cheque_date_input(this)">
-                            <option value="Cash ">Cash</option>
-                            <option value="Card ">Card</option>
-                            <option value="Bkash">Bkash</option>
-                            <option value="Cheque">Cheque</option>
-                        </select>
-                    </div>
-
-
-                    <div class="col-12" id="check_section" style="display: none;border: 1px solid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="product_id">cheque Number</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control cheque_number" name="cheque_number">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="product_id">Date</label>
-                                    <div class="input-group">
-                                        <input type="date" class="form-control cheque_date" name="cheque_date">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    @include('layouts.backend.purchase.bank_card')
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Make Payment</button>

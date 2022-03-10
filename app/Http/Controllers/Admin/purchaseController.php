@@ -92,8 +92,9 @@ class purchaseController extends Controller
                         $pay_button = '';
                     }
                     $single_button = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/purchase/edit/' . $data->id) . '" class="dropdown-item" >Edit</a>';
+                    $payments = '<a href="#" onclick="invoice_payment_history(' . $data->id . ')" class="dropdown-item">Payments</a>';
 
-                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">' . $single_button . $pay_button . ' </div> </div>';
+                    $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">' . $single_button . $pay_button .$payments. ' </div> </div>';
 
                     return $action_button;
                 })
@@ -102,7 +103,7 @@ class purchaseController extends Controller
                 ->with('total_actual_purchas_price', $query->sum('actual_purchas_price'))
                 ->with('total_paid', $query->sum('payment_amount'))
                 ->with('total_due', $query->sum('due'))
-                ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action', 'available_quantity','payment_status'])
+                ->rawColumns(['product', 'supplier', 'Quantity', 'unit_price', 'total_purchas_price', 'actual_purchas_price', 'action', 'available_quantity', 'payment_status'])
                 ->make(true);
         }
     }
@@ -235,11 +236,8 @@ class purchaseController extends Controller
         }
 
         $purchase_history = $query->orderBy('id', 'desc')->get();
-        $total_quantity = $purchase_history->sum('quantity');
-        $total_purchase_price = $purchase_history->sum('total_purchas_price');
-        $total_actual_purchase_price = $purchase_history->sum('actual_purchas_price');
 
-        return view('layouts.backend.purchase.purchase_pdf_invoice', compact('purchase_history', 'total_quantity', 'total_purchase_price', 'total_actual_purchase_price'));
+        return view('layouts.backend.purchase.purchase_pdf_invoice', compact('purchase_history'));
     }
 
 
@@ -252,7 +250,7 @@ class purchaseController extends Controller
         ]);
 
         $purchase = purchaseModel::find($request->sale_id);
-        if ($request->payment_amount > $purchase->due) {
+        if ($request->payment_amount > $purchase->due or $request->payment_amount == 0) {
             return response()->json(['error' => 'Your Payment amount must be less than or equal to Due amount']);
         }
         $purchase->payment_amount += $request->payment_amount;
@@ -284,6 +282,26 @@ class purchaseController extends Controller
         $purchase_payemnt->save();
 
         return response()->json(['done' => 'success']);
+    }
+
+    public function purchase_invoice_payment_history($id)
+    {
+        $payments = purchaseModel::find($id)->purchase_paymets;
+
+        $output = '<table border="1" width="100%">
+                   <tr>
+                    <th>Payment Date</th>
+                    <th>Payment mode</th>
+                    <th>Amount (Tk)</th>
+                   </tr>';
+        foreach ($payments as $data) {
+            $output .= '<tr>
+         <td>' . date("d-M-y", strtotime($data->created_at)) . '</td>
+         <td>' . $data->payment_mode . '</td>
+         <td>' . $data->amount . '</td>
+    </tr>';
+        }
+        return $output;
     }
 
 }

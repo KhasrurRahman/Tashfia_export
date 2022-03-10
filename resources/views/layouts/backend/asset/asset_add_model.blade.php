@@ -4,7 +4,7 @@
         <div class="modal-content">
             <form action="" method="post" id="save_info">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="add_buttonLabel">Create @yield('title')</h5>
+                    <h5 class="modal-title" id="add_buttonLabel">নতুন @yield('title')</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

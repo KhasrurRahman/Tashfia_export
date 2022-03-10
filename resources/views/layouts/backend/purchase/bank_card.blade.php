@@ -5,7 +5,7 @@
                 <div class="form-group">
                     <label for="product_id">Amount</label>
                     <div class="input-group">
-                        <input type="number" class="form-control payment_amount" name="payment_amount" id="payment_amount" required >
+                        <input type="number" class="form-control payment_amount" name="payment_amount" id="payment_amount" step="any" required >
                     </div>
                     <span id="error_sub_total" class="text-red error_field"></span>
                 </div>
@@ -198,7 +198,6 @@
 
 <script>
     function cheque_date_input(select) {
-        console.log(select.value)
         if (select.value === 'Cheque') {
             $(select).closest('.row').find('#check_section').show(1000);
             $(select).closest('.row').find('#bkash_section').hide(1000);

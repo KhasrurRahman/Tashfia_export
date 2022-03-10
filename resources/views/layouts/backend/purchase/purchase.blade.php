@@ -37,6 +37,7 @@
                     <th>Supplier</th>
                     <th>Quantity(Kg)</th>
                     <th>Available Quantity(Kg)</th>
+                    <th>Unit Price/Kg</th>
                     <th>Actual Purchase Price(Tk)</th>
                     <th>Total Paid</th>
                     <th>Due</th>
@@ -49,6 +50,7 @@
                 <tfoot>
                 <tr class="bg-success text-white">
                     <th style="text-align:right">Total:</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -95,6 +97,7 @@
     @include('layouts.backend.purchase.purchase_add_model')
     @include('layouts.backend.product.view_model')
     @include('layouts.backend.supplier.supplier_details_model')
+    @include('layouts.backend.sales_department.invoice_payment_history_model')
 @endsection
 @push('js')
     <script src="{{ asset('backend/plugins/select2/dist/js/select2.min.js') }}"></script>
