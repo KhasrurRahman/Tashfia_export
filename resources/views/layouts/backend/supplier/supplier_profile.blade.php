@@ -23,32 +23,57 @@
                     <div class="card-body text-center">
                         <small class="text-muted d-block">Email address </small>
                         <h6>{{$supplier->email}}</h6>
-                        <small class="text-muted d-block">Customer Id</small>
+                        <small class="text-muted d-block">Supplier Id</small>
                         <h6>{{$supplier->id}}</h6>
+                        <small class="text-muted d-block">Previous Balance</small>
+                        <h6>{{$supplier->balance}}</h6>
                         <small class="text-muted d-block pt-10">Phone</small>
                         <h6>{{$supplier->personal_phone}}</h6>
                         <small class="text-muted d-block pt-10">Address</small>
                         <h6>{{$supplier->present_address}}</h6>
                     </div>
-                    <a href="{{route('admin.supplier/supplier_purchase_history_generate',$supplier->id)}}" class="btn btn-success" target="_blank">Export Purchase Payment history</a>
+                    <a href="{{route('admin.supplier/supplier_purchase_history_generate',$supplier->id)}}" class="btn btn-success" target="_blank">Export Purchase Payment
+                        history</a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
                 <div class="card">
                     <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
-                        <li class="nav-item active">
-                            <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#sales_history" role="tab" aria-controls="pills-profile"
-                               aria-selected="false">Purchase History</a>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-setting-tab" data-toggle="pill" href="#pay_due" role="tab" aria-controls="pills-setting"
+                               aria-selected="false">Pay Previous Due</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#setting" role="tab" aria-controls="pills-setting"
-                               aria-selected="false">Setting</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#sales_history" role="tab" aria-controls="pills-profile" aria-selected="false">Purchase History</a>
                         </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#payment_history" role="tab" aria-controls="pills-profile"
+                               aria-selected="false">Previous Due Payments History</a>
+                        </li>
+
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#setting" role="tab" aria-controls="pills-setting"--}}
+                        {{--                               aria-selected="false">Setting</a>--}}
+                        {{--                        </li>--}}
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pay_due" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <div class="card-body">
+                                <form action="{{route('admin.subscriber/previous_due_payment')}}" method="post" id="pay_bill_form">
+                                    @csrf
+                                    <input type="hidden" value="{{$supplier->id}}" name="supplier_id">
+                                    @include('layouts.backend.purchase.bank_card')
 
-                        <div class="tab-pane fade show active" id="sales_history" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Make Payment</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="sales_history" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <div class="card-body">
                                 <div class="dt-responsive">
                                     <table class="table table-striped table-bordered nowrap simpletable">
@@ -78,13 +103,41 @@
                                         </tbody>
                                         <tfoot>
                                         <tr>
-                                            <th>SL.</th>
+                                            <th colspan="4">Total</th>
+                                            <th>{{$supplier->purchase->sum('quantity')}}</th>
+                                            <th>{{$supplier->purchase->sum('total_purchas_price')}}</th>
+                                            <th>{{$supplier->purchase->sum('actual_purchas_price')}}</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="payment_history" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <div class="card-body">
+                                <div class="dt-responsive">
+                                    <table class="table table-striped table-bordered nowrap simpletable">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
                                             <th>Date</th>
-                                            <th>Item</th>
-                                            <th>Code</th>
-                                            <th>Quantity</th>
-                                            <th>Total purchase Price</th>
-                                            <th>Actual purchase Price</th>
+                                            <th>Payment Mode</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($supplier->previous_due_payment_history as $key=>$data)
+                                            <tr>
+                                                <td>{{$key+1}}</td>
+                                                <td>{{date("d-M-y", strtotime($data->created_at))}}</td>
+                                                <td>{{$data->payment_mode}}</td>
+                                                <td>{{$data->amount}}</td>
+                                        @endforeach
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th colspan="3">Total</th>
+                                            <th>{{$supplier->previous_due_payment_history->sum('amount')}}</th>
                                         </tr>
                                         </tfoot>
                                     </table>

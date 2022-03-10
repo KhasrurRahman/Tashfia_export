@@ -34,10 +34,10 @@
                 {data: 'name', name: 'name'},
                 {data: 'personal_phone', name: 'personal_phone'},
                 {data: 'present_address', name: 'present_address'},
-                {data: 'email', name: 'email'},
                 {data: 'photo', name: 'photo'},
                 {data: 'company_name', name: 'company_name'},
                 {data: 'balance', name: 'balance'},
+                {data: 'purchase_due', name: 'purchase_due'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });

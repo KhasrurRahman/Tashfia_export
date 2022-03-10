@@ -65,7 +65,7 @@ class DepartmentController extends Controller
                 ->addColumn('customer', function ($data) {
                     return '<a href="javascript:void(0)" class="edit btn btn-outline-success btn-sm" onclick="customer_details(' . $data->customer_id . ')">' . $data->customer->name . '</a>';
                 })->addColumn('customer_company_name', function ($data) {
-                    return $data->customer->company->company_name;
+                    return $data->customer->company ?$data->customer->company->company_name:$data->customer->company_name;
                 })->addColumn('customer_id', function ($data) {
                     return $data->customer->id;
                 })->addColumn('sales_code', function ($data) {

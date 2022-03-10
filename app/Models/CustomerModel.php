@@ -40,7 +40,7 @@ class CustomerModel extends Model
     
     public function payment_history()
     {
-        return $this->hasMany(SalesPaymentModel::class,'customer_id')->orderBy('created_at','desc');
+        return $this->hasMany(SalesPaymentModel::class,'customer_id')->where('customer_id',null)->orderBy('created_at','desc');
     }
     
 }

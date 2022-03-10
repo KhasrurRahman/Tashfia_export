@@ -11,7 +11,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h3>Create Menu</h3></div>
+                <div class="card-header"><h3>@yield('title')</h3></div>
                 <div class="card-body">
                     <form action="{{url('admin/supplier/update/'.$supplier->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -30,6 +30,12 @@
                         <div class="form-group">
                             <label for="Route_name">Supplier name</label>
                             <input type="text" class="form-control" name="name" required value="{{$supplier->name}}">
+                            <span id="Errorpo_status_name" class="text-red error_field"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Route_name">Previous Due</label>
+                            <input type="number" class="form-control" name="balance" min="1" value="{{$supplier->balance}}" disabled>
                             <span id="Errorpo_status_name" class="text-red error_field"></span>
                         </div>
 

@@ -1,6 +1,6 @@
 <div class="modal hide fade" id="add_button" role="dialog" aria-labelledby="add_buttonLabel"
      aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form  action="{{url('admin/supplier/store')}}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -27,6 +27,12 @@
                     <div class="form-group">
                         <label for="Route_name">Supplier name</label>
                         <input type="text" class="form-control" name="name" required>
+                        <span id="Errorpo_status_name" class="text-red error_field"></span>
+                    </div>
+
+                   <div class="form-group">
+                        <label for="Route_name">Previous Due</label>
+                        <input type="number" class="form-control" name="balance" min="1">
                         <span id="Errorpo_status_name" class="text-red error_field"></span>
                     </div>
                     

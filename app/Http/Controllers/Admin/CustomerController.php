@@ -57,9 +57,9 @@ class CustomerController extends Controller
                 ->setTotalRecords($query->count())
                 ->addIndexColumn()
                 ->addColumn('name', function ($data) {
-                    return $data->name;
+                    return '<a href="' . url('admin/customer/view/' . $data->id) . '" class="text-success font-weight-bold" >'.$data->name.'</a>';
                 })->addColumn('company', function ($data) {
-                    return $data->company ? $data->company->company_name : '';
+                    return $data->company ? $data->company->company_name : $data->company_name;
                 })->addColumn('personal_phone', function ($data) {
                     return $data->personal_phone;
                 })->addColumn('present_address', function ($data) {
@@ -67,15 +67,27 @@ class CustomerController extends Controller
                     return $data->email;
                 })->addColumn('balance', function ($data) {
                     return $data->balance;
+                })->addColumn('total_sales_due', function ($data) {
+                    return $data->sales_history->sum('due');
+                })->addColumn('total_paid', function ($data) {
+                    return $data->sales_history->sum('payment_amount');
+                })->addColumn('customer_type', function ($data) {
+                    $status = '';
+                    if ($data->type == 'general') {
+                        $status = '<span class="right badge badge-success">Regular</span>';
+                    } else {
+                        $status = '<span class="right badge badge-info">Walk in</span>';
+                    }
+                    return $status;
                 })->addColumn('photo', function ($data) {
                     $img = '<img src="' . asset('upload/customer_image/' . $data->photo) . '" style="height:100px">';
                     return $img;
                 })->addColumn('action', function ($data) {
-                    $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/customer/edit/' . $data->id) . '" class="dropdown-item" >Edit</a> <a href="' . url('admin/customer/view/' . $data->id) . '" class="dropdown-item" >View</a>';
+                    $buttons = '<a href="javascript:void(0)" class="dropdown-item" onclick="delete_data(' . $data->id . ')">Delete</a> <a href="' . url('admin/customer/edit/' . $data->id) . '" class="dropdown-item" >Edit</a> <a href="' . url('admin/customer/view/' . $data->id) . '" class="dropdown-item" >View</a><a href="' . url('admin/customer/sales_payment_history_pdf/' . $data->id) . '" class="dropdown-item" target="_blank">Payment History</a>';
 
                     $action_button = '<div class="btn-group"> <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #0d8d2d;color: white;text-align: center"> Action <i class="ik ik-chevron-down mr-0 align-middle"></i> </button> <div class="dropdown-menu dropdown-menu-right text-center">' . $buttons . ' </div> </div>';
                     return $action_button;
-                })->rawColumns(['name', 'company', 'personal_phone', 'present_address', 'email', 'balance', 'photo', 'action'])
+                })->rawColumns(['name', 'company', 'personal_phone', 'present_address', 'email', 'balance', 'total_sales_due', 'total_paid', 'photo',  'customer_type', 'action'])
                 ->make(true);
         }
     }
@@ -182,27 +194,30 @@ class CustomerController extends Controller
     public function manual_due_payment(Request $request)
     {
         $customer = CustomerModel::find($request->customer_id);
-        if ($request->amount > $customer->balance or $request->amount == 0) {
+        if ($request->payment_amount > $customer->balance or $request->payment_amount == 0) {
             Toastr::error('Your Payment amount must be less than or equal to Due amount', '');
             return redirect()->back();
         }
 
         $sales_payemnt = new SalesPaymentModel();
         $sales_payemnt->customer_id = $request->customer_id;
-        $sales_payemnt->amount = $request->amount;
+        $sales_payemnt->amount = $request->payment_amount;
         $sales_payemnt->payment_mode = $request->payment_type;
         $sales_payemnt->remark = $request->remark;
+        if ($request->payment_type == "Cheque") {
+            $sales_payemnt->cheque_number = $request->cheque_number;
+            $sales_payemnt->cheque_due_date = $request->cheque_date;
+        }
+        if ($request->payment_type == "Bkash") {
+            $sales_payemnt->bkash_number = $request->bkash_number;
+            $sales_payemnt->bkash_trns_id = $request->bkash_trns_id;
+        }
+        if ($request->payment_type == "Bank") {
+            $sales_payemnt->bank_name = $request->bank_name;
+        }
         $sales_payemnt->save();
 
-        if ($request->payment_mode == 'Cheque') {
-            $check = new ChequeDetailModel();
-            $check->number = $request->cheque_number;
-            $check->date = $request->cheque_date;
-            $check->save();
-        }
-
-
-        $customer->balance -= $request->amount;
+        $customer->balance -= $request->payment_amount;
         $customer->update();
 
         Toastr::success('Payment Updated', '');

@@ -14,8 +14,10 @@
             <th>Item</th>
             <th>Code</th>
             <th>Quantity(kG)</th>
-            <th>Total purchase Price(Tk)</th>
-            <th>Actual purchase Price(Tk)</th>
+            <th>Quantity(Pound)</th>
+            <th>purchase Price(Tk)</th>
+            <th>Paid</th>
+            <th>Due</th>
         </tr>
 
         @foreach($supplier->purchase as $key=>$data)
@@ -25,14 +27,18 @@
                 <td>{{$data->product->chalan_no}}</td>
                 <td>{{$data->product->card_no}}</td>
                 <td style="text-align: right">{{$data->quantity}}</td>
-                <td style="text-align: right">{{$data->total_purchas_price}}</td>
+                <td style="text-align: right">{{$data->quantity * 2.2046}}</td>
                 <td style="text-align: right">{{$data->actual_purchas_price}}</td>
+                <td style="text-align: right">{{$data->payment_amount}}</td>
+                <td style="text-align: right">{{$data->due}}</td>
             </tr>
         @endforeach
         <tr>
-            <td colspan="4">Total</td>
-            <td style="text-align: right">{{$total_quantity}} KG</td>
-            <td style="text-align: right">{{$total_price}} TK</td>
-            <td style="text-align: right">{{$total_actual_price}} TK</td>
+            <td colspan="4" style="text-align: left">Total</td>
+            <td style="text-align: right">{{$total_quantity}}</td>
+            <td style="text-align: right">{{$supplier->purchase->sum('quantity') * 2.2046}}</td>
+            <td style="text-align: right">{{$total_actual_price}}</td>
+            <td style="text-align: right">{{$supplier->purchase->sum('payment_amount')}}</td>
+            <td style="text-align: right">{{$supplier->purchase->sum('due')}}</td>
         </tr>
 @endpush

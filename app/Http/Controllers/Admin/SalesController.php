@@ -185,12 +185,12 @@ class SalesController extends Controller
 
         }
 
-        $total_due_amount = $total_paied_amount - $request->grand_total;
-        if ($total_due_amount < 0) {
-            $customer = CustomerModel::find($request->customer_id);
-            $customer->balance += $total_due_amount;
-            $customer->update();
-        }
+//        $total_due_amount = $total_paied_amount - $request->grand_total;
+//        if ($total_due_amount < 0) {
+//            $customer = CustomerModel::find($request->customer_id);
+//            $customer->balance += $total_due_amount;
+//            $customer->update();
+//        }
 
         $sales->profit_or_loss = $sales->total_price - $sales->sales_details->sum('purchase_total_price');
         $sales->update();

@@ -34,13 +34,14 @@
             },
             columns: [
                 {data: 'id', name: 'id'},
+                {data: 'customer_type', name: 'customer_type'},
                 {data: 'name', name: 'name'},
                 {data: 'company', name: 'company'},
                 {data: 'personal_phone', name: 'personal_phone'},
-                {data: 'present_address', name: 'present_address'},
-                {data: 'email', name: 'email'},
                 {data: 'photo', name: 'photo'},
                 {data: 'balance', name: 'balance'},
+                {data: 'total_paid', name: 'total_paid'},
+                {data: 'total_sales_due', name: 'total_sales_due'},
                 {data: 'action', name: 'action', searchable: false},
             ],
         });

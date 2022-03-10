@@ -35,8 +35,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="Route_name">Balance</label>
-                            <input type="number" class="form-control" name="balance" value="{{$customer->balance}}" min="1">
+                            <label for="Route_name">Previous Due</label>
+                            <input type="number" class="form-control" name="balance" value="{{$customer->balance}}" min="1" disabled>
                             <span id="Errorpo_status_name" class="text-red error_field"></span>
                         </div>
 

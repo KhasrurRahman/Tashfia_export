@@ -22,13 +22,14 @@
                 <thead>
                 <tr>
                     <th>Customer ID</th>
-                    <th>Per Name</th>
+                    <th>Type</th>
+                    <th>Name</th>
                     <th>Company Name</th>
-                    <th>per Phone</th>
-                    <th>Address</th>
-                    <th>Email</th>
+                    <th>Phone</th>
                     <th>Photo</th>
-                    <th>Balance</th>
+                    <th>Previous Due</th>
+                    <th>Total Paid</th>
+                    <th>Total Due(on sales)</th>
                     <th>Action</th>
                 </tr>
                 </thead>

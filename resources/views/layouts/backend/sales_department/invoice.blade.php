@@ -211,12 +211,12 @@
                 <table style="margin-left: 5%">
                     <tr>
                         <td style="font-size: 12px;font-weight: bold;">
-                            <span class="alignleft" style="width: 80px">Name: </span> <input style="width: 80%;height:15px;margin:1px"
-                                                                                             value="{{ $sales->customer->company->company_name }}"><br/>
-                            <span class="alignleft" style="width: 80px">Address:</span> <input style="width: 80%;height:15px;margin:1px"
-                                                                                               value="{{ $sales->customer->permanent_address }}"
+                            <span class="alignleft" style="width: 80px">Buyer Name: </span> <input style="width: 80%;height:15px;margin:1px"
+                                                                                             value="{{ $sales->customer->name }}"><br/>
+                            <span class="alignleft" style="width: 80px">Address:</span> <input style="width: 80%;height:15px;margin:1px" value="{{ $sales->customer->permanent_address }}"
                             ><br/>
-                            <span class="alignleft" style="width: 80px">Buyer Name:</span> <input style="width: 36%;height:15px;margin:1px" value="{{ $sales->customer->name }}">
+                            <span class="alignleft" style="width: 80px">Company:</span> <input style="width: 36%;height:15px;margin:1px" value="{{
+                            $sales->customer->company?$sales->customer->company->company_name:$sales->customer->company_name .' (Walk-in Customer)' }}">
                             <span style="width: 80px">Phone:</span> <input style="width: 37%;height:15px;margin:1px" value="{{ $sales->customer->personal_phone }}"><br/>
                             <span class="alignleft" style="width: 80px">ID: </span> <input style="width: 80%;height:15px;margin:1px" value="{{ $sales->customer->id }}"><br/>
                         </td>

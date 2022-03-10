@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\CompanyModel;
+use App\PurchasePaymentModel;
 use Illuminate\Database\Eloquent\Model;
 
 class supplierModel extends Model
@@ -42,5 +43,10 @@ class supplierModel extends Model
     public function product()
     {
         return $this->belongsTo(ModelProduct::class,'product_id');
+    }
+
+    public function previous_due_payment_history()
+    {
+        return $this->hasMany(PurchasePaymentModel::class,'supplier_id')->where('purchase_id',null)->orderBy('created_at','desc');
     }
 }

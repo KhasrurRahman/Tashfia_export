@@ -5,7 +5,7 @@
                 <div class="form-group">
                     <label for="product_id">Amount</label>
                     <div class="input-group">
-                        <input type="number" class="form-control payment_amount" name="payment_amount" id="payment_amount" required>
+                        <input type="number" class="form-control payment_amount" name="payment_amount" id="payment_amount" required >
                     </div>
                     <span id="error_sub_total" class="text-red error_field"></span>
                 </div>
