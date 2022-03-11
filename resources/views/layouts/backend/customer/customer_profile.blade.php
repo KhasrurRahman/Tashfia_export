@@ -32,7 +32,7 @@
                         <small class="text-muted d-block pt-10">Previous Due</small>
                         <h6>{{$customer->balance}}</h6>
                         <small class="text-muted d-block pt-10">Type</small>
-                        @if ($customer->type == 'general') {
+                        @if ($customer->type == 'general')
                         <span class="right badge badge-warning">Regular</span>
                         @else
                             <span class="right badge badge-secondary">Walk in</span>

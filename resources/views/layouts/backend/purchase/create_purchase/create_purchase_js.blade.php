@@ -89,7 +89,7 @@
                     document.getElementById('form_submission_button').innerText = 'Purchased';
                     toastr.success('Purchase successfully Completed', 'Purchased');
                     window.open("{{ route('admin.purchase/index') }}", "_blank");
-                    console.log('sdsd')
+                    location.reload()
                 }
             },
             error: function (response) {

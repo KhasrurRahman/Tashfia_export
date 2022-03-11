@@ -145,7 +145,7 @@
                             <tr>
                                 <th>{{$key+1}}</th>
                                 <td>{{$data->supplier->name}}</td>
-                                <td>{{$data->reference_purchase->id}}</td>
+                                <td>{{$data->reference_purchase?$data->reference_purchase->id:'Previous Due Payment'}}</td>
                                 <td>
                                     {{$data->payment_mode}} ({{$data->bank_name . $data->cheque_number . $data->bkash_number}})
                                 </td>

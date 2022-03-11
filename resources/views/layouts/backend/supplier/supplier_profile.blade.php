@@ -25,7 +25,7 @@
                         <h6>{{$supplier->email}}</h6>
                         <small class="text-muted d-block">Supplier Id</small>
                         <h6>{{$supplier->id}}</h6>
-                        <small class="text-muted d-block">Previous Balance</small>
+                        <small class="text-muted d-block">Previous Due</small>
                         <h6>{{$supplier->balance}}</h6>
                         <small class="text-muted d-block pt-10">Phone</small>
                         <h6>{{$supplier->personal_phone}}</h6>

@@ -6,9 +6,9 @@
     $(function () {
         var table = $('.yajra-datatable').DataTable({
             "order": [[1, 'desc']],
-            "columnDefs": [
-                {"className": "dt-center", "targets": "_all"}
-            ],
+            "columnDefs": [{
+                "className": "text-left", "targets": "_all", 'orderable': false, 'searchable': false,
+            }],
             processing: true,
             serverSide: true,
             "language": {
@@ -30,10 +30,7 @@
                 {data: 'product_name', name: 'product_name'},
                 {data: 'name', name: 'name'},
                 {data: 'personal_phone', name: 'personal_phone'},
-                {data: 'present_address', name: 'present_address'},
-                {data: 'email', name: 'email'},
                 {data: 'company_name', name: 'company_name'},
-                {data: 'tax', name: 'tax'},
                 {data: 'total_amount', name: 'total_amount'},
                 {data: 'due_date', name: 'due_date'},
                 {data: 'created_at', name: 'created_at'},

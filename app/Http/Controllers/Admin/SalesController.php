@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\ChequeDetailModel;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerModel;
+use App\Models\ExpensesModel;
 use App\Models\LotDepartmentModel;
 use App\Models\ModelProduct;
 use App\Models\salesDepartmentModel;
@@ -175,26 +176,20 @@ class SalesController extends Controller
                 $sales_payemnt->bank_name = $request->bank_name[$i];
             }
             $sales_payemnt->save();
-
-//            if ($request->per_cheque_number[$i]) {
-//                $check = new ChequeDetailModel();
-//                $check->sales_payment_id = $sales_payemnt->id;
-//                $check->number = $request->per_cheque_number[$i];
-//                $check->date = $request->per_cheque_date[$i];
-//                $check->save();
-//            }
-
         }
 
-//        $total_due_amount = $total_paied_amount - $request->grand_total;
-//        if ($total_due_amount < 0) {
-//            $customer = CustomerModel::find($request->customer_id);
-//            $customer->balance += $total_due_amount;
-//            $customer->update();
-//        }
-
-        $sales->profit_or_loss = $sales->total_price - $sales->sales_details->sum('purchase_total_price');
+        $sales->profit_or_loss = ($sales->total_price - $sales->labour_bill) - $sales->sales_details->sum('purchase_total_price');
         $sales->update();
+
+        if ($sales->labour_bill > 0) {
+            $expense = new ExpensesModel();
+            $expense->expenses_category_id = 8;
+            $expense->name = 'labor bill for sales ID:'.$sales->id. 'Customer Name:'.$sales->customer->name;
+            $expense->Amount = $sales->labour_bill;
+            $expense->remarks = 'labor bill for sales ID:'.$sales->id. 'Customer Name:'.$sales->customer->name;
+            $expense->save();
+        }
+
 
         return response()->json(['success' => 'success', 'sales_id' => $sales->id]);
     }

@@ -30,7 +30,7 @@ class ExpensesController extends Controller
                 })->addColumn('remark', function ($data) {
                     return $data->remark;
                 })->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
+                    $data->id == 8 ? $actionBtn = ' ' : $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-outline-danger btn-sm" onclick="delete_data(' . $data->id . ')">Delete</a>';
                     return $actionBtn;
                 })->rawColumns(['name', 'remark', 'action'])
                 ->make(true);
@@ -75,7 +75,7 @@ class ExpensesController extends Controller
             if ($request->search_name !== null) {
                 $query->where('name', 'like', '%' . $request->search_name . '%');
             }
-             
+
             $query->whereHas('expenses_category', function ($query2) use ($request) {
                 if ($request->search_category_id !== null) {
                     $query2->where('id', $request->search_category_id);

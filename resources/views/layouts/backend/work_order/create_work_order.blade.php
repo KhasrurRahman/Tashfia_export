@@ -96,7 +96,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tax</label>
-                            <input type="number" class="form-control" name="tax" id="tax" min="0" onkeyup="total_price()" required>
+                            <input type="hidden" class="form-control" name="tax" id="tax" min="0" onkeyup="total_price()" required value="1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Total Amount</label>

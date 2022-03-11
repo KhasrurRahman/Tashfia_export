@@ -72,6 +72,7 @@
             $('#countryList').fadeOut();
             setTimeout(show_total_quantity, 1000);
             setTimeout(show_total_grand_total, 1000);
+            document.getElementById("country_name").focus();
         });
     });
 
@@ -199,20 +200,8 @@
             }
         });
         var grand_total = Number(calculated_total_sum)
-        // calculated_total_sum + labour_bill
         $("#grand_total").html(grand_total+labour_bill);
     };
-
-    // function sum_labour_bill() {
-    //     var labour_bill = Number($("#labour_bill").val())
-    //     var grand_total = Number($("#grand_total").html())
-    //
-    //     $total  = (labour_bill + grand_total)
-    //     console.log($total)
-    //
-    //     $("#grand_total").html($total);
-    // };
-
 
     function store_sales_data() {
         disableButton()
@@ -320,8 +309,8 @@
                 } else if (data.success) {
                     document.getElementById('form_submission_button').innerText = 'saved';
                     toastr.success('Sales successfully Completed', 'Updated');
-                    window.open(
-                        "{{ url('admin/sales/sales_department_invoice') }}/" + data.sales_id, "_blank");
+                    window.open("{{ url('admin/sales/sales_department_invoice') }}/" + data.sales_id, "_blank");
+                    location.reload()
                 }
             },
             error: function (response) {
@@ -421,21 +410,5 @@
 
         $('#multiple_payment_model').append(html);
     }
-
-
-    // function cheque_date_input(select) {
-    //     console.log(select.value)
-    //     if (select.value === 'Cheque') {
-    //         $(select).closest('.row').find('#check_section').show(1000);
-    //         $(select).closest('.row').find('#bkash_section').hide(1000);
-    //     } else if (select.value === 'Bkash') {
-    //         $(select).closest('.row').find('#bkash_section').show(1000);
-    //         $(select).closest('.row').find('#check_section').hide(1000);
-    //     } else {
-    //         $(select).closest('.row').find('#check_section').hide(1000);
-    //         $(select).closest('.row').find('#bkash_section').hide(1000);
-    //     }
-    // }
-
 
 </script>
