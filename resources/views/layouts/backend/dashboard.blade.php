@@ -16,8 +16,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">আজকের মোট বিক্রয় (পরিমাণ/অর্থ)</p>
-                                <h3 style="font-size: 1vw">{{$today_sales_quantity}}কেজি / {{$today_sales}}টাকা</h3>
+                                <h6>আজকের মোট বিক্রয় (পরিমাণ/অর্থ)</h6>
+                                <h4>{{$today_sales_quantity}}কেজি / {{$today_sales}}টাকা</h4>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-trending-up"></i>
@@ -32,8 +32,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">বর্তমান মাসের মোট বিক্রয় (পরিমাণ / অর্থ)</p>
-                                <h3 style="font-size: 1vw">{{$current_month_sales_quantity}}কেজি / {{$current_month_sales}}টাকা</h3>
+                                <h6>বর্তমান মাসের মোট বিক্রয় (পরিমাণ / অর্থ)</h6>
+                                <h4>{{$current_month_sales_quantity}}কেজি / {{$current_month_sales}}টাকা</h4>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-trending-up"></i>
@@ -49,8 +49,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">আজকের মোট ক্রয় (পরিমাণ/অর্থ)</p>
-                                <h3 style="font-size: 1vw">{{$todays_purchase_quantity}}কেজি / {{$todays_purchase_price}}টাকা</h3>
+                                <h6>আজকের মোট ক্রয় (পরিমাণ/অর্থ)</h6>
+                                <h4>{{$todays_purchase_quantity}}কেজি / {{$todays_purchase_price}}টাকা</h4>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-shopping-cart"></i>
@@ -64,8 +64,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">বর্তমান মাসের মোট ক্রয় (পরিমাণ/অর্থ)</p>
-                                <h3 style="font-size: 1vw">{{$current_month_purchase_quantity}}কেজি / {{$current_month_purchase_price}}টাকা</h3>
+                                <h6>বর্তমান মাসের মোট ক্রয় (পরিমাণ/অর্থ)</h6>
+                                <h4>{{$current_month_purchase_quantity}}কেজি / {{$current_month_purchase_price}}টাকা</h4>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-shopping-cart"></i>
@@ -79,8 +79,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">আজকের মোট বকেয়া (পরিমাণ/অর্থ)</p>
-                                <h3 style="font-size: 1vw">{{$todays_sales_due}}কেজি / {{$todays_sales_due_quantity}}টাকা</h3>
+                                <h6>আজকের মোট বকেয়া (পরিমাণ/অর্থ)</h6>
+                                <h4>{{$todays_sales_due}}কেজি / {{$todays_sales_due_quantity}}টাকা</h4>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-trending-down"></i>
@@ -94,8 +94,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">বর্তমান মাসের মোট পাওনা (পরিমাণ/অর্থ)</p>
-                                <h3 style="font-size: 1vw">{{$current_month_sales_due}}কেজি / {{$current_month_sales_due_quantity}}টাকা</h3>
+                                <h6>বর্তমান মাসের মোট পাওনা (পরিমাণ/অর্থ)</h6>
+                                <h4>{{$current_month_sales_due}}কেজি / {{$current_month_sales_due_quantity}}টাকা</h4>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-trending-down"></i>
