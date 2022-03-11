@@ -88,6 +88,7 @@ class ReportController extends Controller
         $purchase = PurchasePaymentModel::whereDate('created_at', $date)->get();
         $expense = ExpensesModel::whereDate('created_at', $date)->get();
         $total_expense = $purchase->sum('amount') + $expense->sum('Amount');
+
         return view('layouts.backend.report.deposit_expense.deposit_expense',compact('sales','purchase','asset','expense','opening_balance','advance_sell','total_asset','total_expense'));
     }
 
