@@ -8,7 +8,6 @@
 @section('link',route('admin.dynamic_route'))
 @section('content')
 
-
     <div class="container-fluid">
 
         <div class="row clearfix">
@@ -17,8 +16,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">Today's Total Sale(qty / amount)</p>
-                                <h3 style="font-size: 1vw">{{$today_sales_quantity}}Kg / {{$today_sales}}Tk</h3>
+                                <p style="font-size: .7vw">আজকের মোট বিক্রয় (পরিমাণ/অর্থ)</p>
+                                <h3 style="font-size: 1vw">{{$today_sales_quantity}}কেজি / {{$today_sales}}টাকা</h3>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-trending-up"></i>
@@ -33,8 +32,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">Total Sale Current Month(qty / amount)</p>
-                                <h3 style="font-size: 1vw">{{$current_month_sales_quantity}}Kg / {{$current_month_sales}}Tk</h3>
+                                <p style="font-size: .7vw">বর্তমান মাসের মোট বিক্রয় (পরিমাণ / অর্থ)</p>
+                                <h3 style="font-size: 1vw">{{$current_month_sales_quantity}}কেজি / {{$current_month_sales}}টাকা</h3>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-trending-up"></i>
@@ -50,8 +49,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">Today's Total Purchase(qty/amount)</p>
-                                <h3 style="font-size: 1vw">{{$todays_purchase_quantity}}Kg / {{$todays_purchase_price}}Tk</h3>
+                                <p style="font-size: .7vw">আজকের মোট ক্রয় (পরিমাণ/অর্থ)</p>
+                                <h3 style="font-size: 1vw">{{$todays_purchase_quantity}}কেজি / {{$todays_purchase_price}}টাকা</h3>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-shopping-cart"></i>
@@ -65,8 +64,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">Total Purchase Current Month(qty/amount)</p>
-                                <h3 style="font-size: 1vw">{{$current_month_purchase_quantity}}Kg / {{$current_month_purchase_price}}Tk</h3>
+                                <p style="font-size: .7vw">বর্তমান মাসের মোট ক্রয় (পরিমাণ/অর্থ)</p>
+                                <h3 style="font-size: 1vw">{{$current_month_purchase_quantity}}কেজি / {{$current_month_purchase_price}}টাকা</h3>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-shopping-cart"></i>
@@ -80,8 +79,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">Total Due's Today(qty/amount)</p>
-                                <h3 style="font-size: 1vw">{{$todays_sales_due}}Kg / {{$todays_sales_due_quantity}}Tk</h3>
+                                <p style="font-size: .7vw">আজকের মোট বকেয়া (পরিমাণ/অর্থ)</p>
+                                <h3 style="font-size: 1vw">{{$todays_sales_due}}কেজি / {{$todays_sales_due_quantity}}টাকা</h3>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-trending-down"></i>
@@ -95,8 +94,8 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <p style="font-size: .7vw">Total Due's Current Month(qty/amount)</p>
-                                <h3 style="font-size: 1vw">{{$current_month_sales_due}}Kg / {{$current_month_sales_due_quantity}}Tk</h3>
+                                <p style="font-size: .7vw">বর্তমান মাসের মোট পাওনা (পরিমাণ/অর্থ)</p>
+                                <h3 style="font-size: 1vw">{{$current_month_sales_due}}কেজি / {{$current_month_sales_due_quantity}}টাকা</h3>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-trending-down"></i>
@@ -110,7 +109,7 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <h6>Total Customer</h6>
+                                <h6>মোট কাস্টমার</h6>
                                 <h2>{{$total_customer}}</h2>
                             </div>
                             <div class="icon">
@@ -126,7 +125,7 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <h6>Total Supplier</h6>
+                                <h6>মোট সাপ্লায়ার</h6>
                                 <h2>{{$total_supplier}}</h2>
                             </div>
                             <div class="icon">
@@ -142,7 +141,7 @@
             <div class="col-lg-8 col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Last 5 Transaction</h3>
+                        <h3>শেষ ৫টি লেনদেন</h3>
                         <div class="card-header-right">
                             <ul class="list-unstyled card-option">
                                 <li><i class="ik ik-chevron-left action-toggle"></i></li>
