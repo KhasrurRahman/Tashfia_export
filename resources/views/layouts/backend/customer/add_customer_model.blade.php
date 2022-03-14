@@ -25,7 +25,7 @@
 
                     <div class="form-group">
                         <label for="Route_name">Previous Due</label>
-                        <input type="number" class="form-control" name="balance" min="1">
+                        <input type="number" class="form-control" name="balance" min="0" step="any">
                         <span id="Errorpo_status_name" class="text-red error_field"></span>
                     </div>
                     
