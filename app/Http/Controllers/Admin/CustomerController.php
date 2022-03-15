@@ -97,6 +97,7 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required',
             'company_id' => 'required',
+            'customer_photo' => 'mimes:jpeg,jpg,png',
         ]);
 
         $image = $request->file('customer_photo');
