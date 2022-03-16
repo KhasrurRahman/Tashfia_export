@@ -10,7 +10,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('suppliers', 'Api\BasicController@suppliers');
     Route::post('account_summary', 'Api\BasicController@account_summary');
     Route::post('profit_loss', 'Api\BasicController@profit_loss');
-    Route::get('today_total_sell', 'Api\BasicController@today_total_sell');
 
     Route::get('today_total_sell', 'Api\BasicController@today_total_sell');
     Route::get('current_month_total_sales', 'Api\BasicController@current_month_total_sales');
