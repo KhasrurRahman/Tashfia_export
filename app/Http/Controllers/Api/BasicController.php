@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerModel;
 use App\Models\ExpensesModel;
+use App\Models\purchaseModel;
 use App\Models\salesDepartmentModel;
 use App\Models\supplierModel;
 use Illuminate\Http\Request;
@@ -69,5 +70,19 @@ class BasicController extends Controller
         $fast_date_of_corrent_date = Carbon::now()->firstOfMonth()->toDateString();
         $total_sales = salesDepartmentModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('total_price');
         return response()->json(['total_sales'=>$total_sales]);
+    }
+
+    public function today_total_purchase()
+    {
+        $today_sales = purchaseModel::whereDate('created_at', date('Y-m-d'))->sum('actual_purchas_price');
+        return response()->json(['date' => date('Y-m-d'),'total_purchase'=>$today_sales]);
+    }
+
+    public function current_month_total_purchase()
+    {
+        $current_date = date('Y-m-d');
+        $fast_date_of_corrent_date = Carbon::now()->firstOfMonth()->toDateString();
+        $total = purchaseModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('actual_purchas_price');
+        return response()->json(['total_purchase'=>$total]);
     }
 }
