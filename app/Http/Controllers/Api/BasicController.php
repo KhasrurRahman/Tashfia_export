@@ -8,6 +8,7 @@ use App\Models\ExpensesModel;
 use App\Models\purchaseModel;
 use App\Models\salesDepartmentModel;
 use App\Models\supplierModel;
+use App\SalesDetailsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -58,31 +59,31 @@ class BasicController extends Controller
         return response()->json(['data' => $data,'profit_or_loss'=>$profit_or_loss]);
     }
 
-    public function today_total_sell()
-    {
-        $today_sales = salesDepartmentModel::whereDate('created_at', date('Y-m-d'))->sum('total_price');
-        return response()->json(['date' => date('Y-m-d'),'total_sales'=>$today_sales]);
-    }
-
-    public function current_month_total_sales()
+    public function total_sales_purchase_due_report()
     {
         $current_date = date('Y-m-d');
         $fast_date_of_corrent_date = Carbon::now()->firstOfMonth()->toDateString();
-        $total_sales = salesDepartmentModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('total_price');
-        return response()->json(['total_sales'=>$total_sales]);
-    }
 
-    public function today_total_purchase()
-    {
-        $today_sales = purchaseModel::whereDate('created_at', date('Y-m-d'))->sum('actual_purchas_price');
-        return response()->json(['date' => date('Y-m-d'),'total_purchase'=>$today_sales]);
-    }
+        $today_sales = salesDepartmentModel::whereDate('created_at', $current_date)->sum('total_price');
+        $today_sales_quantity = SalesDetailsModel::whereDate('created_at', $current_date)->sum('quantity');
+        $current_month_sales = salesDepartmentModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('total_price');
+        $current_month_sales_quantity = SalesDetailsModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('quantity');
 
-    public function current_month_total_purchase()
-    {
-        $current_date = date('Y-m-d');
-        $fast_date_of_corrent_date = Carbon::now()->firstOfMonth()->toDateString();
-        $total = purchaseModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('actual_purchas_price');
-        return response()->json(['total_purchase'=>$total]);
+        $todays_purchase_quantity = purchaseModel::whereDate('created_at', $current_date)->sum('quantity');
+        $todays_purchase_price = purchaseModel::whereDate('created_at', $current_date)->sum('actual_purchas_price');
+        $current_month_purchase_quantity = purchaseModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('quantity');
+        $current_month_purchase_price = purchaseModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('actual_purchas_price');
+
+        $todays_sales_due = salesDepartmentModel::whereDate('created_at', $current_date)->sum('total_price');
+        $todays_sales_due_quantity = SalesDetailsModel::whereDate('created_at', $current_date)->sum('quantity');
+        $current_month_sales_due = salesDepartmentModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('total_price');
+        $current_month_sales_due_quantity = SalesDetailsModel::whereBetween('created_at', [$fast_date_of_corrent_date, $current_date])->sum('quantity');
+
+        return response()->json(['today_total_sales_quantity'=>$today_sales_quantity,'today_sales_amount'=>$today_sales,
+            'current_month_total_sales_quantity'=>$current_month_sales_quantity,'current_month_sales_amount'=>$current_month_sales,
+            'today_purchase_quantity'=>$todays_purchase_quantity,'today_purchase_amount'=>$todays_purchase_price,
+            'current_month_purchase_quantity'=>$current_month_purchase_quantity,'current_month_purchase_amount'=>$current_month_purchase_price,
+            'today_due_amount'=>$todays_sales_due,'today_due_quantity'=>$todays_sales_due_quantity,
+            'current_month_due_amount'=>$current_month_sales_due,'current_month_due_quantity'=>$todays_sales_due_quantity,]);
     }
 }
