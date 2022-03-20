@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\AssetModel;
 use App\CompanyModel;
 use App\Http\Controllers\Controller;
+use App\InitialCacheModel;
 use App\Models\CustomerModel;
 use App\Models\ExpensesModel;
+use App\Models\LotDepartmentModel;
 use App\Models\ModelProduct;
 use App\Models\ProductCategoryModel;
 use App\Models\purchaseModel;
 use App\Models\salesDepartmentModel;
 use App\Models\SalesPaymentModel;
 use App\Models\supplierModel;
+use App\PurchasePaymentModel;
 use App\SalesDetailsModel;
 use App\SalesExecutiveModel;
+use App\User;
+use App\workworderModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class BasicController extends Controller
@@ -210,9 +218,186 @@ class BasicController extends Controller
         return response()->json(['data' => $data]);
     }
 
+    public function search_stock(Request $request)
+    {
+        $query = LotDepartmentModel::query();
+        if ($request->from_date !== null and $request->to_date !== null) {
+            $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+        }
+        if ($request->search_supplier_id !== null) {
+            $query->whereHas('purchase', function ($query2) use ($request) {
+                $query2->where('supplier_id', $request->search_supplier_id);
+            });
+        }
+
+        if ($request->product_name !== null) {
+            $query->whereHas('purchase', function ($query2) use ($request) {
+                $query2->whereHas('product', function ($query3) use ($request) {
+                    $query3->where('chalan_no', 'like', '%' . $request->product_name . '%');
+                });
+            });
+        }
+
+        $data = $query->get();
+        return response()->json(['data' => $data]);
+    }
+
+    public function search_sales_history(Request $request)
+    {
+        $query = salesDepartmentModel::query();
+
+        if ($request->from_date !== null and $request->to_date !== null) {
+            $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+        }
+
+        if ($request->search_payment_status !== null) {
+            if ($request->search_payment_status == 'paid') {
+                $query->where('status', '=', 1);
+            } else {
+                $query->where('status', '=', 0);
+            }
+        }
+
+        if ($request->search_company_id !== null) {
+            $query->whereHas('customer', function ($query2) use ($request) {
+                $query2->where('company_id', $request->search_company_id);
+            });
+        }
+
+        if ($request->search_customer_id !== null) {
+            $query->where('customer_id', $request->search_customer_id);
+        }
+
+        if ($request->invoice_number !== null) {
+            $query->where('sales_code', 'like', '%' . $request->invoice_number . '%');
+        }
+
+        $data = $query->get();
+        return response()->json(['data' => $data]);
+    }
+
+    public function search_asset(Request $request)
+    {
+        $query = AssetModel::query();
+        if ($request->from_date !== null and $request->to_date !== null) {
+            $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+        }
+
+        if ($request->search_amount !== null) {
+            $query->where('Amount', 'like', '%' . $request->search_amount . '%');
+        }
+
+        if ($request->search_name !== null) {
+            $query->where('name', 'like', '%' . $request->search_name . '%');
+        }
+
+        $query->whereHas('category', function ($query2) use ($request) {
+            if ($request->search_category_id !== null) {
+                $query2->where('id', $request->search_category_id);
+            }
+        });
+
+        $data = $query->get();
+        return response()->json(['data' => $data]);
+    }
+
+    public function search_expense(Request $request)
+    {
+        $query = ExpensesModel::query();
+        if ($request->from_date !== null and $request->to_date !== null) {
+            $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+        }
+
+        if ($request->search_amount !== null) {
+            $query->where('Amount', 'like', '%' . $request->search_amount . '%');
+        }
+
+        if ($request->search_name !== null) {
+            $query->where('name', 'like', '%' . $request->search_name . '%');
+        }
+
+        $query->whereHas('expenses_category', function ($query2) use ($request) {
+            if ($request->search_category_id !== null) {
+                $query2->where('id', $request->search_category_id);
+            }
+        });
+
+        $data = $query->get();
+        return response()->json(['data' => $data]);
+    }
+
+    public function search_advance_sells(Request $request)
+    {
+        $query = workworderModel::query();
+        if ($request->from_date !== null and $request->to_date !== null) {
+            $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
+        }
+
+        $data = $query->get();
+        return response()->json(['data' => $data]);
+    }
+
+    public function expense_asset_report(Request $request)
+    {
+        $opening_balance = InitialCacheModel::whereDate('date', $request->from_date)->first();
+
+        if (!$opening_balance) {
+            return response()->json(['message' => 'Opening balance not set on that day'], 404);
+        }
+
+        $sales = SalesPaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $asset = AssetModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $advance_sell = workworderModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $total_asset = $opening_balance->opening_balance + $sales->sum('amount') + $asset->sum('Amount') + $advance_sell->sum('subtotal');
+
+
+        $purchase = PurchasePaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $expense = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $total_expense = $purchase->sum('amount') + $expense->sum('Amount');
+
+        return response()->json(['opening_balance' => $opening_balance,'total_asset' => $total_asset,'total_expense' => $total_expense,]);
+    }
+
     public function employee_list()
     {
         $data = SalesExecutiveModel::all();
         return response()->json(['data' => $data]);
+    }
+
+    public function daily_opening_closing_balance()
+    {
+        $data = InitialCacheModel::all();
+        return response()->json(['data' => $data]);
+    }
+
+    public function change_password(Request $request)
+    {
+        $validatedData = Validator::make($request->all(), [
+            'current_password' => 'required|min:6',
+            'password' => 'required|string|min:6',
+            'password_confirmation' => 'required|same:password',
+        ], [
+            'current_password.required' => 'Old password is required',
+            'current_password.min' => 'Old password needs to have at least 6 characters',
+            'password.required' => 'Password is required',
+            'password.min' => 'Password needs to have at least 6 characters',
+            'password_confirmation.required' => 'Passwords do not match'
+        ]);
+
+
+        if ($validatedData->fails()) {
+            return response()->json($validatedData->errors(), 422);
+        }
+
+        $current_password = Auth::User()->password;
+        if (Hash::check($request->input('current_password'), $current_password)) {
+            $user_id = Auth::User()->id;
+            $obj_user = User::find($user_id);
+            $obj_user->password = Hash::make($request->input('password'));
+            $obj_user->update();
+            return response()->json(['message' => 'Password Save Successfully'], 201);
+        } else {
+            return response()->json(['message' => 'Please enter correct current password'], 404);
+        }
     }
 }
