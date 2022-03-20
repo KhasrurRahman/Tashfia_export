@@ -67,5 +67,9 @@ class UpdateClosingBalance extends Command
         $next_day_opening_balance->status = 1;
         $next_day_opening_balance->save();
 
+        $closing_balance = InitialCacheModel::whereDate('date', $date)->first();
+        $closing_balance->closing_balance = $cash;
+        $closing_balance->update();
+
     }
 }
