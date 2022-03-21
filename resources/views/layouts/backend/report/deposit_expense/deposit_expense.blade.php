@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" id="GFG">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center">
@@ -22,17 +22,17 @@
                 <div class="card-body">
                     <table class="table table-bordered">
                         <tbody>
-                            <tr>
-                                <th>ক্যাশ ইজা : </th>
-                                <td>{{$opening_balance->opening_balance}}/=</td>
-                            </tr>
+                        <tr>
+                            <th>ক্যাশ ইজা :</th>
+                            <td>{{$opening_balance->opening_balance}}/=</td>
+                        </tr>
                         </tbody>
                     </table>
 
                     <table class="table table-bordered">
                         <thead>
                         <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
-                            Sales
+                            ক্রয়
                         </div>
                         <tr>
                             <th>#</th>
@@ -60,7 +60,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
-                            নতুন জমা
+                            সকল জমা
                         </div>
                         <tr>
                             <th>#</th>
@@ -130,7 +130,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
-                            Purchase
+                            বিক্রয়
                         </div>
                         <tr>
                             <th>#</th>
@@ -157,7 +157,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
-                            নতুন খরচ
+                            সকল খরচ
                         </div>
                         <tr>
                             <th>#</th>
@@ -202,6 +202,21 @@
     </div>
 
 
+    <input type="button" value="click" onclick="printDiv()">
+
+
 @endsection
 @push('js')
+
+    <script>
+        function printDiv() {
+            var print_div = document.getElementById("GFG");
+            var print_area = window.open();
+            print_area.document.write(print_div.innerHTML);
+            print_area.document.close();
+            print_area.focus();
+            print_area.print();
+            print_area.close();
+        }
+    </script>
 @endpush

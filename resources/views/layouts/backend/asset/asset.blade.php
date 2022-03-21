@@ -25,7 +25,7 @@
             <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Sel</th>
                     <th>Date</th>
                     <th>Category</th>
                     <th>Name</th>

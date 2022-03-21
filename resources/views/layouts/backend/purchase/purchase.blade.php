@@ -32,7 +32,7 @@
             <table class="table table-bordered yajra-datatable">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Sel</th>
                     <th>Product</th>
                     <th>Supplier</th>
                     <th>Quantity(Kg)</th>
