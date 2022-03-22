@@ -66,7 +66,8 @@ class BasicController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $data = salesDepartmentModel::select('customer_id', 'total_price', 'payment_amount', 'due', 'labour_bill', 'sales_code', 'profit_or_loss', 'status', 'created_at')->whereBetween('created_at', [$request->from_date, $request->to_date])->orderBy('created_at', 'DESC')->get();
+        $data = salesDepartmentModel::select('customer_id', 'total_price', 'payment_amount', 'due', 'labour_bill', 'sales_code', 'profit_or_loss', 'status', 'created_at')
+            ->with('customer')->whereBetween('created_at', [$request->from_date, $request->to_date])->orderBy('created_at', 'DESC')->get();
 
         $profit_or_loss = $data->sum('profit_or_loss');
         return response()->json(['data' => $data, 'profit_or_loss' => $profit_or_loss]);
@@ -192,7 +193,7 @@ class BasicController extends Controller
 
     public function search_purchase(Request $request)
     {
-        $query = purchaseModel::query();
+        $query = purchaseModel::with('product');
 
         if ($request->from_date !== null and $request->to_date !== null) {
             $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
@@ -244,7 +245,7 @@ class BasicController extends Controller
 
     public function search_sales_history(Request $request)
     {
-        $query = salesDepartmentModel::query();
+        $query = salesDepartmentModel::query()->join('customers','customers.id','sales.customer_id')->join('company_info','company_info.id','=','customers.company_id');
 
         if ($request->from_date !== null and $request->to_date !== null) {
             $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
@@ -355,7 +356,7 @@ class BasicController extends Controller
         $expense = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $total_expense = $purchase->sum('amount') + $expense->sum('Amount');
 
-        return response()->json(['opening_balance' => $opening_balance,'total_asset' => $total_asset,'total_expense' => $total_expense,]);
+        return response()->json(['opening_balance' => $opening_balance, 'total_asset' => $total_asset, 'total_expense' => $total_expense,]);
     }
 
     public function employee_list()
