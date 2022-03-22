@@ -15,18 +15,18 @@
                     <input type="date" class="form-control" id="to_date" name="to_date" value="{{\Carbon\Carbon::now()->addDay(1)->toDateString()}}">
                 </div>
             </div>
-            
+
             <div class="col-2">
                 <div class="form-group">
                     <button type="submit" class="btn btn-success ml-2 btn-block" id="btnFiterSubmitSearch"
-                            style="margin-top: 30px">Search
+                            style="margin-top: 30px">Generate Report
                     </button>
                 </div>
             </div>
 
         </div>
-
     </form>
 </div>
+
 
 

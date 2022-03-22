@@ -12,6 +12,7 @@ use App\Models\SalesPaymentModel;
 use App\PurchasePaymentModel;
 use App\SalesExecutiveModel;
 use App\workworderModel;
+use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -96,6 +97,11 @@ class ReportController extends Controller
     {
         $opening_balance = InitialCacheModel::whereDate('date', $request->from_date)->first();
 
+        if (!InitialCacheModel::whereDate('date', $request->from_date)->first()) {
+            Toastr::warning('Opening balance not set on that day', 'Opening balance not set');
+            return redirect()->back();
+        }
+
         $sales = SalesPaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $asset = AssetModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $advance_sell = workworderModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
@@ -106,6 +112,6 @@ class ReportController extends Controller
         $expense = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $total_expense = $purchase->sum('amount') + $expense->sum('Amount');
 
-        return view('layouts.backend.report.deposit_expense.deposit_expense', compact('sales','purchase','asset','expense','opening_balance','advance_sell','total_asset','total_expense'));
+        return view('layouts.backend.report.deposit_expense.deposit_expense_invoice_pdf', compact('sales','purchase','asset','expense','opening_balance','advance_sell','total_asset','total_expense'));
     }
 }
