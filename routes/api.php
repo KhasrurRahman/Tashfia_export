@@ -20,7 +20,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::post('search_product', 'Api\BasicController@search_product');
     Route::post('search_purchase', 'Api\BasicController@search_purchase');
     Route::post('search_stock', 'Api\BasicController@search_stock');
-    Route::post('search_sales_history', 'Api\BasicController@search_sales_history');
+    Route::post('search_asset', 'Api\BasicController@search_asset');
     Route::post('search_sales_history', 'Api\BasicController@search_sales_history');
     Route::post('search_expense', 'Api\BasicController@search_expense');
     Route::post('search_advance_sells', 'Api\BasicController@search_advance_sells');

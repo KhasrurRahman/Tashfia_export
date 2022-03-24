@@ -103,7 +103,7 @@ class BasicController extends Controller
 
     public function last_five_transaction()
     {
-        $last_five_sales_tranjection = SalesPaymentModel::query()->orderBy('created_at', 'desc')->take(5)->get();
+        $last_five_sales_tranjection = SalesPaymentModel::with('customer')->orderBy('created_at', 'desc')->take(5)->get();
         return response()->json(['data' => $last_five_sales_tranjection]);
     }
 
@@ -141,7 +141,7 @@ class BasicController extends Controller
             });
         }
 
-        $data = $query->get();
+        $data = $query->with('sales_history')->with('payment_history')->with('company')->get();
         return response()->json(['data' => $data]);
     }
 
@@ -167,7 +167,7 @@ class BasicController extends Controller
             });
         }
 
-        $data = $query->get();
+        $data = $query->with('purchase')->with('previous_due_payment_history')->with('company')->get();
         return response()->json(['data' => $data]);
     }
 
