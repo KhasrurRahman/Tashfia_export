@@ -31,13 +31,25 @@ class BasicController extends Controller
 
     public function customers()
     {
-        $customer = CustomerModel::all();
+        $customer = CustomerModel::query()
+            ->selectRaw('customers.*,company_info.*, SUM(sales.payment_amount) as total_payment_amount, SUM(sales.due) as total_due, SUM(sales.total_price) as total_sales_amount')
+            ->join('company_info', 'company_info.id', '=', 'customers.company_id')
+            ->join('sales', 'sales.customer_id', '=', 'customers.id')
+            ->with('payment_history')
+            ->get();
         return response()->json(['customers' => $customer]);
     }
 
     public function suppliers()
     {
-        $customer = supplierModel::all();
+        $customer = supplierModel::query()
+            ->selectRaw('suppliers.*, SUM(purchase.payment_amount) as total_payment_amount, SUM(purchase.due) as total_due, SUM(purchase.actual_purchas_price) as total_purchase_amount')
+            ->join('purchase', 'purchase.supplier_id', '=', 'suppliers.id')
+            ->with('company')
+            ->with('previous_due_payment_history')
+            ->with('purchase')
+            ->with('product')
+            ->get();
         return response()->json(['suppliers' => $customer]);
     }
 
@@ -122,6 +134,9 @@ class BasicController extends Controller
     public function search_customer(Request $request)
     {
         $query = CustomerModel::query();
+        $query->selectRaw('customers.*, SUM(sales.payment_amount) as total_payment_amount, SUM(sales.due) as total_due, SUM(sales.total_price) as total_sales_amount')
+//            ->join('company_info', 'company_info.id', '=', 'customers.company_id')
+            ->join('sales', 'sales.customer_id', '=', 'customers.id');
 
         if ($request->phone !== null) {
             $query->where('personal_phone', 'like', '%' . $request->phone . '%');
@@ -147,7 +162,8 @@ class BasicController extends Controller
 
     public function search_supplier(Request $request)
     {
-        $query = supplierModel::query();
+        $query = supplierModel::query()->selectRaw('suppliers.*, SUM(purchase.payment_amount) as total_payment_amount, SUM(purchase.due) as total_due, SUM(purchase.actual_purchas_price) as total_purchase_amount')
+            ->join('purchase', 'purchase.supplier_id', '=', 'suppliers.id');
 
         if ($request->phone !== null) {
             $query->where('personal_phone', 'like', '%' . $request->phone . '%');
@@ -245,7 +261,7 @@ class BasicController extends Controller
 
     public function search_sales_history(Request $request)
     {
-        $query = salesDepartmentModel::query()->join('customers','customers.id','sales.customer_id')->join('company_info','company_info.id','=','customers.company_id');
+        $query = salesDepartmentModel::query()->join('customers', 'customers.id', 'sales.customer_id')->join('company_info', 'company_info.id', '=', 'customers.company_id');
 
         if ($request->from_date !== null and $request->to_date !== null) {
             $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
