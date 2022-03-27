@@ -223,7 +223,7 @@
         <div class="col-md-6" style="border-right: 1px solid">
             <div class="card">
                 <div class="card-header text-center">
-                    <h5>জমা</h5>
+                    <h5>খরচ</h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -334,7 +334,7 @@
         <div class="col-md-6">
             <div class="card justify-content-center">
                 <div class="card-header text-center">
-                    <h5>খরচ</h5>
+                    <h5>জমা</h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
