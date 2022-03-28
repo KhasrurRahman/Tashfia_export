@@ -26,10 +26,9 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::post('search_advance_sells', 'Api\BasicController@search_advance_sells');
     Route::get('daily_opening_closing_balance', 'Api\BasicController@daily_opening_closing_balance');
     Route::post('expense_asset_report', 'Api\BasicController@expense_asset_report');
+    Route::get('employee_list', 'Api\BasicController@employee_list');
+    Route::get('assetExpenseCategory', 'Api\BasicController@assetExpenseCategory');
 
 
     Route::post('change_password', 'Api\BasicController@change_password');
-
-
-    Route::get('employee_list', 'Api\BasicController@employee_list');
 });

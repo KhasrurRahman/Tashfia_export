@@ -223,7 +223,7 @@
         <div class="col-md-6" style="border-right: 1px solid">
             <div class="card">
                 <div class="card-header text-center">
-                    <h5>খরচ</h5>
+                    <h5>জমা</h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -238,7 +238,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
-                            ক্রয়
+                            বিক্রয়
                         </div>
                         <tr>
                             <th>#</th>
@@ -334,13 +334,13 @@
         <div class="col-md-6">
             <div class="card justify-content-center">
                 <div class="card-header text-center">
-                    <h5>জমা</h5>
+                    <h5>খরচ</h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
                         <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
-                            বিক্রয়
+                            ক্রয়
                         </div>
                         <tr>
                             <th>#</th>

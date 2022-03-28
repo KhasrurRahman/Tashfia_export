@@ -7,6 +7,7 @@ use App\CompanyModel;
 use App\Http\Controllers\Controller;
 use App\InitialCacheModel;
 use App\Models\CustomerModel;
+use App\Models\ExpensesCategoryModel;
 use App\Models\ExpensesModel;
 use App\Models\LotDepartmentModel;
 use App\Models\ModelProduct;
@@ -183,7 +184,10 @@ class BasicController extends Controller
             });
         }
 
-        $data = $query->with('purchase')->with('previous_due_payment_history')->with('company')->get();
+        $data = $query->with(['purchase'=>function($q)
+        {
+            $q->with('product');
+        }])->with('previous_due_payment_history')->with('company')->get();
         return response()->json(['data' => $data]);
     }
 
@@ -255,7 +259,9 @@ class BasicController extends Controller
             });
         }
 
-        $data = $query->get();
+        $data = $query->with(['purchase' => function ($q) {
+            $q->with(['product', 'supplier']);
+        }])->get();
         return response()->json(['data' => $data]);
     }
 
@@ -314,7 +320,7 @@ class BasicController extends Controller
             }
         });
 
-        $data = $query->get();
+        $data = $query->with('category')->get();
         return response()->json(['data' => $data]);
     }
 
@@ -339,7 +345,7 @@ class BasicController extends Controller
             }
         });
 
-        $data = $query->get();
+        $data = $query->with('expenses_category')->get();
         return response()->json(['data' => $data]);
     }
 
@@ -350,7 +356,9 @@ class BasicController extends Controller
             $query->whereBetween('created_at', [$request->from_date, $request->to_date]);
         }
 
-        $data = $query->get();
+        $data = $query->with(['party' => function ($q) {
+            $q->with('company');
+        }])->with('product')->get();
         return response()->json(['data' => $data]);
     }
 
@@ -372,7 +380,7 @@ class BasicController extends Controller
         $expense = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
         $total_expense = $purchase->sum('amount') + $expense->sum('Amount');
 
-        return response()->json(['opening_balance' => $opening_balance, 'total_asset' => $total_asset, 'total_expense' => $total_expense,]);
+        return response()->json(['opening_balance' => $opening_balance, 'total_asset' => $total_asset, 'total_expense' => $total_expense, 'sales' => $sales, 'purchase' => $purchase, 'asset' => $asset, 'expense' => $expense, 'advance_sell' => $advance_sell]);
     }
 
     public function employee_list()
@@ -416,5 +424,11 @@ class BasicController extends Controller
         } else {
             return response()->json(['message' => 'Please enter correct current password'], 404);
         }
+    }
+
+    public function assetExpenseCategory()
+    {
+        $data = ExpensesCategoryModel::all();
+        return response()->json(['data' => $data]);
     }
 }
