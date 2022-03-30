@@ -17,10 +17,6 @@ class purchaseController extends Controller
 {
     public function index()
     {
-        if (check_initial_balance_status() == 0) {
-            Toastr::error('please Update Opening balance for purchase or sale,Contact With Accountant', 'Update Opening Balance');
-            return redirect()->route('admin.initalBalance/create_initial_balance');
-        }
         $products = ModelProduct::all();
         $supplier = supplierModel::all();
         $company = CompanyModel::all();

@@ -370,14 +370,14 @@ class BasicController extends Controller
             return response()->json(['message' => 'Opening balance not set on that day'], 404);
         }
 
-        $sales = SalesPaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
-        $asset = AssetModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
-        $advance_sell = workworderModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $sales = SalesPaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->with(['customer','reference_sale'])->get();
+        $asset = AssetModel::whereBetween('created_at', [$request->from_date, $request->to_date])->with('category')->get();
+        $advance_sell = workworderModel::whereBetween('created_at', [$request->from_date, $request->to_date])->with(['party','product'])->get();
         $total_asset = $opening_balance->opening_balance + $sales->sum('amount') + $asset->sum('Amount') + $advance_sell->sum('subtotal');
 
 
-        $purchase = PurchasePaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
-        $expense = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->get();
+        $purchase = PurchasePaymentModel::whereBetween('created_at', [$request->from_date, $request->to_date])->with(['supplier','reference_purchase'])->get();
+        $expense = ExpensesModel::whereBetween('created_at', [$request->from_date, $request->to_date])->with('expenses_category')->get();
         $total_expense = $purchase->sum('amount') + $expense->sum('Amount');
 
         return response()->json(['opening_balance' => $opening_balance, 'total_asset' => $total_asset, 'total_expense' => $total_expense, 'sales' => $sales, 'purchase' => $purchase, 'asset' => $asset, 'expense' => $expense, 'advance_sell' => $advance_sell]);
