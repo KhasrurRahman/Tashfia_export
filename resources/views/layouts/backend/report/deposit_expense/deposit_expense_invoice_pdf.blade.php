@@ -182,7 +182,7 @@
                             <span class="alignleft" style="font-size:10px;margin-left: -30px">tashfiaexportoffice@gmail.com</span>
                         </td>
 
-                        <td style="vertical-align: top;text-align: center;width: 30%">
+                        <td style="vertical-align: top;text-align: center;width: 50%">
                             <img src="{{ asset('backend/img/invoice_logo.png') }}"
                                  style="width: 100%;"/>
                             {{-- <hr>
@@ -237,7 +237,7 @@
 
                     <table class="table table-bordered">
                         <thead>
-                        <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
+                        <div class="alert bg-warning alert-dark text-white mb-0" role="alert">
                             বিক্রয়
                         </div>
                         <tr>
@@ -265,7 +265,7 @@
 
                     <table class="table table-bordered">
                         <thead>
-                        <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
+                        <div class="alert bg-warning alert-dark text-white mb-0" role="alert">
                             সকল জমা
                         </div>
                         <tr>
@@ -293,7 +293,7 @@
 
                     <table class="table table-bordered">
                         <thead>
-                        <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
+                        <div class="alert bg-warning alert-dark text-white mb-0" role="alert">
                             অগ্রিম জমা
                         </div>
                         <tr>
@@ -339,7 +339,7 @@
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
-                        <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
+                        <div class="alert bg-warning alert-dark text-white mb-0" role="alert">
                             ক্রয়
                         </div>
                         <tr>
@@ -366,7 +366,7 @@
                     </table>
                     <table class="table table-bordered">
                         <thead>
-                        <div class="alert bg-dark alert-dark text-white mb-0" role="alert">
+                        <div class="alert bg-warning alert-dark text-white mb-0" role="alert">
                             সকল খরচ
                         </div>
                         <tr>

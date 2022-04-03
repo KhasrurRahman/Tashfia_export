@@ -201,7 +201,7 @@
                             <span class="alignleft" style="font-size:10px;margin-left: -30px">tashfiaexportoffice@gmail.com</span>
                         </td>
 
-                        <td style="vertical-align: top;text-align: center;width: 30%">
+                        <td style="vertical-align: top;text-align: center;width: 40%">
                             <img src="{{ asset('backend/img/invoice_logo.png') }}"
                                  style="width: 100%;"/>
                             {{-- <hr>
