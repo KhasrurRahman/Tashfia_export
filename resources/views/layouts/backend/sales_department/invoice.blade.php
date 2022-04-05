@@ -314,8 +314,8 @@
                 </tr>
                 <tr style="height: 6px;">
                     <td style="width: 175px; height: 6px;line-height: 0px" colspan="9">
-                        <p style="font-weight: bold;color: red">Previous Due: {{ ($sales->customer->sales_history->where('due', '>', 0)->sum('due')) - $sales->due }} Tk</p>
-                        <p style="font-weight: bold;color: red">Total Due: {{ $sales->customer->sales_history->where('due', '>', 0)->sum('due') }} Tk</p>
+                        <p style="font-weight: bold;color: red">Previous Due: {{ $sales->customer->balance }} Tk</p>
+                        <p style="font-weight: bold;color: red">Total Due: {{ $sales->customer->sales_history->where('due', '>', 0)->sum('due') + $sales->customer->balance }} Tk</p>
                     </td>
                 </tr>
                 </tbody>
